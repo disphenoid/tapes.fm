@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
+#gem 'pg'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -20,7 +21,15 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+#gem 'devise'
 gem 'jquery-rails'
+gem 'backbone-on-rails'
+gem "mongoid"
+gem 'bson_ext'
+gem 'jbuilder'
+gem 'thin'
+
+#gem "cancan"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
