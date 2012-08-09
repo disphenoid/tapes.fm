@@ -1,0 +1,11 @@
+<h1> tapes.fm </h1>
+<form id="new_tape">
+  <input type="text" name="name" id="new_tape_name">
+  <input type="submit" value="add">
+</form>
+<ul>
+
+<% for tape in @tapes.models: %>
+  <li><%=tape.get('name')%></li>
+<% end %>
+</ul>
