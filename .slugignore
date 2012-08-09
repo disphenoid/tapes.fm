@@ -1,5 +1,3 @@
-*.css
-*.js
 public/images/*.png
 test
 spec
