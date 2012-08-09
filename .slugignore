@@ -4,6 +4,5 @@ spec
 public/flash
 public/javascripts
 public/stylesheets
-public/images
 public/error_pages
 app/assets
