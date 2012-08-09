@@ -24,9 +24,9 @@ end
 #gem 'devise'
 gem 'jquery-rails'
 gem 'backbone-on-rails'
-gem "mongoid"
-gem 'bson_ext'
-gem 'jbuilder'
+#gem "mongoid"
+#gem 'bson_ext'
+#gem 'jbuilder'
 gem 'thin'
 
 #gem "cancan"

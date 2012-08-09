@@ -1,15 +1,15 @@
 body {
 
-  background: #f6f6f6;
-
+  background: #f6f6f6
 }
-
 .splash {
   
-  margin-left: auto;
-  margin-right: auto;
-  width: 293px;
-  margin-top: 100px
+
+  width: 100%;
+  height: 100%;
+  background: #FF0000;
+  background: #f6f6f6 url("/images/splash/tapes_splash_logo.png") no-repeat center;
+  position: absolute;
 
 }
 
