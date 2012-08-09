@@ -5,9 +5,9 @@ Tapesfm::Application.routes.draw do
   scope "api" do
     resources :tapes
   end
-  root to: "splash#index"
+  root to: "webapp#index"
 
-  #match '*path', to: "webapp#index"
+  match '*path', to: "webapp#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -16,9 +16,16 @@
 </head>
 <body>
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <header> 
+    <div id="h_box" class="container_12">
+      <div class="logo">
+      </div>
+    </div>
+  </header>
+  <div id="container" class="container_12">
+    <%= yield %> 
+  </div>
 
-
-<%= yield %>
 <footer> </footer>
   <script>
     var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

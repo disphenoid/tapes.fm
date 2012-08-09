@@ -11,8 +11,8 @@ class Tapesfm.Routers.Tapes extends Backbone.Router
     @tape.set({"name":String(id)})
 
     view = new Tapesfm.Views.TapesIndex(collection: @tapes )
-    view2 = new Tapesfm.Views.TapesTracks(model: @tape)
+    #view2 = new Tapesfm.Views.TapesTracks(model: @tape)
 
     $('#container').html(view.render().el)
-    $('h1').html(view2.render().el)
+    #$('h1').html(view2.render().el)
 
