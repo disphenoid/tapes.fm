@@ -1,0 +1,4 @@
+12Tapedeck jo
+<br />
+<%= @tapedeck.get("name")%>
+

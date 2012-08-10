@@ -1,10 +1,10 @@
 development:
   host: localhost
-  database: claw_development
+  database: tapesfm_dev
 
 test:
   host: localhost
-  database: claw_test
+  database: tapesfm_test
 
 # set these environment variables on your prod server
 production:

@@ -12,6 +12,6 @@ class Tapesfm.Views.TapesIndex extends Backbone.View
 
   render: ->
     rendertContent = @template(tapes: @collection)
-    $(@el).html(rendertContent)
+    #$(@el).html(rendertContent)
     #$(@el).fadeIn(2000)
     this

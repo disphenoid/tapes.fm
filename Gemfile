@@ -21,12 +21,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-#gem 'devise'
+gem 'devise'
 gem 'jquery-rails'
 gem 'backbone-on-rails'
-#gem "mongoid"
-#gem 'bson_ext'
-#gem 'jbuilder'
+gem "mongoid"
+gem 'bson_ext'
+gem 'jbuilder'
 gem 'thin'
 
 #gem "cancan"

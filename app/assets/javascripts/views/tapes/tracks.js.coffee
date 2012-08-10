@@ -11,9 +11,9 @@ class Tapesfm.Views.TapesTracks extends Backbone.View
     #@collection.on('add', @render, this)
 
   render: ->
-    console.log("render")
-    rendertContent = @template(testo: @model.get("name"))
-    $(@el).html(rendertContent)
+    #console.log("render")
+    #rendertContent = @template(testo: @model.get("name"))
+    #$(@el).html(rendertContent)
     #$(@el).fadeIn(2000)
     this
 

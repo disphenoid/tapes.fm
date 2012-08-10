@@ -1,8 +1,7 @@
 Tapesfm::Application.routes.draw do
 
-  get "splash/index"
-
   scope "api" do
+    resources :tapedeck
     resources :tapes
   end
   root to: "webapp#index"

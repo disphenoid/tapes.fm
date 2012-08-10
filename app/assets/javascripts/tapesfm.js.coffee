@@ -4,7 +4,7 @@ window.Tapesfm =
   Views: {}
   Routers: {}
   init: ->
-    new Tapesfm.Routers.Tapes()
+    new Tapesfm.Routers.Tapedecks()
     Backbone.history.start({pushState: true})
 
 $(document).ready ->
