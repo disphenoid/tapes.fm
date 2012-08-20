@@ -1,0 +1,15 @@
+  <%# @tapedeck.get("name")%>
+  <%# @tape.get("name")%>
+
+  <div id="tape_timeline"></div>
+  <div id="tape_scrabber">
+    <div id="scrabber_label">
+    00:00
+    </div>
+    <div id="scrabber_position"></div>
+    <div id="scrabber_pointer"></div>
+    <div id="scrabber_hotspot"></div>
+  </div>
+  <ul id="tape_tracks"> 
+  </ul>
+

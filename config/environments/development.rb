@@ -1,6 +1,12 @@
 Tapesfm::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  #
+  #
+  ENV['s3_access_key_id'] = "AKIAJ4BM5OPRZICTBNLQ"
+  ENV['s3_secret_access_key'] = "aB+GcuPu9pUmjH1/Ab5BXKt8Bb11vqqkMGAfPYgp"
+  ENV['s3_bucket'] = "tapesfm.com.s3.amazonaws.com"
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -21,6 +27,7 @@ Tapesfm::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  config.action_mailer.default_url_options = { :host => 'localhost:5000' }
 
   # Raise exception on mass assignment protection for Active Record models
   #config.active_record.mass_assignment_sanitizer = :strict

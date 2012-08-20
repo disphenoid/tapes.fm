@@ -1,12 +1,25 @@
 Tapesfm::Application.routes.draw do
-
+  #get "users", :to => "users#index"
   scope "api" do
+    devise_for :users
     resources :tapedeck
     resources :tapes
+    resources :tracks
   end
-  root to: "webapp#index"
 
-  match '*path', to: "webapp#index"
+  match 'tapedeck/:id', to: "webapp#tapedeck"
+  match 'tapedeck', to: "webapp#tapedeck"
+  match 'tapedeck/*path', to: "webapp#tapedeck"
+  
+  match 'login', to: "webapp#login"
+
+  match 'uploader', to: "webapp#uploadtest"
+  #match 'upload', to: "webapp#upload"
+  post "upload" => "webapp#upload"
+
+
+  root to: "webapp#uploadtest"
+  #match '*path', to: "webapp#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

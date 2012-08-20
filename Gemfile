@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.7'
 #gem 'pg'
 
 # Bundle edge Rails instead:
@@ -25,10 +25,16 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'backbone-on-rails'
 gem "mongoid"
-gem 'bson_ext'
+#gem 'bson_ext'
 gem 'jbuilder'
 gem 'thin'
+gem 'fog'
 
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+
+gem 'simple_form'
+gem  "waveinfo"
 #gem "cancan"
 
 # To use ActiveModel has_secure_password
@@ -45,3 +51,4 @@ gem 'thin'
 
 # To use debugger
 # gem 'debugger'
+# 

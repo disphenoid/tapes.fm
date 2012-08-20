@@ -1,0 +1,4 @@
+<%= simple_form_for @track, :url => "/upload" do |f| %>
+  <%= f.input :asset, :as => :file  %>
+  <%= f.button :submit %>
+<% end %>

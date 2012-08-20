@@ -3,15 +3,15 @@ class Tapesfm.Views.TapesIndex extends Backbone.View
 
   initialize: ->
     
+    #@model.on('change', @render, this)
     #@collection.on('reset', @render, this)
     #@render()
     
     #@collection.on('changed:name', @render, this)
-    #@model.on('changed', @render, this)
     #@collection.on('add', @render, this)
+    rendertContent = @template(tapes: @model)
+    $(@el).html(rendertContent)
 
   render: ->
-    rendertContent = @template(tapes: @collection)
-    #$(@el).html(rendertContent)
     #$(@el).fadeIn(2000)
     this

@@ -6,13 +6,12 @@ class Tapedeck
 
   belongs_to :user
   has_many :tapes
-  belongs_to :tape
+  belongs_to :tape, :foreign_key => :active_tape_id
 
   field :name, :type => String
   field :description, :type => String
   field :genre, :type => String
   field :genre_sub, :type => String
-  field :active_tape_id, :type => String
 
 
   # def tape

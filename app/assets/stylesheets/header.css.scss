@@ -6,12 +6,58 @@ header {
   position: fixed;
   top: 0px; 
 
-}
-header .logo {
-  
-  background: url("/assets/header/tapesfm_logo.png");
-  width: 160px;
-  height: 54px;
-  
+  .logo {
+    
+    background: url("/assets/header/tapesfm_logo.png");
+    width: 160px;
+    height: 54px;
+    display: inline-block;
+    float: left
+    
 
+  }
+  #quick_buttons {
+      display: inline-block;
+  
+    .quick_button{
+      display: inline-block;
+      background: #3b3b3b;
+      height: 53px;
+      width: 53px;
+      float: left;
+      margin-right: 1px;
+      margin-top: 1px;
+    
+    }
+    #search {
+      float: left;
+
+    
+      #search_box {
+        float: left;
+        width: 280px;
+        height: 54px;
+        background: #444444;
+        input{
+          width: 280px;
+          height: 52px;
+          background: #444444;
+          border: none;
+          outline: none;
+          color: #8e8e8e;
+          padding: 0px 20px;
+          font-size: 14px;
+
+        }
+
+        input:focus {
+          color: white;
+        
+        }
+          
+      }
+  
+    }
+  
+  }
 }

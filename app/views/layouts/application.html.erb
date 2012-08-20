@@ -16,9 +16,29 @@
 </head>
 <body>
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+         <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
   <header> 
     <div id="h_box" class="container_12">
       <div class="logo">
+      </div>
+      <div id="quick_buttons">
+        <div id="add_tape" class="quick_button"></div>
+        <div id="last_tapes" class="quick_button"></div>
+        <div id="new_notifications" class="quick_button"></div>
+
+        <div id="search">
+          
+          <div id="search_box">
+            <input type="text" id="search_field" value="Search for artist, bands and tracks">
+             
+          </div>
+          <div id="search_button" class="quick_button"></div>
+          
+        </div>
+
+        <%= current_user.email unless current_user.blank?%>
+
       </div>
     </div>
   </header>

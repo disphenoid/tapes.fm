@@ -1,24 +1,27 @@
 class TapesController < ApplicationController
-  respond_to :json
 
   def index
-    respond_with Tape.all
+    render :json => Tape.all
   end
 
   def show
-    respond_with Tape.find(params[:id])
+    render :json => Tape.find(params[:id]).to_json(:include => "tracks")
   end
 
   def create
-    respond_with Tape.create(params[:tape])
+    entry = Tape.create! params
+    render :json => entry
   end
   
   def update
-    respond_with Tape.update(params[:id], params[:tape])
+    tape = Tape.find(params[:id])
+    tape.update_attributes!(params[:tape])
+    render :json => tape
   end
 
   def destroy
-    respond_with Tape.destroy(params[:id])
+    #respond_with Tapedeck.destroy(params[:id])
+    render :json => Tape.destroy(params[:id])
   end
 
 end

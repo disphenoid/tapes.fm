@@ -1,0 +1,16 @@
+development: &DEVELOP
+  bucket: "assets.local.doonited.com"
+  access_key_id: AKIAJ4BM5OPRZICTBNLQ
+  secret_access_key: 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
+
+production:
+  bucket: "assets.dev.doonited.com"
+  access_key_id: AKIAJ4BM5OPRZICTBNLQ
+  secret_access_key: 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
+
+release:
+  bucket: "assets.doonited.com"
+  access_key_id: AKIAJ4BM5OPRZICTBNLQ
+  secret_access_key: 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
+
+test: *DEVELOP

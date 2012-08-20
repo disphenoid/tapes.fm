@@ -1,0 +1,94 @@
+// Place all the styles related to the tracks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+  #tape_tracks {
+    padding: 0px;
+    margin: 0px;    
+    clear: both;
+    #tape_timeline {
+     height: 30px;
+     background: #f5f5f5;
+    
+    }
+   .track .track_info.row_1 {
+      background: #fe665d;
+    }
+   .track .track_clip_box.row_1 {
+      background: #f16158;
+    }
+   .track .track_info.row_2 {
+      background: #59d8ad;
+    }
+   .track .track_clip_box.row_2 {
+      background: #59cca6;
+    }
+   .track .track_info.row_3 {
+      background: #e6e15f;
+    }
+   .track .track_clip_box.row_3 {
+      background: #dad65a;
+    }
+
+
+    .track {
+        height: 85px;
+        background: #969696;
+        list-style-type: none;
+        color: white;    
+      .track_info {
+        z-index: 6000; 
+        height: 85px;
+        width: 225px;
+        display: inline-block;
+        //background: #FF00FF;
+        float: left; 
+      }
+
+      .track_clip {
+        position: absolute;
+        height: 85px;
+        width: 735px;
+        //display: inline-block;
+        //float: left; 
+      }
+      .track_base {
+        position: absolute;
+        background: #64c0a1;
+        height: 85px;
+        width: 735px;
+        //display: inline-block;
+        //float: left; 
+      
+      }
+
+      .track_loaded {
+        position: absolute;
+        background: #539f85;
+        height: 85px;
+        width: 0px;
+        //display: inline-block;
+        //float: left; 
+      
+      }
+      .track_progress {
+        position: absolute;
+        background: #FFF;
+        height: 85px;
+        width: 0px;
+        //display: inline-block;
+        //float: left; 
+      
+      }
+      .track_clip_box {
+        height: 85px;
+        width: 735px;
+        //display: inline-block;
+        float: left; 
+      
+      }
+
+ 
+
+    }
+  
+  }
