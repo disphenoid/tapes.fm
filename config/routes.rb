@@ -15,7 +15,7 @@ Tapesfm::Application.routes.draw do
 
   match 'uploader', to: "webapp#uploadtest"
   #match 'upload', to: "webapp#upload"
-  post "upload" => "webapp#upload"
+  post "upload" => "webapp#upload", :defaults => {:format => :js}
 
 
   root to: "webapp#uploadtest"

@@ -16,11 +16,13 @@ class Track
   field :bpm, :type => Float, :default => 120
   field :group, :type => String 
   field :duration, :type => String 
+  field :wav, :type => String 
+  field :mp3, :type => String 
   field :wavedata, :type => String
 
   mount_uploader :asset, SoundUploader
 
-  validates :asset, presence: true
+  #validates :asset, presence: true
   attr_accessible :asset
 
   def to_s

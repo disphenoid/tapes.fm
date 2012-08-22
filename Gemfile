@@ -34,7 +34,7 @@ gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 gem 'simple_form'
-gem  "waveinfo"
+gem "waveinfo"
 #gem "cancan"
 
 # To use ActiveModel has_secure_password

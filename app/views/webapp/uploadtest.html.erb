@@ -1,4 +1,42 @@
-<%= simple_form_for @track, :url => "/upload" do |f| %>
-  <%= f.input :asset, :as => :file  %>
-  <%= f.button :submit %>
+
+<%= form_for @track, :url => "/upload", :html => {:multipart => true} do |f| %> 
+ 
+<p>
+  <%= f.file_field :asset, :id => "uploadify"%> </p>
+  
 <% end %>
+<script>
+<% key = Rails.application.config.session_options[:key] %>
+  var uploadify_script_data = {};
+  var csrf_param = $('meta[name=csrf-param]').attr('content');
+  var csrf_token = $('meta[name=csrf-token]').attr('content');
+  uploadify_script_data[csrf_param] = encodeURI(encodeURIComponent(csrf_token));
+  uploadify_script_data['<%= key %>'] = '<%= cookies[key] %>';
+  
+  $(document).ready(function() {
+  var uploadify_script_data = {};
+  $('#uploadify').uploadify({
+    swf             : '<%= asset_path("uploadify.swf") %>',
+    uploader        : '<%= "upload" %>',
+    // buttonText      : 'Загрузить...',
+    buttonCursor    : 'hand',
+    height          : 20,
+    auto            : true,
+    multi           : true,
+    removeCompleted : true,
+    onUploadComplete : function(file) {
+      alert("done")
+
+    },
+    onUploadError : function(file, errorCode, errorMsg, errorString) {
+      alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+    },
+    formData        : uploadify_script_data
+    // onUploadComplete : function(file) {
+    //   alert(file);
+    // }
+  });
+});
+</script>
+
+

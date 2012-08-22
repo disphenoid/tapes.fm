@@ -13,14 +13,31 @@ class WebappController < ApplicationController
   def uploadtest
     @track = Track.new
   end
+
   def upload
     #handle upload
-    track = Track.new
-    track.asset = params[:track][:asset]
-    track.save
-    redirect_to "/"
+    # track = Track.new
+    # track.asset = params[:track][:asset]
+    # track.save
+    # redirect_to "/"
 
     #track.asset = params[]
+    #
+    newparams = coerce(params)
+    @track = Track.new(newparams[:track])
+
+    respond_to do |format|
+      if @track.save
+        # format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+        # format.js { @picture.id }
+        return  true
+      else
+        #format.html { redirect_to "/" }
+        format.json { render json: @track.errors, status: :unprocessable_entity }
+      end
+    end
+
+
   end
 
 
@@ -32,5 +49,19 @@ class WebappController < ApplicationController
       "application"
     end
   end
+
+  private 
+  def coerce(params)
+    if params[:picture].nil? 
+      h = Hash.new 
+      h[:track] = Hash.new       
+      h[:track][:asset] = params[:Filedata] 
+      # h[:picture][:image].content_type = MIME::Types.type_for(h[:picture][:image].original_filename).to_s
+      h
+    else 
+      params
+    end 
+  end
+
 
 end
