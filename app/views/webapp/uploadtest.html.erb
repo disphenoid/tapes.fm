@@ -1,9 +1,6 @@
 
 <%= form_for @track, :url => "/upload", :html => {:multipart => true} do |f| %> 
- 
-<p>
-  <%= f.file_field :asset, :id => "uploadify"%> </p>
-  
+<p> <%= f.file_field :asset, :id => "uploadify"%> </p> 
 <% end %>
 <script>
 <% key = Rails.application.config.session_options[:key] %>

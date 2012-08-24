@@ -1,0 +1,5 @@
+
+<li class="tape_version_el" data-id="<%= @model.get("id")%>">
+  v
+  <%= @model.get("name") %>
+</li>

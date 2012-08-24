@@ -1,9 +1,6 @@
 class Tapesfm.Views.TapedeckHeader extends Backbone.View
   template: JST['tapedecks/header']
   
-  events:
-    'change #change_tape' : 'changeTape'
-  
   initialize: ->
     
     @model.on('change:name', @render, this)
@@ -13,9 +10,7 @@ class Tapesfm.Views.TapedeckHeader extends Backbone.View
     #@collection.on('changed:name', @render, this)
     #@collection.on('add', @render, this)
 
-  changeTape: (event) ->
-    event.preventDefault()
-    @model.set("active_tape_id":$("#change_tape_id").val())
+
 
   render: ->
     rendertContent = @template(tapedeck: @model)

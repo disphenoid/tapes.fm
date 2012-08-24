@@ -1,11 +1,20 @@
 // Place all the styles related to the tapedeck controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#tapedeck_timeline {
+  width: 735px;
+  height: 40px;
+  clear: both;
+  background: #FF00FF;
+  margin: 0px;
+  margin-left: 225px;
+}
   #tapedeck_controlls { 
     background: #FF00FF;
     height: 40px;
     margin-bottom: 20px;
-    width: 350px;
+    width: 110px;
+    float: left;
     display: inline-block;
     .c_button {
       width: 46px;
@@ -23,6 +32,19 @@
       display: none;
     }
   }
+    #tape_select {
+    //margin-top: 20px;
+    
+    display: inline-block;
+    //float: left;
+    //right: 40px;
+    height: 40px;
+    width: 200px;
+    background: #4a4a4a;
+    color: #FFF 
+
+  }
+
   #tape_menu {
     background: #FF00FF;
     height: 40px;
@@ -74,25 +96,14 @@
 
   }
 
-  #tapedeck_tapes {
-    margin-top: 20px;
-    
-    display: inline-block;
-    float: right;
-    right: 40px;
-    height: 40px;
-    width: 300px;
-    background: #4a4a4a;
-    color: #FFF 
-  }
 }
 
 #tapedeck_tape {
-  padding-top: 20px;
+  //padding-top: 20px;
 
     #tape_scrabber {
       height: 0px;
-      width: 735px;
+      width: 700px;
       margin-left: 225px;
       position: absolute;
       z-index: 1000;

@@ -1,12 +1,15 @@
 class TapesController < ApplicationController
-
+  respond_to :json
   def index
     render :json => Tape.all
   end
 
   def show
-    render :json => Tape.find(params[:id]).to_json(:include => "tracks")
+
+    @tape = Tape.find(params[:id])
+    #@json = render_to_string( template: 'tapes/tape.json.jbuilder', locals: { tape: @tape}) 
   end
+
 
   def create
     entry = Tape.create! params

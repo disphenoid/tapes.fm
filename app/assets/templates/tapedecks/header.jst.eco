@@ -17,15 +17,7 @@
   </div>
 
   <div id="tapedeck_tapes"> 
-    <div id="tape_select">
-      <%# @tapedeck.get("tape")%>
-      <form id="change_tape">
-        <select name="active_tape_id" id="change_tape_id">
-          <option value="50257aec32b710624a000003">Mirta</option>
-          <option value="5024a18c32b71068a2000001">Shila</option>
-        </select>
-      </form>
-    </div>
+
   </div>
 
 

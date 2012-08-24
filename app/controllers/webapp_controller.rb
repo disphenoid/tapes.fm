@@ -4,7 +4,16 @@ class WebappController < ApplicationController
   def index
   end
   def tapedeck 
-    @json = Tapedeck.find(params[:id]).to_json(:include => "tape", :include => {"tape" => {:include => "tracks"}}) 
+    @track = Track.new
+    @tapedeck = Tapedeck.find(params[:id]) #.to_json(:include => "tapes",:include => "tape", :include => {"tape" => {:include => "tracks"}}) 
+
+
+    @json = render_to_string( template: 'tapedeck/show.json.jbuilder', locals: { tapedeck: @tapedeck})
+
+    respond_to do |format|
+        format.html
+    end
+
 
   end
   def login
@@ -25,9 +34,32 @@ class WebappController < ApplicationController
     #
     newparams = coerce(params)
     @track = Track.new(newparams[:track])
+    #@track.name = params[:name]
+
+    @tape = Tape.find(params[:tape_id])
+    
+    unless @tape.open
+    #copy tape
+      @new_tape =  Tape.new
+      @new_tape.tapedeck_id = @tape.tapedeck_id
+      @new_tape.track_ids = @tape.track_ids
+      @new_tape.genre = @tape.track_ids
+      @new_tape.track_ids = @tape.track_ids 
+
+      @new_tape.track_ids.push(@track.id)
+      @new_tape.save
+      @tapedeck = Tapedeck.find(@new_tape.tapedeck_id)
+      @tapedeck.active_tape_id = @new_tape.id
+      @tapedeck.save
+    else
+      @tape.track_ids.push(@track.id) 
+      @tape.save
+    end
+
+    
 
     respond_to do |format|
-      if @track.save
+      if @track.save 
         # format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
         # format.js { @picture.id }
         return  true
@@ -52,7 +84,7 @@ class WebappController < ApplicationController
 
   private 
   def coerce(params)
-    if params[:picture].nil? 
+    if params[:track].nil? 
       h = Hash.new 
       h[:track] = Hash.new       
       h[:track][:asset] = params[:Filedata] 

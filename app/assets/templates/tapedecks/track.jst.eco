@@ -6,7 +6,7 @@
 </div>
 
 
-<div id="track_<%=@track.get("_id")%>" class="track_clip_box row_<%=@index%>"> 
+<div id="track_<%=@track.get("_id")%>_box" class="track_clip_box row_<%=@index%>" data-id="<%=@track.get("_id")%>" data-duration="<%=@track.get("duration")%>"> 
   
   <div id="track_<%=@track.get("_id")%>_base" class="track_base"> </div>
   <div id="track_<%=@track.get("_id")%>_loaded" class="track_loaded"> </div>

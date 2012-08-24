@@ -1,11 +1,12 @@
 class TapedeckController < ApplicationController
-
+  respond_to :json
   def index
     render :json => Tapedeck.all
   end
 
   def show
-    render :json => Tapedeck.find(params[:id]).to_json(:include => "tape", :include => {"tape" => {:include => "tracks"}})
+    @tapedeck = Tapedeck.find(params[:id])
+    #render :json => Tapedeck.find(params[:id]).to_json(:include => "tape", :include => {"tape" => {:include => "tracks"}})
   end
 
   def create

@@ -1,6 +1,14 @@
 window.waveform = (data) =>
+  #adds Waveforms
+  duration = Number($(("#track_"+data.id+"_box")).data("duration"))
+  width = window.tools.map(duration, 0, Tapesfm.trackm.duration, 0, Tapesfm.trackm.trackWidth)
 
-  waveform = new Waveform({ interpolate: true,container: document.getElementById("track_"+data.id+"_clip"), data: data.wavedata.left, innerColor: "transparent", outerColor: "#59d8ad" })
+  $(("#track_"+data.id+"_clip")).css("width",width)
+  $(("#track_"+data.id+"_base")).css("width",width)
+  $(("#track_"+data.id+"_loaded")).css("width",width)
+  #width = 735
+
+  waveform = new Waveform({ width: width, interpolate: true,container: document.getElementById("track_"+data.id+"_clip"), data: data.wavedata.left, innerColor: "transparent", outerColor: "#59d8ad" })
   $("#tape_scrabber").height($("#tape_scrabber").height()+85)
 
 
@@ -14,30 +22,11 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
   getIndex: ->
     index = @model.collection.indexOf(@model)
     index + 1
-  addWavefrom: =>
-    #myid = "track_"+@model.get("_id")
-        
-    #$(myid).append("shit")
-    #
-    #wd = jQuery.parseJSON(@model.get("wavedata"))
-
-
-    # $.ajax
-    #   url: url
-    #   dataType: 'jsonp'
-    #   jsonp: "jsonp123"
-    #   success: (data) ->
-    #     alert("json")
-
-      #console.log data
-      #console.log("dd")
-  
-
     
   render: =>
     rendertContent = @template(track: @model,index: @getIndex() )
     #console.log("######### index : "+@getIndex())
-    Tapesfm.trackm.addTrack {name:"track_"+@model.get("_id"),url:"http://tapesfm.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.mp3"}
+    Tapesfm.trackm.addTrack {name:"track_"+@model.get("_id"),url:"http://tapesfm.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.mp3", duration:@model.get("duration")}
 
 
     

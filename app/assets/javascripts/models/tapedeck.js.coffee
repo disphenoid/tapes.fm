@@ -8,7 +8,9 @@ class Tapesfm.Models.Tapedeck extends Backbone.Model
     if _.isArray response
       _.each response, (obj) ->
         obj.tape = new Tapesfm.Models.Tape obj.tape
+        obj.versions = new Tapesfm.Collections.Versions obj.versions
     else
       response.tape = new Tapesfm.Models.Tape response.tape
+      response.versions = new Tapesfm.Collections.Versions response.versions
 
     return response

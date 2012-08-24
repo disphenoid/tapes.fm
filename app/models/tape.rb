@@ -18,6 +18,7 @@ class Tape
   #belongs_to :track2, :foreign_key => 'attribute_secondary_id' 
 
    field :name, :type => String
+   field :open, :type => Boolean, :default => true
    field :description, :type => String
    field :genre, :type => String
    field :genre_sub, :type => String

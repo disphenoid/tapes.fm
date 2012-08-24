@@ -8,7 +8,6 @@ class Tapesfm.Views.TapedeckTape extends Backbone.View
     @model.get("tape").on('change:name', @render, this)
     
 
-      
   reloadTape: ->
 
     model = @model.get("tape")
@@ -16,16 +15,30 @@ class Tapesfm.Views.TapedeckTape extends Backbone.View
     model.fetch()
     $("#tape_scrabber").height(0)
 
+    #@mainUploader.destroy()
+    #uploaderView = new Tapesfm.Views.TapedeckUploader(model: @model.get("tape"))
+    #$('#add_track').html(uploaderView.render().el)
   render: ->
     Tapesfm.trackm.clearTracks()
     rendertContent = @template()
     $(@el).html(rendertContent)
     $(@el).fadeIn(200)
     #Add Tracks
-
+    
+    Tapesfm.trackm.setMaxTrackLength(@model.get("tape").get("tracks"))
     @model.get("tape").get("tracks").each(@addTrack)
 
+    if !@mainUploader
+      uploaderView = new Tapesfm.Views.TapedeckUploader(model: @model.get("tape"))
+      $('#add_track').html(uploaderView.render().el)
+      @mainUploader = new Uploader "#upload_field"
+    @mainUploader.setting('buttonText',@model.get("tape").get("id"))
+    @mainUploader.setTape @model.get("tape").get("_id")
+    #$("#upload_field").uploadify('settings', "buttonText", @model.get("tape").get("_id"))
+
+
     this
+
   addTrack: (track) =>
     
     tracksView = new Tapesfm.Views.TapedeckTrack(model: track, id: "track_"+track.get("_id"))

@@ -5,6 +5,7 @@ Tapesfm::Application.routes.draw do
     resources :tapedeck
     resources :tapes
     resources :tracks
+    resources :versions
   end
 
   match 'tapedeck/:id', to: "webapp#tapedeck"

@@ -5,15 +5,26 @@
     <div class="c_button" id="resume"> Resume </div>
     <div class="c_button" id="stop"> Stop </div>
   </div>
-  
+  <div id="tape_select">
+    <%# @tapedeck.get("tape")%>
+    <ul id="tapedeck_current_version">
+    </ul>
+    <ul id="tapedeck_versions">
+    </ul>
+
+
+  </div>  
 
   <div id="tape_menu">
-    <div class="m_button" id="add_track"> Add track</div>
+    <div class="m_button" id="add_track"> 
+
+
+    </div>
   </div>
 
   
-<div id="tapedeck_tape">
-<div id="tapedeck_comments">
-<div id="tapedeck_pannels">
-  
-</div>
+
+<div id="tapedeck_timeline"> </div>
+<div id="tapedeck_tape"> </div>
+<div id="tapedeck_comments"> </div>
+<div id="tapedeck_pannels"> </div>
