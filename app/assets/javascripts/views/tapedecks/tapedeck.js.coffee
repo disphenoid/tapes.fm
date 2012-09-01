@@ -52,12 +52,19 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
     this.$("#pause").show()
     this.$("#play").hide()
     this.$("#resume").hide()
-    Tapesfm.trackm.resume()
+    if Tapesfm.trackm.leadTrack.paused
+      Tapesfm.trackm.resume()
+    else
+      Tapesfm.trackm.play()
   play: ->
     this.$("#play").hide()
     this.$("#resume").hide()
     this.$("#pause").show()
-    Tapesfm.trackm.play()
+    if Tapesfm.trackm.leadTrack.paused
+      Tapesfm.trackm.resume()
+    else
+      Tapesfm.trackm.play()
+  
   stop: ->
     this.$("#pause").hide()
     this.$("#resume").hide()
