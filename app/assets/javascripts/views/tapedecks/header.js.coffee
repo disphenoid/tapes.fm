@@ -3,7 +3,7 @@ class Tapesfm.Views.TapedeckHeader extends Backbone.View
   
   initialize: ->
     
-    @model.on('change:name', @render, this)
+    #@model.on('change:name', @render, this)
     #@collection.on('reset', @render, this)
     #@render()
     

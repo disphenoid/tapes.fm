@@ -1,5 +1,8 @@
 
-<li class="tape_version_el" data-id="<%= @model.get("id")%>">
-  v
+<li class="tape_version_el" data-id="<%= @model.get("_id")%>">
+  
+  <%# @model.get("name") %>
+  <%= @model.get("_id") %>
+  <%= @model.get("created_at") %>
   <%= @model.get("name") %>
 </li>

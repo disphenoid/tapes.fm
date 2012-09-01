@@ -1,7 +1,7 @@
 class TapesController < ApplicationController
   respond_to :json
   def index
-    render :json => Tape.all
+    #render :json => Tape.all
   end
 
   def show
@@ -10,10 +10,17 @@ class TapesController < ApplicationController
     #@json = render_to_string( template: 'tapes/tape.json.jbuilder', locals: { tape: @tape}) 
   end
 
-
   def create
-    entry = Tape.create! params
-    render :json => entry
+    @tape = Tape.new
+    
+    @tape.name = params[:name]
+    @tape.tapedeck_id = params[:tapedeck_id]
+    @tape.track_ids = params[:track_ids]
+    @tape.tapedeck.active_tape_id = @tape.id
+    @tape.save
+    @tape.tapedeck.save
+
+    #render :json => @tape
   end
   
   def update

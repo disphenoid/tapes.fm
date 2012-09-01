@@ -1,6 +1,8 @@
   <%# @tapedeck.get("name")%>
-  <%# @tape.get("name")%>
-
+  <%# "Active #{@tapedeck.get("active_tape_id")}"%>
+  <%# "Tape #{@tapedeck.get("tape").get("id")}"%>
+  <%# "Tape #{@tapedeck.get("tape").get("tracks").length}"%>
+  
   <div id="tape_timeline"></div>
   <div id="tape_scrabber">
     <div id="scrabber_label">

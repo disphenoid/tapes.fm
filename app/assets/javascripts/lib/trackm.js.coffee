@@ -170,15 +170,13 @@ class Trackm
     #alert "end"
     Tapesfm.trackm.stop()
 jQuery ->
-  soundManager.onready ->
-    #tapedeck.loadTape()
   soundManager.setup
     url: "/assets/"
     flashVersion: "9"
     useFlashBlock: false
     onready: ->
       window.Tapesfm.trackm = new Trackm(soundManager)
-      tapedeck.loadTape()
+      Tapesfm.tapedeck.loadTape()
       # window.Tapesfm.trackm.addTrack {name:"track2",url:"/assets/army_drums.mp3" }
       # window.Tapesfm.trackm.addTrack {name:"track3",url:"/assets/army_vox.mp3" }
       # window.Tapesfm.trackm.addTrack {name:"track4",url:"/assets/army_vox.mp3" }

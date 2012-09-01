@@ -4,27 +4,26 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
   initialize: ->
     @model.on('change:active_tape_id', @stop, this)
 
-
     $(document).bind('keydown', this.keyown)
     setTimeout(this.scrabberHotspot, 1)
 
     #window.bla = @model.on('change', @start, this)
   events:
-    "click .tape_version_el" : "changeTape2" 
+    "click .tape_version_el" : "changeTape2"
     "click #play": "play"
     "click #pause": "pause"
     "click #resume": "resume"
     "click #stop": "stop"
     "click #add_track": "addTrack"
-    'change #change_tape' : 'changeTape'
+    #'change #change_tape' : 'changeTape'
 
   changeTape2: (event) ->
-    #console.log $(data.target).data("id")
-    @model.set("active_tape_id" : $(event.target).data("id"))
+    console.log $(event.target).data("id")
+    @model.set({"active_tape_id" : $(event.target).data("id")})
 
   changeTape: (event) ->
-    event.preventDefault()
-    @model.set("active_tape_id":$("#change_tape_id").val())
+    #event.preventDefault()
+    #@model.set("active_tape_id": $("#change_tape_id").val())
 
   keyown: (e) ->
     console.log "playstate= #{Tapesfm.trackm.tracks[0].playState

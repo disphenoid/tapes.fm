@@ -34,15 +34,57 @@
   }
     #tape_select {
     //margin-top: 20px;
-    
+    position: relative;
     display: inline-block;
     //float: left;
     //right: 40px;
     height: 40px;
-    width: 200px;
-    background: #4a4a4a;
-    color: #FFF 
+    min-height: 40px;
+    min-width: 320px;
+    background: #000;
+    color: #000;
+    z-index: 10000;
+    //width: 380px;
+    left: 0px;
+    
+    #tape_select_button {
+      position: absolute;
+      display: inline-block;
+      margin-left: 320px;
+      height: 40px;
+      width: 40px;
+      background: #FF00FF;
+    
+    }
 
+    .tapes_versions {
+      background: #FFF;
+      list-style-type: none;
+      margin: 0px;
+      padding: 0px;
+      width: 320px;
+    
+    }
+    
+
+    .tapes_versions#tapedeck_current_version {
+
+      display: inline-block;
+      background: none;
+      height: 40px;
+      color: #000;
+      //width: 300px;
+    }
+    .tapes_versions#tapedeck_versions {
+      //width: 300px;
+    
+    }
+    #version_list {
+      position: absolute;
+      //top: 20px;
+      background: #4a4a4a;
+    
+    }
   }
 
   #tape_menu {

@@ -36,25 +36,25 @@ class WebappController < ApplicationController
     @track = Track.new(newparams[:track])
     #@track.name = params[:name]
 
-    @tape = Tape.find(params[:tape_id])
+    #@tape = Tape.find(params[:tape_id])
     
-    unless @tape.open
-    #copy tape
-      @new_tape =  Tape.new
-      @new_tape.tapedeck_id = @tape.tapedeck_id
-      @new_tape.track_ids = @tape.track_ids
-      @new_tape.genre = @tape.track_ids
-      @new_tape.track_ids = @tape.track_ids 
+    # unless @tape.open
+    # #copy tape
+    #   @new_tape =  Tape.new
+    #   @new_tape.tapedeck_id = @tape.tapedeck_id
+    #   @new_tape.track_ids = @tape.track_ids
+    #   @new_tape.genre = @tape.track_ids
+    #   @new_tape.track_ids = @tape.track_ids 
 
-      @new_tape.track_ids.push(@track.id)
-      @new_tape.save
-      @tapedeck = Tapedeck.find(@new_tape.tapedeck_id)
-      @tapedeck.active_tape_id = @new_tape.id
-      @tapedeck.save
-    else
-      @tape.track_ids.push(@track.id) 
-      @tape.save
-    end
+    #   @new_tape.track_ids.push(@track.id)
+    #   @new_tape.save
+    #   @tapedeck = Tapedeck.find(@new_tape.tapedeck_id)
+    #   @tapedeck.active_tape_id = @new_tape.id
+    #   @tapedeck.save
+    # else
+    #   @tape.track_ids.push(@track.id) 
+    #   @tape.save
+    # end
 
     
 

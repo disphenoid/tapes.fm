@@ -1,7 +1,7 @@
 class Tape
   include Mongoid::Document
   include Mongoid::Timestamps
-
+  default_scope order_by( [[ :created_at, :desc ]])
   #embedded_in :track
 
 

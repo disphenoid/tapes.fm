@@ -16,12 +16,18 @@ class window.Uploader
       auto              : true
       multi             : true
       removeCompleted   : true
-      onUploadComplete  : @onUploadComplete
+      onUploadSuccess   : @onUploadComplete
       onUploadError     : @onUploadError
       formData          : data
 
-  onUploadComplete: (file) ->
-    alert "complete"
+  onUploadComplete: (file, data, response) ->
+    #alert "complete"
+    console.log file
+    console.log(data)
+    track_json = jQuery.parseJSON( data)
+    Tapesfm.tapedeck.newTapeWidthTrack track_json
+    console.log("responds"+response)
+
   onUploadError: (file, errorCode, errorMsg, errorString) ->
     alert('The file ' + file.name + ' could not be uploaded: ' + errorString)
   setting: (att,value) ->

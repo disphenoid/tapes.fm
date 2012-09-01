@@ -2,7 +2,7 @@
 class Track
   include Mongoid::Document
   include Mongoid::Timestamps
-
+  default_scope order_by( [[ :created_at, :desc ]])
   #embedded_in :track
 
   belongs_to :user

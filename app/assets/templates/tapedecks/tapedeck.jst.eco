@@ -7,13 +7,13 @@
   </div>
   <div id="tape_select">
     <%# @tapedeck.get("tape")%>
-    <ul id="tapedeck_current_version">
-    </ul>
-    <ul id="tapedeck_versions">
-    </ul>
-
-
+    <div id="tape_select_button"></div>  
+    <div id="version_list">
+      <ul id="tapedeck_current_version" class="tapes_versions"> </ul>
+      <ul id="tapedeck_versions" class="tapes_versions"> </ul> 
+    </div>  
   </div>  
+  
 
   <div id="tape_menu">
     <div class="m_button" id="add_track"> 
