@@ -1,2 +1,4 @@
-EDITds kljdfklsj lfjlksjk
-<div id="save_button">save</div>
+<li class="version">
+  <div class="delete"></div> 
+  <div class="title">New Tape Click to change the name</div>
+</li>

@@ -116,4 +116,12 @@ td { vertical-align: top; }
   h2, h3 { page-break-after: avoid; }
 }
 
+form p { 
+  position:relative;
+}
 
+label  { 
+  position:absolute; 
+  top:0; 
+  left:0;
+}

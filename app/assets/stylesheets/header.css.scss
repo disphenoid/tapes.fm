@@ -1,10 +1,14 @@
+@import "tools/colors";
+@import "tools/fonts";
+
 header {
   
-  background: #494949;
+  background: rgba(55,55,55,0.95);
   height: 54px;
   width: 100%;
   position: fixed;
   top: 0px; 
+  z-index: 12000;
 
   .logo {
     
@@ -21,43 +25,115 @@ header {
   
     .quick_button{
       display: inline-block;
-      background: #3b3b3b;
+      background: #2e2e2e;
       height: 53px;
       width: 53px;
       float: left;
       margin-right: 1px;
       margin-top: 1px;
-    
+      opacity: 0.6;
+      
     }
+    .quick_button:hover {
+    
+      opacity: 1;
+      cursor: pointer;
+    }
+
+
+    .quick_button#to_dash {
+      background-image: url("/assets/header/icon_dashboard_on.png")
+    }
+    
+    .quick_button#to_tapes {
+      background-image: url("/assets/header/icon_tapes_on.png")
+    }
+    .quick_button#to_listen {
+      background-image: url("/assets/header/icon_listen_on.png")
+    }
+
+    .quick_button#search_button {
+      background-image: url("/assets/header/icon_search_on.png")
+    }
+
+
+    
+
     #search {
       float: left;
+      
 
     
       #search_box {
         float: left;
         width: 280px;
-        height: 54px;
-        background: #444444;
+        height: 53px;
+        padding-top: 1px;
+        @include c_g_0_b;
+
+        //background: #343434;
+        p {
+          padding: 0px;
+          margin: 0px;
+          @include fh_b(13px);
+          @include c_g_1;
+
+        
+        }
+        label  { 
+          width: 240px;
+          position:absolute; 
+          top:0; 
+          left:0;
+          background: none;
+          padding: 0px 20px;
+          line-height: 53px;
+        }
         input{
-          width: 280px;
+          width: 240px;
           height: 52px;
-          background: #444444;
+          background: none;
           border: none;
           outline: none;
-          color: #8e8e8e;
           padding: 0px 20px;
           font-size: 14px;
+          background: url("/assets/header/inner.png") no-repeat right;
+          @include fh_b(13px);
+          @include c_g_3;
+          
 
         }
 
         input:focus {
-          color: white;
-        
+          //@include c_g_0_b;
+          background-color: rgba(0,0,0,0.1)
         }
           
       }
+
   
     }
   
   }
+    #user_login {
+      float: left;
+      display: inline-block;
+      background: none;
+      height: 53px;
+      width: 304px;
+      text-align: center;
+      @include fh(14px);
+      @include c_g_2;
+      line-height: 53px;
+      a {
+        @include c_g_3;
+        @include fh_b(14px);
+        text-decoration: none;
+      }
+      a:hover{
+        @include c_g_4;
+      }
+
+
+    }
 }

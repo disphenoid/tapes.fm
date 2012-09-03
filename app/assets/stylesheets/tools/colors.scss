@@ -1,0 +1,85 @@
+@mixin c_bg {
+  background-color: #494949;
+}
+
+// Grey Shades
+@mixin c_g_0 {
+  color: rgba(55,55,55,0.95);
+}
+@mixin c_g_0_b {
+  background-color: rgba(55,55,55,0.95);
+}
+
+@mixin c_g_1 {
+  color: #666666;
+}
+@mixin c_g_2 {
+  color: #bababa;
+}
+@mixin c_g_3 {
+  color: #eceded;
+}
+@mixin c_g_4 {
+  color: #fcfcfc;
+}
+@mixin c_g_5 {
+  color: #FFF;
+}
+
+@mixin c_g_1_b {
+  background-color: #666666;
+}
+@mixin c_g_2_b {
+  background-color: #bababa;
+}
+@mixin c_g_3_b {
+  background-color: #eceded;
+}
+@mixin c_g_4_b {
+  background-color: #fcfcfc;
+}
+@mixin c_g_5_b {
+  background-color: #FFF;
+}
+
+// Red
+@mixin c_1 {
+  color: #ff665d;
+}
+@mixin c_1b {
+  color: #c85049v;
+}
+@mixin c_1c {
+  color: #b64943;
+} 
+
+@mixin c_1_b {
+  background-color: #ff665d;
+}
+@mixin c_1b_b {
+  background-color: #c85049v;
+}
+@mixin c_1c_b {
+  background-color: #b64943;
+}
+// Yellow
+@mixin c_2 {
+  color: #ff665d;
+}
+@mixin c_2b {
+  color: #c85049v;
+}
+@mixin c_2c {
+  color: #b64943;
+}
+
+@mixin c_2_b {
+  background-color: #ff665d;
+}
+@mixin c_2b_b {
+  background-color: #c85049v;
+}
+@mixin c_2c_b {
+  background-color: #b64943;
+}
+

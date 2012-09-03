@@ -1,6 +1,10 @@
 // Place all the styles related to the tracks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "tools/fonts";
+@import "tools/colors";
+@import "tools/effects";
+
   #tape_tracks {
     padding: 0px;
     margin: 0px;    
@@ -10,7 +14,35 @@
      background: #f5f5f5;
     
     }
-   .track .track_info.row_1 {
+    .track:first-child {
+      @include round_top(10px);
+      .track_info {
+        @include round_top_left(10px);
+      
+      }
+      .track_clip_box {
+        @include round_top(10px);
+      
+      }
+
+    }
+
+    .track:last-child {
+      @include round_bottom(10px);
+      
+      .track_info {
+        @include round_bottom_left(10px);
+      
+      }
+
+      .track_clip_box {
+        @include round_bottom(10px);
+      
+      }
+
+    }
+
+    .track .track_info.row_1 {
       background: #fe665d;
     }
    .track .track_clip_box.row_1 {

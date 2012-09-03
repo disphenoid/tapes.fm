@@ -9,6 +9,7 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
 
     #window.bla = @model.on('change', @start, this)
   events:
+    "click #tape_save_button" : "saveTape"
     "click .tape_version_el" : "changeTape2"
     "click #play": "play"
     "click #pause": "pause"
@@ -16,10 +17,17 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
     "click #stop": "stop"
     "click #add_track": "addTrack"
     #'change #change_tape' : 'changeTape'
+  saveTape: ->
+    name = this.$("#tape_edit_field").val()
+    if name
+       @model.get("tape").set({"name":name}, {silent: true})
+       this.$("#tape_edit_field").val("")
+
+    @model.get("tape").save()
 
   changeTape2: (event) ->
-    console.log $(event.target).data("id")
-    @model.set({"active_tape_id" : $(event.target).data("id")})
+    console.log $(event.currentTarget).data("id")
+    @model.set({"active_tape_id" : $(event.currentTarget).data("id")})
 
   changeTape: (event) ->
     #event.preventDefault()
@@ -28,7 +36,7 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
   keyown: (e) ->
     console.log "playstate= #{Tapesfm.trackm.tracks[0].playState
 }"
-    if e.keyCode == 32
+    if e.keyCode == 32 && !$("input").is(":focus")
       if !Tapesfm.trackm.leadTrack.playState || Tapesfm.trackm.leadTrack.paused
         $("#play").hide()
         $("#resume").hide()

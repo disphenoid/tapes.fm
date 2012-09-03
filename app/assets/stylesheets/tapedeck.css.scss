@@ -1,38 +1,106 @@
 // Place all the styles related to the tapedeck controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#tapedeck_timeline {
-  width: 735px;
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
+
+#tapedeck_timeline{
   height: 40px;
-  clear: both;
-  background: #FF00FF;
-  margin: 0px;
-  margin-left: 225px;
+  width: 960px;
+  background: url("/assets/tapedeck/top_shadow.png");
+
+  #time_stamp {
+    background: none;
+    width: 225px;
+    height: 40px;
+    position: absolute;
+  }
+  #time_zone {
+    width: 735px;
+    height: 40px;
+    clear: both;
+    background: none;
+    margin-left: 225px;
+    position: absolute;
+  }
 }
   #tapedeck_controlls { 
-    background: #FF00FF;
+    //background: #FF00FF;
     height: 40px;
     margin-bottom: 20px;
-    width: 110px;
+    width: 94px;
     float: left;
     display: inline-block;
     .c_button {
-      width: 46px;
+      width: 42px;
       height: 40px;
       display: inline-block;
-      background: #00FF00;
+      //background: #00FF00;
       float: left;
       margin-right: 5px;
+      @include round(5px);
+      @include c_g_4_b;
     
     }
-    #pause {
-      display: none;
+    .c_button:hover {
+    
+      background: none;
+      @include border(3px, #7c7c7c);
+      width: 36px;
+      height: 34px;
+      cursor: pointer;
     }
+
+    #pause {
+      display: none; 
+      background-image: url("/assets/header/icon_pause_on.png");
+
+    }
+    #play {
+      //display: none; 
+      background-image: url("/assets/header/icon_play_on.png");
+
+    }
+    #play:hover {
+      //display: none; 
+      background-image: url("/assets/header/icon_play_off.png");
+
+    }
+
+    
+
+    #stop {
+      background-image: url("/assets/header/icon_stop_on.png");
+
+    }
+    
+    
     #resume {
       display: none;
+      background-image: url("/assets/header/icon_play_on.png");
     }
   }
-    #tape_select {
+  #tape_select.open {
+    @include round_top_left(5px);
+    //@include round_top_left(5);
+
+     #tape_select_button {
+     
+      background: url("/assets/header/icon_close.png") no-repeat;
+      @include c_g_3_b;
+     }
+
+    .tapes_versions#tapedeck_current_version  {
+      
+      @include round(0);
+      background: #FFFF00;
+    
+    }
+
+  }
+  #tape_edit {
+    @include round_left(5px);
     //margin-top: 20px;
     position: relative;
     display: inline-block;
@@ -41,7 +109,80 @@
     height: 40px;
     min-height: 40px;
     min-width: 320px;
-    background: #000;
+    //background: #000;
+    
+    background: url("/assets/header/list_tile.png") no-repeat;
+    
+    @include c_g_3_b;
+    
+    color: #000;
+    z-index: 10000;
+    //width: 380px;
+    left: 0px;  
+    #tape_save_button {
+      position: absolute;
+      display: inline-block;
+      margin-left: 320px;
+      height: 40px;
+      width: 40px;
+      background: url("/assets/header/icon_open.png") no-repeat;    
+      @include round_right(5px);
+      @include c_g_3_b;
+    }  
+  }
+
+  #tape_edit_modul {
+    @include round_left(5px);
+    //margin-top: 20px;
+    position: relative;
+    display: none;
+    //float: left;
+    //right: 40px;
+    height: 40px;
+    min-height: 40px;
+    min-width: 320px;
+    //background: #000;
+    
+    background: url("/assets/header/list_tile.png") no-repeat;
+    
+    @include c_g_3_b;
+    
+    color: #000;
+    z-index: 10000;
+    //width: 380px;
+    left: 0px;
+    
+    #tape_save_button {
+      position: absolute;
+      display: inline-block;
+      margin-left: 320px;
+      height: 40px;
+      width: 40px;
+      //background: url("/assets/header/icon_open.png") no-repeat;    
+      @include round_right(5px);
+      @include c_g_3_b;
+      cursor: pointer;
+    }
+  
+  
+  }
+
+  #tape_select{
+    @include round_left(5px);
+    //margin-top: 20px;
+    position: relative;
+    display: inline-block;
+    //float: left;
+    //right: 40px;
+    height: 40px;
+    min-height: 40px;
+    min-width: 320px;
+    //background: #000;
+    
+    background: url("/assets/header/list_tile.png") no-repeat;
+    
+    @include c_g_3_b;
+    
     color: #000;
     z-index: 10000;
     //width: 380px;
@@ -53,7 +194,13 @@
       margin-left: 320px;
       height: 40px;
       width: 40px;
-      background: #FF00FF;
+      background: url("/assets/header/icon_open.png") no-repeat;    
+      @include round_right(5px);
+      @include c_g_3_b;
+    }
+    #tape_edit_modul {
+      display: none;
+
     
     }
 
@@ -63,6 +210,7 @@
       margin: 0px;
       padding: 0px;
       width: 320px;
+
     
     }
     
@@ -70,28 +218,31 @@
     .tapes_versions#tapedeck_current_version {
 
       display: inline-block;
-      background: none;
       height: 40px;
       color: #000;
+      @include round_left(5px);
+      @include c_g_4_b;
       //width: 300px;
     }
     .tapes_versions#tapedeck_versions {
       //width: 300px;
     
+
     }
     #version_list {
       position: absolute;
       //top: 20px;
       background: #4a4a4a;
+      @include round_bottom(5px);
     
     }
   }
 
   #tape_menu {
-    background: #FF00FF;
+    //background: #FF00FF;
     height: 40px;
     margin-bottom: 20px;
-    width: 350px;  
+    width: 500px;  
     float: right;
     display: inline-block;
 
@@ -108,9 +259,11 @@
 
 #tapedeck_header {
 
-  background: #FFF;
   height: 100px;
-  margin-top: 10px;
+  padding-top: 20px;
+  background: url("/assets/tapedeck/header_bg.png") no-repeat bottom center;
+  margin-bottom: 20px;
+  
   #tapedeck_info {
     width: 500px;
     display: inline-block;
@@ -118,21 +271,25 @@
       width: 80px;
       height: 80px;
       display: inline-block;
-      background: #FF00FF;
       float: left;
-      margin-right: 10px;
+      margin-right: 20px;
+      @include c_g_1_b;
     } 
     #tapedeck_meta {
       //margin-top: 10px;
-      padding-top: 13px;
+      padding-top: 18px;
       h2 {
         margin: 0px;
         padding: 0px;
         display: inline-block;
-        //height: 80px;
-        //background: #FF00FF; 
+        @include fh_b(20px);
+        @include c_g_2;
+        margin-bottom: 6px;
       }
       #meta { 
+        @include fh(11px);
+        @include c_g_2;
+
       } 
     } 
 

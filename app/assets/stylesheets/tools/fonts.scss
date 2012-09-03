@@ -1,0 +1,11 @@
+@mixin fh($size) {
+  font: $size Helvetica,Arial, sans-serif;
+  font-weight: normal;
+  line-height: $size;
+}
+
+@mixin fh_b($size) {
+  font: $size Helvetica,Arial, sans-serif;
+  font-weight: bold;
+  line-height: $size;
+}

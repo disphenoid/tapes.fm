@@ -1,4 +1,6 @@
-<div id="edit_mode"></div>
-<li>
-  Current Version 
+<li class="version" id="current_version">
+  <div class="delete"></div> 
+  <div class="title"><%= @tape.get("name") %></div>
+  <div class="date"><%= @tape.get("created_at") %></div>
 </li>
+

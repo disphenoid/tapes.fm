@@ -1,8 +1,7 @@
-
-<li class="tape_version_el" data-id="<%= @model.get("_id")%>">
-  
-  <%# @model.get("name") %>
-  <%= @model.get("_id") %>
-  <%= @model.get("created_at") %>
-  <%= @model.get("name") %>
+<li class="version tape_version_el inactive" id="version_<%= @model.get("_id")%>" data-id="<%= @model.get("_id")%>">
+  <div class="delete"></div> 
+  <div class="title"><%= @model.get("name") %></div>
+  <div class="date"><%= @model.get("created_at") %></div>
 </li>
+
+

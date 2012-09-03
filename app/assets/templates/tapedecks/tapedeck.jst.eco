@@ -1,30 +1,56 @@
 <div id="tapedeck_header"> </div>
   <div id="tapedeck_controlls">
-    <div class="c_button" id="play"> Play </div>
-    <div class="c_button" id="pause"> Pause </div>
-    <div class="c_button" id="resume"> Resume </div>
-    <div class="c_button" id="stop"> Stop </div>
+    <div class="c_button" id="play">  </div>
+    <div class="c_button" id="pause">  </div>
+    <div class="c_button" id="resume">  </div>
+    <div class="c_button" id="stop">  </div>
   </div>
+
+  <div id="tape_edit_modul">
+    <div id="tape_edit_c">
+      <div id="tape_save_button"></div> 
+        <div id="tape_edit_box"> 
+          <form>
+            <p>
+              <label for="tape_edit_field">New Tape – click an name it!</label>
+              <input type="text" name="tape_edit_field" id="tape_edit_field" value="">
+            </p>
+          </form> 
+      </div>
+    </div>
+  </div>
+
   <div id="tape_select">
     <%# @tapedeck.get("tape")%>
     <div id="tape_select_button"></div>  
+      <div id="tape_search"> 
+          <form>
+            <div id="tape_search_button"></div>
+            <p>
+            <label for="tape_search_field">Search for artist, bands and tracks</label>
+            <input type="text" name="tape_search" id="tape_search_field" value="">
+            </p>
+          </form>
+
+      </div>
     <div id="version_list">
-      <ul id="tapedeck_current_version" class="tapes_versions"> </ul>
+      <ul id="tapedeck_current_version" class="tapes_versions active_version"> </ul>
       <ul id="tapedeck_versions" class="tapes_versions"> </ul> 
     </div>  
   </div>  
   
 
   <div id="tape_menu">
-    <div class="m_button" id="add_track"> 
-
-
-    </div>
+    <div class="m_button" id="add_track"> </div>
   </div>
 
   
 
-<div id="tapedeck_timeline"> </div>
+<div id="tapedeck_timeline"> 
+  <div id="time_stamp"></div>
+  <div id="time_zone"></div> 
+</div>
+
 <div id="tapedeck_tape"> </div>
 <div id="tapedeck_comments"> </div>
 <div id="tapedeck_pannels"> </div>

@@ -1,0 +1,64 @@
+@mixin round($size) {
+  -webkit-border-radius:  $size;
+  -moz-border-radius:     $size;
+  -o-border-radius:       $size;
+  border-radius:          $size;
+}
+
+@mixin round_top($size) {
+  -webkit-border-top-left-radius:   $size;
+  -webkit-border-top-right-radius:  $size;
+  -moz-border-radius-topleft:       $size;
+  -moz-border-radius-topright:      $size;
+  border-top-left-radius:           $size;
+  border-top-right-radius:          $size;
+}
+@mixin round_bottom($size) {
+  -webkit-border-bottom-left-radius:   $size;
+  -webkit-border-bottom-right-radius:  $size;
+  -moz-border-radius-bottomleft:       $size;
+  -moz-border-radius-bottomright:      $size;
+  border-bottom-left-radius:           $size;
+  border-bottom-right-radius:          $size; 
+}
+@mixin round_left($size) {
+  -webkit-border-top-left-radius:         $size;
+  -webkit-border-bottom-left-radius:     $size;
+  -moz-border-radius-topleft:            $size;
+  -moz-border-radius-bottomleft:         $size;
+  -border-top-left-radius:                $size;
+  border-bottom-left-radius:              $size;
+}
+@mixin round_right($size) {
+  -webkit-border-top-right-radius:         $size;
+  -webkit-border-bottom-right-radius:      $size;
+  -moz-border-radius-topright:             $size;
+  -moz-border-radius-bottomright:          $size;
+  border-top-right-radius:                 $size;
+  border-bottom-right-radius:              $size;
+}
+
+@mixin round_top_left($size) {
+  -webkit-border-top-left-radius:         $size;
+  -webkit-border-bottom-left-radius:     0px;
+  -moz-border-radius-topleft:            $size;
+  -moz-border-radius-bottomleft:         0px;
+  -border-top-left-radius:                $size;
+  border-bottom-left-radius:              0px;
+}
+
+@mixin round_bottom_left($size) {
+  -webkit-border-top-left-radius:         0px;
+  -webkit-border-bottom-left-radius:     $size;
+  -moz-border-radius-topleft:            0px;
+  -moz-border-radius-bottomleft:         $size;
+  -border-top-left-radius:                0px;
+  border-bottom-left-radius:              $size;
+}
+
+@mixin border($size,$color){
+  border: solid;
+  border-color: $color;
+  border-width: $size;
+}
+

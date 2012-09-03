@@ -23,22 +23,32 @@
       <div class="logo">
       </div>
       <div id="quick_buttons">
-        <div id="add_tape" class="quick_button"></div>
-        <div id="last_tapes" class="quick_button"></div>
-        <div id="new_notifications" class="quick_button"></div>
+        <div id="to_dash" class="quick_button"></div>
+        <div id="to_tapes" class="quick_button"></div>
+        <div id="to_listen" class="quick_button"></div>
 
         <div id="search">
           
           <div id="search_box">
-            <input type="text" id="search_field" value="Search for artist, bands and tracks">
-             
+            <form>
+            <p>
+            <label for="search_field">Search for artist, bands and tracks</label>
+            <input type="text" name="search" id="search_field" value="">
+            </p>
+            </form>
           </div>
-          <div id="search_button" class="quick_button"></div>
+        <div id="search_button" class="quick_button"></div>
           
         </div>
 
         <%= current_user.email unless current_user.blank?%>
 
+      <div id="user_login">
+        <a href="#">Login</a>
+        or
+        <a href="#">Register</a>
+        for free 
+      </div>
       </div>
     </div>
   </header>

@@ -1,3 +1,115 @@
-// Place all the styles related to the versions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "tools/fonts";
+@import "tools/colors";
+@import "tools/effects";
+#tape_search, #tape_edit_c {
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
+  label {
+    border: none;
+    outline: none;
+    
+    margin: 0px;
+    margin-top: 10px;
+    position: absolute;
+    width: 240px;
+    height: 30px;
+    padding: 5px 10px;
+    @include fh_b(12px);
+    @include c_g_2;
+    display: inline-block;
+
+  }
+  input {
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    height: 30px;
+    width: 250px;
+    margin: 0px;
+    @include fh_b(12px);
+    background: none;
+    //line-height: 40px;
+  }
+  #tape_search_button {
+    background: #FFFF00;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin-left: 280px;
+    margin-top: 5px;
+    background: url("/assets/header/icon_tape_search_off.png") no-repeat;
+  }
+
+}
+.version:hover {
+  .delete {
+    visibility: visible; 
+  }
+
+}
+
+.version.active {
+
+  .title { 
+    @include c_1; 
+  }
+
+}
+.version.inactive:hover {
+  .delete {
+    visibility: visible;
+  
+  }
+
+  @include c_g_3_b;
+  //visibility: visible;
+}
+#tapedeck_versions {
+  display: none;
+  //height: 0px;
+}
+#tapedeck_versions:last-child {
+  //background: green;
+  @include round_bottom(5px);  
+}
+.version {
+  cursor: pointer;
+  height: 30px;
+  background: none;
+  //margin: 0px 5px;
+  padding: 5px 10px;
+  background: url("/assets/header/list_line.png");
+   
+  //@include round(5px);
+  .title { 
+    @include fh_b(12px);
+    @include c_g_1; 
+    margin-top: 2px;
+    margin-bottom: 4px;
+  }
+  .date { 
+    @include fh_b(11px);
+    @include c_g_2; 
+  }
+  .delete {
+    visibility: hidden;
+
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin-left: 270px;
+    padding: 0px;
+    background: url("/assets/header/icon_delete_off.png");
+
+  }
+
+  .delete:hover {
+    background: url("/assets/header/icon_delete_on.png");
+  } 
+}
