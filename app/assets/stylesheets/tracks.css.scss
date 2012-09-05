@@ -42,25 +42,59 @@
 
     }
 
-    .track .track_info.row_1 {
-      background: #fe665d;
+    .track .track_info.c1 {
+      @include c_1_b;
     }
-   .track .track_clip_box.row_1 {
-      background: #f16158;
-    }
-   .track .track_info.row_2 {
-      background: #59d8ad;
-    }
-   .track .track_clip_box.row_2 {
-      background: #59cca6;
-    }
-   .track .track_info.row_3 {
-      background: #e6e15f;
-    }
-   .track .track_clip_box.row_3 {
-      background: #dad65a;
+   .track .track_clip_box.c1 {
+      @include c_1_b;
+      .track_loaded {
+        @include c_1b_b; 
+      }
+      .track_base {
+        @include c_1c_b;
+      }
     }
 
+    .track .track_info.c2 {
+      @include c_2_b;
+    }
+   .track .track_clip_box.c2 {
+      @include c_2_b;
+      .track_loaded {
+        @include c_2b_b; 
+      }
+      .track_base {
+        @include c_2c_b;
+      }
+    }
+
+
+
+    .track .track_info.c3 {
+      @include c_3_b;
+    }
+   .track .track_clip_box.c3 {
+      @include c_3_b;
+      .track_loaded {
+        @include c_3b_b; 
+      }
+      .track_base {
+        @include c_3c_b;
+      }
+    }
+
+    .track .track_info.c4 {
+      @include c_4_b;
+    }
+   .track .track_clip_box.c4 {
+      @include c_4_b;
+      .track_loaded {
+        @include c_4b_b; 
+      }
+      .track_base {
+        @include c_4c_b;
+      }
+    }
 
     .track {
         height: 85px;
@@ -74,7 +108,22 @@
         display: inline-block;
         //background: #FF00FF;
         float: left; 
+        .user_image {
+          width: 85px;
+          height: 85px;
+          background: rgba(255,255,255,0.2)
+        
+        }
+        
       }
+      .add_track_to_track {
+        width: 35px;
+        height: 85px;
+        background: rgba(0,0,0,0.05);
+        position: absolute;
+        margin-left: 925px;
+      
+      } 
 
       .track_clip {
         position: absolute;

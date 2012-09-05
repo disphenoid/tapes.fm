@@ -40,16 +40,16 @@
   </div>  
   
 
+
+
   <div id="tape_menu">
-    <div class="m_button" id="add_track"> </div>
+    <div class="" id="add_track"> 
+      <div class="m_button" id="add_btn"> Add Tracks</div>
+      <div class="m_button" id="from_file"> </div>
+      <div class="m_button" id="from_lib">From Library </div> 
+    </div>
   </div>
-
   
-
-<div id="tapedeck_timeline"> 
-  <div id="time_stamp"></div>
-  <div id="time_zone"></div> 
-</div>
 
 <div id="tapedeck_tape"> </div>
 <div id="tapedeck_comments"> </div>

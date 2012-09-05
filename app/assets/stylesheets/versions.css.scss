@@ -84,17 +84,18 @@
   background: none;
   //margin: 0px 5px;
   padding: 5px 10px;
-  background: url("/assets/header/list_line.png");
+  //background: url("/assets/header/list_line.png");
    
   //@include round(5px);
   .title { 
     @include fh_b(12px);
-    @include c_g_1; 
+    //@include c_g_5; 
+    color: #FFF;
     margin-top: 2px;
     margin-bottom: 4px;
   }
   .date { 
-    @include fh_b(11px);
+    @include fh(11px);
     @include c_g_2; 
   }
   .delete {

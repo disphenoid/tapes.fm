@@ -1,5 +1,6 @@
 class WebappController < ApplicationController
   layout :resolve_layout
+  skip_before_filter :verify_authenticity_token
 
   def index
   end
@@ -24,38 +25,11 @@ class WebappController < ApplicationController
   end
 
   def upload
-    #handle upload
-    # track = Track.new
-    # track.asset = params[:track][:asset]
-    # track.save
-    # redirect_to "/"
 
-    #track.asset = params[]
-    #
     newparams = coerce(params)
-    @track = Track.new(newparams[:track])
-    #@track.name = params[:name]
 
-    #@tape = Tape.find(params[:tape_id])
-    
-    # unless @tape.open
-    # #copy tape
-    #   @new_tape =  Tape.new
-    #   @new_tape.tapedeck_id = @tape.tapedeck_id
-    #   @new_tape.track_ids = @tape.track_ids
-    #   @new_tape.genre = @tape.track_ids
-    #   @new_tape.track_ids = @tape.track_ids 
-
-    #   @new_tape.track_ids.push(@track.id)
-    #   @new_tape.save
-    #   @tapedeck = Tapedeck.find(@new_tape.tapedeck_id)
-    #   @tapedeck.active_tape_id = @new_tape.id
-    #   @tapedeck.save
-    # else
-    #   @tape.track_ids.push(@track.id) 
-    #   @tape.save
-    # end
-
+    @track = Track.new(newparams[:track]) 
+    @track.color = (params[:track_length].to_i + 1) 
     
 
     respond_to do |format|

@@ -1,12 +1,15 @@
-<div class="track_info row_<%=@index%>">
+<div class="track_info c<%=@color%>">
+  <%=@color%>
+  <div class="user_image"></div>
+
+
   <%=@track.get("name")%>
-  <%=@track.get("_id")%>
-  <%=@index%>
+  <%#@track.get("_id")%>
 
 </div>
 
 
-<div id="track_<%=@track.get("_id")%>_box" class="track_clip_box row_<%=@index%>" data-id="<%=@track.get("_id")%>" data-duration="<%=@track.get("duration")%>"> 
+<div id="track_<%=@track.get("_id")%>_box" class="track_clip_box c<%=@color%>" data-id="<%=@track.get("_id")%>" data-duration="<%=@track.get("duration")%>"> 
   
   <div id="track_<%=@track.get("_id")%>_base" class="track_base"> </div>
   <div id="track_<%=@track.get("_id")%>_loaded" class="track_loaded"> </div>
@@ -14,4 +17,7 @@
   <div id="track_<%=@track.get("_id")%>_clip" class="track_clip"> </div>
 
 </div>
+
+<div class="add_track_to_track"></div></div>
+
 

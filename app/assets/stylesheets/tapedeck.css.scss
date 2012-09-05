@@ -6,29 +6,39 @@
 @import "tools/effects";
 
 #tapedeck_timeline{
-  height: 40px;
+  height: 50px;
   width: 960px;
-  background: url("/assets/tapedeck/top_shadow.png");
-
+  background: url("/assets/tapedeck/top_shadow.png") no-repeat bottom;
+  
+  
   #time_stamp {
     background: none;
     width: 225px;
-    height: 40px;
+    height: 50px;
     position: absolute;
+    @include c_g_2;
+    @include fh_b(13px);
+    line-height: 55px;
+    .tracks_count_hightlight {
+      @include c_g_3;
+    
+    }
+
   }
   #time_zone {
     width: 735px;
-    height: 40px;
+    height: 50px;
     clear: both;
     background: none;
     margin-left: 225px;
     position: absolute;
+
   }
 }
   #tapedeck_controlls { 
     //background: #FF00FF;
     height: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     width: 94px;
     float: left;
     display: inline-block;
@@ -205,11 +215,12 @@
     }
 
     .tapes_versions {
-      background: #FFF;
+      //background: #FFF;
       list-style-type: none;
       margin: 0px;
       padding: 0px;
       width: 320px;
+      @include c_g_4_b;
 
     
     }
@@ -221,7 +232,7 @@
       height: 40px;
       color: #000;
       @include round_left(5px);
-      @include c_g_4_b;
+      //@include c_g_4_b;
       //width: 300px;
     }
     .tapes_versions#tapedeck_versions {
@@ -233,13 +244,15 @@
       position: absolute;
       //top: 20px;
       background: #4a4a4a;
-      @include round_bottom(5px);
+      @include round_left(5px);
     
     }
   }
 
   #tape_menu {
     //background: #FF00FF;
+    z-index: 2000;
+
     height: 40px;
     margin-bottom: 20px;
     width: 500px;  
@@ -247,14 +260,128 @@
     display: inline-block;
 
     .m_button {
-      width: 46px;
+      width: 150px;
       height: 40px;
       display: inline-block;
-      background: #00FF00;
       float: right;
-      margin-left: 5px;     
+      margin-left: 5px;
+      //@include round(5px);
+      //@include c_g_4_b;
+      z-index: 6000;
+      padding-left: 14px
+
     }
-  
+
+    #add_track {
+      display: inline-block;
+      float: right;
+
+      position: relative;
+      height: 40px;
+      width: 150px;
+      //@include c_g_4_b;
+      z-index: 6000;
+      @include fh_b(12px);
+      @include c_g_5;
+      @include round(5px);
+      line-height: 40px;
+
+
+
+    }
+    #add_track:hover {
+      cursor: pointer;
+      
+      height: 80px;
+
+      #from_file {
+        visibility: visible;
+      }
+      #from_lib {
+        visibility: visible;
+      }
+      #add_btn {
+        display: none;
+      }   
+    }
+    #add_btn {
+      background: url("/assets/tapedeck/btn_add_off.png") no-repeat right;
+      
+      @include round(5px);
+      @include c_g_4_b;
+    }   
+    #from_lib:hover {
+      @include c_g_4;
+      background: url("/assets/tapedeck/btn_lib_on.png") no-repeat right;
+      background-color: #FFF;
+      
+    }
+    #from_file:hover {
+      cursor: pointer;
+      background: url("/assets/tapedeck/btn_file_on.png") no-repeat right;
+      background-color: #FFF;
+
+      
+      .from_file {
+        @include c_g_4;
+
+      
+      }
+    }
+
+    #from_lib {
+      cursor: pointer;
+
+      background: #0000FF;
+      height: 40px;
+      width: 150px;
+      visibility: hidden;
+      z-index: 6000;
+      background: url("/assets/tapedeck/btn_lib_off.png") no-repeat right;
+      @include round_bottom(5px);
+      @include c_g_4_b;
+
+
+    }
+    #from_file {
+      margin-top: 0px;
+      visibility: hidden;
+      z-index: 6000;
+      padding: 0px;
+      margin: 0px;
+      float: left;
+      margin-left: -14px;
+      width: 164px;
+      background: url("/assets/tapedeck/btn_file_off.png") no-repeat right;
+      @include c_g_4_b;
+
+      @include round_top(5px);
+
+    
+    }
+    .from_file { 
+      height: 40px;
+      width: 150px;
+      display: hidden;
+      @include round(5px);
+      border: none;
+      margin: 0px;
+      padding: 0px;
+      margin-top: -12px;
+      padding-left: 14px;
+      //margin-left: -14px;
+      //@include c_g_4_b;
+      z-index: 6000;
+      @include fh_b(12px);
+      line-height: 40px;
+      @include c_g_5;
+      text-align: left;
+      background: none;
+
+    }
+
+
+    
   } 
 
 #tapedeck_header {
@@ -273,7 +400,7 @@
       display: inline-block;
       float: left;
       margin-right: 20px;
-      @include c_g_1_b;
+      @include c_g_5_b;
     } 
     #tapedeck_meta {
       //margin-top: 10px;
@@ -335,7 +462,6 @@
         cursor: pointer; 
       }
       #scrabber_label {
-        background: #FF0000;
         width: 50px;
         height: 25px;
         margin-top: -36px;
@@ -343,6 +469,11 @@
         position: absolute;
         cursor: pointer; 
         text-align: center;
+        @include c_g_4_b;
+        @include c_g_5;
+        @include fh_b(13px);
+        @include round(5px);
+        line-height: 25px;
       }
     }
 

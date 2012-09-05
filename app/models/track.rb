@@ -19,6 +19,7 @@ class Track
   field :wav, :type => String 
   field :mp3, :type => String 
   field :wavedata, :type => String
+  field :color, :type => Integer, :default => 1
 
   mount_uploader :asset, SoundUploader
 

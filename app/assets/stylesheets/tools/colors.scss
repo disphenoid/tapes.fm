@@ -1,5 +1,5 @@
 @mixin c_bg {
-  background-color: #494949;
+  background-color: #eceded;
 }
 
 // Grey Shades
@@ -17,13 +17,13 @@
   color: #bababa;
 }
 @mixin c_g_3 {
-  color: #eceded;
+  color: #828383;
 }
 @mixin c_g_4 {
-  color: #fcfcfc;
+  color: #747575;
 }
 @mixin c_g_5 {
-  color: #FFF;
+  color: #e0e1e1;
 }
 
 @mixin c_g_1_b {
@@ -33,18 +33,18 @@
   background-color: #bababa;
 }
 @mixin c_g_3_b {
-  background-color: #eceded;
+  background-color: #828383;
 }
 @mixin c_g_4_b {
-  background-color: #fcfcfc;
+  background-color: #747575;
 }
 @mixin c_g_5_b {
-  background-color: #FFF;
+  background-color: #e0e1e1;
 }
 
 // Red
 @mixin c_1 {
-  color: #ff665d;
+  color: #ff7357;
 }
 @mixin c_1b {
   color: #c85049v;
@@ -54,13 +54,13 @@
 } 
 
 @mixin c_1_b {
-  background-color: #ff665d;
+  background-color: #ff7357;
 }
 @mixin c_1b_b {
-  background-color: #c85049v;
+  background-color: #cc5c46;
 }
 @mixin c_1c_b {
-  background-color: #b64943;
+  background-color: #e5674e;
 }
 // Yellow
 @mixin c_2 {
@@ -74,12 +74,52 @@
 }
 
 @mixin c_2_b {
-  background-color: #ff665d;
+  background-color: #e6e15f;
 }
 @mixin c_2b_b {
-  background-color: #c85049v;
+  background-color: #9f9c55;
 }
 @mixin c_2c_b {
-  background-color: #b64943;
+  background-color: #aca957;
+}
+// Green
+@mixin c_3 {
+  color: #59d8ad;
+}
+@mixin c_3b {
+  color: #c85049v;
+}
+@mixin c_3c {
+  color: #b64943;
 }
 
+@mixin c_3_b {
+  background-color: #59d8ad;
+}
+@mixin c_3b_b {
+  background-color: #539e84;
+}
+@mixin c_3c_b {
+  background-color: #56bb99;
+}
+
+// Blue
+@mixin c_4 {
+  color: #59d8ad;
+}
+@mixin c_4b {
+  color: #c85049v;
+}
+@mixin c_4c {
+  color: #b64943;
+}
+
+@mixin c_4_b {
+  background-color: #36bddd;
+}
+@mixin c_4b_b {
+  background-color: #3e8fa2;
+}
+@mixin c_4c_b {
+  background-color: #3aa6bf;
+}

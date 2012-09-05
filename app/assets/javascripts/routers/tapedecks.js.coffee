@@ -13,10 +13,18 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
     @tapedeck.set({id:id})
 
     # Current set Tape
-    @tapedeck.attributes.tape = new Tapesfm.Models.Tape(Tapesfm.bootstrap.tape)
-    @tapedeck.attributes.tape.set({id:Tapesfm.bootstrap.tape._id})
-    @tapedeck.attributes.tape.set({_id:Tapesfm.bootstrap.tape._id})
-    @tapedeck.attributes.tape.attributes.tracks = new Tapesfm.Collections.Tracks(Tapesfm.bootstrap.tape.tracks)
+    if Tapesfm.bootstrap.tape.id
+      @tapedeck.attributes.tape = new Tapesfm.Models.Tape(Tapesfm.bootstrap.tape)
+      @tapedeck.attributes.tape.set({id:Tapesfm.bootstrap.tape._id})
+      @tapedeck.attributes.tape.set({_id:Tapesfm.bootstrap.tape._id})
+      @tapedeck.attributes.tape.attributes.tracks = new Tapesfm.Collections.Tracks(Tapesfm.bootstrap.tape.tracks)
+    else
+      @tapedeck.attributes.tape = new Tapesfm.Models.Tape()
+      @tapedeck.attributes.tape.set({id:"0"})
+      @tapedeck.attributes.tape.set({_id:"0"})
+      @tapedeck.attributes.tape.set({"tapedeck_id":id})
+      @tapedeck.attributes.tape.attributes.tracks = new Tapesfm.Collections.Tracks()
+      
 
     # List of all Versions
     @tapedeck.attributes.versions = new Tapesfm.Collections.Versions(Tapesfm.bootstrap.versions)
@@ -44,13 +52,17 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
   newTapeWidthTrack: (track) ->
     
     #coping Tape
-    #tape = new Tapesfm.Models.Tape(@tapedeck.get("tape"))
 
     new_track = new Tapesfm.Models.Track(track)
 
     tape = Tapesfm.tapedeck.tapedeck.get("tape")
     tape.get("tracks").unshift new_track
-    tape.get("track_ids").push(new_track.get("id"))
+
+    if tape.get("track_ids")
+      tape.get("track_ids").push(new_track.get("id"))
+    else
+      tape.set({"track_ids":[]},{silent: true})
+      tape.get("track_ids").push(new_track.get("id"))
     
     tape.set({name:"#{tape.get("name")} copy"})
     tape.set({id:undefined})
