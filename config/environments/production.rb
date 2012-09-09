@@ -1,5 +1,8 @@
 Tapesfm::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
+  
+  
+  ENV["REDISTOGO_URL"] = "redis://redistogo:1c5c0818edd54887ab1a01edc6644b24@barb.redistogo.com:9579/"
 
   # Code is not reloaded between requests
   config.cache_classes = true
