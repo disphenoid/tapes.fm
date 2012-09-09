@@ -62,7 +62,6 @@ development:
 production:
   sessions:
     default:
-      database: tapesfm
       uri: <%= ENV['MONGOHQ_URL'] %>
     options:
       skip_version_check: true
