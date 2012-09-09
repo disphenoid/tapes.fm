@@ -1,4 +1,7 @@
 <div id="tapedeck_header"> </div>
+<div id="tape_upload">
+  <div id="upload_title"> Uploads </div>
+</div>
   <div id="tapedeck_controlls">
     <div class="c_button" id="play">  </div>
     <div class="c_button" id="pause">  </div>
@@ -38,9 +41,6 @@
       <ul id="tapedeck_versions" class="tapes_versions"> </ul> 
     </div>  
   </div>  
-  
-
-
 
   <div id="tape_menu">
     <div class="" id="add_track"> 

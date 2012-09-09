@@ -14,3 +14,4 @@ end
 class AvatarUploader < CarrierWave::Uploader::Base
   storage :fog
 end
+Mongoid::Document::ClassMethods.send(:include, ::CarrierWave::Backgrounder::ORM::Base)

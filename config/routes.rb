@@ -1,5 +1,7 @@
 Tapesfm::Application.routes.draw do
   #get "users", :to => "users#index"
+  mount Resque::Server, :at => "/resque"
+
   scope "api" do
     devise_for :users
     resources :tapedeck

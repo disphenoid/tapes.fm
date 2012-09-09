@@ -2,20 +2,30 @@
   <%# "Active #{@tapedeck.get("active_tape_id")}"%>
   <%# "Tape #{@tapedeck.get("tape").get("id")}"%>
   <%# "Tape #{@tapedeck.get("tape").get("tracks").length}"%>
-  <div id="tapedeck_timeline"> 
+  <div id="tape_timestrip"> 
   <div id="time_stamp">
     Tracks
     <span class="tracks_count_hightlight">
      <%=@tapedeck.get("tape").get("tracks").length%>
     </span>
-    / 4
-
-  
+    / 8 
   </div>
-  <div id="time_zone"></div> 
+  <ul id="time_zone">
+    <li class="time_unit">1</li>
+    <li class="time_unit">2</li>
+    <li class="time_unit">3</li>
+    <li class="time_unit">4</li>
+    <li class="time_unit">5</li>
+    <li class="time_unit">6</li>
+    <li class="time_unit">7</li>
+    <li class="time_unit">8</li>
+    <li class="time_unit">9</li>
+    <li class="time_unit">10</li>
+  </ul> 
 </div>
 
   <div id="tape_timeline"></div>
+
   <div id="tape_scrabber">
     <div id="scrabber_label">
     00:00
@@ -27,4 +37,7 @@
   <ul id="tape_tracks"> 
      
   </ul>
-
+  <ul id="tape_comments">
+  </ul>
+  <div id="tape_spacer">
+  </div>

@@ -9,8 +9,8 @@ class Tapesfm.Views.TapedeckEdit extends Backbone.View
     @model.get("tape").on('change:id', @newTapeMode, this)
   
   saveTape: ->
-    console.log "FKK"
     @model.get("tape").save()
+
   newTapeMode: ->
     
     @render()

@@ -7,11 +7,13 @@ Tapesfm::Application.configure do
   ENV['s3_secret_access_key'] = "aB+GcuPu9pUmjH1/Ab5BXKt8Bb11vqqkMGAfPYgp"
   ENV['s3_bucket'] = "tapesfm.com.s3.amazonaws.com"
 
+  ENV["REDISTOGO_URL"] = "redis://127.0.0.1:6379/"
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-  config.serve_static_assets = false
+  config.serve_static_assets = true
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 

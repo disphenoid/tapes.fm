@@ -4,8 +4,34 @@
 @import "tools/colors";
 @import "tools/fonts";
 @import "tools/effects";
+#tape_upload {
+  margin-bottom: 20px;
+  width: 960px;
+  //background: #FF00FF;
+  #upload_title {
+    //background: #FF00FF;
+    //width: 225px;
+    //height: 50px;
+    //position: absolute;
+    @include c_g_2;
+    @include fh_b(13px);
+    line-height: 13px;
+    margin-bottom: 10px;
+    .upload_count {
+      @include c_g_3; 
+    }    
 
-#tapedeck_timeline{
+  
+  }
+  .uploadify-queue-item { 
+    width: 960px;
+    background: none;
+  
+  }
+  
+
+}
+#tape_timestrip{
   height: 50px;
   width: 960px;
   background: url("/assets/tapedeck/top_shadow.png") no-repeat bottom;
@@ -32,6 +58,21 @@
     background: none;
     margin-left: 225px;
     position: absolute;
+    list-style-type: none;
+    padding: 0px;
+    margin-top: 0px;
+
+    .time_unit {
+      width: 60px;
+      height: 50px;
+      float: left;
+      //background: #FF00FF;
+      @include fh_b(11px);
+      @include c_g_2;
+      background: url("/assets/tapedeck/time_unit_bg.png") no-repeat left bottom;
+      line-height: 55px;
+      padding-left: 10px;
+    }
 
   }
 }

@@ -1,18 +1,24 @@
+require 'rubygems'
+require 'fog'
+require 'waveinfo'
+require 'fileutils'
+
 class WebappController < ApplicationController
   layout :resolve_layout
-  skip_before_filter :verify_authenticity_token
+  #skip_before_filter :verify_authenticity_token
 
   def index
   end
   def tapedeck 
     @track = Track.new
-    @tapedeck = Tapedeck.find(params[:id]) #.to_json(:include => "tapes",:include => "tape", :include => {"tape" => {:include => "tracks"}}) 
 
+    if params[:id]
+      @tapedeck = Tapedeck.find(params[:id]) #.to_json(:include => "tapes",:include => "tape", :include => {"tape" => {:include => "tracks"}}) 
 
-    @json = render_to_string( template: 'tapedeck/show.json.jbuilder', locals: { tapedeck: @tapedeck})
-
+    @json = render_to_string( template: 'tapedeck/show.json.jbuilder', locals: { tapedeck: @tapedeck}) 
     respond_to do |format|
         format.html
+    end
     end
 
 
@@ -29,6 +35,9 @@ class WebappController < ApplicationController
     newparams = coerce(params)
 
     @track = Track.new(newparams[:track]) 
+    puts "paraaaams #{newparams[:track][:asset].class}"
+    #@track.process_asset_upload = true
+
     @track.color = (params[:track_length].to_i + 1) 
     
 

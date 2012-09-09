@@ -1,12 +1,16 @@
 <div class="track_info c<%=@color%>">
-  <%=@color%>
   <div class="user_image"></div>
+  <div class="control_set">
+    <%=@track.get("name")%>
+    <br />
+    <%=@color%>
+  </div>
 
-
-  <%=@track.get("name")%>
   <%#@track.get("_id")%>
 
 </div>
+
+<% if @track.get("processed"): %>
 
 
 <div id="track_<%=@track.get("_id")%>_box" class="track_clip_box c<%=@color%>" data-id="<%=@track.get("_id")%>" data-duration="<%=@track.get("duration")%>"> 
@@ -14,10 +18,28 @@
   <div id="track_<%=@track.get("_id")%>_base" class="track_base"> </div>
   <div id="track_<%=@track.get("_id")%>_loaded" class="track_loaded"> </div>
   <div id="track_<%=@track.get("_id")%>_progress" class="track_progress"> </div>
-  <div id="track_<%=@track.get("_id")%>_clip" class="track_clip"> </div>
+  <div id="track_<%=@track.get("_id")%>_clip" class="track_clip"> </div> 
 
 </div>
 
 <div class="add_track_to_track"></div></div>
+<% else: %>
 
+  <div id="track_<%=@track.get("_id")%>_box" class="track_clip_box c<%=@color%>" data-id="<%=@track.get("_id")%>" data-duration="<%=@track.get("duration")%>"> 
+  
+    <div id="track_<%=@track.get("_id")%>_base" class="track_base"> </div>
+    <div id="track_<%=@track.get("_id")%>_loaded" class="track_processing"> </div>
+    <div id="track_<%=@track.get("_id")%>_clip" class="track_clip"> </div>
+    <div id="track_<%=@track.get("_id")%>_processing" class="track_processing_info">  
+    <div class="name_box">
+      <div class="icon"></div> 
+      Processing
+      <span class="file_name">
+        <%= @track.get("name") %>
+      </span> 
+    </div> 
+  </div>
 
+  </div>
+
+<% end %>

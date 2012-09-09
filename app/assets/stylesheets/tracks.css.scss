@@ -53,6 +53,10 @@
       .track_base {
         @include c_1c_b;
       }
+
+      .track_processing {
+        background: url("/assets/tapedeck/processing_bg_1.gif"); 
+      }
     }
 
     .track .track_info.c2 {
@@ -65,6 +69,10 @@
       }
       .track_base {
         @include c_2c_b;
+      }
+      
+      .track_processing {
+        background: url("/assets/tapedeck/processing_bg_2.gif"); 
       }
     }
 
@@ -81,21 +89,84 @@
       .track_base {
         @include c_3c_b;
       }
+      .track_processing {
+        background: url("/assets/tapedeck/processing_bg_3.gif"); 
+      }
+
     }
 
-    .track .track_info.c4 {
-      @include c_4_b;
+  .track .track_info.c4 { @include c_4_b; }
+  .track .track_clip_box.c4 {
+    @include c_4_b;
+    .track_loaded {
+      @include c_4b_b; 
     }
-   .track .track_clip_box.c4 {
-      @include c_4_b;
-      .track_loaded {
-        @include c_4b_b; 
-      }
-      .track_base {
-        @include c_4c_b;
-      }
+    .track_base {
+      @include c_4c_b;
+    }
+    .track_processing {
+      background: url("/assets/tapedeck/processing_bg_4.gif"); 
     }
 
+  }
+
+  .track .track_info.c5 { @include c_5_b; }
+  .track .track_clip_box.c5 {
+    @include c_5_b;
+    .track_loaded {
+      @include c_5b_b; 
+    }
+    .track_base {
+      @include c_5c_b;
+    }
+    .track_processing {
+      background: url("/assets/tapedeck/processing_bg_5.gif"); 
+    }
+
+  }
+
+  .track .track_info.c6 { @include c_6_b; }
+  .track .track_clip_box.c6 {
+    @include c_6_b;
+    .track_loaded {
+      @include c_6b_b; 
+    }
+    .track_base {
+      @include c_6c_b;
+    }
+    .track_processing {
+      background: url("/assets/tapedeck/processing_bg_6.gif"); 
+    }
+
+  }
+  .track .track_info.c7 { @include c_7_b; }
+  .track .track_clip_box.c7 {
+    @include c_7_b;
+    .track_loaded {
+      @include c_7b_b; 
+    }
+    .track_base {
+      @include c_7c_b;
+    }
+    .track_processing {
+      background: url("/assets/tapedeck/processing_bg_7.gif"); 
+    }
+
+  }
+  .track .track_info.c8 { @include c_8_b; }
+  .track .track_clip_box.c8 {
+    @include c_8_b;
+    .track_loaded {
+      @include c_8b_b; 
+    }
+    .track_base {
+      @include c_8c_b;
+    }
+    .track_processing {
+      background: url("/assets/tapedeck/processing_bg_8.gif"); 
+    }
+
+  }
     .track {
         height: 85px;
         background: #969696;
@@ -111,10 +182,19 @@
         .user_image {
           width: 85px;
           height: 85px;
-          background: rgba(255,255,255,0.2)
+          background: rgba(255,255,255,0.2);
+          display: inline-block;
+          float: left;
         
         }
+        .control_set {
+          width: 140px;
+          height: 85px;
+          background: rgba(0,0,0,0.2);
+          display: inline-block;
+          float: left;
         
+        }        
       }
       .add_track_to_track {
         width: 35px;
@@ -141,7 +221,6 @@
         //float: left; 
       
       }
-
       .track_loaded {
         position: absolute;
         background: #539f85;
@@ -168,6 +247,60 @@
       
       }
 
+      .track_processing {
+        position: absolute;
+        //background: url("/assets/tapedeck/processing_bg_1.gif");
+        height: 85px;
+        width: 0px;
+        //display: inline-block;
+        //float: left; 
+      
+      }
+      .track_processing_info {
+        position: absolute;
+        //background: #FF00FF;
+        height: 20px;
+        width: 700px;
+
+        margin-top: 30px;
+        text-align: center;
+        //width: px;
+        //display: inline-block;
+        //float: left; 
+
+        .name_box {
+          //padding: 2px 2px;
+          display: inline-block;
+          background: rgba(116,116,116,0.9);
+          padding-right: 10px;
+          //padding-left: 5px;
+          //margin-right: auto;
+          //margin-left: auto;
+          @include round(20px);
+          @include fh(12px);
+          @include c_g_2;
+          line-height: 24px;
+          .file_name {
+            @include fh_b(12px);
+            @include c_g_5;
+          
+          }
+
+          .icon {
+            float: left;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
+            background: url("/assets/tapedeck/processing_icon.gif");
+            @include round_left(20px);
+            background-color: rgba(0,0,0,0.2);
+          
+          }
+        
+        }
+      
+      }
  
 
     }

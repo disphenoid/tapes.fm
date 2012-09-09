@@ -18,14 +18,17 @@ class window.Uploader
       buttonText        : 'From File'
       buttonCursor      : 'hand'
       auto              : true
-      multi             : false
+      multi             : true
       removeCompleted   : true
+      queueSizeLimit    : 8
+      removeTimeout     : 0
       onUploadSuccess   : @onUploadComplete
       onUploadError     : @onUploadError
       formData          : data
       buttonClass       : "from_file"
       height            : 40
       width             : 150
+      queueID           : "tape_upload"
 
   onUploadComplete: (file, data, response) ->
     #alert "complete"

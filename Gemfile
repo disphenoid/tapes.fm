@@ -7,7 +7,7 @@ gem 'rails', '3.2.7'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 #gem 'sqlite3'
-
+#gem 'delayed_job_mongoid'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,17 +24,22 @@ end
 gem 'devise'
 gem 'jquery-rails'
 gem 'backbone-on-rails'
-gem "mongoid"
+gem "mongoid", "~> 3.0.0"
 #gem 'bson_ext'
 gem 'jbuilder'
 gem 'thin'
 gem 'fog'
+gem "resque", :require => "resque/server"
 
 gem 'carrierwave'
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-
+gem "carrierwave-mongoid", :git => "git://github.com/jnicklas/carrierwave-mongoid.git", :branch => "mongoid-3.0"
+gem 'carrierwave_backgrounder'
+#gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+#gem 'carrierwave_backgrounder', :branch => "support_resque"
+#gem 'carrierwave_backgrounder', :git => "git://github.com/lardawge/carrierwave_backgrounder.git", :branch => "support_resque"
 gem 'simple_form'
 gem "waveinfo"
+gem 'pusher'
 #gem "cancan"
 
 # To use ActiveModel has_secure_password

@@ -15,7 +15,7 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
     # Current set Tape
     if Tapesfm.bootstrap.tape.id
       @tapedeck.attributes.tape = new Tapesfm.Models.Tape(Tapesfm.bootstrap.tape)
-      @tapedeck.attributes.tape.set({id:Tapesfm.bootstrap.tape._id})
+      @tapedeck.attributes.tape.set({id:Tapesfm.bootstrap.tape.id})
       @tapedeck.attributes.tape.set({_id:Tapesfm.bootstrap.tape._id})
       @tapedeck.attributes.tape.attributes.tracks = new Tapesfm.Collections.Tracks(Tapesfm.bootstrap.tape.tracks)
     else

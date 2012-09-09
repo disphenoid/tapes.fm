@@ -1,0 +1,17 @@
+development: &DEVELOP
+  app_id: 27310
+  key: c288f18f7c9bdc724b14
+  secret: fb3cf0aeb47434ad3dfb
+
+production:
+  app_id: 27310
+  key: c288f18f7c9bdc724b14
+  secret: fb3cf0aeb47434ad3dfb
+
+release:
+  app_id: 27310
+  key: c288f18f7c9bdc724b14
+  secret: fb3cf0aeb47434ad3dfb
+
+test: *DEVELOP
+
