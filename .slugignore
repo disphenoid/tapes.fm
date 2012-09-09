@@ -1,8 +1,3 @@
 public/images/*.png
 test
 spec
-public/flash
-public/javascripts
-public/stylesheets
-public/error_pages
-app/assets
