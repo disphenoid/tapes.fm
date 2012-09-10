@@ -11,9 +11,12 @@ task "resque:pool:setup" do
   #ActiveRecord::Base.connection.disconnect!
   
   # and re-open them in the resque worker parent
+
+  uri = URI.parse(ENV["REDISTOGO_URL"])
+
   Resque::Pool.after_prefork do |job|
     #ActiveRecord::Base.establish_connection
-    Resque.redis = YAML.load_file(Rails.root.join('config', 'resque.yml'))[Rails.env]
+    Resque.redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 
     #NewRelic::Agent.after_fork(:force_reconnect => true) if defined?(NewRelic)
   end
