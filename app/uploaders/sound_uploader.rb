@@ -40,7 +40,12 @@ class SoundUploader < CarrierWave::Uploader::Base
       Dir.mkdir("#{Rails.root}/tmp/tracks/#{model.id}", 0700)
     end
 
-    out = `#{Rails.root}/bin/wav2json #{file.path} -o #{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.json` 
+    if Rails.env.production?
+      out = `#{Rails.root}/bin/wav2json_linux #{file.path} -o #{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.json` 
+    else
+      out = `#{Rails.root}/bin/wav2json #{file.path} -o #{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.json` 
+    end
+
     puts "######### chaka #{out}"
     puts "############### waveform1 #{file.path}" 
     jsonp(model.id)
