@@ -127,8 +127,15 @@ class SoundUploader < CarrierWave::Uploader::Base
         tempfile << "waveform({\"id\":\"#{model.id}\", \"wavedata\":"
       end
       tempfile<<line
-      if i == 3 
-        tempfile << "});" 
+      if Rails.env.production?
+
+        if i == 4 
+          tempfile << "});" 
+        end
+      else
+        if i == 3 
+          tempfile << "});" 
+        end
       end
     end
     f.close
