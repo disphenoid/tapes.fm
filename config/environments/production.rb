@@ -1,7 +1,10 @@
 Tapesfm::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
   
-  
+  ENV['s3_access_key_id'] = "AKIAJ4BM5OPRZICTBNLQ"
+  ENV['s3_secret_access_key'] = "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"
+  ENV['s3_bucket'] = "tapesfm.com.s3.amazonaws.com"  
+
   ENV["REDISTOGO_URL"] = "redis://redistogo:1c5c0818edd54887ab1a01edc6644b24@barb.redistogo.com:9579/"
 
   # Code is not reloaded between requests
