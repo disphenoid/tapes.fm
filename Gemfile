@@ -60,3 +60,6 @@ gem 'pusher'
 # 
 gem 'rubber'
 gem 'open4'
+gem 'resque', :require => 'resque/server'
+gem 'resque-pool'
+gem 'puma'

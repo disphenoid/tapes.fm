@@ -65,5 +65,34 @@
   zone: us-east-1a
   platform: linux
   root_device_type: instance-store
+- !ruby/object:Rubber::Configuration::InstanceItem
+  name: resque01
+  domain: foo.com
+  roles:
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: resque_worker
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: collectd
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: monit
+    options: {}
+  instance_id: i-dabfd9a0
+  image_type: m1.small
+  image_id: ami-eafa5883
+  security_groups:
+  - tapesfm_production_default
+  - tapesfm_production_resque01
+  - tapesfm_production_resque_worker
+  - tapesfm_production_collectd
+  - tapesfm_production_monit
+  external_host: ec2-23-22-5-177.compute-1.amazonaws.com
+  external_ip: 23.22.5.177
+  internal_host: ip-10-12-107-236.ec2.internal
+  internal_ip: 10.12.107.236
+  zone: us-east-1a
+  platform: linux
+  root_device_type: instance-store
 - volumes: {}
   static_ips: {}
