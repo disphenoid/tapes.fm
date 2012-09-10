@@ -34,10 +34,10 @@ class SoundUploader < CarrierWave::Uploader::Base
     #generating json
 
     unless (File.directory? "#{Rails.root}/tmp/tracks/")
-      Dir.mkdir("#{Rails.root}/tmp/tracks/", 0700)
+      Dir.mkdir("#{Rails.root}/tmp/tracks/", 0755)
     end
     unless (File.directory? "#{Rails.root}/tmp/tracks/#{model.id}") 
-      Dir.mkdir("#{Rails.root}/tmp/tracks/#{model.id}", 0700)
+      Dir.mkdir("#{Rails.root}/tmp/tracks/#{model.id}", 0755)
     end
 
     if Rails.env.production?

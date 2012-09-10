@@ -1,3 +1,69 @@
 ---
+- !ruby/object:Rubber::Configuration::InstanceItem
+  name: app01
+  domain: foo.com
+  roles:
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: app
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: passenger_nginx
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: collectd
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: monit
+    options: {}
+  instance_id: i-9884e3e2
+  image_type: m1.small
+  image_id: ami-eafa5883
+  security_groups:
+  - tapesfm_production_default
+  - tapesfm_production_app01
+  - tapesfm_production_app
+  - tapesfm_production_passenger_nginx
+  - tapesfm_production_collectd
+  - tapesfm_production_monit
+  external_host: ec2-23-20-145-250.compute-1.amazonaws.com
+  external_ip: 23.20.145.250
+  internal_host: ip-10-114-102-103.ec2.internal
+  internal_ip: 10.114.102.103
+  zone: us-east-1a
+  platform: linux
+  root_device_type: instance-store
+- !ruby/object:Rubber::Configuration::InstanceItem
+  name: web01
+  domain: foo.com
+  roles:
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: web
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: haproxy
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: collectd
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: monit
+    options: {}
+  instance_id: i-3a8ee940
+  image_type: m1.small
+  image_id: ami-eafa5883
+  security_groups:
+  - tapesfm_production_default
+  - tapesfm_production_web
+  - tapesfm_production_web01
+  - tapesfm_production_haproxy
+  - tapesfm_production_collectd
+  - tapesfm_production_monit
+  external_host: ec2-107-21-69-111.compute-1.amazonaws.com
+  external_ip: 107.21.69.111
+  internal_host: ip-10-114-89-101.ec2.internal
+  internal_ip: 10.114.89.101
+  zone: us-east-1a
+  platform: linux
+  root_device_type: instance-store
 - volumes: {}
   static_ips: {}
