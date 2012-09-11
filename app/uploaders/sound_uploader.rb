@@ -10,6 +10,7 @@ class SoundUploader < CarrierWave::Uploader::Base
   permissions 0777
   storage :fog
   process :waveform
+  after :store, :add_to_process_queu
 
   def move_to_cache
     true
@@ -29,6 +30,10 @@ class SoundUploader < CarrierWave::Uploader::Base
   end
   def extension_white_list
     %w(wav)
+  end
+
+  def add_to_process_queu
+    Resque.enqueue(ConvertTracksS3,model.id)
   end
 
   def waveform
@@ -62,7 +67,7 @@ class SoundUploader < CarrierWave::Uploader::Base
     puts "########## duration = #{(wave.duration)}"
 
     
-    Resque.enqueue(ConvertTracksS3,model.id)
+    #Resque.enqueue(ConvertTracksS3,model.id)
 
     #Resque.enqueue(UploadWav,"#{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.wav", "tracks/#{model.id}/#{model.id}.wav",model.id)
 
