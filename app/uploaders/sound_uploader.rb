@@ -5,24 +5,27 @@ require 'fileutils'
 require 'resque'
 
 class SoundUploader < CarrierWave::Uploader::Base
-  include ::CarrierWave::Backgrounder::Delay
+  #include ::CarrierWave::Backgrounder::Delay
 
-  #storage :fog
+  #permissions 0777
+  storage :fog
   process :waveform
 
-  def move_to_cache
-    true
-  end
+  # def move_to_cache
+  #   true
+  # end
 
-  def move_to_store
-    true
-  end
+  # def move_to_store
+  #   true
+  # end
 
   def store_dir
     #"public/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
     #"#{Rails.root}/tmp/uploads"
 
-    "#{Rails.root}/tmp/tracks/#{model.id}"
+    #"#{Rails.root}/tmp/tracks/#{model.id}"
+    "tracks/#{model.id}"
+
   end
   def extension_white_list
     %w(wav)
@@ -34,10 +37,10 @@ class SoundUploader < CarrierWave::Uploader::Base
     #generating json
 
     unless (File.directory? "#{Rails.root}/tmp/tracks/")
-      Dir.mkdir("#{Rails.root}/tmp/tracks/", 0755)
+      Dir.mkdir("#{Rails.root}/tmp/tracks/", 0777)
     end
     unless (File.directory? "#{Rails.root}/tmp/tracks/#{model.id}") 
-      Dir.mkdir("#{Rails.root}/tmp/tracks/#{model.id}", 0755)
+      Dir.mkdir("#{Rails.root}/tmp/tracks/#{model.id}", 0777)
     end
 
     if Rails.env.production?
@@ -59,9 +62,9 @@ class SoundUploader < CarrierWave::Uploader::Base
     puts "########## duration = #{(wave.duration)}"
 
     
-    Resque.enqueue(ConvertTracks,"#{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.wav","#{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.mp3", "tracks/#{model.id}/#{model.id}.mp3",model.id)
+    #Resque.enqueue(ConvertTracksS3,"#{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.wav","#{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.mp3", "tracks/#{model.id}/#{model.id}.mp3",model.id)
 
-    Resque.enqueue(UploadWav,"#{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.wav", "tracks/#{model.id}/#{model.id}.wav",model.id)
+    #Resque.enqueue(UploadWav,"#{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.wav", "tracks/#{model.id}/#{model.id}.wav",model.id)
 
     
 
@@ -164,7 +167,6 @@ class SoundUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-
     if file
     "#{model.id}.#{file.extension}"
     end
