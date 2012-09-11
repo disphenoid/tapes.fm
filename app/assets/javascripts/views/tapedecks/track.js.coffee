@@ -56,7 +56,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
     #console.log("######### index : "+@getIndex())
     if @model.get("processed")
-      Tapesfm.trackm.addTrack {name:"track_"+@model.get("_id"),url:"http://tapesfm.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.mp3", duration:@model.get("duration")}
+      Tapesfm.trackm.addTrack {name:"track_"+@model.get("_id"),url:"http://tapes.fm.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.mp3", duration:@model.get("duration")}
     else
       track_channel = Tapesfm.pusher.subscribe(String(@model.get("id")))
       track_channel.bind "track", (data) =>

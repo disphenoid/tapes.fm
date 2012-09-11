@@ -40,14 +40,18 @@ class ConvertTracksS3
     wav_path = "#{Rails.root}/tmp/tracks/#{id}/#{id}.wav"
     mp3_path = "#{Rails.root}/tmp/tracks/#{id}/#{id}.mp3" 
 
-    local_file = File.open(wav_path, "wb")
-    local_file.write(file.body)
-    local_file.close
+    #local_file = File.open(wav_path, "wb")
+    #local_file.write(file.body)
+    #local_file.close
     
     #file.body = File.open("/path/to/my/resume.html")
 
 
     #convert and upload mp3
+    curl = `curl #{wav_path} #{mp3_path}` 
+
+    curl = `curl http://tapes.fm.s3.amazonaws.com/tracks/#{id}/#{id}.wav -o #{wav_path}`
+
     lameOut = `lame #{wav_path} #{mp3_path}` 
     puts "######### convert mp3 #{lameOut}"
 
