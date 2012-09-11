@@ -90,8 +90,7 @@ task :cleanup, :except => { :no_release => true } do
   CMD
 end
 
-run "chmod 777 #{current_path}/public/uploads/"
-run "chmod 777 #{current_path}/public/uploads/tmp/"
+
 
 if Rubber::Util.has_asset_pipeline?
   # load asset pipeline tasks, and reorder them to run after

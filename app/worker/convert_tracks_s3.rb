@@ -28,6 +28,13 @@ class ConvertTracksS3
       :public => true
     )
  
+    unless (File.directory? "#{Rails.root}/tmp/tracks/")
+      Dir.mkdir("#{Rails.root}/tmp/tracks/", 0777)
+    end
+    unless (File.directory? "#{Rails.root}/tmp/tracks/#{id}") 
+      Dir.mkdir("#{Rails.root}/tmp/tracks/#{id}", 0777)
+    end
+
     file = directory.files.get("tracks/#{id}/#{id}.wav")
 
     wav_path = "#{Rails.root}/tmp/tracks/#{id}/#{id}.wav"

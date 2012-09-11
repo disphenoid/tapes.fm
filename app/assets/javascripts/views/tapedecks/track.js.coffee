@@ -73,7 +73,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     $(@el).html(rendertContent)
     #$(@el).fadeIn(500)
     #setTimeout(this.addWavefrom, 30)
-    url = "http://tapesfm.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.json"
+    url = "http://tapes.fm.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.json"
     jQuery.getJSON url+"?callback=?"
 
     this
