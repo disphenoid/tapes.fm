@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'rubygems'
 require 'fog'
 require 'fileutils'
@@ -30,10 +31,9 @@ class ConvertTracksS3
     file = directory.files.get("tracks/#{id}/#{id}.wav")
 
     wav_path = "#{Rails.root}/tmp/tracks/#{id}/#{id}.wav"
-    mp3_path = "#{Rails.root}/tmp/tracks/#{id}/#{id}.mp3"
+    mp3_path = "#{Rails.root}/tmp/tracks/#{id}/#{id}.mp3" 
 
-
-    local_file = File.open(wav_path, "w")
+    local_file = File.open(wav_path, "wb")
     local_file.write(file.body)
     local_file.close
     
@@ -45,7 +45,7 @@ class ConvertTracksS3
     puts "######### convert mp3 #{lameOut}"
 
     mp3_file = directory.files.create(
-      :key    => s3_path,
+      :key    => "tracks/#{id}/#{id}.mp3",
       :body   => File.open(mp3_path),
       :public => true
     ) 
@@ -54,7 +54,7 @@ class ConvertTracksS3
     model.processed = true
     
     if model.save() 
-      Pusher[model.id.to_s].trigger("track", true.to_json)
+      Pusher[id.to_s].trigger("track", true.to_json)
     end
 
   end

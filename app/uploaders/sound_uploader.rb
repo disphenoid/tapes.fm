@@ -7,17 +7,17 @@ require 'resque'
 class SoundUploader < CarrierWave::Uploader::Base
   #include ::CarrierWave::Backgrounder::Delay
 
-  #permissions 0777
+  permissions 0777
   storage :fog
   process :waveform
 
-  # def move_to_cache
-  #   true
-  # end
+  def move_to_cache
+    true
+  end
 
-  # def move_to_store
-  #   true
-  # end
+  def move_to_store
+    true
+  end
 
   def store_dir
     #"public/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -169,7 +169,7 @@ class SoundUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    if file
+    if original_filename
     "#{model.id}.#{file.extension}"
     end
   end
