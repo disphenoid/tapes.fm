@@ -62,7 +62,7 @@ class SoundUploader < CarrierWave::Uploader::Base
     puts "########## duration = #{(wave.duration)}"
 
     
-    #Resque.enqueue(ConvertTracksS3,"#{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.wav","#{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.mp3", "tracks/#{model.id}/#{model.id}.mp3",model.id)
+    Resque.enqueue(ConvertTracksS3,model.id)
 
     #Resque.enqueue(UploadWav,"#{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.wav", "tracks/#{model.id}/#{model.id}.wav",model.id)
 
@@ -149,11 +149,11 @@ class SoundUploader < CarrierWave::Uploader::Base
     #uploading .json
     connection = Fog::Storage.new(
       :provider                 => 'AWS',
-      :aws_secret_access_key    => "aB+GcuPu9pUmjH1/Ab5BXKt8Bb11vqqkMGAfPYgp",
-      :aws_access_key_id        => "AKIAJ4BM5OPRZICTBNLQ"
+      :aws_secret_access_key    => "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",
+      :aws_access_key_id        => "AKIAJLUDMFIAAGNUJOIQ"
     )
     directory = connection.directories.create(
-      :key    => "tapesfm", # globally unique name
+      :key    => "tapes.fm", # globally unique name
       :public => true
     )
 
@@ -163,6 +163,8 @@ class SoundUploader < CarrierWave::Uploader::Base
       :body   => File.open("#{Rails.root}/tmp/tracks/#{model.id}/#{model.id}.json"),
       :public => true
     )
+
+    #directory.destroy
 
   end
 

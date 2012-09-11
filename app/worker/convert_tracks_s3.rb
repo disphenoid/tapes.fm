@@ -12,21 +12,34 @@ class ConvertTracksS3
   #extend Resque::Heroku
   @queue = :convert_tracks_s3
    
-  def self.perform(wav_path,mp3_path,s3_path,id)
+  def self.perform(id)
 
     puts "UPLOAD THE FILE NOW" 
 
     connection = Fog::Storage.new(
       :provider                 => 'AWS',
-      :aws_secret_access_key    => "aB+GcuPu9pUmjH1/Ab5BXKt8Bb11vqqkMGAfPYgp",
-      :aws_access_key_id        => "AKIAJ4BM5OPRZICTBNLQ"
+      :aws_secret_access_key    => "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",
+      :aws_access_key_id        => "AKIAJLUDMFIAAGNUJOIQ"
     )
 
     directory = connection.directories.create(
-      :key    => "tapesfm", # globally unique name
+      :key    => "tapes.fm", # globally unique name
       :public => true
     )
-   
+ 
+    file = directory.files.get("tracks/#{id}/#{id}.wav")
+
+    wav_path = "#{Rails.root}/tmp/tracks/#{id}/#{id}.wav"
+    mp3_path = "#{Rails.root}/tmp/tracks/#{id}/#{id}.mp3"
+
+
+    local_file = File.open(wav_path, "w")
+    local_file.write(file.body)
+    local_file.close
+    
+    #file.body = File.open("/path/to/my/resume.html")
+
+
     #convert and upload mp3
     lameOut = `lame #{wav_path} #{mp3_path}` 
     puts "######### convert mp3 #{lameOut}"

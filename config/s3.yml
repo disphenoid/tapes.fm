@@ -1,16 +1,16 @@
 development: &DEVELOP
-  bucket: "assets.local.doonited.com"
-  access_key_id: AKIAJ4BM5OPRZICTBNLQ
-  secret_access_key: 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
+  bucket: "tapes.fm"
+  access_key_id: AKIAJLUDMFIAAGNUJOIQ
+  secret_access_key: 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
 
 production:
-  bucket: "assets.dev.doonited.com"
-  access_key_id: AKIAJ4BM5OPRZICTBNLQ
-  secret_access_key: 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
+  bucket: "tapes.fm"
+  access_key_id: AKIAJLUDMFIAAGNUJOIQ
+  secret_access_key: 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
 
 release:
-  bucket: "assets.doonited.com"
-  access_key_id: AKIAJ4BM5OPRZICTBNLQ
-  secret_access_key: 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
+  bucket: "tapes.fm"
+  access_key_id: AKIAJLUDMFIAAGNUJOIQ
+  secret_access_key: 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
 
 test: *DEVELOP
