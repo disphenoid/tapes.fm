@@ -32,7 +32,7 @@ class SoundUploader < CarrierWave::Uploader::Base
     %w(wav)
   end
 
-  def add_to_process_queu
+  def add_to_process_queu(argue)
     Resque.enqueue(ConvertTracksS3,model.id)
   end
 
