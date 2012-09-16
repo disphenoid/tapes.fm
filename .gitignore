@@ -10,6 +10,7 @@
 /tmp/pids/*
 log/*.log
 tmp/*
+public/uploads/tmp/*
 config/database.yml
 *.swp
 *.swo
