@@ -31,7 +31,18 @@ class TapesController < ApplicationController
 
   def destroy
     #respond_with Tapedeck.destroy(params[:id])
-    render :json => Tape.destroy(params[:id])
+
+    if(tape = Tape.find(params[:id]))
+      
+      @tapedeck = tape.tapedeck
+
+      if tape.destroy
+        @tapedeck.active_tape_id = @tapedeck.tapes.first.id
+        @tapedeck.save
+      end
+    end
+
+    render :json => tape
   end
 
 end

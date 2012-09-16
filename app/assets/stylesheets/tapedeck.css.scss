@@ -182,6 +182,66 @@
     }  
   }
 
+  #tape_edit_buttons {
+    list-style-type: none;
+    padding: 0px;
+    @include round(5px);
+    //margin-top: 20px;
+    position: absolute;
+    display: inline-block;
+    //float: left;
+    //right: 40px;
+    height: 40px;
+    width: 131px;
+    //background: #000;
+    
+    //background: url("/assets/header/list_tile.png") no-repeat;
+    
+    
+    
+    color: #000;
+    z-index: 10000;
+    //width: 380px;
+    margin-left: 461px;
+    .edit_button:first-child {
+      @include round-left(5px)
+    
+    }
+    .edit_button:last-child {
+      @include round-right(5px)
+    
+    }
+
+    .edit_button:hover {
+      background: #FFF;
+    }
+
+    .edit_button {
+      float: left;
+      @include c_g_5_b;
+      padding: 0px;
+      margin: 0px;
+      width: 43px;
+      height: 40px;
+      display: inline-block;
+      cursor: pointer;
+
+      
+    }
+    .edit_tape_button {
+      
+    
+    }
+
+    .undo_tape_button {
+      @include c_g_5_b;
+
+      
+    
+    }
+    
+
+  }
   #tape_edit_modul {
     @include round_left(5px);
     //margin-top: 20px;
@@ -213,6 +273,10 @@
       @include round_right(5px);
       @include c_g_3_b;
       cursor: pointer;
+    }
+
+    #tape_edit_field {
+      color: #FF00FF;
     }
   
   

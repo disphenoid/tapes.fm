@@ -192,16 +192,75 @@
           height: 85px;
           background: rgba(0,0,0,0.2);
           display: inline-block;
+          @include fh_b(9px);
           float: left;
         
         }        
       }
+      .add_track_to_track:hover {
+
+        .track_btn#add_track { display: none;}
+        .track_btn#from_remove { visibility: visible;}
+        .track_btn#from_library { visibility: visible;}
+        .track_btn#from_file { visibility: visible;}
+        //background: rgba(0,0,0,0.05);
+
+
+      }
       .add_track_to_track {
         width: 35px;
         height: 85px;
-        background: rgba(0,0,0,0.05);
         position: absolute;
         margin-left: 925px;
+        background: rgba(255,255,255,0.08);
+
+        .track_btn {
+          background: #FF00FF;
+          width: 35px;
+          height: 28px;
+        
+        }
+
+        .track_btn:hover {
+          background-color: rgba(255,255,255,0.2);
+        }
+
+        .track_btn#add_track {
+          position: absolute;
+          margin-top: 28px; 
+          background: url("/assets/track/add_track_icon.png")
+
+        }
+
+        .track_btn#from_remove:hover {
+          background: url("/assets/track/remove_icon_on.png");
+          background-color: rgba(0,0,0,0.1);
+        }
+        .track_btn#from_remove {
+          visibility: hidden;
+          cursor: pointer;
+          background: url("/assets/track/remove_icon_off.png")
+        }
+        .track_btn#from_file:hover {
+          background: url("/assets/track/from_file_icon_on.png");
+          background-color: rgba(0,0,0,0.1);
+        }
+        .track_btn#from_file {
+          visibility: hidden;
+          cursor: pointer;
+          background: url("/assets/track/from_file_icon_off.png")
+        }
+        .track_btn#from_library:hover {
+          background: url("/assets/track/from_library_icon_on.png");
+          background-color: rgba(0,0,0,0.1);
+
+        }
+        .track_btn#from_library {
+          visibility: hidden;
+          cursor: pointer;
+          background: url("/assets/track/from_library_icon_off.png")
+        
+        }
       
       } 
 

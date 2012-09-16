@@ -24,6 +24,8 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
        this.$("#tape_edit_field").val("")
 
     @model.get("tape").save()
+    @model.get("tape").trigger("edit_done")
+    window.existing_tape = false
 
   changeTape2: (event) ->
     console.log $(event.currentTarget).data("id")

@@ -2,9 +2,13 @@ class Tapesfm.Views.TapedeckVersions extends Backbone.View
   template: JST['tapedecks/versions']
   
   initialize: ->
-    @model.get("tape").on('change:id', @newTapeMode, this)
+    @model.get("tape").on('edit', @editMode, this)
+    @model.get("tape").on('new', @newMode, this)
+
+    @model.get("tape").on('edit_done', @editModeDone, this)
     @model.get("tape").on('change:_id', @renderCurrentTape, this)
     @model.get("versions").on('reset', @render, this)
+    #@model.get("tape").on('edit', @editTapeMode, this)
 
     #$("#tapedeck_versions").slideToggle(0)
 
@@ -20,21 +24,35 @@ class Tapesfm.Views.TapedeckVersions extends Backbone.View
         $("#tape_select").removeClass("open")
         $(".active_version").show()
 
+  newMode: (data) ->
+      $('#tape_select').hide()
+      $('#tape_edit_modul').show()
+      $('#tape_edit_modul').css("display","inline-block")
+      console.log "new mode"
 
-  newTapeMode: (data) ->
-    unless @model.get("tape").isNew()
-      #$('#tape_select').css("display","inline-block")
-      #$('#tape_edit_modul').css("display","none")
-      $('#tape_select').show()
-      $('#tape_select').css("display","inline-block")
-      $('#tape_edit_modul').hide()
-    else
+  editTapeMode: (data) ->
+      
       $('#tape_select').hide()
       $('#tape_edit_modul').show()
       $('#tape_edit_modul').css("display","inline-block")
 
+      console.log "edit mode"
+    
+  editModeDone: (data) ->
+      $('#tape_select').show()
+      $('#tape_select').css("display","inline-block")
+      $('#tape_edit_modul').hide()
+      @model.get("versions").fetch()
 
+  editMode: (data) ->
 
+      $("#tape_edit_field").focus()
+      $("#tape_edit_field").val(@model.get("tape").get("name"))
+      $("#tape_edit_label").hide()
+
+      $('#tape_select').hide()
+      $('#tape_edit_modul').show()
+      $('#tape_edit_modul').css("display","inline-block")
 
 
   appendVersion: (version) ->
@@ -52,9 +70,7 @@ class Tapesfm.Views.TapedeckVersions extends Backbone.View
       #$('#tapedeck_versions').show()
       $('.version').removeClass("active")
 
-      $("#version_#{@model.get("tape").get("_id")}").addClass("active")
-
-
+      $("#version_#{@model.get("tape").get("_id")}").addClass("active") 
 
     this
     

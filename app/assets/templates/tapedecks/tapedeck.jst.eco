@@ -9,13 +9,15 @@
     <div class="c_button" id="stop">  </div>
   </div>
 
+  <ul id="tape_edit_buttons"> 
+  </ul>
   <div id="tape_edit_modul">
     <div id="tape_edit_c">
       <div id="tape_save_button"></div> 
         <div id="tape_edit_box"> 
           <form>
             <p>
-              <label for="tape_edit_field">New Tape – click an name it!</label>
+              <label id="tape_edit_label" for="tape_edit_field">New Tape – click an name it!</label>
               <input type="text" name="tape_edit_field" id="tape_edit_field" value="">
             </p>
           </form> 

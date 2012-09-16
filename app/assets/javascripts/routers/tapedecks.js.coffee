@@ -1,3 +1,6 @@
+window.existing_tape = false
+window.lastTape = "0"
+window.lastTape_obj = null
 class Tapesfm.Routers.Tapedecks extends Backbone.Router
   @tapedeck
   routes:
@@ -9,6 +12,7 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
     #@tapedeck = new Tapesfm.Models.Tapedeck(id:id)
     
     # Tapedeck
+    window.lastTape = Tapesfm.bootstrap.tape.id
     window.td = @tapedeck = new Tapesfm.Models.Tapedeck(Tapesfm.bootstrap)
     @tapedeck.set({id:id})
 
@@ -42,17 +46,13 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
     versionsView = new Tapesfm.Views.TapedeckVersions(model: @tapedeck)
     $('#tapedeck_current_version').html(versionsView.render().el)
 
-
-
   loadTape: ->
     #Loads tape soundManager.onready
     tapeView = new Tapesfm.Views.TapedeckTape(model: @tapedeck)
     $('#tapedeck_tape').html(tapeView.render().el)
   
   newTapeWidthTrack: (track) ->
-    
-    #coping Tape
-
+    #coping Tape 
     new_track = new Tapesfm.Models.Track(track)
 
     tape = Tapesfm.tapedeck.tapedeck.get("tape")
@@ -64,9 +64,14 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
       tape.set({"track_ids":[]},{silent: true})
       tape.get("track_ids").push(new_track.get("id"))
     
-    tape.set({name:"#{tape.get("name")} copy"})
-    tape.set({id:undefined})
-    tape.set({_id:undefined})
+    
+    unless window.existing_tape
+      tape.set({id:undefined})
+      tape.set({_id:undefined},{silent: true})
+
+    #tape.set({name:"#{tape.get("name")} copy"})
+    tape.trigger("newTrack")
+    tape.trigger("new")
     #modefiy values
     
 

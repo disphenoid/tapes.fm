@@ -1,4 +1,7 @@
-<li class="version">
-  <div class="delete"></div> 
-  <div class="title">New Tape Click to change the name</div>
-</li>
+<% unless @edit_mode: %>
+  <li class="edit_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>">edit</li>
+  <li class="remove_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>">del</li>
+  <li class="star_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>">fav</li>
+<% else: %>
+  <li class="undo_tape_button edit_button" data-id="<%=window.lastTape%>">undo <%=window.lastTape%></li>
+<% end %>

@@ -10,14 +10,18 @@ class Tapesfm.Views.TapedeckEdit extends Backbone.View
   
   saveTape: ->
     @model.get("tape").save()
+    # @model.get("tape").fetch()
+    # @model.set({active_tape_id: window.lastTape})
+    # @model.get("tape").set({id: window.lastTape})
+    
+    # Tapesfm.tapedeck.loadTape()
 
   newTapeMode: ->
-    
     @render()
   render: ->
     if @model.get("tape").isNew()
-      $('#tape_select').hide()
-      $('#tape_edit').show()
+      #$('#tape_select').hide()
+      #$('#tape_edit').show()
       rendertContent = @template()
       $(@el).append(rendertContent)
     

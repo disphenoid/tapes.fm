@@ -3,6 +3,8 @@
   <div class="control_set">
     <%=@track.get("name")%>
     <br />
+    <%=@track.get("_id")%>
+    <br />
     <%=@color%>
   </div>
 
@@ -22,7 +24,16 @@
 
 </div>
 
-<div class="add_track_to_track"></div></div>
+<div class="add_track_to_track">
+  <div class="track_btn" id="add_track"></div>
+  <div class="track_btn remove_track" id="from_remove" data-id="<%=@track.get("_id")%>"></div>
+  <div class="track_btn" id="from_file"></div>
+  <div class="track_btn" id="from_library"></div>
+
+</div>
+</div>
+
+
 <% else: %>
 
   <div id="track_<%=@track.get("_id")%>_box" class="track_clip_box c<%=@color%>" data-id="<%=@track.get("_id")%>" data-duration="<%=@track.get("duration")%>"> 
