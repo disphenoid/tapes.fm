@@ -47,16 +47,76 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
   className: "track"
 
   initialize: ->
+  events: ->
+    "click .mute" : "muteTrack"
+    "click .solo" : "soloTrack"
   
+  muteTrack: ->
+
+    if this.$("#mute").hasClass("active")
+      Tapesfm.trackm.muteTrack(@getIndex())
+      id_name = {}
+      id_name["mute_#{@getIndex()}"] = true
+
+      tape = Tapesfm.tapedeck.tapedeck.get("tape")
+      tape.set(id_name)
+      this.$("#mute").removeClass("active")
+    else
+      Tapesfm.trackm.unmuteTrack(@getIndex())
+      id_name = {}
+      id_name["mute_#{@getIndex()}"] = false
+
+      tape = Tapesfm.tapedeck.tapedeck.get("tape")
+      tape.set(id_name)
+
+      this.$("#mute").addClass("active")
+
+    Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+  soloTrack: ->
+    if this.$("#solo").hasClass("active")
+      id_name = {}
+      id_name["solo_#{@getIndex()}"] = true
+      tape = Tapesfm.tapedeck.tapedeck.get("tape")
+      tape.set(id_name)
+      this.$("#solo").removeClass("active")
+      Tapesfm.trackm.soloTrack(@getIndex())
+
+    else
+      id_name = {}
+      id_name["solo_#{@getIndex()}"] = false
+
+      tape = Tapesfm.tapedeck.tapedeck.get("tape")
+      tape.set(id_name)
+
+      this.$("#solo").addClass("active")
+      Tapesfm.trackm.unsoloTrack(@getIndex())
+
+    Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+
   getIndex: ->
     index = @model.collection.indexOf(@model)
     index + 1
     
   render: =>
-
+    trackOptions = {}
+    if Tapesfm.tapedeck.tapedeck.get("tape").get("id") == undefined
+      trackOptions.volume = Tapesfm.tapedeck.tapedeck.get("tape").get("volume_#{@getIndex()}")
+      trackOptions.mute = Tapesfm.tapedeck.tapedeck.get("tape").get("mute_#{@getIndex()}")
+      trackOptions.solo = Tapesfm.tapedeck.tapedeck.get("tape").get("solo_#{@getIndex()}")
+      trackOptions.pan = Tapesfm.tapedeck.tapedeck.get("tape").get("pan_#{@getIndex()}")
+     else
+      trackOptions.volume = 100
+      trackOptions.mute = false
+      trackOptions.solo = false
+      trackOptions.pan = 0
     #console.log("######### index : "+@getIndex())
     if @model.get("processed")
-      Tapesfm.trackm.addTrack {name:"track_"+@model.get("_id"),url:"http://tapes.fm.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.mp3", duration:@model.get("duration")}
+
+
+
+
+
+      Tapesfm.trackm.addTrack {toptions: trackOptions,name:"track_"+@model.get("_id"),url:"http://tapes.fm.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.mp3", duration:@model.get("duration")}
     else
       track_channel = Tapesfm.pusher.subscribe(String(@model.get("id")))
       track_channel.bind "track", (data) =>
@@ -75,6 +135,9 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     #setTimeout(this.addWavefrom, 30)
     url = "http://tapes.fm.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.json"
     jQuery.getJSON url+"?callback=?"
+    
+    unless trackOptions.mute
+      this.$("#mute").addClass("active")
 
     this
 

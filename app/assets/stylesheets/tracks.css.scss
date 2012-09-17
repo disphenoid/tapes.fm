@@ -190,10 +190,105 @@
         .control_set {
           width: 140px;
           height: 85px;
-          background: rgba(0,0,0,0.2);
+          background: rgba(255,255,255,0.1);
           display: inline-block;
-          @include fh_b(9px);
+          @include fh_b(12px);
           float: left;
+          .title_set {
+            height: 35px;
+            .title {
+              padding-top: 10px;
+              padding-left: 10px; 
+              @include fh_b(14px);
+              @include c_g_4;
+            }
+            .sub {
+              padding-top: 3px;
+              padding-left: 10px; 
+              @include c_g_3;
+              @include fh_b(12px); 
+              
+            }
+          
+          }
+          .controller {
+            //background: #FF00FF;
+            width: 225px;
+            height: 50px;
+            padding-left: 10px;
+            padding-top: 10px;
+            .element.t_1 {
+            
+            
+            }
+
+
+            .element.active {
+              
+              border-color: rgba(255,255,255,0.4);
+              color: rgba(255,255,255,0.4);
+              
+            
+            }
+            .element.active:hover {
+              
+              border-color: rgba(255,255,255,1);
+              color: rgba(255,255,255,1);
+              cursor: pointer;
+            
+            }
+
+            .element.active.mute:hover {
+              border-color: rgba(255,255,255,1);
+              color: rgba(255,255,255,0);
+              opacity: 1;
+              background: url("/assets/track/mute_icon_on.png")
+
+            }
+            .element.mute:hover {
+              border-color: rgba(0,0,0,1);
+              color: rgba(255,255,255,0);
+              background: url("/assets/track/mute_icon_off.png");
+              opacity: 0.3;
+              cursor: pointer;
+
+            }
+            .element.active.solo:hover {
+              border-color: rgba(255,255,255,1);
+              color: rgba(255,255,255,1);
+              cursor: pointer;
+
+            }
+
+
+            .element.solo:hover {
+              border-color: rgba(0,0,0,0.3);
+              color: rgba(0,0,0,0.3);
+              cursor: pointer;
+
+            }
+            .element {
+              @include round(24px);
+              width: 24px;
+              height: 24px;
+              //background: rgba(255,255,255,0.3);
+
+              border: solid;
+              border-width: 3px;
+              border-color: rgba(0,0,0,0.1);
+
+              //margin-top: 10px;
+              margin-left: 0px;
+              margin-right: 0px;
+              display: inline-block;
+              @include fh_b(13px);
+              color: rgba(0,0,0,0.1);
+
+              line-height: 26px;
+              text-align: center;
+            
+            }
+          }
         
         }        
       }

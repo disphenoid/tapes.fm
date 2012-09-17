@@ -17,16 +17,61 @@ class Trackm
 
     #@duration = 456
 
+  muteTrack: (track_id) ->
+    @sm.mute(@tracks[track_id-1].id)
+
+  unmuteTrack: (track_id) ->
+    @sm.unmute(@tracks[track_id-1].id)
+
+  soloTrack: (track_id) ->
+    #@sm.mute(@tracks[track_id-1].id)
+    @checkSolo()
+  unsoloTrack: (track_id) ->
+    @checkSolo()
+    #@sm.unmute(@tracks[track_id-1].id)
+
+  checkSolo: ->
+    isSolo = false
+
+    $(".solo").each (index,soloElement) =>
+      
+      #index = index
+      track_id = Tapesfm.trackm.tracks[index].id
+
+      if $(soloElement).hasClass("active")
+        isSolo = true
+        @sm.unmute(track_id)
+        console.log "#{track_id} is solo inde = #{index}"
+      else
+        @sm.mute(track_id)
+      
+    unless isSolo
+      $(".solo").each (index,soloElement) =>
+        if Tapesfm.tapedeck.tapedeck.get("tape").get("mute_#{index+1}")
+          #@muteTrack()
+          @sm.mute(@tracks[index].id)
+        else
+          @sm.unmute(@tracks[index].id)
+          #@unmuteTrack()
+
+
+
   addTrack: (track) ->
     if Number(track.duration) == Number(@duration)
 
       @track = @sm.createSound
         id: track.name
         url: track.url
+        volume: track.toptions.volume
+        pan: track.toptions.pan
         autoLoad: true
         whileloading: @loading
         whileplaying: @position
         onfinish: @finish
+
+      if track.toptions.mute
+        @sm.mute(@track.id)
+
       @leadTrack = @track
 
     else
@@ -34,11 +79,16 @@ class Trackm
       @track = @sm.createSound
         id: track.name
         url: track.url
+        volume: track.toptions.volume
+        pan: track.toptions.pan
         autoLoad: true
         whileloading: @loading
+      if track.toptions.mute
+        @sm.mute(@track.id)
 
     @track.staticDuration = track.duration
     @tracks.push @track
+    #$(".mute_1").hide()
     
 
 

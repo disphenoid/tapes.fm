@@ -213,7 +213,7 @@
     }
 
     .edit_button:hover {
-      background: #FFF;
+      background-color: #FFF;
     }
 
     .edit_button {
@@ -228,18 +228,46 @@
 
       
     }
+  
+    .edit_tape_button:hover {
+      background: url("/assets/tapedeck/edit_tape_icon_on.png"); 
+      @include c_2_b;
+    }
     .edit_tape_button {
-      
-    
-    }
-
-    .undo_tape_button {
+      background: url("/assets/tapedeck/edit_tape_icon_off.png"); 
       @include c_g_5_b;
-
-      
     
     }
+
+    .undo_tape_button:hover {
+      background: url("/assets/tapedeck/undo_tape_icon_on.png"); 
+      @include c_2_b;
+    }
+    .undo_tape_button {
+
+      background: url("/assets/tapedeck/undo_tape_icon_off.png"); 
+      @include c_g_5_b;
+    }
+
+    .remove_tape_button:hover {
+      background: url("/assets/tapedeck/remove_tape_icon_on.png"); 
+      //background-color: #FFF;
+      @include c_1_b;
+      
+    }
+    .remove_tape_button { 
+      background: url("/assets/tapedeck/remove_tape_icon_off.png"); 
+      @include c_g_5_b;
+    }
+    .star_tape_button:hover {
+      background: url("/assets/tapedeck/star_tape_icon_on.png"); 
+      @include c_4_b;
+    }
+    .star_tape_button {
     
+      background: url("/assets/tapedeck/star_tape_icon_off.png"); 
+      @include c_g_5_b;
+    }    
 
   }
   #tape_edit_modul {
@@ -254,29 +282,35 @@
     min-width: 320px;
     //background: #000;
     
-    background: url("/assets/header/list_tile.png") no-repeat;
+    //background: url("/assets/header/list_tile.png") no-repeat;
+    background: url("/assets/tapedeck/edit_bg.gif");
     
-    @include c_g_3_b;
+    @include c_g_5_b;
     
     color: #000;
     z-index: 10000;
     //width: 380px;
     left: 0px;
     
+    #tape_save_button:hover {
+      background: url("/assets/tapedeck/done_tape_icon_on.png") no-repeat;
+      @include c_3_b;
+      
+    }
     #tape_save_button {
       position: absolute;
       display: inline-block;
       margin-left: 320px;
       height: 40px;
       width: 40px;
-      //background: url("/assets/header/icon_open.png") no-repeat;    
+      background: url("/assets/tapedeck/done_tape_icon_off.png") no-repeat;
       @include round_right(5px);
-      @include c_g_3_b;
+      @include c_g_4_b;
       cursor: pointer;
     }
 
     #tape_edit_field {
-      color: #FF00FF;
+      @include c_1;
     }
   
   
@@ -515,7 +549,7 @@
         padding: 0px;
         display: inline-block;
         @include fh_b(20px);
-        @include c_g_2;
+        @include c_g_4;
         margin-bottom: 6px;
       }
       #meta { 

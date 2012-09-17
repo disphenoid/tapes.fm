@@ -1,11 +1,21 @@
 <div class="track_info c<%=@color%>">
   <div class="user_image"></div>
-  <div class="control_set">
-    <%=@track.get("name")%>
-    <br />
-    <%=@track.get("_id")%>
-    <br />
-    <%=@color%>
+  <div class="control_set"> 
+    <div class="title_set">
+      
+      <div class="title">
+        <%=@track.get("name")%> 
+      </div>
+      <div class="sub">
+        <%=@color%>
+      </div>
+
+    </div>
+    <div class="controller">
+      <div class="element mute" id="mute"><%=@index%></div>
+      <div class="element solo" id="solo" data-index="<%=@index%>">S</div>
+      <div class="element pan" id="pan">&nbsp;</div>
+    </div>
   </div>
 
   <%#@track.get("_id")%>

@@ -11,7 +11,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
     #@model.get("tape").on('edit', @render, this)
     @model.get("tape").on('edit', @render_undo, this)
     @model.get("tape").on('new', @render_undo, this)
-    @model.get("tape").on('edit_done', @render, this)
+    @model.get("tape").on('edit_done', @render_normal, this)
     
   editTape: (tape) ->
     window.existing_tape = true
@@ -43,7 +43,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
       @model.get("tape").fetch()
     else
       window.trackColors = {}
-      undoID = window.lastTape#@model.get("versions").first().get("id")
+      undoID = window.lastTape #@model.get("versions").first().get("id")
 
       @model.get("tape").set({id: undoID},{silent: true})
       @model.get("tape").set({undo: true},{silent: true})
@@ -59,7 +59,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
     #@model.get("tape").set({id:window.lastTape})
     #@model.get("tape").fetch()
 
-    @render_normal()
+    #@render_normal()
 
   render_normal: ->
     window.existing_tape = false

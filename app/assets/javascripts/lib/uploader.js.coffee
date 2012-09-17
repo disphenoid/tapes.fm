@@ -6,6 +6,8 @@ class window.Uploader
     data['tapedeck_id'] = Tapesfm.bootstrap._id
     data['track_length'] = Tapesfm.tapedeck.tapedeck.get("tape").get("tracks").length
 
+    $("#tape_upload").hide()
+
     if Tapesfm.bootstrap.active_tape_id
       data['tape_id'] = Tapesfm.bootstrap.active_tape_id
     else
@@ -29,6 +31,10 @@ class window.Uploader
       height            : 40
       width             : 150
       queueID           : "tape_upload"
+      onQueueComplete   : ->
+        $("#tape_upload").hide()
+      onUploadStart   : ->
+        $("#tape_upload").show("slow")
 
   onUploadComplete: (file, data, response) ->
     #alert "complete"

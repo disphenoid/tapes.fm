@@ -9,6 +9,7 @@ class Tapesfm.Views.TapedeckEdit extends Backbone.View
     @model.get("tape").on('change:id', @newTapeMode, this)
   
   saveTape: ->
+    @model.get("tape").trigger("edit_done")
     @model.get("tape").save()
     # @model.get("tape").fetch()
     # @model.set({active_tape_id: window.lastTape})
