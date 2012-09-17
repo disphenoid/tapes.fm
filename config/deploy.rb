@@ -79,6 +79,16 @@ end
 # capistrano's deploy:cleanup doesn't play well with FILTER
 after "deploy", "cleanup"
 after "deploy:migrations", "cleanup"
+after 'deploy:migrations', 'set_rights'
+
+task :set_rights, roles: :resque,:app do
+  
+  run "#{sudo} chmod 777 #{releases_path}/tmp/tracks/"
+  run "#{sudo} chmod 777 #{releases_path}/public/uploads/"
+  run "#{sudo} chmod 777 #{releases_path}/public/uploads/tmp/"
+
+end
+
 task :cleanup, :except => { :no_release => true } do
   count = fetch(:keep_releases, 5).to_i
   
