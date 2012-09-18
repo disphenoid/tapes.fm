@@ -18,8 +18,7 @@ class Tapesfm.Views.TapedeckTape extends Backbone.View
     #@model.get("tape").on('sync', @syncTape, this)
 
     #@model.get("tape").get("tracks").on('add', @render, this)
-    #jQuery ->
-    
+    #jQuery -> 
     @model.get("tape").on('newTrack', @newTape, this)
 
     @model.get("tape").on('change:_id', @render, this)
@@ -99,7 +98,13 @@ class Tapesfm.Views.TapedeckTape extends Backbone.View
 
     $("#tape_scrabber").height(0)
     Tapesfm.trackm.clearTracks()
-    rendertContent = @template(tapedeck: @model)
+    
+    if @model.get("tape").get("tracks").first()
+      color = @model.get("tape").get("tracks").first().get("color")
+    else
+      color = "none"
+
+    rendertContent = @template(tapedeck: @model, first_color: color)
     $(@el).html(rendertContent)
     #$(@el).fadeIn(200)
     #Add Tracks
@@ -115,6 +120,7 @@ class Tapesfm.Views.TapedeckTape extends Backbone.View
       #$('#from_file').hide()
 
     #@mainUploader.setting('buttonText',@model.get("tape").get("id"))
+
     @mainUploader.setTape @model.get("tape").get("_id")
 
     #$("#upload_field").uploadify('settings', "buttonText", @model.get("tape").get("_id"))

@@ -15,6 +15,9 @@
       <div class="element mute" id="mute"><%=@index%></div>
       <div class="element solo" id="solo" data-index="<%=@index%>">S</div>
       <div class="element pan" id="pan">&nbsp;</div>
+      <div class="volume vol" id="pan">
+        <div class="inner">&nbsp;</div>
+      </div>
     </div>
   </div>
 

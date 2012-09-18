@@ -5,7 +5,90 @@
 @import "tools/colors";
 @import "tools/effects";
 
+  #tape_edge.edge_1 {
+  
+    height: 6px;
+    width: 960px;
+    background: red;
+    position: absolute;
+    margin-top: -5px;
+    background: url("/assets/track/edge_1.png");
+    z-index: 9000; 
+  }
+  #tape_edge.edge_2 {
+  
+    height: 6px;
+    width: 960px;
+    background: red;
+    position: absolute;
+    margin-top: -5px;
+    background: url("/assets/track/edge_2.png");
+    z-index: 9000; 
+  }
+  #tape_edge.edge_3 {
+  
+    height: 6px;
+    width: 960px;
+    background: red;
+    position: absolute;
+    margin-top: -5px;
+    background: url("/assets/track/edge_3.png");
+    z-index: 9000; 
+  }
+  #tape_edge.edge_4 {
+  
+    height: 6px;
+    width: 960px;
+    background: red;
+    position: absolute;
+    margin-top: -5px;
+    background: url("/assets/track/edge_4.png");
+    z-index: 9000; 
+  }
+  #tape_edge.edge_5 {
+  
+    height: 6px;
+    width: 960px;
+    background: red;
+    position: absolute;
+    margin-top: -5px;
+    background: url("/assets/track/edge_5.png");
+    z-index: 9000; 
+  }
+  #tape_edge.edge_6 {
+  
+    height: 6px;
+    width: 960px;
+    background: red;
+    position: absolute;
+    margin-top: -5px;
+    background: url("/assets/track/edge_6.png");
+    z-index: 9000; 
+  }
+  #tape_edge.edge_7 {
+  
+    height: 6px;
+    width: 960px;
+    background: red;
+    position: absolute;
+    margin-top: -5px;
+    background: url("/assets/track/edge_7.png");
+    z-index: 9000; 
+  }
+  #tape_edge.edge_8 {
+  
+    height: 6px;
+    width: 960px;
+    background: red;
+    position: absolute;
+    margin-top: -5px;
+    background: url("/assets/track/edge_8.png");
+    z-index: 9000; 
+  }
+
+
   #tape_tracks {
+    @include none_select();
     padding: 0px;
     margin: 0px;    
     clear: both;
@@ -31,7 +114,7 @@
       @include round_bottom(10px);
       
       .track_info {
-        @include round_bottom_left(10px);
+        @include round_bottom_left_soft(10px);
       
       }
 
@@ -44,8 +127,19 @@
 
     .track .track_info.c1 {
       @include c_1_b;
+        .control_set {
+          .title_set {
+            .title { 
+              @include ts_in($c1b);
+            }
+            .sub { 
+             color: $c1b; 
+            }
+          }
+        }
     }
    .track .track_clip_box.c1 {
+
       @include c_1_b;
       .track_loaded {
         @include c_1b_b; 
@@ -61,6 +155,16 @@
 
     .track .track_info.c2 {
       @include c_2_b;
+        .control_set {
+          .title_set {
+            .title { 
+              @include ts_in($c2b);
+            }
+            .sub { 
+             color: $c2b; 
+            }
+          }
+        }
     }
    .track .track_clip_box.c2 {
       @include c_2_b;
@@ -80,6 +184,16 @@
 
     .track .track_info.c3 {
       @include c_3_b;
+        .control_set {
+          .title_set {
+            .title { 
+              @include ts_in($c3b);
+            }
+            .sub { 
+             color: $c3b; 
+            }
+          }
+        }
     }
    .track .track_clip_box.c3 {
       @include c_3_b;
@@ -95,7 +209,19 @@
 
     }
 
-  .track .track_info.c4 { @include c_4_b; }
+  .track .track_info.c4 { @include c_4_b; 
+        .control_set {
+          .title_set {
+            .title { 
+              @include ts_in($c4b);
+            }
+            .sub { 
+             color: $c4b; 
+            }
+          }
+        }  
+  
+  }
   .track .track_clip_box.c4 {
     @include c_4_b;
     .track_loaded {
@@ -110,7 +236,19 @@
 
   }
 
-  .track .track_info.c5 { @include c_5_b; }
+  .track .track_info.c5 { @include c_5_b; 
+        .control_set {
+          .title_set {
+            .title { 
+              @include ts_in($c5b);
+            }
+            .sub { 
+             color: $c5b; 
+            }
+          }
+        }
+  
+  }
   .track .track_clip_box.c5 {
     @include c_5_b;
     .track_loaded {
@@ -125,7 +263,20 @@
 
   }
 
-  .track .track_info.c6 { @include c_6_b; }
+  .track .track_info.c6 { @include c_6_b; 
+
+      .control_set {
+          .title_set {
+            .title { 
+              @include ts_in($c6b);
+            }
+            .sub { 
+             color: $c6b; 
+            }
+          }
+        }
+
+  }
   .track .track_clip_box.c6 {
     @include c_6_b;
     .track_loaded {
@@ -139,7 +290,21 @@
     }
 
   }
-  .track .track_info.c7 { @include c_7_b; }
+  .track .track_info.c7 { @include c_7_b; 
+
+        .control_set {
+          .title_set {
+            .title { 
+              @include ts_in($c7b);
+            }
+            .sub { 
+             color: $c7b; 
+            }
+          }
+        }
+
+
+  }
   .track .track_clip_box.c7 {
     @include c_7_b;
     .track_loaded {
@@ -153,7 +318,21 @@
     }
 
   }
-  .track .track_info.c8 { @include c_8_b; }
+  .track .track_info.c8 { @include c_8_b; 
+  
+
+        .control_set {
+          .title_set {
+            .title { 
+              @include ts_in($c8b);
+            }
+            .sub { 
+             color: $c8b; 
+            }
+          }
+        }
+  
+  }
   .track .track_clip_box.c8 {
     @include c_8_b;
     .track_loaded {
@@ -199,14 +378,14 @@
             .title {
               padding-top: 10px;
               padding-left: 10px; 
-              @include fh_b(14px);
-              @include c_g_4;
+              @include fh_b(12px);
+              color: #FFF;
             }
             .sub {
               padding-top: 3px;
               padding-left: 10px; 
               @include c_g_3;
-              @include fh_b(12px); 
+              @include fh(11px); 
               
             }
           
@@ -217,6 +396,7 @@
             height: 50px;
             padding-left: 10px;
             padding-top: 10px;
+            z-index: 10000;
             .element.t_1 {
             
             
@@ -286,6 +466,38 @@
 
               line-height: 26px;
               text-align: center;
+            
+            }
+            .volume:hover {
+                
+              opacity: 1;
+            }
+            .volume {
+              opacity: 0.5;
+              z-index: 9000;
+              @include round(24px);
+              width: 14px;
+              height: 66px;
+              cursor: pointer;
+              //background: rgba(255,255,255,0.3);
+
+              //border-width: 3px;
+              background-color: rgba(0,0,0,0.05);
+
+              //margin-top: 10px;
+              @include fh_b(13px);
+
+              position: absolute;
+              margin-top: -67px;
+              margin-left: 102px;
+              .inner {
+                height: 66px;
+                width: 14px;
+                position: absolute;
+                @include round(24px);
+                bottom: 0px;
+                background: #FFF;
+              }
             
             }
           }

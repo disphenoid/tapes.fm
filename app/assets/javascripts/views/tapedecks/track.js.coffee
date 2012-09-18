@@ -36,6 +36,11 @@ window.waveform = (data) =>
   $("#track_"+data.id+"_clip").html("")
   waveform = new Waveform({ width: width, interpolate: true,container: document.getElementById("track_"+data.id+"_clip"), data: data.wavedata.left, innerColor: "transparent", outerColor: color })
 
+  # $("#track_"+data.id+"_base").hide()
+  # $("#track_"+data.id+"_loaded").hide()
+  # $("#track_"+data.id+"_base").fadeIn(900)
+  # $("#track_"+data.id+"_loaded").fadeIn(300)
+
   # alert(window.trackColors.length)
   track_count = (Object.keys(window.trackColors).length)
   $("#tape_scrabber").height(85 * track_count)
@@ -47,10 +52,78 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
   className: "track"
 
   initialize: ->
+    
+    
+
   events: ->
     "click .mute" : "muteTrack"
     "click .solo" : "soloTrack"
+    "mousedown .pan" : "panTrack"
+    "mousedown .vol" : "panTrack"
   
+  panTrack: (event) ->
+
+    start_value = event.pageY + document.body.scrollTop
+    end_value = start_value
+    diff = null
+    @setValue = null
+
+    #console.log "START! #{start_value}"
+    #console.log "START! obj #{event.currentTarget.offsetTop + event.currentTarget.offsetHeight + document.body.scrollTop}"
+    Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+
+    $(window).bind "mouseup", (e) =>
+      
+      $(window).unbind "mousemove"
+      $(window).unbind "mouseup"
+      diff = start_value - end_value
+      if diff == 0
+        mousePosButtons = e.pageY + document.body.scrollTop
+        staticValue = window.tools.map(mousePosButtons, event.currentTarget.offsetTop+ event.currentTarget.offsetHeight + document.body.scrollTop, event.currentTarget.offsetTop , 0,  66)
+        console.log staticValue
+        if staticValue > 66
+          staticValue = 66
+        else if staticValue < 0
+          staticValue = 0
+        $(event.currentTarget).find(".inner").height(staticValue)
+        setValue = Math.round(window.tools.map(staticValue,0,66,0,100))
+        id_name = {}
+        id_name["volume_#{@getIndex()}"] = setValue
+        tape = Tapesfm.tapedeck.tapedeck.get("tape")
+        tape.set(id_name)
+        Tapesfm.trackm.volumeTrack(@getIndex(),setValue)
+        
+      #coutput
+      console.log "UP! #{diff/100}"
+
+    $(window).bind "mousemove", (e) =>
+      end_value = e.pageY + document.body.scrollTop
+      diff = start_value - end_value
+      mapValue = window.tools.map(diff/400, 0, 1, 0,  66)
+      currentHeight = $(event.currentTarget).find(".inner").height()
+
+      theVal = currentHeight + Math.round(mapValue)
+      if theVal > 66
+        theVal = 66
+      else if theVal < 0
+        theVal = 0
+
+      $(event.currentTarget).find(".inner").height(theVal)
+      setValue = Math.round(window.tools.map(theVal,0,66,0,100))
+
+      id_name = {}
+      id_name["volume_#{@getIndex()}"] = setValue
+      tape = Tapesfm.tapedeck.tapedeck.get("tape")
+      tape.set(id_name)
+      Tapesfm.trackm.volumeTrack(@getIndex(),setValue)
+
+
+    console.log "SETVALUE = #{@setValue}"
+
+
+
+    
+
   muteTrack: ->
 
     if this.$("#mute").hasClass("active")
@@ -99,12 +172,12 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     
   render: =>
     trackOptions = {}
-    if Tapesfm.tapedeck.tapedeck.get("tape").get("id") == undefined
+    unless Tapesfm.tapedeck.tapedeck.get("tape").get("id") == undefined
       trackOptions.volume = Tapesfm.tapedeck.tapedeck.get("tape").get("volume_#{@getIndex()}")
       trackOptions.mute = Tapesfm.tapedeck.tapedeck.get("tape").get("mute_#{@getIndex()}")
       trackOptions.solo = Tapesfm.tapedeck.tapedeck.get("tape").get("solo_#{@getIndex()}")
       trackOptions.pan = Tapesfm.tapedeck.tapedeck.get("tape").get("pan_#{@getIndex()}")
-     else
+    else
       trackOptions.volume = 100
       trackOptions.mute = false
       trackOptions.solo = false
@@ -136,6 +209,9 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     url = "http://tapes.fm.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.json"
     jQuery.getJSON url+"?callback=?"
     
+
+    this.$(".volume .inner").height(window.tools.map(trackOptions.volume,0,100,0,66))
+
     unless trackOptions.mute
       this.$("#mute").addClass("active")
 

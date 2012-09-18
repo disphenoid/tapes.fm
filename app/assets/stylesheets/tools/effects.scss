@@ -46,6 +46,17 @@
   -border-top-left-radius:                $size;
   border-bottom-left-radius:              0px;
 }
+@mixin round_top_left_soft($size) {
+  -webkit-border-top-left-radius:         $size;
+  -moz-border-radius-topleft:            $size;
+  -border-top-left-radius:                $size;
+}
+
+@mixin round_bottom_left_soft($size) {
+  -webkit-border-bottom-left-radius:     $size;
+  -moz-border-radius-bottomleft:         $size;
+  border-bottom-left-radius:              $size;
+}
 
 @mixin round_bottom_left($size) {
   -webkit-border-top-left-radius:         0px;
@@ -61,4 +72,29 @@
   border-color: $color;
   border-width: $size;
 }
+@mixin bs_in($color){
+  -moz-box-shadow :    0px -1px 1px $color;
+  -webkit-box-shadow: 0px -1px 1px $color;
+  -o-box-shadow:      0px -1px 1px $color;
+  box-shadow:         0px -1px 1px $color;
+}
 
+@mixin bs_out($color){
+  -moz-box-shadow:    0px 1px 1px $color;
+  -webkit-box-shadow: 0px 1px 1px $color;
+  -o-box-shadow:      0px 1px 1px $color;
+  box-shadow:         0px 1px 1px $color;
+}
+
+@mixin ts_out($color){ 
+  text-shadow: $color 0px 1px 0px  
+}
+@mixin ts_in($color){ 
+  text-shadow: $color 0px -1px 0px
+}
+@mixin none_select(){ 
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none; 
+}

@@ -26,6 +26,8 @@
   color: #e0e1e1;
 }
 
+$c_g_1: #666666;
+
 @mixin c_g_1_b {
   background-color: #666666;
 }
@@ -43,14 +45,18 @@
 }
 
 // Red
+$c1: #ff7357;
+$c1b: #cc5c46;
+$c1c: #b64943;
+
 @mixin c_1 {
   color: #ff7357;
 }
 @mixin c_1b {
-  color: #c85049v;
+  color: #cc5c46;
 }
 @mixin c_1c {
-  color: #b64943;
+  color: #e5674e;
 } 
 
 @mixin c_1_b {
@@ -63,14 +69,18 @@
   background-color: #e5674e;
 }
 // Yellow
+$c2: #e6e15f;
+$c2b: #9f9c55;
+$c2c: #aca957;
+
 @mixin c_2 {
-  color: #ff665d;
+  color: #e6e15f;
 }
 @mixin c_2b {
-  color: #c85049v;
+  color: #9f9c55;
 }
 @mixin c_2c {
-  color: #b64943;
+  color: #aca957;
 }
 
 @mixin c_2_b {
@@ -83,14 +93,19 @@
   background-color: #aca957;
 }
 // Green
+$c3: #59d8ad;
+$c3b: #539e84;
+$c3c: #56bb99;
+
+
 @mixin c_3 {
   color: #59d8ad;
 }
 @mixin c_3b {
-  color: #c85049v;
+  color: #539e84;
 }
 @mixin c_3c {
-  color: #b64943;
+  color: #56bb99;
 }
 
 @mixin c_3_b {
@@ -104,14 +119,19 @@
 }
 
 // Blue
+$c4: #36bddd;
+$c4b: #3e8fa2;
+$c4c: #3aa6bf;
+
+
 @mixin c_4 {
-  color: #59d8ad;
+  color: #36bddd;
 }
 @mixin c_4b {
-  color: #c85049v;
+  color: #3e8fa2;
 }
 @mixin c_4c {
-  color: #b64943;
+  color: #3aa6bf;
 }
 
 @mixin c_4_b {
@@ -126,11 +146,16 @@
 
 
 // Blue
+
+$c5: #e96d8e;
+$c5b: #a95f72;
+$c5c: #c96680;
+
 @mixin c_5 {
   color: #e96d8e;
 }
 @mixin c_5b {
-  color: #c85049v;
+  color: #a95f72;
 }
 @mixin c_5c {
   color: #c96680;
@@ -147,6 +172,11 @@
 }
 
 // Blue
+
+$c6: #ffc257;
+$c6b: #b69251;
+$c6c: #dbaa54;
+
 @mixin c_6 {
   color: #ffc257;
 }
@@ -169,6 +199,11 @@
 
 
 // Blue
+
+$c7: #d5c4ab;
+$c7b: #9d9384;
+$c7c: #b9ab97;
+
 @mixin c_7 {
   color: #d5c4ab;
 }
@@ -190,6 +225,11 @@
 }
 
 // Blue
+
+$c8: #539994;
+$c8b: #4f7976;
+$c8c: #518985;
+
 @mixin c_8 {
   color: #539994;
 }

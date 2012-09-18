@@ -78,10 +78,10 @@ end
 
 # capistrano's deploy:cleanup doesn't play well with FILTER
 after "deploy", "cleanup"
+after 'deploy', 'set_rights'
 after "deploy:migrations", "cleanup"
-after 'deploy:migrations', 'set_rights'
 
-task :set_rights, roles: :resque,:app do
+task :set_rights do
   
   run "#{sudo} chmod 777 #{releases_path}/tmp/tracks/"
   run "#{sudo} chmod 777 #{releases_path}/public/uploads/"

@@ -29,7 +29,9 @@ class Trackm
   unsoloTrack: (track_id) ->
     @checkSolo()
     #@sm.unmute(@tracks[track_id-1].id)
-
+  volumeTrack: (track_id,vol) ->
+    @sm.setVolume(@tracks[track_id-1].id,vol)
+    
   checkSolo: ->
     isSolo = false
 
