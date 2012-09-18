@@ -31,7 +31,10 @@ class Trackm
     #@sm.unmute(@tracks[track_id-1].id)
   volumeTrack: (track_id,vol) ->
     @sm.setVolume(@tracks[track_id-1].id,vol)
-    
+
+  panTrack: (track_id,pan) ->
+    @sm.setPan(@tracks[track_id-1].id,pan)
+
   checkSolo: ->
     isSolo = false
 

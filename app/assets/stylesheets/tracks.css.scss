@@ -396,7 +396,7 @@
             height: 50px;
             padding-left: 10px;
             padding-top: 10px;
-            z-index: 10000;
+            z-index: 9100;
             .element.t_1 {
             
             
@@ -414,7 +414,6 @@
               
               border-color: rgba(255,255,255,1);
               color: rgba(255,255,255,1);
-              cursor: pointer;
             
             }
 
@@ -430,13 +429,11 @@
               color: rgba(255,255,255,0);
               background: url("/assets/track/mute_icon_off.png");
               opacity: 0.3;
-              cursor: pointer;
 
             }
             .element.active.solo:hover {
               border-color: rgba(255,255,255,1);
               color: rgba(255,255,255,1);
-              cursor: pointer;
 
             }
 
@@ -444,7 +441,6 @@
             .element.solo:hover {
               border-color: rgba(0,0,0,0.3);
               color: rgba(0,0,0,0.3);
-              cursor: pointer;
 
             }
             .element {
@@ -452,7 +448,7 @@
               width: 24px;
               height: 24px;
               //background: rgba(255,255,255,0.3);
-
+              cursor: pointer;
               border: solid;
               border-width: 3px;
               border-color: rgba(0,0,0,0.1);
@@ -466,6 +462,24 @@
 
               line-height: 26px;
               text-align: center;
+            
+            }
+            .pan {
+              @include round(24px);
+              width: 60px;
+              height: 30px;
+              //background: rgba(255,255,255,0.3);
+              cursor: pointer;
+
+              //margin-top: 10px;
+              //margin-left: 0px;
+              //margin-right: 0px;
+              //display: inline-block;
+              position: absolute;
+              margin-left: -13px;
+              @include fh_b(13px);
+              color: rgba(0,0,0,0.1);
+
             
             }
             .volume:hover {

@@ -49,9 +49,11 @@ window.waveform = (data) =>
 class Tapesfm.Views.TapedeckTrack extends Backbone.View
   template: JST['tapedecks/track']
   tagName: "li"
+  pan_el: null
   className: "track"
 
   initialize: ->
+    
     
     
 
@@ -59,9 +61,9 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     "click .mute" : "muteTrack"
     "click .solo" : "soloTrack"
     "mousedown .pan" : "panTrack"
-    "mousedown .vol" : "panTrack"
+    "mousedown .vol" : "volumeTrack"
   
-  panTrack: (event) ->
+  volumeTrack: (event) ->
 
     start_value = event.pageY + document.body.scrollTop
     end_value = start_value
@@ -99,28 +101,82 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     $(window).bind "mousemove", (e) =>
       end_value = e.pageY + document.body.scrollTop
       diff = start_value - end_value
-      mapValue = window.tools.map(diff/400, 0, 1, 0,  66)
-      currentHeight = $(event.currentTarget).find(".inner").height()
-
-      theVal = currentHeight + Math.round(mapValue)
-      if theVal > 66
-        theVal = 66
-      else if theVal < 0
-        theVal = 0
-
-      $(event.currentTarget).find(".inner").height(theVal)
-      setValue = Math.round(window.tools.map(theVal,0,66,0,100))
-
+      mousePosButtons = e.pageY + document.body.scrollTop
+      staticValue = window.tools.map(mousePosButtons, event.currentTarget.offsetTop+ event.currentTarget.offsetHeight + document.body.scrollTop, event.currentTarget.offsetTop , 0,  66)
+      console.log staticValue
+      if staticValue > 66
+        staticValue = 66
+      else if staticValue < 0
+        staticValue = 0
+      $(event.currentTarget).find(".inner").height(staticValue)
+      setValue = Math.round(window.tools.map(staticValue,0,66,0,100))
       id_name = {}
       id_name["volume_#{@getIndex()}"] = setValue
       tape = Tapesfm.tapedeck.tapedeck.get("tape")
       tape.set(id_name)
       Tapesfm.trackm.volumeTrack(@getIndex(),setValue)
+      
+
+  panTrack: (event) ->
+
+    start_value = event.pageY + document.body.scrollTop
+    end_value = start_value
+    diff = null
+    @setValue = null
+
+    #console.log "START! #{start_value}"
+    #console.log "START! obj #{event.currentTarget.offsetTop + event.currentTarget.offsetHeight + document.body.scrollTop}"
+    Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+
+    $(window).bind "mouseup", (e) =>
+      
+      $(window).unbind "mousemove"
+      $(window).unbind "mouseup"
+      diff = start_value - end_value
+      if false #diff == 0
+        mousePosButtons = e.pageY + document.body.scrollTop
+        staticValue = window.tools.map(mousePosButtons, event.currentTarget.offsetTop+ event.currentTarget.offsetHeight + document.body.scrollTop, event.currentTarget.offsetTop , 0,  66)
+        console.log staticValue
+        if staticValue > 66
+          staticValue = 66
+        else if staticValue < 0
+          staticValue = 0
+        $(event.currentTarget).find(".inner").height(staticValue)
+        setValue = Math.round(window.tools.map(staticValue,0,66,-100,100))
+        id_name = {}
+        id_name["pan_#{@getIndex()}"] = setValue
+        tape = Tapesfm.tapedeck.tapedeck.get("tape")
+        tape.set(id_name)
+        Tapesfm.trackm.volumeTrack(@getIndex(),setValue)
+        
+      #coutput
+      console.log "UP! #{diff/100}"
+
+    $(window).bind "mousemove", (e) =>
+      end_value = e.pageY + document.body.scrollTop
+      
+      diff = start_value - end_value
 
 
-    console.log "SETVALUE = #{@setValue}"
+      mapValue = window.tools.map(diff/5000, 0, 1, 0, 100)
+
+      if mapValue >= 1
+        mapValue = 1
+      else if mapValue < -1
+        mapValue = -1
+
+      @pan_el.setValue(mapValue)
 
 
+
+      setValue = Math.round(window.tools.map(mapValue,-1,1,-100,100))
+
+      id_name = {}
+      id_name["pan_#{@getIndex()}"] = setValue
+      tape = Tapesfm.tapedeck.tapedeck.get("tape")
+      tape.set(id_name)
+
+      Tapesfm.trackm.panTrack(@getIndex(),setValue)
 
     
 
@@ -209,6 +265,8 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     url = "http://tapes.fm.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.json"
     jQuery.getJSON url+"?callback=?"
     
+
+    @pan_el = new window.Pan(this.$("#pan")[0],trackOptions.pan)
 
     this.$(".volume .inner").height(window.tools.map(trackOptions.volume,0,100,0,66))
 

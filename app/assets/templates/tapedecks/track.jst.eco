@@ -14,8 +14,8 @@
     <div class="controller">
       <div class="element mute" id="mute"><%=@index%></div>
       <div class="element solo" id="solo" data-index="<%=@index%>">S</div>
-      <div class="element pan" id="pan">&nbsp;</div>
-      <div class="volume vol" id="pan">
+      <canvas class="pan" id="pan"></canvas>
+      <div class="volume vol" id="volume">
         <div class="inner">&nbsp;</div>
       </div>
     </div>
