@@ -4,8 +4,9 @@ class window.Pan
   ctx: null
   centerX: null
   centerY: null
-  radius: 68
+  radius: 64
   value: 0
+  rawValue: 0
   counterclockwise: false
 
 
@@ -21,18 +22,20 @@ class window.Pan
     @render()
   
    setValue: (value) ->
-     console.log value
      @value = value
      @render()
 
+   setRawValue: (value) ->
+     @rawValue = value
 
    render: ->
 
      #start = 90  #* Math.PI / 180
     #end = ((360*0.5) +90) #* Math.PI / 180
-
+    
 
     @ctx.clearRect(0, 0, @canvas.width, @canvas.height)
+
     right = window.tools.map(@value,-1,1,0.5,2.5)
     if right < 1.51
       right = 1.51
@@ -51,7 +54,7 @@ class window.Pan
     #@ctx.arc(@centerX, @centerY, 5, 0 , 2 * Math.PI, false)
 
     @ctx.lineWidth = 16
-    @ctx.strokeStyle = "rgba(0,0,0,0.1)"
+    @ctx.strokeStyle = "rgba(0,0,0,0.4)"
 
     #@ctx.lineCap = "round"
     @ctx.stroke()
@@ -63,7 +66,7 @@ class window.Pan
     #
     #@ctx.arc(@centerX, @centerY, 5, 0 , 2 * Math.PI, false)
 
-    @ctx.lineWidth = 24
+    @ctx.lineWidth = 16
     @ctx.strokeStyle = "#FFF"
 
     @ctx.lineCap = "round"

@@ -16,9 +16,9 @@ Tapesfm::Application.routes.draw do
   
   match 'login', to: "webapp#login"
 
-  match 'uploader', to: "webapp#uploadtest"
   #match 'upload', to: "webapp#upload"
   post "upload" => "webapp#upload", :defaults => {:format => :json}
+  post "upload_track" => "webapp#upload_track", :defaults => {:format => :json}
 
 
   root to: "webapp#uploadtest"

@@ -1,26 +1,43 @@
 /*
-Uploadify v3.1.0
+UploadiFive
 Copyright (c) 2012 Reactive Apps, Ronnie Garcia
-Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
 */
 
-.uploadify {
-	position: relative;
+@import "tools/colors";
+
+.uploadifive-upload_field {
+
+  color: black;
 }
-.uploadify-button {
-  margin: 0px;
+
+.from_file_zzz:hover {
+
+  @include c_g_3;
+
+}
+
+
+.from_file_zzz {
+  text-align: left !important;
   padding: 0px;
+  margin: 0px;
+  margin-top: -12px;
+  position: relative;
+  //left: -20px;
+  margin-left: 0px;
+  padding-left: -20px;
+  color: #FFF;
+  //padding-right: 90px;
+  cursor: pointer;
+  padding-left: 15px;
+
 
 }
-.uploadify-button.disabled {
-	background-color: #D0D0D0;
-	color: #808080;
-}
-.uploadify-queue {
-	margin-bottom: 1em;
+.uploadifive-button:hover {
+  text-align: left;
 
 }
-.uploadify-queue-item {
+.uploadifive-queue-item {
 	background-color: #F5F5F5;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -31,10 +48,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
-.uploadify-error {
-	background-color: #FDE5DD !important;
-}
-.uploadify-queue-item .cancel a {
+.uploadifive-queue-item .close {
 	background: url('/assets/uploadify-cancel.png') 0 0 no-repeat;
 	float: right;
 	height:	16px;
@@ -43,10 +57,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
   margin-right: -30px;
   margin-top: 20px;
 }
-.uploadify-queue-item.completed {
-	background-color: #E5E5E5;
-}
-.uploadify-progress {
+.uploadifive-queue-item .progress {
 	background-color: #E5E5E5;
 	margin-top: 10px;
 	width: 100%;
@@ -55,13 +66,12 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
   -o-border-radius:       3px;
   border-radius:          3px;
 }
-.uploadify-progress-bar {
-	background-color: #969696;
+.uploadifive-queue-item .progress-bar {	
+  background-color: #969696;
 	height: 10px;
 	width: 1px;
   -webkit-border-radius:  3px;
   -moz-border-radius:     3px;
   -o-border-radius:       3px;
   border-radius:          3px;
-  
 }

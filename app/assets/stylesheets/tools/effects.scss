@@ -66,6 +66,26 @@
   -border-top-left-radius:                0px;
   border-bottom-left-radius:              $size;
 }
+@mixin round_top_right($size) {
+  -webkit-border-top-right-radius:         0px;
+  -webkit-border-bottom-right-radius:      $size;
+  -moz-border-radius-topright:             $size;
+  -moz-border-radius-bottomright:          0px;
+  border-top-right-radius:                 $size;
+  border-bottom-right-radius:              0px;
+}
+@mixin round_bottom_right($size) {
+  -webkit-border-top-right-radius:         0px;
+  -webkit-border-bottom-right-radius:      $size;
+  -moz-border-radius-topright:             0px;
+  -moz-border-radius-bottomright:          $size;
+  border-top-right-radius:                 0px;
+  border-bottom-right-radius:              $size;
+}
+
+
+
+
 
 @mixin border($size,$color){
   border: solid;

@@ -5,6 +5,7 @@
       
       <div class="title">
         <%=@track.get("name")%> 
+        <%#@track.get("id")%> 
       </div>
       <div class="sub">
         <%=@color%>
@@ -38,10 +39,10 @@
 </div>
 
 <div class="add_track_to_track">
-  <div class="track_btn" id="add_track"></div>
-  <div class="track_btn remove_track" id="from_remove" data-id="<%=@track.get("_id")%>"></div>
-  <div class="track_btn" id="from_file"></div>
-  <div class="track_btn" id="from_library"></div>
+  <div class="track_btn add_track" id="add_track"></div>
+  <div class="track_btn remove_track from_remove" id="from_remove" data-id="<%=@track.get("_id")%>"></div>
+  <div class="track_btn from_file" id="from_file_<%=@track.get("_id")%>" data-id="<%=@track.get("_id")%>"></div>
+  <div class="track_btn from_library" id="from_library"></div>
 
 </div>
 </div>

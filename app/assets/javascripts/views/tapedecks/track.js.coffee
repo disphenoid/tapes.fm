@@ -50,6 +50,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
   template: JST['tapedecks/track']
   tagName: "li"
   pan_el: null
+  uploader: null
   className: "track"
 
   initialize: ->
@@ -61,8 +62,19 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     "click .mute" : "muteTrack"
     "click .solo" : "soloTrack"
     "mousedown .pan" : "panTrack"
+    "dblclick .pan" : "panTrackReset"
     "mousedown .vol" : "volumeTrack"
+    "dblclick .vol" : "volumeTrackReset"
   
+  volumeTrackReset: (event) ->
+    $(event.currentTarget).find(".inner").height(66)
+    setValue = 100
+    id_name = {}
+    id_name["volume_#{@getIndex()}"] = setValue
+    tape = Tapesfm.tapedeck.tapedeck.get("tape")
+    tape.set(id_name)
+    Tapesfm.trackm.volumeTrack(@getIndex(),setValue)
+
   volumeTrack: (event) ->
 
     start_value = event.pageY + document.body.scrollTop
@@ -117,6 +129,18 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
       Tapesfm.trackm.volumeTrack(@getIndex(),setValue)
       
 
+  panTrackReset: ->
+
+      @pan_el.setValue(0)
+
+      setValue = 0
+      id_name = {}
+      id_name["pan_#{@getIndex()}"] = setValue
+      tape = Tapesfm.tapedeck.tapedeck.get("tape")
+      tape.set(id_name)
+
+      Tapesfm.trackm.panTrack(@getIndex(),setValue)
+
   panTrack: (event) ->
 
     start_value = event.pageY + document.body.scrollTop
@@ -133,22 +157,10 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
       $(window).unbind "mousemove"
       $(window).unbind "mouseup"
       diff = start_value - end_value
-      if false #diff == 0
-        mousePosButtons = e.pageY + document.body.scrollTop
-        staticValue = window.tools.map(mousePosButtons, event.currentTarget.offsetTop+ event.currentTarget.offsetHeight + document.body.scrollTop, event.currentTarget.offsetTop , 0,  66)
-        console.log staticValue
-        if staticValue > 66
-          staticValue = 66
-        else if staticValue < 0
-          staticValue = 0
-        $(event.currentTarget).find(".inner").height(staticValue)
-        setValue = Math.round(window.tools.map(staticValue,0,66,-100,100))
-        id_name = {}
-        id_name["pan_#{@getIndex()}"] = setValue
-        tape = Tapesfm.tapedeck.tapedeck.get("tape")
-        tape.set(id_name)
-        Tapesfm.trackm.volumeTrack(@getIndex(),setValue)
-        
+      #if false #diff == 0
+
+        #put here code which should be performt on a "click"
+
       #coutput
       console.log "UP! #{diff/100}"
 
@@ -157,14 +169,14 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
       
       diff = start_value - end_value
 
-
-      mapValue = window.tools.map(diff/5000, 0, 1, 0, 100)
+      mapValue = window.tools.map(diff/5000, 0, 1, 0, 100) #+ @pan_el.value
 
       if mapValue >= 1
         mapValue = 1
       else if mapValue < -1
         mapValue = -1
 
+      @pan_el.setRawValue(diff)
       @pan_el.setValue(mapValue)
 
 
@@ -267,9 +279,9 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     
 
     @pan_el = new window.Pan(this.$("#pan")[0],trackOptions.pan)
-
     this.$(".volume .inner").height(window.tools.map(trackOptions.volume,0,100,0,66))
-
+    #@uploader = new window.UploaderTrack(this.$("#from_file")) 
+    
     unless trackOptions.mute
       this.$("#mute").addClass("active")
 

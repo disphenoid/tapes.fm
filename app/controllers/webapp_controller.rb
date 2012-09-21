@@ -26,16 +26,15 @@ class WebappController < ApplicationController
   def login
   end
 
-  def uploadtest
-    @track = Track.new
-  end
+
 
   def upload
 
     newparams = coerce(params)
 
     @track = Track.new(newparams[:track]) 
-    puts "paraaaams #{newparams[:track][:asset].class}"
+    @track.group = @track.id
+    #puts "paraaaams #{newparams[:track][:asset].class}"
     #@track.process_asset_upload = true
 
     @track.color = (params[:track_length].to_i + 1) 
@@ -55,6 +54,31 @@ class WebappController < ApplicationController
 
   end
 
+  def upload_track
+
+    newparams = coerce(params)
+
+    @track = Track.new(newparams[:track]) 
+
+    @old_track = Track.find(params[:old_track])
+    @track.group = @old_track.group 
+    @track.color = @old_track.color 
+    @replace_id = params[:old_track] 
+    
+
+    respond_to do |format|
+      if @track.save 
+        # format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+        # format.js { @picture.id }
+        return  true
+      else
+        #format.html { redirect_to "/" }
+        format.json { render json: @track.errors, status: :unprocessable_entity }
+      end
+    end
+
+
+  end
 
   def resolve_layout
     case action_name

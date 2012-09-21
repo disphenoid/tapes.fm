@@ -5,6 +5,12 @@
 @import "tools/colors";
 @import "tools/effects";
 
+  .from_file {
+    text-align: left;
+    color: green;
+    width: 500px;
+  }  
+
   #tape_edge.edge_1 {
   
     height: 6px;
@@ -179,8 +185,6 @@
         background: url("/assets/tapedeck/processing_bg_2.gif"); 
       }
     }
-
-
 
     .track .track_info.c3 {
       @include c_3_b;
@@ -405,53 +409,63 @@
 
             .element.active {
               
-              border-color: rgba(255,255,255,0.4);
+              background: rgba(255,255,255,0.4);
               color: rgba(255,255,255,0.4);
               
             
             }
             .element.active:hover {
               
-              border-color: rgba(255,255,255,1);
+              background: rgba(255,255,255,1);
               color: rgba(255,255,255,1);
             
             }
 
             .element.active.mute:hover {
-              border-color: rgba(255,255,255,1);
               color: rgba(255,255,255,0);
               opacity: 1;
-              background: url("/assets/track/mute_icon_on.png")
+              background: url("/assets/track/mute_icon_on.png");
+              background-color: rgba(255,255,255,1);
 
             }
             .element.mute:hover {
-              border-color: rgba(0,0,0,1);
               color: rgba(255,255,255,0);
               background: url("/assets/track/mute_icon_off.png");
+              background-color: rgba(0,0,0,1);
               opacity: 0.3;
 
             }
             .element.active.solo:hover {
-              border-color: rgba(255,255,255,1);
+              background: rgba(255,255,255,1);
               color: rgba(255,255,255,1);
 
             }
 
+            .element.solo {
+              @include round_right(24px);
+              padding-right: 4px;
+              margin-right: 4px;
+            }
+            .element.mute {
+              @include round_left(24px);
+              padding-left: 4px;
+            }
+
 
             .element.solo:hover {
-              border-color: rgba(0,0,0,0.3);
+              background: rgba(0,0,0,0.3);
               color: rgba(0,0,0,0.3);
 
             }
             .element {
-              @include round(24px);
-              width: 24px;
-              height: 24px;
-              //background: rgba(255,255,255,0.3);
+              float: left;
+              width: 18px;
+              height: 28px;
+              background: rgba(0,0,0,0.1);
               cursor: pointer;
-              border: solid;
-              border-width: 3px;
-              border-color: rgba(0,0,0,0.1);
+              //border: solid;
+              //border-width: 3px;
+              //border-color: rgba(0,0,0,0.1);
 
               //margin-top: 10px;
               margin-left: 0px;
@@ -460,15 +474,20 @@
               @include fh_b(13px);
               color: rgba(0,0,0,0.1);
 
-              line-height: 26px;
+              line-height: 30px;
               text-align: center;
             
             }
+            .pan:hover {
+              opacity: 1;
+              background: url("/assets/track/pan_icon_on.png") no-repeat center;
+            }
             .pan {
+              opacity: 0.5;
               @include round(24px);
               width: 60px;
               height: 30px;
-              //background: rgba(255,255,255,0.3);
+              background: url("/assets/track/pan_icon_off.png") no-repeat center;
               cursor: pointer;
 
               //margin-top: 10px;
@@ -502,7 +521,7 @@
               @include fh_b(13px);
 
               position: absolute;
-              margin-top: -67px;
+              margin-top: -35px;
               margin-left: 102px;
               .inner {
                 height: 66px;
@@ -523,7 +542,8 @@
         .track_btn#add_track { display: none;}
         .track_btn#from_remove { visibility: visible;}
         .track_btn#from_library { visibility: visible;}
-        .track_btn#from_file { visibility: visible;}
+        .track_btn.from_file { visibility: visible;}
+        .uploadify { visibility: visible;}
         //background: rgba(0,0,0,0.05);
 
 
@@ -539,6 +559,8 @@
           background: #FF00FF;
           width: 35px;
           height: 28px;
+          margin: 0px;
+          padding: 0px;
         
         }
 
@@ -546,37 +568,54 @@
           background-color: rgba(255,255,255,0.2);
         }
 
-        .track_btn#add_track {
+        .track_btn.add_track {
           position: absolute;
           margin-top: 28px; 
           background: url("/assets/track/add_track_icon.png")
 
         }
 
-        .track_btn#from_remove:hover {
+        .track_btn.from_remove:hover {
           background: url("/assets/track/remove_icon_on.png");
           background-color: rgba(0,0,0,0.1);
         }
-        .track_btn#from_remove {
+        .track_btn.from_remove {
+          @include round_top_right(10px);
           visibility: hidden;
           cursor: pointer;
           background: url("/assets/track/remove_icon_off.png")
         }
-        .track_btn#from_file:hover {
+        .uploadifive:hover{
+          background: green;
+          background-color: rgba(0,0,0,0.1);
+          //background: url("/assets/track/from_file_icon_on.png");
+        }
+        .uploadifive{
+          background: green;
+          background-color: rgba(0,0,0,0.1);
+          visibility: hidden;
+          //background: url("/assets/track/from_file_icon_off.png");
+        }
+
+        .track_btn.from_file:hover {
           background: url("/assets/track/from_file_icon_on.png");
           background-color: rgba(0,0,0,0.1);
         }
-        .track_btn#from_file {
+        .track_btn.from_file {
           visibility: hidden;
           cursor: pointer;
-          background: url("/assets/track/from_file_icon_off.png")
+          top: 0px;
+          background: url("/assets/track/from_file_icon_off.png");
+          margin: 0px;
+          padding: 0px;
         }
-        .track_btn#from_library:hover {
+        .track_btn.from_library:hover {
           background: url("/assets/track/from_library_icon_on.png");
           background-color: rgba(0,0,0,0.1);
 
         }
-        .track_btn#from_library {
+        .track_btn.from_library {
+          //@include round_bottom_right(10px);
           visibility: hidden;
           cursor: pointer;
           background: url("/assets/track/from_library_icon_off.png")

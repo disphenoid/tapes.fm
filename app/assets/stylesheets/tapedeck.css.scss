@@ -458,11 +458,12 @@
     #from_file:hover {
       cursor: pointer;
       background: url("/assets/tapedeck/btn_file_on.png") no-repeat right;
-      background-color: #FFF;
-
+      background-color: #FFF; 
+      text-align: left;
       
       .from_file {
         @include c_g_4;
+        text-align: left;
 
       
       }
@@ -491,12 +492,16 @@
       float: left;
       margin-left: -14px;
       width: 164px;
+      text-align: left;
       background: url("/assets/tapedeck/btn_file_off.png") no-repeat right;
       @include c_g_4_b;
 
       @include round_top(5px);
 
     
+    }
+    .track_btn.from_file { 
+      text-align: left;
     }
     .from_file { 
       height: 40px;
