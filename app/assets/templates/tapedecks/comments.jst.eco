@@ -1,0 +1,23 @@
+  <div id="tapedeck_comments_header">
+    <h3> 
+      Comments
+      <%# @model.get("collaborators").last().get("name") %> 
+    </h3>
+  </div> 
+  <% if Tapesfm.user && Tapesfm.user.collaborator: %>
+  <div id="tapedeck_comments_add">
+    <p>
+      <div id="send_button">
+        Post
+      </div>
+      <div class="pic">
+      </div>
+      <label id="comment_label" for="comment_field">Post something about this Tape...</label>
+      <textarea type="text" name="comment_field" id="comment_field" value=""></textarea>
+    </p>        
+  </div> 
+  <% end %>
+
+
+
+

@@ -4,5 +4,6 @@
 @import "tools/colors";
 
 body { 
-  @include c_bg;
+  //@include c_bg;
+  background: #f6f6f6;
 }

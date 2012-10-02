@@ -9,6 +9,7 @@
     text-align: left;
     color: green;
     width: 500px;
+    cursor: pointer;
   }  
 
   #tape_edge.edge_1 {
@@ -19,7 +20,6 @@
     position: absolute;
     margin-top: -5px;
     background: url("/assets/track/edge_1.png");
-    z-index: 9000; 
   }
   #tape_edge.edge_2 {
   
@@ -29,7 +29,6 @@
     position: absolute;
     margin-top: -5px;
     background: url("/assets/track/edge_2.png");
-    z-index: 9000; 
   }
   #tape_edge.edge_3 {
   
@@ -39,7 +38,6 @@
     position: absolute;
     margin-top: -5px;
     background: url("/assets/track/edge_3.png");
-    z-index: 9000; 
   }
   #tape_edge.edge_4 {
   
@@ -49,7 +47,6 @@
     position: absolute;
     margin-top: -5px;
     background: url("/assets/track/edge_4.png");
-    z-index: 9000; 
   }
   #tape_edge.edge_5 {
   
@@ -59,7 +56,6 @@
     position: absolute;
     margin-top: -5px;
     background: url("/assets/track/edge_5.png");
-    z-index: 9000; 
   }
   #tape_edge.edge_6 {
   
@@ -69,7 +65,6 @@
     position: absolute;
     margin-top: -5px;
     background: url("/assets/track/edge_6.png");
-    z-index: 9000; 
   }
   #tape_edge.edge_7 {
   
@@ -79,7 +74,6 @@
     position: absolute;
     margin-top: -5px;
     background: url("/assets/track/edge_7.png");
-    z-index: 9000; 
   }
   #tape_edge.edge_8 {
   
@@ -89,7 +83,6 @@
     position: absolute;
     margin-top: -5px;
     background: url("/assets/track/edge_8.png");
-    z-index: 9000; 
   }
 
 
@@ -363,7 +356,7 @@
         //background: #FF00FF;
         float: left; 
         .user_image {
-          width: 85px;
+          width: 90px;
           height: 85px;
           background: rgba(255,255,255,0.2);
           display: inline-block;
@@ -371,8 +364,9 @@
         
         }
         .control_set {
-          width: 140px;
+          width: 120px;
           height: 85px;
+          padding-left: 5px;
           background: rgba(255,255,255,0.1);
           display: inline-block;
           @include fh_b(12px);
@@ -396,13 +390,14 @@
           }
           .controller {
             //background: #FF00FF;
-            width: 225px;
-            height: 50px;
+            width: 115px;
+            height: 30px;
             padding-left: 10px;
             padding-top: 10px;
             z-index: 9100;
-            .element.t_1 {
+            .element {
             
+              z-index: 9200;
             
             }
 
@@ -410,26 +405,26 @@
             .element.active {
               
               background: rgba(255,255,255,0.4);
-              color: rgba(255,255,255,0.4);
+              color: rgba(0,0,0,0.3);
               
             
             }
             .element.active:hover {
               
               background: rgba(255,255,255,1);
-              color: rgba(255,255,255,1);
+              color: rgba(0,0,0,1);
             
             }
 
             .element.active.mute:hover {
-              color: rgba(255,255,255,0);
+              color: rgba(0,0,0,0.5);
               opacity: 1;
               background: url("/assets/track/mute_icon_on.png");
               background-color: rgba(255,255,255,1);
 
             }
             .element.mute:hover {
-              color: rgba(255,255,255,0);
+              color: rgba(255,255,255,.5);
               background: url("/assets/track/mute_icon_off.png");
               background-color: rgba(0,0,0,1);
               opacity: 0.3;
@@ -437,29 +432,37 @@
             }
             .element.active.solo:hover {
               background: rgba(255,255,255,1);
-              color: rgba(255,255,255,1);
+              color: rgba(0,0,0,0.5);
 
+            }
+            .element.solo.active {
+              @include round_right(24px);
+              padding-right: 4px;
+              margin-right: 4px;
+              color: rgba(0,0,0,0.3);
             }
 
             .element.solo {
               @include round_right(24px);
               padding-right: 4px;
               margin-right: 4px;
+              color: rgba(255,255,255,0.3);
             }
             .element.mute {
               @include round_left(24px);
               padding-left: 4px;
+              color: rgba(0,0,0,0.3);
             }
 
 
             .element.solo:hover {
               background: rgba(0,0,0,0.3);
-              color: rgba(0,0,0,0.3);
+              color: rgba(255,255,255,0.3);
 
             }
             .element {
               float: left;
-              width: 18px;
+              width: 11px;
               height: 28px;
               background: rgba(0,0,0,0.1);
               cursor: pointer;
@@ -471,11 +474,11 @@
               margin-left: 0px;
               margin-right: 0px;
               display: inline-block;
-              @include fh_b(13px);
+              @include fh_b(11px);
               color: rgba(0,0,0,0.1);
-
               line-height: 30px;
               text-align: center;
+              z-index: 9500;
             
             }
             .pan:hover {
@@ -483,9 +486,9 @@
               background: url("/assets/track/pan_icon_on.png") no-repeat center;
             }
             .pan {
-              opacity: 0.5;
+              opacity: 0.3;
               @include round(24px);
-              width: 60px;
+              width: 30px;
               height: 30px;
               background: url("/assets/track/pan_icon_off.png") no-repeat center;
               cursor: pointer;
@@ -495,7 +498,7 @@
               //margin-right: 0px;
               //display: inline-block;
               position: absolute;
-              margin-left: -13px;
+              //margin-left: -13px;
               @include fh_b(13px);
               color: rgba(0,0,0,0.1);
 
@@ -506,7 +509,7 @@
               opacity: 1;
             }
             .volume {
-              opacity: 0.5;
+              opacity: 0.3;
               z-index: 9000;
               @include round(24px);
               width: 14px;
@@ -522,7 +525,7 @@
 
               position: absolute;
               margin-top: -35px;
-              margin-left: 102px;
+              margin-left: 90px;
               .inner {
                 height: 66px;
                 width: 14px;

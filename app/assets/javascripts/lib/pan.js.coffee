@@ -16,8 +16,16 @@ class window.Pan
     #@canvas.height = "30px"
     @ctx = canvas.getContext("2d")
     @value = window.tools.map(value,-100,100,-1,1)
-    @centerX = canvas.width / 2
-    @centerY = canvas.height / 2
+
+    
+    # @canvas.height = 15
+    # @canvas.style.height = "30px"
+
+    # @canvas.width = 15
+    # @canvas.style.width = "30px"
+
+    @centerX = @canvas.width / 2
+    @centerY = @canvas.height / 2
 
     @render()
   

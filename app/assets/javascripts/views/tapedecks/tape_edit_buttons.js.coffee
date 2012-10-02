@@ -5,14 +5,58 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
     "click .remove_tape_button" : "removeTape"
     "click .edit_tape_button" : "editTape"
     "click .undo_tape_button" : "undoTape"
+    "click .ctrl_buttons#plus" : "plusBPM"
+    "click .ctrl_buttons#minus" : "minusBPM"
+    "submit form" : "changeBPM"
 
   initialize: ->
     #@model.get("tape").on('change:_id', @render, this)
     #@model.get("tape").on('edit', @render, this)
-    @model.get("tape").on('edit', @render_undo, this)
-    @model.get("tape").on('new', @render_undo, this)
-    @model.get("tape").on('edit_done', @render_normal, this)
+    if Tapesfm.user
+      @model.get("tape").on('edit', @render_undo, this)
+      @model.get("tape").on('new', @render_undo, this)
+      @model.get("tape").on('edit_done', @render_normal, this)
+  changeBPM: (e) ->
+
+    e.preventDefault()
     
+    val = $("#bpm_value").val()
+    @model.get("tape").set({bpm:val})
+    $("#bpm_value").val(val)
+    if Tapesfm.user
+      unless window.existing_tape
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+        Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
+      else
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+    
+
+  plusBPM: (e) ->
+
+    val = $("#bpm_value").val()
+    val = Number(val) + 1
+    @model.get("tape").set({bpm:val})
+    $("#bpm_value").val(val)
+    if Tapesfm.user
+      unless window.existing_tape
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+        Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
+      else
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+    
+  minusBPM: (e) ->
+   
+    val = $("#bpm_value").val()
+    val = Number(val) - 1
+    @model.get("tape").set({bpm:val})
+    $("#bpm_value").val(val)
+    if Tapesfm.user
+      unless window.existing_tape
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+        Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
+      else
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+
   editTape: (tape) ->
     window.existing_tape = true
     window.lastTape_obj = @model.get("tape").attributes
@@ -29,12 +73,16 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
       @model.get("versions").remove(tape_id)
       @model.get("versions").trigger("reset")
       @model.set({active_tape_id: @model.get("versions").first().get("id")})
+      @model.get("tape").trigger("edit_done")
 
   undoTape: (tape) ->
     # undoID = $(tape.currentTarget).data("id")
     #window.lastTape = undoID
 
     window.existing_tape = false
+    $("#tape_save_hint_box").removeClass("edit")
+    $("#tape_save_button").removeClass("edit")
+    $("#tape_save_hint").html(Tapesfm.language.new_hint)
     
     @model.get("tape").trigger("edit_done")
 

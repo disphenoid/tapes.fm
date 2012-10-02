@@ -64,6 +64,7 @@ class SoundUploader < CarrierWave::Uploader::Base
     model.sample_rate = wave.sample_rate
     model.channels = wave.channels
     model.name = File.basename(file.filename, '.*')
+    model.file_name = File.basename(file.filename, '.*')
     puts "########## duration = #{(wave.duration)}"
 
     

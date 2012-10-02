@@ -1,0 +1,5 @@
+<li class="collaborator" id="<%= @model.get("id")%>" > 
+  <div class="pic"></div>
+  <div class="remove_collaborator" data-id="<%= @model.get('id')%>">x</div>
+  <%= @model.get("name")%>
+</li>

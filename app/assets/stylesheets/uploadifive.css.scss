@@ -8,6 +8,7 @@ Copyright (c) 2012 Reactive Apps, Ronnie Garcia
 .uploadifive-upload_field {
 
   color: black;
+  cursor: pointer !important;
 }
 
 .from_file_zzz:hover {
@@ -28,17 +29,17 @@ Copyright (c) 2012 Reactive Apps, Ronnie Garcia
   padding-left: -20px;
   color: #FFF;
   //padding-right: 90px;
-  cursor: pointer;
   padding-left: 15px;
+  cursor: pointer !important;
 
 
 }
 .uploadifive-button:hover {
   text-align: left;
+  cursor: pointer !important;
 
 }
 .uploadifive-queue-item {
-	background-color: #F5F5F5;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;

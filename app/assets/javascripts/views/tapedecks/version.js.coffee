@@ -9,6 +9,8 @@ class Tapesfm.Views.TapedeckVersion extends Backbone.View
   render: ->
     rendertContent = @template(model: @model)
     $(@el).html(rendertContent)
+    $(@el).find(".date").timeago()
+
     this
 
 

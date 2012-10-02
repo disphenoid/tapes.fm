@@ -1,13 +1,14 @@
 class Tape
   include Mongoid::Document
   include Mongoid::Timestamps
-  default_scope order_by( [[ :created_at, :desc ]])
+  #default_scope order_by( [[ :created_at, :desc ]])
+  default_scope desc(:created_at)
   #embedded_in :track
 
 
   belongs_to :user
   belongs_to :tapedeck
-  #has_many :tapedecks
+  has_many :comments
   #has_many :tracks
 
   #belongs_to :tape, :foreign_key => :active_tape_id

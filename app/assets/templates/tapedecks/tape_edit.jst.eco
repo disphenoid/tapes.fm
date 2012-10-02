@@ -1,7 +1,42 @@
+
+
+
 <% unless @edit_mode: %>
-  <li class="edit_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>"></li>
-  <li class="remove_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>"></li>
-  <li class="star_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>"></li>
+
+  <% if Tapesfm.user && Tapesfm.user.collaborator && Tapesfm.user._id == @model.get("tape").get("user_id"): %>
+    
+    <li class="edit_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>"></li>
+    <li class="remove_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>"></li>
+  <% end %>
+    <li class="star_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>"></li>
+    <li class="bpm_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>">
+
+    <form> 
+      <input type="text" name="bpm_value" id="bpm_value" value="<%=@model.get("tape").get("bpm")%>"></input>
+    </form> 
+
+
+      <div id="bpm_ctrl">
+        <div id="plus" class="ctrl_buttons"></div>
+        <div id="minus" class="ctrl_buttons"> </div>
+      </div>
+    </li>
+
+
 <% else: %>
   <li class="undo_tape_button edit_button" data-id="<%=window.lastTape%>"></li>
+  <li class="remove_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>"></li>
+  <li class="star_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>"></li>
+    <li class="bpm_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>">
+
+    <form> 
+      <input type="text" name="bpm_value" id="bpm_value" value="<%=@model.get("tape").get("bpm")%>"></input>
+    </form> 
+
+
+      <div id="bpm_ctrl">
+        <div id="plus" class="ctrl_buttons"></div>
+        <div id="minus" class="ctrl_buttons"> </div>
+      </div>
+    </li>
 <% end %>

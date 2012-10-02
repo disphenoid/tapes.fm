@@ -1,0 +1,18 @@
+      <div id="tapedeck_collaborators_header">
+        <h3> 
+          Working on this Tape
+          <%# @model.get("collaborators").last().get("name") %> 
+        </h3>
+      </div> 
+        <div id="tapedeck_invite_add">
+          <p>
+            <div id="invite_send_button">
+              Invite
+            </div>
+            <div class="pic">
+            </div>
+            <label id="invite_label" for="invite_field">Name or email...</label>
+            <input type="text" name="invite_field" id="invite_field" value=""></textarea>
+          </p>        
+      </div> 
+

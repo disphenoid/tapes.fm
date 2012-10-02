@@ -2,17 +2,30 @@ Tapesfm::Application.routes.draw do
   #get "users", :to => "users#index"
   mount Resque::Server, :at => "/resque"
 
+  #devise_for :users
+  devise_for :users, :skip => [:sessions]
+  
+  as :user do
+  get 'login' => 'devise/sessions#new', :as => :new_user_session
+  post 'login' => 'devise/sessions#create', :as => :user_session
+  delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+  get 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
+
   scope "api" do
-    devise_for :users
     resources :tapedeck
     resources :tapes
     resources :tracks
     resources :versions
+    resources :collaborators
+    resources :comments
+    resources :invites
   end
 
   match 'tapedeck/:id', to: "webapp#tapedeck"
   match 'tapedeck', to: "webapp#tapedeck"
   match 'tapedeck/*path', to: "webapp#tapedeck"
+  match 'download/:id', to: "webapp#download"
   
   match 'login', to: "webapp#login"
 

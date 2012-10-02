@@ -7,18 +7,19 @@
         <%=@track.get("name")%> 
         <%#@track.get("id")%> 
       </div>
-      <div class="sub">
-        <%=@color%>
+      <div class="sub" title="<%= @track.get("created_at")%>">
+        <%=@track.get("created_at")%>
       </div>
 
     </div>
     <div class="controller">
       <div class="element mute" id="mute"><%=@index%></div>
       <div class="element solo" id="solo" data-index="<%=@index%>">S</div>
-      <canvas class="pan" id="pan"></canvas>
+      <canvas class="pan" id="pan" width=150 > </canvas>
       <div class="volume vol" id="volume">
         <div class="inner">&nbsp;</div>
       </div>
+
     </div>
   </div>
 
@@ -38,6 +39,7 @@
 
 </div>
 
+<% if Tapesfm.user: %>
 <div class="add_track_to_track">
   <div class="track_btn add_track" id="add_track"></div>
   <div class="track_btn remove_track from_remove" id="from_remove" data-id="<%=@track.get("_id")%>"></div>
@@ -45,6 +47,8 @@
   <div class="track_btn from_library" id="from_library"></div>
 
 </div>
+<% end %>
+
 </div>
 
 

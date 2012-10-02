@@ -10,6 +10,7 @@ class Track
   #belongs_to :track 
   
   field :name, :type => String
+  field :file_name, :type => String
   field :version, :type => Integer 
   field :instrument, :type => String
   field :asset, :type => String

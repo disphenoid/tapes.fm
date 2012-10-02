@@ -1,6 +1,11 @@
 <li class="version" id="current_version">
-  <div class="delete"></div> 
+  <div class="version_box_2"> 
+  <% if @tape.get("favorite"): %>
+  <div class="fav"></div> 
+  <% end %>
   <div class="title"><%= @tape.get("name") %></div>
-  <div class="date"><%= @tape.get("created_at") %></div>
+  <div class="user" ><%= @tape.get("user_name") %></div>
+  <div class="date" title="<%= @tape.get("created_at")%>"><%= @tape.get("created_at") %></div>
+  </div>
 </li>
 

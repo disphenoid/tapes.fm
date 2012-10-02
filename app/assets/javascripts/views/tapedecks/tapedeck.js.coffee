@@ -38,7 +38,7 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
   keyown: (e) ->
     console.log "playstate= #{Tapesfm.trackm.tracks[0].playState
 }"
-    if e.keyCode == 32 && !$("input").is(":focus")
+    if e.keyCode == 32 && !$("input, textarea").is(":focus")
       if !Tapesfm.trackm.leadTrack.playState || Tapesfm.trackm.leadTrack.paused
         $("#play").hide()
         $("#resume").hide()
@@ -97,6 +97,6 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
 
     
   render: ->
-    rendertContent = @template()
+    rendertContent = @template(model: @model)
     $(@el).html(rendertContent)
     this

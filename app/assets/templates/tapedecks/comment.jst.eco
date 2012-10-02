@@ -1,0 +1,35 @@
+    <li class="comment" id="<%= @model.get("id")%>"> 
+        <div class="delete"  data-id="<%= @model.get("id")%>"> </div>
+      <div class="pic">
+      </div>
+      <div class="body">
+        <span class="user_name">
+          <%= @model.get("user_name")%>
+        </span>
+        <span class="normal">
+        on
+        </span>
+        <span class="tape_name" data-id="<%= @model.get("tape_id")%>">
+          <%= @model.get("tape_name")%>
+        </span>
+        <span class="normal">
+        at
+        </span>
+        <span class="tape_time" data-id="<%= @model.get("tape_id")%>">
+          03:22
+          <%= @model.get("timestamp")%>
+        </span>
+        <br />
+        <br />
+
+
+        <span class="text">
+          <%= @model.get("body")%>
+        </span>
+        <div class="date" title="<%= @model.get("created_at")%>">
+         <%= @model.get("created_at")%>
+        </div>
+      </div>
+
+    </li> 
+

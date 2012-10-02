@@ -1,23 +1,25 @@
 class window.Uploader
   id: "#upload_field"
   constructor: (id,tape_id) ->
+    $("#tape_upload").hide()
+    data = {}
 
-    data = Tapesfm.crsf.uploadify_script_data
+    data.session_key = Tapesfm.crsf.uploadify_script_data._tapesfm_session
+    data.authenticity_token = encodeURI(Tapesfm.crsf.uploadify_script_data.authenticity_token)
+    
     data['tapedeck_id'] = Tapesfm.bootstrap._id
     data['track_length'] = Tapesfm.tapedeck.tapedeck.get("tape").get("tracks").length
 
-    $("#tape_upload").hide()
 
-    if Tapesfm.bootstrap.active_tape_id
-      data['tape_id'] = Tapesfm.bootstrap.active_tape_id
-    else
-      data['tape_id'] = "0"
+    # if Tapesfm.bootstrap.active_tape_id
+    #   data['tape_id'] = Tapesfm.bootstrap.active_tape_id
+    # else
+    #   data['tape_id'] = "0"
 
     $(id).uploadifive
 
       uploadScript      : '/upload'
-      buttonText        : 'From File'
-      buttonCursor      : 'hand'
+      buttonText        : 'Upload File'
       auto              : true
       multi             : true
       removeCompleted   : true
@@ -56,10 +58,17 @@ class window.Uploader
   setTape: (id) ->
     
     data = {}
-    data = Tapesfm.crsf.uploadify_script_data
+
+    data.session_key = Tapesfm.crsf.uploadify_script_data._tapesfm_session
+    data.authenticity_token = encodeURI(Tapesfm.crsf.uploadify_script_data.authenticity_token)
+    #data.csrf_token = authenticity_token
+    #data.session_key = authenticity_token
+
     data['tape_id'] = id
     data['tapedeck_id'] = Tapesfm.bootstrap._id
     data['track_length'] = Tapesfm.tapedeck.tapedeck.get("tape").get("tracks").length
+    
+
     #data['color'] = (Number(Tapesfm.tapedeck.tapedeck.get("tape").get("tracks").length) + 1)
 
     #$("#upload_field").uploadify('settings', "formData", data)
@@ -68,8 +77,7 @@ class window.Uploader
     $("#upload_field").uploadifive
 
       uploadScript          : '/upload'
-      buttonText        : 'From File'
-      buttonCursor      : 'hand'
+      buttonText        : 'Upload File'
       auto              : true
       multi             : true
       removeCompleted   : true

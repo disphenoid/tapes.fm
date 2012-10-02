@@ -6,23 +6,62 @@ require 'fileutils'
 class WebappController < ApplicationController
   layout :resolve_layout
   #skip_before_filter :verify_authenticity_token
+  protect_from_forgery :except => [:upload, :upload_track]
 
   def index
   end
+  
+  def download 
+    
+    expires = Time.now + 5.minutes
+    
+    track = Track.find(params[:id])
+
+    redirect_to s3_signed_url("tapes.fm", "tracks/#{params[:id]}/#{params[:id]}.#{params[:type]}",'GET',nil,nil, {'response-content-disposition' => "attachment; filename=#{track.name}.#{params[:type]}"})
+
+
+    #url += "AWSAccessKeyId=#{"AKIAJLUDMFIAAGNUJOIQ"}&Expires=#{expires.to_i}&Signature=#{CGI.escape(signature)}";
+    #return url
+
+
+  end
+
+
   def tapedeck 
     @track = Track.new
 
     if params[:id]
-      @tapedeck = Tapedeck.find(params[:id]) #.to_json(:include => "tapes",:include => "tape", :include => {"tape" => {:include => "tracks"}}) 
+      @tapedeck = Tapedeck.find(params[:id]) 
 
-    @json = render_to_string( template: 'tapedeck/show.json.jbuilder', locals: { tapedeck: @tapedeck}) 
-    respond_to do |format|
-        format.html
-    end
+      @json = render_to_string( template: 'tapedeck/show.json.jbuilder', locals: { tapedeck: @tapedeck}) 
+      respond_to do |format|
+          format.html
+      end
     end
 
 
   end
+
+
+  def s3_signed_url(bucket, pathname, verb, content_md5=nil, content_type=nil, response_headers = {})
+    expires = Time.now + 5.minutes
+    response_headers_canonicalized = response_headers.sort_by{|key, value| key.downcase}.collect{|key, value| "#{key}=#{value}"}.join("&").to_s
+    string_to_sign = "#{verb.upcase}\n#{content_md5}\n#{content_type}\n#{expires.to_i}\n/#{bucket}/#{pathname}?#{response_headers_canonicalized}"
+
+      digest = OpenSSL::Digest::Digest.new('sha1')
+    hmac = OpenSSL::HMAC.digest(digest, "cfuOIImdhf0xSfydV2c6h2tstQKi1oY/inJ6sAJ1", string_to_sign)
+    signature = Base64.encode64(hmac).chomp
+    url = "http://s3.amazonaws.com/#{bucket}/#{pathname}?"
+    if response_headers.count > 0
+      response_headers.each do |key, value|
+        url += "#{key}=#{value}&"
+      end
+    end
+    url += "AWSAccessKeyId=#{"AKIAJLUDMFIAAGNUJOIQ"}&Expires=#{expires.to_i}&Signature=#{CGI.escape(signature)}";
+    return url
+  end
+
+
   def login
   end
 
@@ -30,53 +69,63 @@ class WebappController < ApplicationController
 
   def upload
 
-    newparams = coerce(params)
+    @tapedeck = Tapedeck.find(params[:tapedeck_id])
+    if current_user && (@tapedeck.collaborator?(current_user))
+      newparams = coerce(params)
 
-    @track = Track.new(newparams[:track]) 
-    @track.group = @track.id
-    #puts "paraaaams #{newparams[:track][:asset].class}"
-    #@track.process_asset_upload = true
+      @track = Track.new(newparams[:track]) 
+      @track.group = @track.id
+      @track.user_id = current_user.id
 
-    @track.color = (params[:track_length].to_i + 1) 
-    
+      @track.color = (params[:track_length].to_i + 1) 
 
-    respond_to do |format|
-      if @track.save 
-        # format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
-        # format.js { @picture.id }
-        return  true
-      else
-        #format.html { redirect_to "/" }
-        format.json { render json: @track.errors, status: :unprocessable_entity }
+      #puts "paraaaams #{newparams[:track][:asset].class}"
+      #@track.process_asset_upload = true
+
+      
+
+      respond_to do |format|
+        if @track.save 
+          # format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+          # format.js { @picture.id }
+          return  true
+        else
+          #format.html { redirect_to "/" }
+          format.json { render json: @track.errors, status: :unprocessable_entity }
+        end
       end
-    end
 
+    end
 
   end
 
   def upload_track
 
-    newparams = coerce(params)
+    @tapedeck = Tapedeck.find(params[:tapedeck_id])
 
-    @track = Track.new(newparams[:track]) 
+    if current_user && (@tapedeck.collaborator?(current_user))
+      newparams = coerce(params)
 
-    @old_track = Track.find(params[:old_track])
-    @track.group = @old_track.group 
-    @track.color = @old_track.color 
-    @replace_id = params[:old_track] 
-    
+      @track = Track.new(newparams[:track]) 
 
-    respond_to do |format|
-      if @track.save 
-        # format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
-        # format.js { @picture.id }
-        return  true
-      else
-        #format.html { redirect_to "/" }
-        format.json { render json: @track.errors, status: :unprocessable_entity }
+      @old_track = Track.find(params[:old_track])
+      @track.user_id = current_user.id
+      @track.group = @old_track.group 
+      @track.color = @old_track.color 
+      @replace_id = params[:old_track] 
+      
+
+      respond_to do |format|
+        if @track.save 
+          # format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+          # format.js { @picture.id }
+          return  true
+        else
+          #format.html { redirect_to "/" }
+          format.json { render json: @track.errors, status: :unprocessable_entity }
+        end
       end
     end
-
 
   end
 

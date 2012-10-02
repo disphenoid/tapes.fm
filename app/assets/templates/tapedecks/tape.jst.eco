@@ -28,7 +28,8 @@
 
   <div id="tape_scrabber">
     <div id="scrabber_label">
-    00:00
+    <div id="scrabber_value">00:00</div>
+    <div id="scrabber_snip"></div>
     </div>
     <div id="scrabber_position"></div>
     <div id="scrabber_pointer"></div>
@@ -40,7 +41,31 @@
   <ul id="tape_tracks"> 
      
   </ul>
+
   <ul id="tape_comments">
+    <li class="tape_comment marker mm" id="comment_marker" > 
+      <div id="comment_hint_box">
+        <div id="comment_hint_sub">
+          <div id="comment_hint"> 
+        <div id="send_tape_button">
+          Post
+        </div>
+
+        <label id="comment_tape_label" for="comment_tape_field">Post something about this Tape...</label>
+        <textarea type="text" name="comment_tape_field" id="comment_tape_field" value=""></textarea>
+
+         </div> <div id="comment_hint_arrow">&nbsp;<div>
+        </div> 
+        </div> 
+    </li>
+
+
+
+
+
+
+
+
+    
   </ul>
-  <div id="tape_spacer">
-  </div>
+

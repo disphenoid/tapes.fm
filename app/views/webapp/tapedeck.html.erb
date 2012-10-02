@@ -2,7 +2,16 @@
 
 
 <script>
-  Tapesfm.bootstrap = <%= raw @json %>
+  Tapesfm.bootstrap = <%= raw @json %>;
+  Tapesfm.language = {edit_hint: '<span class="hint_bold"> Overwrites </span> existing <span class="hint_bold"> </span> Tape Version </span> ', new_hint: '<span class="hint_bold"> Creates </span> a new Tape Version </span> '};
+  
+
+  Tapesfm.user = <%= raw current_user.to_json %>;
+  <% if current_user %>
+  Tapesfm.user.collaborator = <%= raw (@tapedeck.collaborator?(current_user)).to_json %>;
+  <% else %>
+  <% end %>
+
 
   <% key = Rails.application.config.session_options[:key] %>
 

@@ -1,0 +1,7 @@
+<a href="/download/<%= @model.get("id") %>?type=mp3" target="_self"> 
+<div class="title"> <%= @model.get("name")%>.mp3 </div> 
+</a>
+
+<a href="/download/<%= @model.get("id") %>?type=wav" target="_self"> 
+<div class="wav"> .wav </div>
+</a>

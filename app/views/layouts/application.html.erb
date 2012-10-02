@@ -42,13 +42,17 @@
           
         </div>
 
-        <%= current_user.email unless current_user.blank?%>
 
       <div id="user_login">
-        <a href="#">Login</a>
+      <% if current_user %>
+        <%= current_user.name unless current_user.blank?%>
+        <%= current_user.email unless current_user.blank?%>
+      <% else %>
+        <a href="/login">Login</a>
         or
-        <a href="#">Join</a>
+        <a href="/users/sign_up">Join</a>
         for free 
+      <% end %>
       </div>
       </div>
     </div>

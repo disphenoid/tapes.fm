@@ -1,3 +1,5 @@
-json.(versions) do |json, version|
-  json.(version, :name, :_id, :id, :created_at)
-end
+json.(version, :name, :_id, :id, :created_at)
+json.user_name version.user.name
+json.user_id version.user.id
+json.favorite false
+

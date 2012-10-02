@@ -81,6 +81,7 @@ class Tapesfm.Views.TapedeckVersions extends Backbone.View
     rendertContent = @template(tape: @model.get("tape"))
     $(@el).html(rendertContent)
     $('#tapedeck_versions').html("")
+    $(@el).find(".date").timeago()
     @model.get("versions").each @appendVersion
     
     #editView = new Tapesfm.Views.TapedeckEdit(model: @model)

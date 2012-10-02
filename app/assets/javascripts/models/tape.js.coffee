@@ -8,7 +8,9 @@ class Tapesfm.Models.Tape extends Backbone.Model
     if _.isArray response
       _.each response, (obj) ->
         obj.tracks = new Tapesfm.Collections.Tracks obj.tracks
+        obj.comments = new Tapesfm.Collections.Comments obj.comments
     else
       response.tracks = new Tapesfm.Collections.Tracks response.tracks
+      response.comments = new Tapesfm.Collections.Comments response.comments
 
     return response

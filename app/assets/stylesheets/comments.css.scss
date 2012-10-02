@@ -1,7 +1,14 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
+#tape_comments:hover {
+  #comment_marker {
+    display: inline;
+  }
+}
 
 #tape_comments {
 
@@ -9,15 +16,608 @@
   margin: 0px;
   padding: 0px;
   list-style-type: none;
-  background: url("/assets/tapedeck/bottom_shadow.png");
+  background: url("/assets/tapedeck/bottom_shadow.png") no-repeat center top;
+  margin-left: 225px;
+  width: 700px;
+
+  .tape_comment:hover {
+    #comment_hint_box {
+      display: inline;
+    }
+
+  }
+  #comment_marker {
+    display: none;
+    margin-top: -24px;
+    width: 1px;
+    background: none;
+    #comment_hint_box {
+      display: inline;
+      bottom: 10px;
+      width: 40px;
+      margin-left: -215px;
+      #comment_hint_sub {
+      
+        width: 213px;
+        margin-left: 108px;
+        #comment_hint {
+        text-align: center;
+        padding: 5px 5px;
+        text-align: left;
+        .hint_bold {
+          
+          @include fh_b(12px);
+          @include c_g_1; 
+        
+        }
+
+
+      #send_tape_button:hover {
+
+          @include c_3_b;
+          @include c_g_1;
+          @include btn($c3c);
+
+        
+      }
+      #send_tape_button {
+          @include c_g_1_b;
+          color: white;
+          padding: 8px 12px;
+          display: none;
+          @include round(3px);
+          @include fh_b(12px);
+          position: absolute;
+          margin-left: 148px; 
+          margin-top: 4px;
+          z-index: 6000;
+          cursor: pointer;
+          @include btn($c_g_2);
+          //opacity: 0;
+      }
+      #comment_tape_label {
+        width: 180px;
+        //margin-left: 65px;
+        border: none;
+        outline: none;
+        @include fh_b(12px);
+        @include round(5px);
+        @include c_g_2;
+        padding: 11px 10px; 
+        padding-top: 12px;
+      
+      }
+      #comment_tape_field {
+        width: 180px;
+        //margin-left: 65px;
+        border-color: #e9e9e9;
+        border-style: solid;
+        border-width: 1px;
+        outline: none;
+        @include fh_b(12px);
+        @include round(5px);
+        @include c_g_5_b;
+        background-color: #FFF;
+        @include c_g_1;
+        padding: 10px 10px;
+        //padding-top: 12px;
+        padding-bottom: 0px;
+        //padding-right: 80px;
+        height: 24px;
+
+      
+      }
+
+      #comment_field:focus {
+        //height: 60px;
+
+      
+      }  
+
+    }
+
+
+        
+    }
+  
+  }
+}
+  .tape_comment {
+    width: 25px;
+    height: 25px;
+    background: #FFFF00;
+    color: white;
+    position: absolute;
+    @include c_g_2_b;
+
+
+    #comment_hint_box {
+      display: none;
+      position:absolute;
+      bottom: 34px;
+      //left: -50%;
+      z-index: 9000;
+      width: 240px;
+      margin-left: -125px;
+      //max-width: 230px;
+      
+
+      #comment_hint_sub {
+        //max-width: 200px;
+        display: inline-block;
+        position:relative;
+        //left: -50%;
+        @include fh(12px);
+        @include round(5px);
+        background: green;
+        @include c_g_1_b;
+        text-align: center;
+
+        #comment_hint {
+          padding: 10px 15px;
+          line-height: 18px;
+          text-align: left;
+          width: 240px;
+          .hint_bold {
+            
+            @include fh_b(12px);
+            @include c_g_1; 
+          
+          }
+        }
+        
+
+        #comment_hint_arrow {
+          text-align: center;
+          position: absolute;
+          left: 50%;
+          width: 200px;
+          margin-left: -100px;
+          margin-top: 0px;
+          height: 10px;
+
+          z-index: 6000;
+          cursor: pointer;
+          //padding: 1px 10px;
+ 
+          background: url("/assets/tapedeck/arrow_down.png") no-repeat center center;
+        }
+      }
+    }
+
+
+
+  
+  }
+
 
 }
-#tape_spacer {
 
-  height: 40px;
-  margin: 0px;
-  padding: 0px;
-  list-style-type: none;
-  background: url("/assets/tapedeck/bottom_shadow.png");
+
+#tapedeck_lower {
+  width: 960px;
+  background: url("/assets/tapedeck/bottom_shadow.png") no-repeat top center;
+  min-height: 100px;
+ 
+  #tapedeck_comments {
+    width: 620px;
+    padding: 10px;
+
+    display: inline-block;
+    float: left;
+
+
+  }
+
+  #tapedeck_comments {
+    width: 640px;
+    padding: 25px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    display: inline-block;
+    float: left;
+    min-height: 400px;
+    background: url("/assets/tapedeck/comments_bg.png") no-repeat top right;
+    #tapedeck_comments_add {
+      .pic {
+          width: 50px;
+          height: 50px;
+          @include c_g_5_b;
+          margin-right: 20px;
+          position: absolute;
+          
+        }
+      #send_button:hover {
+
+          @include c_3_b;
+          @include c_g_1;
+          @include btn($c3c);
+
+        
+      }
+      #send_button {
+          @include c_g_1_b;
+          color: white;
+          margin-right: 20px;
+          padding: 8px 12px;
+          display: inline-block;
+          @include round(3px);
+          @include fh_b(12px);
+          position: absolute;
+          margin-left: 570px; 
+          margin-top: 7px;
+          z-index: 6000;
+          cursor: pointer;
+          @include btn($c_g_2);
+      }
+      #comment_label {
+        width: 540px;
+        margin-left: 65px;
+        border: none;
+        outline: none;
+        @include fh_b(12px);
+        @include round(5px);
+        @include c_g_2;
+        padding: 11px 10px; 
+        padding-top: 16px;
+      
+      }
+      #comment_field {
+        width: 470px;
+        margin-left: 65px;
+        border-color: #e9e9e9;
+        border-style: solid;
+        border-width: 1px;
+        outline: none;
+        @include fh_b(12px);
+        @include round(5px);
+        @include c_g_5_b;
+        background-color: #FFF;
+        @include c_g_1;
+        padding: 10px 10px;
+        padding-top: 12px;
+        padding-bottom: 0px;
+        padding-right: 80px;
+        height: 24px;
+
+      
+      }
+
+      #comment_field:focus {
+        //height: 60px;
+
+      
+      }    
+    }
+    .comments {
+    
+      clear: both;
+      list-style-type: none;
+      padding: 0px;
+      margin: 0px;
+      margin-top: 20px;
+      .comment:hover {
+
+        .delete:hover {
+          @include c_g_5_b;
+          @include round(5px);
+        }
+        .delete {
+        
+          //display: inline-block;
+          opacity: 1;
+        }
+        //background: #FFF;
+      
+      }
+
+      .comment {
+        
+        padding: 0px;
+        margin: 0px;
+        clear: both;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        min-height: 50px;
+        border-color: $c_g_5;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+
+        .pic {
+          width: 50px;
+          height: 50px;
+          @include c_g_5_b;
+          margin-right: 20px;
+          display: inline-block;
+          float: left;
+          
+        }
+        .user_name {
+          @include c_g_5_b;
+          @include fh_b(12px);
+          padding: 3px 5px;
+          @include round(5px);
+          margin-left: -4px;
+          @include c_g_1; 
+        
+        }
+
+
+        .tape_name {
+          @include c_g_5_b;
+          @include fh_b(12px);
+          padding: 3px 5px;
+          @include round(5px);
+          margin-left: 0px;
+
+          
+        
+        }
+        .tape_time {
+          @include c_g_5_b;
+          @include fh_b(12px);
+          padding: 3px 5px;
+          @include round(5px);
+          margin-left: 0px;
+
+          
+        
+        }
+        .normal {
+          @include fh(12px);
+          padding: 3px 4px;
+          @include round(2px);
+          margin-left: 0px;
+
+          
+        
+        }        
+        .text {
+          @include fh(12px);
+          //padding: 2px 4px;
+          @include round(2px);
+
+          line-height: 18px;
+          
+        
+        }
+        .body {
+          //padding-top: 20px;
+          display: inline-block;
+          @include fh(12px);
+
+          width: 500px;
+          @include c_g_4;
+          //display: inline-block;
+          
+        }      
+        .delete {
+          width: 30px;
+          height: 30px;
+          //background: #FF00FF;
+          position: absolute;
+          margin-left: 585px;
+          margin-top: 0px;
+          background: url("/assets/track/remove_icon.png") no-repeat center center;
+          opacity: 0.2;
+          cursor: pointer;
+        }
+        .date {
+          @include fh(11px);
+          @include round(2px);
+          margin-top: 10px; 
+          @include c_g_2;
+          line-height: 17px;
+          
+        
+        }
+
+      }
+    }
+    #tapedeck_comments_header {
+      padding: 0px;
+      margin: 0px;
+      @include c_g_4;
+      @include fh_b(12px);
+      height: 45px;
+      border-color: $c_g_5;
+      // border-bottom-width: 1px;
+      // border-bottom-style: solid;
+      @include ts_out(#FFF);
+      width: 615px;
+
+      h3 {
+        line-height: 35px;
+        display: inline-block;
+        float: left; 
+      }
+
+    }
+
+    #invite_button {
+      width: 35px;
+      height: 35px;
+      background: #FF00FF;
+      position: absolute;
+      margin-top: 15px;
+      margin-left: 580px;
+      @include c_g_5_b;
+      @include round(5px);
+    }
+
+
+  }
+
+
+
+
+
+    #tapedeck_invite_add {
+
+      margin-top: -10px;
+      #invite_send_button:hover {
+
+          @include c_4_b;
+          @include c_g_1;
+          @include btn($c4c);
+
+        
+      }
+      #invite_send_button {
+          @include c_g_1_b;
+          color: white;
+          margin-right: 20px;
+          padding: 8px 12px;
+          display: inline-block;
+          @include round(3px);
+          @include fh_b(12px);
+          position: absolute;
+          margin-left: 236px; 
+          margin-top: 7px;
+          z-index: 6000;
+          cursor: pointer;
+          @include btn($c_g_2);
+      }
+      #invite_label {
+        position: absolute;
+        width: 205px;
+        border: none;
+        outline: none;
+        @include fh_b(12px);
+        @include round(5px);
+        @include c_g_2;
+        padding: 11px 10px; 
+        padding-top: 16px;
+        margin-left: -10px;
+      
+      }
+      #invite_field {
+        width: 215px;
+        border-color: #e9e9e9;
+        border-style: solid;
+        border-width: 1px;
+        outline: none;
+        @include fh_b(12px);
+        @include round(5px);
+        @include c_g_5_b;
+        background-color: #FFF;
+        @include c_g_1;
+        padding: 10px 10px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-right: 80px;
+        height: 20px;
+        margin-left: -10px;
+      
+      }
+
+      #invite_field:focus {
+
+      
+      }    
+    }
+  .collaborators {
+    clear: both;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    margin-left: -10px;
+
+
+
+
+
+
+
+    .collaborator:hover {
+      .remove_collaborator {
+        display: inline;
+      }
+    }
+    .collaborator {
+      cursor: pointer;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      @include c_g_5_b;
+      float: left;
+      margin-right: 2px;
+      margin-bottom: 2px;
+      overflow: hidden;
+      .pic {
+        width: 50px;
+        height: 50px;
+        @include c_g_5_b;
+        position: absolute;
+      }
+
+      .remove_collaborator {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #FFFF00;
+        margin-left: 30px;
+        display: none;
+
+      }
+    }
+
+  }
+
+
+  #tapedeck_sidebar {
+    background: #00FF00; 
+    width: 295px;
+    padding: 25px;
+    padding-top: 0px;
+    padding-right: 0px;
+    display: inline-block;
+    float: left;
+    background: url("/assets/tapedeck/sidebar_bg.png") no-repeat;
+    min-height: 400px;
+
+    #tapedeck_collaborators_header {
+      padding: 0px;
+      margin: 0px;
+      @include c_g_4;
+      @include fh_b(12px);
+      height: 55px;
+      // border-color: $c_g_5;
+      // border-bottom-width: 1px;
+      // border-bottom-style: solid;
+      @include ts_out(#FFF);
+      width: 295px;
+      h3 {
+        line-height: 35px;
+        display: inline-block;
+        float: left;
+      
+      }
+
+    }
+
+
+
+    #invite_button:hover {
+      @include c_g_5_b;
+    }
+
+    #invite_button {
+      width: 35px;
+      height: 35px;
+      @include c_g_5_b;
+      position: absolute;
+      margin-top: 0px;
+      margin-left: 270px;
+      background: url("/assets/track/add_track_icon.png") no-repeat center center;
+      @include round(5px);
+      cursor: pointer;
+    }
+
+
+  }
 
 }

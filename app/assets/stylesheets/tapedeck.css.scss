@@ -31,6 +31,7 @@
   
 
 }
+
 #tape_timestrip{
   height: 50px;
   width: 960px;
@@ -84,20 +85,21 @@
     float: left;
     display: inline-block;
     .c_button {
-      width: 42px;
-      height: 40px;
+      width: 36px;
+      height: 34px;
       display: inline-block;
       //background: #00FF00;
       float: left;
       margin-right: 5px;
-      @include round(5px);
+      @include round(3px);
       @include c_g_4_b;
+      @include border(3px, #7c7c7c);
     
     }
     .c_button:hover {
     
       background: none;
-      @include border(3px, #7c7c7c);
+      @include border(3px, $c_g_2);
       width: 36px;
       height: 34px;
       cursor: pointer;
@@ -106,34 +108,56 @@
     #pause {
       display: none; 
       background-image: url("/assets/header/icon_pause_on.png");
+      background-position: center center ;
+      background-repeat: no-repeat ;
+
+    }
+    #pause:hover {
+      background-image: url("/assets/header/icon_pause_off.png");
 
     }
     #play {
       //display: none; 
       background-image: url("/assets/header/icon_play_on.png");
+      background-position: center center ;
+      background-repeat: no-repeat ;
 
     }
     #play:hover {
       //display: none; 
       background-image: url("/assets/header/icon_play_off.png");
-
+      background-position: center center ;
+      background-repeat: no-repeat ;
     }
 
     
 
     #stop {
       background-image: url("/assets/header/icon_stop_on.png");
-
+      background-position: center center ;
+      background-repeat: no-repeat ;
     }
     
-    
+    #stop:hover {
+      background-image: url("/assets/header/icon_stop_off.png");
+
+    }    
     #resume {
       display: none;
       background-image: url("/assets/header/icon_play_on.png");
+      background-position: center center ;
+      background-repeat: no-repeat ;
     }
+    #resume:hover {
+      display: none;
+      background-image: url("/assets/header/icon_play_off.png");
+      background-position: center center ;
+      background-repeat: no-repeat ;
+    }
+
   }
   #tape_select.open {
-    @include round_top_left(5px);
+    @include round_top_left(3px);
     //@include round_top_left(5);
 
      #tape_select_button {
@@ -159,7 +183,7 @@
     //right: 40px;
     height: 40px;
     min-height: 40px;
-    min-width: 320px;
+    min-width: 270px;
     //background: #000;
     
     background: url("/assets/header/list_tile.png") no-repeat;
@@ -173,26 +197,39 @@
     #tape_save_button {
       position: absolute;
       display: inline-block;
-      margin-left: 320px;
+      margin-left: 270px;
       height: 40px;
       width: 40px;
       background: url("/assets/header/icon_open.png") no-repeat;    
-      @include round_right(5px);
+      @include round_right(3px);
       @include c_g_3_b;
+
     }  
   }
+  .arrow_left {
+    
+    //display: inline-block;
+    height: 40px;
+    width: 10px;
+    position: absolute;
+    margin-left: 408px;
+    float: left;
+    background: url("/assets/tapedeck/arrow_left.png") no-repeat;    
 
+  
+  }
   #tape_edit_buttons {
+
+    position: absolute;
     list-style-type: none;
     padding: 0px;
-    @include round(5px);
+    margin: 0px;
+    @include round(3px);
     //margin-top: 20px;
-    position: absolute;
-    display: inline-block;
     //float: left;
     //right: 40px;
     height: 40px;
-    width: 131px;
+    width: 230px;
     //background: #000;
     
     //background: url("/assets/header/list_tile.png") no-repeat;
@@ -202,13 +239,13 @@
     color: #000;
     z-index: 10000;
     //width: 380px;
-    margin-left: 461px;
+    margin-left: 418px;
     .edit_button:first-child {
-      @include round-left(5px)
+      @include round-left(3px)
     
     }
     .edit_button:last-child {
-      @include round-right(5px)
+      @include round-right(3px)
     
     }
 
@@ -268,10 +305,94 @@
       background: url("/assets/tapedeck/star_tape_icon_off.png"); 
       @include c_g_5_b;
     }    
+    .bpm_tape_button:hover {
+      background: url("/assets/tapedeck/bpm_tape_icon_on.png") no-repeat; 
+      @include c_3_b;
+      #bpm_value {
+      @include c_3b;
+        //background: rgba(0,0,0,0.03);
 
+      }
+      #bpm_ctrl {
+       display: inline-block;
+      
+      }
+    }
+    .bpm_tape_button {
+    
+      min-width: 90px;
+      background: url("/assets/tapedeck/bpm_tape_icon_off.png") no-repeat; 
+      @include c_g_5_b;
+
+      #bpm_value {
+       padding: 0px;
+       margin: 0px;
+       border: none;
+       outline: none;
+       background: none;
+       @include c_g_1;
+       @include fh_b(14px);
+       margin-left: 38px;
+       //line-height: 41px;
+       height: 40px;
+       width: 32px;
+       text-align: center;
+       display: inline-block;
+       float: left;
+      }
+
+
+
+      #bpm_ctrl {
+        display: none;
+        height: 40px;
+        min-width: 19px;
+        margin-left: 0px;
+        //display: inline-block;
+        float: left;
+        background: rgba(0,0,0,0.05);
+        .ctrl_buttons {
+          
+          height: 20px;
+          width: 19px;
+        
+        }
+        .ctrl_buttons:hover {
+          background: rgba(0,0,0,0.1)
+          
+        
+        }
+         .ctrl_buttons#plus:hover {
+          
+          background-image: url("/assets/tapedeck/bpm_plus_on.png") ; 
+        
+        
+        }  
+         .ctrl_buttons#plus {
+          
+          background-image: url("/assets/tapedeck/bpm_plus_off.png") ; 
+          background-position: center center;
+          @include round_top_right(5px);
+        
+        
+        }     
+        .ctrl_buttons#minus:hover {
+          background-image: url("/assets/tapedeck/bpm_minus_on.png") ; 
+          
+        
+        }   
+         .ctrl_buttons#minus {
+          background-image: url("/assets/tapedeck/bpm_minus_off.png") ; 
+          background-position: center center;
+          @include round_bottom_right(5px);
+          
+        
+        }     
+      }
+    }   
   }
   #tape_edit_modul {
-    @include round_left(5px);
+    @include round_left(3px);
     //margin-top: 20px;
     position: relative;
     display: none;
@@ -279,7 +400,7 @@
     //right: 40px;
     height: 40px;
     min-height: 40px;
-    min-width: 320px;
+    min-width: 270px;
     //background: #000;
     
     //background: url("/assets/header/list_tile.png") no-repeat;
@@ -291,7 +412,22 @@
     z-index: 10000;
     //width: 380px;
     left: 0px;
-    
+    #tape_save_button.edit:hover {
+      background: url("/assets/tapedeck/done_tape_icon_on.png") no-repeat;
+      @include c_2_b;
+      
+    }    
+    #tape_save_button.edit {
+      position: absolute;
+      //display: inline-block;
+      margin-left: 270px;
+      height: 40px;
+      width: 40px;
+      background: url("/assets/tapedeck/done_tape_edit_icon_off.png") no-repeat;
+      @include round_right(3px);
+      @include c_g_4_b;
+      cursor: pointer;
+    }
     #tape_save_button:hover {
       background: url("/assets/tapedeck/done_tape_icon_on.png") no-repeat;
       @include c_3_b;
@@ -299,25 +435,80 @@
     }
     #tape_save_button {
       position: absolute;
-      display: inline-block;
-      margin-left: 320px;
+      //display: inline-block;
+      margin-left: 270px;
       height: 40px;
       width: 40px;
       background: url("/assets/tapedeck/done_tape_icon_off.png") no-repeat;
-      @include round_right(5px);
+      @include round_right(3px);
       @include c_g_4_b;
       cursor: pointer;
+    }
+
+    #tape_save_hint_box.edit {
+    
+      #tape_save_hint_sub {
+        #tape_save_hint {
+          @include c_2_b;
+          @include c_2b;
+        }
+        #tape_save_hint_arrow {
+          padding: 1px 10px;
+ 
+          background: url("/assets/tapedeck/arrow_down_yellow.png") no-repeat;
+        }
+      }
+    
+    }
+    #tape_save_hint_box {
+      position:absolute;
+      top:-34px;
+      left: 50%;
+
+      #tape_save_hint_sub {
+        width: 200px;
+        display: inline-block;
+        position:relative;
+        left: -50%;
+        text-align: center;
+        @include fh(12px);
+        #tape_save_hint {
+          @include c_3_b;
+          @include c_3b;
+          padding: 5px 10px;
+          line-height: 28px;
+          @include round(5px);
+          .hint_bold {
+            
+            @include fh_b(12px);
+            @include c_g_1; 
+          
+          }
+        }
+        
+
+        #tape_save_hint_arrow {
+          background: #FFFF00;
+          padding: 1px 10px;
+ 
+          background: url("/assets/tapedeck/arrow_down_green.png") no-repeat;
+        }
+      }
     }
 
     #tape_edit_field {
       @include c_1;
     }
   
-  
+    #tape_edit_label  {
+    
+      @include c_g_4;
+    
+    }
   }
 
   #tape_select{
-    @include round_left(5px);
+    @include round_left(3px);
     //margin-top: 20px;
     position: relative;
     display: inline-block;
@@ -325,7 +516,7 @@
     //right: 40px;
     height: 40px;
     min-height: 40px;
-    min-width: 320px;
+    min-width: 270px;
     //background: #000;
     
     background: url("/assets/header/list_tile.png") no-repeat;
@@ -337,14 +528,20 @@
     //width: 380px;
     left: 0px;
     
+    #tape_select_button:hover {
+    
+      @include c_g_2_b;
+    
+    }
     #tape_select_button {
       position: absolute;
       display: inline-block;
-      margin-left: 320px;
+      margin-left: 270px;
       height: 40px;
       width: 40px;
       background: url("/assets/header/icon_open.png") no-repeat;    
-      @include round_right(5px);
+      cursor: pointer;
+      @include round_right(3px);
       @include c_g_3_b;
     }
     #tape_edit_modul {
@@ -358,7 +555,7 @@
       list-style-type: none;
       margin: 0px;
       padding: 0px;
-      width: 320px;
+      width: 270px;
       @include c_g_4_b;
 
     
@@ -370,7 +567,7 @@
       display: inline-block;
       height: 40px;
       color: #000;
-      @include round_left(5px);
+      @include round_left(3px);
       //@include c_g_4_b;
       //width: 300px;
     }
@@ -382,8 +579,7 @@
     #version_list {
       position: absolute;
       //top: 20px;
-      background: #4a4a4a;
-      @include round_left(5px);
+      @include round_left(3px);
     
     }
   }
@@ -394,37 +590,424 @@
 
     height: 40px;
     margin-bottom: 20px;
-    width: 500px;  
+    width: 320px;  
     float: right;
     display: inline-block;
+    position: absolute;
+    margin-left: 280px;
 
     .m_button {
-      width: 150px;
+      width: 135px;
       height: 40px;
       display: inline-block;
-      float: right;
+      //float: right;
       margin-left: 5px;
       //@include round(5px);
       //@include c_g_4_b;
-      z-index: 6000;
+      z-index: 9100;
       padding-left: 14px
 
     }
+    #download_tracks:hover {
+      
+      .download_dropdown {
+      
+        display: inline;
+        visibility: visible;
+        opacity: 1;
+        margin-top: 0px;
+        -webkit-transition: all .1s ease;
+        -moz-transition: all .1s ease;
+        transition: all .1s ease;
 
+      }
+    
+    }
+    #download_tracks {
+      //display: inline-block;
+      //float: right;
+
+      //position: relative;
+      height: 40px;
+      width: 135px;
+      //@include c_g_4_b;
+      //z-index: 6000;
+      @include fh_b(12px);
+      @include c_g_5;
+      @include round(3px);
+      line-height: 40px;
+      position: absolute;
+      z-index: 9001;
+
+      .m_button {
+      
+        @include c_g_1;
+        @include c_g_5_b;
+      
+        z-index: 90001;
+      }
+
+      .download_dropdown {
+        width: 220px;
+        position: absolute;
+        margin-left: 27px;
+        z-index: 90001;
+        margin-top: 10px;
+        //visibility: visible;
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+        -webkit-transition: all .1s ease;
+        -moz-transition: all .1s ease;
+        transition: all .1s ease;
+        .download_snip {
+          //background: #FF00FF;
+          height: 15px;
+          
+          background: url("/assets/tapedeck/download_snip.png") no-repeat center bottom;
+          
+        }
+        .download_body {
+          list-style-type: none;
+          padding: 0px;
+          margin: 0px;
+          @include c_g_1_b;
+          @include round(5px);
+          padding: 5px 0px;
+          margin-top: -1px;
+          .download_el.c1:hover {
+            .title {
+              @include c_1b;
+              @include c_1c_b;
+              
+            }
+            .title:hover {
+              @include c_1_b;
+              color: white;
+            }
+            .wav {
+              @include c_1b;
+            }
+            .wav:hover {
+              @include c_1_b;              
+              color: white;
+            }
+          
+          }
+
+          .download_el.c1 {
+            .title {
+              @include c_1b_b;
+              @include c_1;
+              
+            }
+            .wav {
+              @include c_1c_b;
+              @include c_1b;              
+            }
+          
+          }
+          .download_el.c2:hover {
+            .title {
+              @include c_2b;
+              @include c_2c_b;
+              
+            }
+            .title:hover {
+              @include c_2_b;
+              color: white;
+            }
+            .wav {
+              @include c_2b;
+            }
+            .wav:hover {
+              @include c_2_b;              
+              color: white;
+            }
+          
+          }
+
+          .download_el.c2 {
+            .title {
+              @include c_2b_b;
+              @include c_2;
+              
+            }
+            .wav {
+              @include c_2c_b;
+              @include c_2b;              
+            }
+          
+          }
+          .download_el.c3:hover {
+            .title {
+              @include c_3b;
+              @include c_3c_b;
+              
+            }
+            .title:hover {
+              @include c_3_b;
+              color: white;
+            }
+            .wav {
+              @include c_3b;
+            }
+            .wav:hover {
+              @include c_3_b;              
+              color: white;
+            }
+          
+          }
+
+          .download_el.c3 {
+            .title {
+              @include c_3b_b;
+              @include c_3;
+              
+            }
+            .wav {
+              @include c_3c_b;
+              @include c_3b;              
+            }
+          
+          }
+
+          .download_el.c4:hover {
+            .title {
+              @include c_4b;
+              @include c_4c_b;
+              
+            }
+            .title:hover {
+              @include c_4_b;
+              color: white;
+            }
+            .wav {
+              @include c_4b;
+            }
+            .wav:hover {
+              @include c_4_b;              
+              color: white;
+            }
+          
+          }
+
+          .download_el.c4 {
+            .title {
+              @include c_4b_b;
+              @include c_4;
+              
+            }
+            .wav {
+              @include c_4c_b;
+              @include c_4b;              
+            }
+          
+          }
+
+
+          .download_el.c5:hover {
+            .title {
+              @include c_5b;
+              @include c_5c_b;
+              
+            }
+            .title:hover {
+              @include c_5_b;
+              color: white;
+            }
+            .wav {
+              @include c_5b;
+            }
+            .wav:hover {
+              @include c_5_b;              
+              color: white;
+            }
+          
+          }
+
+          .download_el.c5 {
+            .title {
+              @include c_5b_b;
+              @include c_5;
+              
+            }
+            .wav {
+              @include c_5c_b;
+              @include c_5b;              
+            }
+          
+          }
+
+
+          .download_el.c6:hover {
+            .title {
+              @include c_6b;
+              @include c_6c_b;
+              
+            }
+            .title:hover {
+              @include c_6_b;
+              color: white;
+            }
+            .wav {
+              @include c_6b;
+            }
+            .wav:hover {
+              @include c_6_b;              
+              color: white;
+            }
+          
+          }
+
+          .download_el.c6 {
+            .title {
+              @include c_6b_b;
+              @include c_6;
+              
+            }
+            .wav {
+              @include c_6c_b;
+              @include c_6b;              
+            }
+          
+          }
+          .download_el.c7:hover {
+            .title {
+              @include c_7b;
+              @include c_7c_b;
+              
+            }
+            .title:hover {
+              @include c_7_b;
+              color: white;
+            }
+            .wav {
+              @include c_7b;
+            }
+            .wav:hover {
+              @include c_7_b;              
+              color: white;
+            }
+          
+          }
+
+          .download_el.c7 {
+            .title {
+              @include c_7b_b;
+              @include c_7;
+              
+            }
+            .wav {
+              @include c_7c_b;
+              @include c_7b;              
+            }
+          
+          }
+
+
+          .download_el.c8:hover {
+            .title {
+              @include c_8b;
+              @include c_8c_b;
+              
+            }
+            .title:hover {
+              @include c_8_b;
+              color: white;
+            }
+            .wav {
+              @include c_8b;
+            }
+            .wav:hover {
+              @include c_8_b;              
+              color: white;
+            }
+          
+          }
+
+          .download_el.c8 {
+            .title {
+              @include c_8b_b;
+              @include c_8;
+              
+            }
+            .wav {
+              @include c_8c_b;
+              @include c_8b;              
+            }
+          
+          }
+
+          .download_el:first-child {
+            .title {
+              @include round_top_left_soft(5px);
+            }
+            .wav {
+              @include round_top_right_soft(5px);
+            }
+          }
+          .download_el:last-child {
+            .title {
+              @include round_bottom_left_soft(5px);
+            }
+            .wav {
+              @include round_bottom_right_soft(5px);
+            }
+          }
+          .download_el {
+            
+            margin: 0px 5px;
+            width: 210px;
+            height: 30px;
+            cursor: pointer;
+            
+            line-height: 30px;
+            .title {
+              padding-left: 10px;
+              display: inline-block;
+              width: 150px;
+              float: left;
+              @include c_1b_b;
+              @include c_1;
+              
+            }
+
+            .wav {
+              display: inline-block;
+              padding-left: 10px;
+              width: 40px;
+              float: left;
+              @include c_1c_b;
+              @include c_1b;            
+            }
+          
+          }
+          
+        }
+
+      
+      }
+
+
+
+    }    
     #add_track {
       display: inline-block;
-      float: right;
+      position: absolute;
+      //float: right;
 
-      position: relative;
+      //position: relative;
       height: 40px;
-      width: 150px;
+      width: 135px;
       //@include c_g_4_b;
       z-index: 6000;
       @include fh_b(12px);
       @include c_g_5;
-      @include round(5px);
+      @include round(3px);
       line-height: 40px;
 
+      margin-left: 162px;
 
 
     }
@@ -446,7 +1029,14 @@
     #add_btn {
       background: url("/assets/tapedeck/btn_add_off.png") no-repeat right;
       
-      @include round(5px);
+      @include round(3px);
+      @include c_g_4_b;
+    }   
+
+    #down_btn {
+      background: url("/assets/tapedeck/btn_download_off.png") no-repeat right;
+      
+      @include round(3px);
       @include c_g_4_b;
     }   
     #from_lib:hover {
@@ -471,17 +1061,23 @@
 
     #from_lib {
       cursor: pointer;
+      float: left;
 
       background: #0000FF;
       height: 40px;
-      width: 150px;
+      width: 134px;
       visibility: hidden;
       z-index: 6000;
       background: url("/assets/tapedeck/btn_lib_off.png") no-repeat right;
-      @include round_bottom(5px);
+      @include round_bottom(3px);
       @include c_g_4_b;
 
 
+    }
+    #tape_uploader_button {
+    
+      cursor: pointer !important;
+    
     }
     #from_file {
       margin-top: 0px;
@@ -489,14 +1085,15 @@
       z-index: 6000;
       padding: 0px;
       margin: 0px;
+      margin-left: 5px;
+      width: 148px;
+      //text-align: left;
       float: left;
-      margin-left: -14px;
-      width: 164px;
-      text-align: left;
       background: url("/assets/tapedeck/btn_file_off.png") no-repeat right;
       @include c_g_4_b;
+      cursor: pointer !important;
 
-      @include round_top(5px);
+      @include round_top(3px);
 
     
     }
@@ -504,16 +1101,16 @@
       text-align: left;
     }
     .from_file { 
+
       height: 40px;
-      width: 150px;
+      width: 265px;
       display: hidden;
-      @include round(5px);
+      @include round(3px);
       border: none;
       margin: 0px;
       padding: 0px;
       margin-top: -12px;
       padding-left: 14px;
-      //margin-left: -14px;
       //@include c_g_4_b;
       z-index: 6000;
       @include fh_b(12px);
@@ -521,6 +1118,8 @@
       @include c_g_5;
       text-align: left;
       background: none;
+      cursor: pointer !important;
+
 
     }
 
@@ -539,8 +1138,8 @@
     width: 500px;
     display: inline-block;
     #tapedeck_image {
-      width: 80px;
-      height: 80px;
+      width: 90px;
+      height: 90px;
       display: inline-block;
       float: left;
       margin-right: 20px;
@@ -548,18 +1147,144 @@
     } 
     #tapedeck_meta {
       //margin-top: 10px;
-      padding-top: 18px;
+      padding-top: 20px;
+      margin-left: -20px;
+      h1 {
+        margin: 0px;
+        padding: 0px;
+        display: inline-block;
+        @include fh_b(18px);
+        @include c_g_4;
+        margin-bottom: 6px;
+        @include ts_in(#FFF);
+      }
+
+      .title_spliter {
+        margin: 0px;
+        padding: 0px;
+        display: inline-block;
+        @include fh_b(18px);
+        @include c_g_5;
+        margin-bottom: 6px;
+        @include ts_in(#FFF);      
+      
+      }
+      
       h2 {
         margin: 0px;
         padding: 0px;
         display: inline-block;
-        @include fh_b(20px);
-        @include c_g_4;
+        @include fh_b(18px);
+        @include c_g_2;
         margin-bottom: 6px;
       }
-      #meta { 
+
+      
+
+      #metas { 
         @include fh(11px);
         @include c_g_2;
+        
+
+        #meta_genre:hover {
+        
+          .meta_title {
+            @include c_1_b;
+            @include c_1b;
+          }
+          .meta_value {
+            @include c_1c_b;
+            color: white;
+
+          }
+
+        }
+
+        #meta_tapes:hover {
+        
+          .meta_title {
+            @include c_2_b;
+            @include c_2b;
+          }
+          .meta_value {
+            @include c_2c_b;
+            color: white;
+
+          }
+
+        }
+
+
+        #meta_plays:hover {
+        
+          .meta_title {
+            @include c_3_b;
+            @include c_3b;
+          }
+          .meta_value {
+            @include c_3c_b;
+            color: white;
+
+          }
+
+        }
+
+
+        #meta_comments:hover {
+        
+          .meta_title {
+            @include c_4_b;
+            @include c_4b;
+          }
+          .meta_value {
+            @include c_4c_b;
+            color: white;
+
+          }
+
+        }
+
+
+        .meta {
+          display: inline-block;
+          margin-right: 5px;
+          margin-top: 2px;
+          border-style: solid;
+          border-width: 1px;
+          border-color: rgba(0,0,0,0.03);
+          @include round(10px);
+          .meta_title {
+            display: inline-block;
+            height: 20px;
+            //@include c_g_5_b;
+            @include c_g_2;
+
+
+
+            line-height: 22px;
+            padding-left: 8px;
+            padding-right: 5px;
+            @include round_left(10px);
+            float: left;
+          
+          }
+          .meta_value {
+            @include fh_b(11px);
+            display: inline-block;
+            height: 20px;
+            @include c_g_4;
+            // border-style: solid;
+            // border-width: 1px;
+            // border-color: $c_g_5;
+            line-height: 22px;
+            padding-left: 8px;
+            padding-right: 10px;
+            @include round_right(10px);
+            float: left;
+          
+          }
+        
+        }
 
       } 
     } 
@@ -616,13 +1341,25 @@
         @include c_g_4_b;
         @include c_g_5;
         @include fh_b(13px);
-        @include round(5px);
+        @include round(3px);
         line-height: 25px;
+        #scrabber_value{
+        }
+        #scrabber_snip{
+          height: 10px;
+          //background: #FF00FF;
+          background: url("/assets/tapedeck/scrabber_snip.png") no-repeat center;
+          margin-top: -1px;
+          width: 100%;
+        }
+        
       }
     }
 
 
 }
+
+
 
 
 

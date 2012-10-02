@@ -144,7 +144,7 @@ class Trackm
       $(("#"+t.id+"_progress")).css({width: 0})
       $("#scrabber_position").css({left: 0})
       $("#scrabber_label").css({left: 0})
-      $("#scrabber_label").html(window.tools.toTime(0))
+      $("#scrabber_value").html(window.tools.toTime(0))
 
 
   seek: (pixel_pos) ->
@@ -186,7 +186,7 @@ class Trackm
       
       $("#scrabber_position").css({left: val})
       $("#scrabber_label").css({left: val})
-      $("#scrabber_label").html(window.tools.toTime(position))
+      $("#scrabber_value").html(window.tools.toTime(position))
 
       return true
     else
@@ -197,9 +197,10 @@ class Trackm
     #console.log "position = "+ String(this.position) + " / " + String(this.durationEstimate)
     
     val = window.tools.map(this.position, 0, this.durationEstimate, 0, Tapesfm.trackm.trackWidth)
+
     $("#scrabber_position").css({left: val})
     $("#scrabber_label").css({left: val})
-    $("#scrabber_label").html(window.tools.toTime(this.position))
+    $("#scrabber_value").html(window.tools.toTime(this.position))
     _.each window.Tapesfm.trackm.tracks, (t) =>
       unless Number(val) > Number($(("#"+t.id+"_clip")).width())
         $(("#"+t.id+"_progress")).css({width: val})

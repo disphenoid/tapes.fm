@@ -1,7 +1,12 @@
 <li class="version tape_version_el inactive" id="version_<%= @model.get("_id")%>" data-id="<%= @model.get("_id")%>">
-  <div class="delete"></div> 
+  <div class="version_box_2">
+  <% if @model.get("favorite"): %>
+  <div class="fav"></div> 
+  <% end %>
   <div class="title"><%= @model.get("name") %></div>
-  <div class="date"><%= @model.get("created_at") %></div>
+  <div class="user" ><%= @model.get("user_name") %></div>
+  <div class="date" title="<%= @model.get("created_at")%>"><%= @model.get("created_at") %></div>
+  </div>
 </li>
 
 

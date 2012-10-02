@@ -6,11 +6,16 @@ class Tapesfm.Views.TapedeckEdit extends Backbone.View
   
   initialize: ->
     #@model.get("tape").on("change:id", @render,this)
-    @model.get("tape").on('change:id', @newTapeMode, this)
+    if Tapesfm.user
+      @model.get("tape").on('change:id', @newTapeMode, this)
   
   saveTape: ->
-    @model.get("tape").trigger("edit_done")
-    @model.get("tape").save()
+    if Tapesfm.user
+      @model.get("tape").trigger("edit_done")
+      @model.get("tape").save()
+      $("#tape_save_hint_box").removeClass("edit")
+      $("#tape_save_button").removeClass("edit")
+      $("#tape_save_hint").html(Tapesfm.language.new_hint)
     # @model.get("tape").fetch()
     # @model.set({active_tape_id: window.lastTape})
     # @model.get("tape").set({id: window.lastTape})

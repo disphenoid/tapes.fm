@@ -53,10 +53,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
   uploader: null
   className: "track"
 
-  initialize: ->
-    
-    
-    
+  initialize: -> 
 
   events: ->
     "click .mute" : "muteTrack"
@@ -84,7 +81,12 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
     #console.log "START! #{start_value}"
     #console.log "START! obj #{event.currentTarget.offsetTop + event.currentTarget.offsetHeight + document.body.scrollTop}"
-    Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+    if Tapesfm.user
+      unless window.existing_tape
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+        Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
+      else
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
 
     $(window).bind "mouseup", (e) =>
       
@@ -131,17 +133,23 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
   panTrackReset: ->
 
-      @pan_el.setValue(0)
+    @pan_el.setValue(0)
 
-      setValue = 0
-      id_name = {}
-      id_name["pan_#{@getIndex()}"] = setValue
-      tape = Tapesfm.tapedeck.tapedeck.get("tape")
-      tape.set(id_name)
+    setValue = 0
+    id_name = {}
+    id_name["pan_#{@getIndex()}"] = setValue
+    tape = Tapesfm.tapedeck.tapedeck.get("tape")
+    tape.set(id_name)
+    Tapesfm.trackm.panTrack(@getIndex(),setValue)
 
-      Tapesfm.trackm.panTrack(@getIndex(),setValue)
+    if Tapesfm.user
+      unless window.existing_tape
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+        Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
+      else
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
 
-  panTrack: (event) ->
+  panTrack: (event) -> 
 
     start_value = event.pageY + document.body.scrollTop
     end_value = start_value
@@ -150,7 +158,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
     #console.log "START! #{start_value}"
     #console.log "START! obj #{event.currentTarget.offsetTop + event.currentTarget.offsetHeight + document.body.scrollTop}"
-    Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+
 
     $(window).bind "mouseup", (e) =>
       
@@ -190,7 +198,12 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
       Tapesfm.trackm.panTrack(@getIndex(),setValue)
 
-    
+    if Tapesfm.user
+      unless window.existing_tape
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+        Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
+      else
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
 
   muteTrack: ->
 
@@ -212,7 +225,12 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
       this.$("#mute").addClass("active")
 
-    Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+    if Tapesfm.user
+      unless window.existing_tape
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+        Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
+      else
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
   soloTrack: ->
     if this.$("#solo").hasClass("active")
       id_name = {}
@@ -232,7 +250,12 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
       this.$("#solo").addClass("active")
       Tapesfm.trackm.unsoloTrack(@getIndex())
 
-    Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+    if Tapesfm.user
+      unless window.existing_tape
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+        Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
+      else
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
 
   getIndex: ->
     index = @model.collection.indexOf(@model)
@@ -281,6 +304,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     @pan_el = new window.Pan(this.$("#pan")[0],trackOptions.pan)
     this.$(".volume .inner").height(window.tools.map(trackOptions.volume,0,100,0,66))
     #@uploader = new window.UploaderTrack(this.$("#from_file")) 
+    $(@el).find(".sub").timeago()
     
     unless trackOptions.mute
       this.$("#mute").addClass("active")

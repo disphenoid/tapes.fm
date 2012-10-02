@@ -1,4 +1,5 @@
 <div id="tapedeck_header"> </div>
+
 <div id="tape_upload">
   <div id="upload_title"> Uploads </div>
 </div>
@@ -9,16 +10,31 @@
     <div class="c_button" id="stop">  </div>
   </div>
 
+  <% if Tapesfm.user: %>
+  <div class="arrow_left"> </div>
+
+  <% end %>
   <ul id="tape_edit_buttons"> 
   </ul>
   <div id="tape_edit_modul">
     <div id="tape_edit_c">
-      <div id="tape_save_button"></div> 
+      <div id="tape_save_button">
+        <span id="tape_save_hint_box">
+        <span id="tape_save_hint_sub">
+          <span id="tape_save_hint">
+          <span class="hint_bold"> Creates </span> a new Tape Version </span> 
+          <br />
+          <span id="tape_save_hint_arrow">&nbsp;<span>
+        </span> 
+        </span> 
+      </div> 
+
         <div id="tape_edit_box"> 
           <form>
+
             <p>
-              <label id="tape_edit_label" for="tape_edit_field">New Tape – click an name it!</label>
-              <input type="text" name="tape_edit_field" id="tape_edit_field" value="">
+              <label id="tape_edit_label" for="tape_edit_field">What did you change?</label>
+              <input type="text" name="tape_edit_field" id="tape_edit_field" value=""></input>
             </p>
           </form> 
       </div>
@@ -32,8 +48,8 @@
           <form>
             <div id="tape_search_button"></div>
             <p>
-            <label for="tape_search_field">Search for artist, bands and tracks</label>
-            <input type="text" name="tape_search" id="tape_search_field" value="">
+              <label for="tape_search_field">Search for artist, bands and tracks</label>
+              <input type="text" name="tape_search" id="tape_search_field" value=""></input>
             </p>
           </form>
 
@@ -45,14 +61,54 @@
   </div>  
 
   <div id="tape_menu">
+
+    <% if Tapesfm.user && Tapesfm.user.collaborator: %>
+    <div class="" id="download_tracks"> 
+      <div class="m_button" id="down_btn"> Download</div>
+      <div class="download_dropdown" id="download_dropdown"> 
+
+      <div class="download_snip" id="download_snip"> </div>
+      <ul class="download_body" id="download_body">
+
+      </ul>
+      
+      
+    </div>
+
+
+    </div>
     <div class="" id="add_track"> 
       <div class="m_button" id="add_btn"> Add Tracks</div>
       <div class="m_button tape_uploader_button" id="from_file">From File </div>
       <div class="m_button" id="from_lib">From Library </div> 
     </div>
+    <% else: %>
+    <div class="" id="add_track"> 
+      <div class="m_button" id="add_btn"> Remix</div>
+    </div>
+
+    <% end %>
   </div>
   
 
 <div id="tapedeck_tape"> </div>
-<div id="tapedeck_comments"> </div>
-<div id="tapedeck_pannels"> </div>
+<div id="tapedeck_lower"> 
+  <div id="tapedeck_comments"> 
+  <div id="new_comment"></div>
+
+  <ul class="comments"> 
+  </ul> 
+  </div>
+  <div id="tapedeck_sidebar"> 
+    <div id="tapedeck_collaborators">
+
+    </div> 
+      <ul class="collaborators" id="collaborators">
+      </ul>  
+      <ul class="invites" id="invites">
+      </ul>  
+  </div>
+</div>
+  <div id="tapedeck_collaborator"> 
+  </div>
+</div>

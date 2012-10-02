@@ -17,7 +17,7 @@
     margin: 0px;
     margin-top: 10px;
     position: absolute;
-    width: 240px;
+    width: 200px;
     height: 30px;
     padding: 5px 10px;
     @include fh_b(12px);
@@ -30,7 +30,7 @@
     outline: none;
     padding: 5px 10px;
     height: 30px;
-    width: 250px;
+    width: 200px;
     margin: 0px;
     @include fh_b(12px);
     background: none;
@@ -41,7 +41,7 @@
     width: 30px;
     height: 30px;
     position: absolute;
-    margin-left: 280px;
+    margin-left: 230px;
     margin-top: 5px;
     background: url("/assets/header/icon_tape_search_off.png") no-repeat;
   }
@@ -80,13 +80,24 @@
 }
 .version {
   cursor: pointer;
-  height: 30px;
+  height: 34px;
   background: none;
   //margin: 0px 5px;
   padding: 5px 10px;
+  padding-right: 5px;
+  padding-top: 0px;
   //background: url("/assets/header/list_line.png");
    
   //@include round(5px);
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0,0,0,0.05);
+  border-bottom-width: 1px;
+  .version_box_2 {
+    //background: #FF00FF;
+    height: 30px;
+    width: 250px;
+    display: inline-block;
+  }
   .title { 
     @include fh_b(12px);
     //@include c_g_5; 
@@ -97,16 +108,27 @@
   .date { 
     @include fh(11px);
     @include c_g_2; 
+    display: inline-block;
+    float: left;
   }
-  .delete {
-    visibility: hidden;
+  .user { 
+    @include fh(11px);
+    @include c_g_5; 
+    display: inline-block;
+    float: left;
+    margin-right: 5px;
+  }
+  .fav {
+    //visibility: hidden;
 
     width: 30px;
     height: 30px;
-    position: absolute;
-    margin-left: 270px;
+    //position: absolute;
+    //margin-left: 270px;
     padding: 0px;
-    background: url("/assets/header/icon_delete_off.png");
+    background: url("/assets/header/icon_fav_on.png");
+    display: inline-block;
+    float: right;
 
   }
 
