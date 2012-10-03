@@ -100,7 +100,7 @@ class Tapesfm.Views.TapedeckTape extends Backbone.View
         window.Tapesfm.commentMarkerPos = time
         
 
-        $("#comment_tape_label").html("Comment on #{time}")
+        $("#comment_tape_label").html("Comment on #{window.tools.toTime(time)}")
 
 
 

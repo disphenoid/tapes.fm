@@ -144,7 +144,7 @@ class Trackm
       $(("#"+t.id+"_progress")).css({width: 0})
       $("#scrabber_position").css({left: 0})
       $("#scrabber_label").css({left: 0})
-      $("#scrabber_value").html(window.tools.toTime(0))
+      $("#scrabber_value").html(0)
 
 
   seek: (pixel_pos) ->

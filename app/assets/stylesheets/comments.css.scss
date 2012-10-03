@@ -345,7 +345,6 @@
 
 
         .tape_name {
-          @include c_g_5_b;
           @include fh_b(12px);
           padding: 3px 5px;
           @include round(5px);
@@ -355,7 +354,6 @@
         
         }
         .tape_time {
-          @include c_g_5_b;
           @include fh_b(12px);
           padding: 3px 5px;
           @include round(5px);
