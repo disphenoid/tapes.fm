@@ -24,11 +24,12 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
        this.$("#tape_edit_field").val("")
 
     @model.get("tape").save()
-    @model.get("tape").trigger("edit_done")
     window.existing_tape = false
+    @model.get("tape").trigger("edit_done")
+    @model.get("tape").fetch()
 
   changeTape2: (event) ->
-    console.log $(event.currentTarget).data("id")
+    #console.log $(event.currentTarget).data("id")
     @model.set({"active_tape_id" : $(event.currentTarget).data("id")})
 
   changeTape: (event) ->
@@ -82,7 +83,7 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
     Tapesfm.trackm.stop()
 
   scrabberHotspot: ->
-    $("#tape_scrabber").live "click", (e) ->
+    $(".track_hotspot").live "click", (e) ->
       e.stopPropagation()
       posX = $(this).offset().left
       value = e.pageX - posX

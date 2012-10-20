@@ -26,6 +26,17 @@ class WebappController < ApplicationController
 
   end
 
+  def tapes
+
+      @tapedecks = Tapedeck.all
+
+      @json = render_to_string( template: 'tapes/index.json.jbuilder', locals: { tape: @tapedecks}) 
+      respond_to do |format|
+          format.html
+      end
+
+  end
+
 
   def tapedeck 
     @track = Track.new
@@ -43,23 +54,7 @@ class WebappController < ApplicationController
   end
 
 
-  def s3_signed_url(bucket, pathname, verb, content_md5=nil, content_type=nil, response_headers = {})
-    expires = Time.now + 5.minutes
-    response_headers_canonicalized = response_headers.sort_by{|key, value| key.downcase}.collect{|key, value| "#{key}=#{value}"}.join("&").to_s
-    string_to_sign = "#{verb.upcase}\n#{content_md5}\n#{content_type}\n#{expires.to_i}\n/#{bucket}/#{pathname}?#{response_headers_canonicalized}"
 
-      digest = OpenSSL::Digest::Digest.new('sha1')
-    hmac = OpenSSL::HMAC.digest(digest, "cfuOIImdhf0xSfydV2c6h2tstQKi1oY/inJ6sAJ1", string_to_sign)
-    signature = Base64.encode64(hmac).chomp
-    url = "http://s3.amazonaws.com/#{bucket}/#{pathname}?"
-    if response_headers.count > 0
-      response_headers.each do |key, value|
-        url += "#{key}=#{value}&"
-      end
-    end
-    url += "AWSAccessKeyId=#{"AKIAJLUDMFIAAGNUJOIQ"}&Expires=#{expires.to_i}&Signature=#{CGI.escape(signature)}";
-    return url
-  end
 
 
   def login
@@ -80,9 +75,7 @@ class WebappController < ApplicationController
       @track.color = (params[:track_length].to_i + 1) 
 
       #puts "paraaaams #{newparams[:track][:asset].class}"
-      #@track.process_asset_upload = true
-
-      
+      #@track.process_asset_upload = true 
 
       respond_to do |format|
         if @track.save 
@@ -150,6 +143,22 @@ class WebappController < ApplicationController
       params
     end 
   end
+  def s3_signed_url(bucket, pathname, verb, content_md5=nil, content_type=nil, response_headers = {})
+    expires = Time.now + 5.minutes
+    response_headers_canonicalized = response_headers.sort_by{|key, value| key.downcase}.collect{|key, value| "#{key}=#{value}"}.join("&").to_s
+    string_to_sign = "#{verb.upcase}\n#{content_md5}\n#{content_type}\n#{expires.to_i}\n/#{bucket}/#{pathname}?#{response_headers_canonicalized}"
 
+      digest = OpenSSL::Digest::Digest.new('sha1')
+    hmac = OpenSSL::HMAC.digest(digest, "cfuOIImdhf0xSfydV2c6h2tstQKi1oY/inJ6sAJ1", string_to_sign)
+    signature = Base64.encode64(hmac).chomp
+    url = "http://s3.amazonaws.com/#{bucket}/#{pathname}?"
+    if response_headers.count > 0
+      response_headers.each do |key, value|
+        url += "#{key}=#{value}&"
+      end
+    end
+    url += "AWSAccessKeyId=#{"AKIAJLUDMFIAAGNUJOIQ"}&Expires=#{expires.to_i}&Signature=#{CGI.escape(signature)}";
+    return url
+  end
 
 end

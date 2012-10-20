@@ -1,28 +1,10 @@
-      <div id="comment_hint"> 
-      <div class="pic">
-      </div>
-      <div class="body">
-        <span class="user_name">
-          <%= @model.get("user_name")%>
-        </span>
-        <span class="normal">
-        at
-        </span>
-        <span class="tape_time " data-id="<%= @model.get("tape_id")%>">
-          03:22
-          <%= @model.get("timestamp")%>
-        </span>
-        <br />
-
-
-        <span class="text">
-          <%= @model.get("body")%>
-        </span>
-        <div class="date" title="<%= @model.get("created_at")%>">
-         <%= @model.get("created_at")%>
-        </div>
-        </div>      
-      
-      </div> 
-      
-
+  <span class="user_name">
+  <%= @model.get("user_name")%>
+  </span>
+  <span title="<%= if (@model.get("created_at") == undefined) then (new Date).toDateString() else @model.get("created_at") %>" class="date">
+    <%= if (@model.get("created_at") == undefined) then (new Date).toDateString() else @model.get("created_at") %>
+  </span>
+  <br />
+  <span class="comment_body">
+  <%= @model.get("body")%>
+  </span>

@@ -11,6 +11,8 @@
       this.container = options.container;
       this.canvas = options.canvas;
       this.data = options.data || [];
+      this.data_l = options.data_l || [];
+      this.data_r = options.data_r || [];
       this.outerColor = options.outerColor || "transparent";
       this.innerColor = options.innerColor || "#000000";
       this.interpolate = true;
@@ -64,15 +66,30 @@
       middle = this.height / 2;
       i = 0;
       _ref = this.data;
+      _ref_l = this.data_l;
+      _ref_r = this.data_r;
       _results = [];
+      // Value!
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        d = _ref[_i];
-        t = this.width / this.data.length;
-        if (typeof this.innerColor === "function") {
-          this.context.fillStyle = this.innerColor(i / this.width, d);
+        if(_ref_l[_i] < 0.005) {
+
+          d_l = 0.005//_ref[_i];
+        }else{
+          d_l = _ref_l[_i];
         }
-        this.context.clearRect(t * i, middle - middle * d, t, middle * d * 2);
-        this.context.fillRect(t * i, middle - middle * d, t, middle * d * 2);
+        if(_ref_r[_i] < 0.005) {
+
+          d_r = 0.005//_ref[_i];
+        }else{
+          d_r = _ref_r[_i];
+        }
+        t = this.width / this.data.length;
+
+        if (typeof this.innerColor === "function") {
+          this.context.fillStyle = this.innerColor(i / this.width, d_l);
+        }
+        this.context.clearRect(t * i, middle - middle * d_l, t, middle * d_r * 2);
+        this.context.fillRect(t * i, middle - middle * d_l, t, middle * d_r * 2);
         _results.push(i++);
       }
       return _results;

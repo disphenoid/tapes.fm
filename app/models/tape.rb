@@ -14,6 +14,7 @@ class Tape
   #belongs_to :tape, :foreign_key => :active_tape_id
 
   has_and_belongs_to_many :tracks, inverse_of: nil
+  has_many :track_settings
 
   #embeds_many :tracks
   #belongs_to :track2, :foreign_key => 'attribute_secondary_id' 
@@ -23,58 +24,50 @@ class Tape
    field :description, :type => String
    field :genre, :type => String
    field :genre_sub, :type => String
-   field :bpm, :type => Integer
+   field :bpm, :type => Integer, :default => 120
    
-   #Track #1
-   field :volume_1, :type => Float, :default => 100
-   field :pan_1, :type => Float, :default => 0
-   field :mute_1, :type => Boolean
-   field :solo_1, :type => Boolean
 
-   #Track #1
-   field :volume_2, :type => Float, :default => 100
-   field :pan_2, :type => Float, :default => 0
-   field :mute_2, :type => Boolean, :default => false
-   field :solo_2, :type => Boolean, :default => false
+  
+   def track_setting_volume(track_id, value)
+      
+      setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})
+      setting.volume = value
 
-   #Track #3
-   field :volume_3, :type => Float, :default => 100
-   field :pan_3, :type => Float, :default => 0
-   field :mute_3, :type => Boolean, :default => false
-   field :solo_3, :type => Boolean, :default => false
+      self.track_settings.push(setting)
 
-   #Track #4
-   field :volume_4, :type => Float, :default => 100
-   field :pan_4, :type => Float, :default => 0
-   field :mute_4, :type => Boolean, :default => false
-   field :solo_4, :type => Boolean, :default => false
+      self.save
+     
+   end
+   def track_setting_pan(track_id, value)
+      
+      setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})
+      setting.pan = value
 
-   #Track #5
-   field :volume_5, :type => Float, :default => 100
-   field :pan_5, :type => Float, :default => 0
-   field :mute_5, :type => Boolean, :default => false
-   field :solo_5, :type => Boolean, :default => false
+      self.track_settings.push(setting)
 
-   #Track #6
-   field :volume_6, :type => Float, :default => 100
-   field :pan_6, :type => Float, :default => 0
-   field :mute_6, :type => Boolean, :default => false
-   field :solo_6, :type => Boolean, :default => false
+      self.save
+     
+   end
+   def track_setting_mute(track_id, value)
+      
+      setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})
+      setting.mute = value
 
-   #Track #7
-   field :volume_7, :type => Float, :default => 100
-   field :pan_7, :type => Float, :default => 0
-   field :mute_7, :type => Boolean, :default => false
-   field :solo_7, :type => Boolean, :default => false
+      self.track_settings.push(setting)
 
-   #Track #8
-   field :volume_8, :type => Float, :default => 100
-   field :pan_8, :type => Float, :default => 0
-   field :mute_8, :type => Boolean, :default => false
-   field :solo_8, :type => Boolean, :default => false
+      self.save
+     
+   end
+   def track_setting_solo(track_id, value)
+      
+      setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})
+      setting.solo = value
 
+      self.track_settings.push(setting)
 
-
+      self.save
+     
+   end
 
 end
 

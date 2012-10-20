@@ -31,9 +31,7 @@
       <div id="scrabber_value">00:00</div>
       <div id="scrabber_snip"></div>
     </div>
-    <div id="scrabber_position"></div>
-    <div id="scrabber_pointer"></div>
-    <div id="scrabber_hotspot"></div>
+
   </div>
   <% unless(@first_color == "none"): %>
   <div id="tape_edge" class="edge_<%=@first_color%>"></div>
@@ -42,30 +40,42 @@
      
   </ul>
 
-  <ul id="tape_comments">
-    <li class="tape_comment marker mm" id="comment_marker" > 
-      <div id="comment_hint_box">
-        <div id="comment_hint_sub">
-          <div id="comment_hint"> 
-        <div id="send_tape_button">
+  <div class="tape_comments_set">
+  <div id="tape_comments_g">
+    <ul class="strip_tape"> 
+
+      <li id="marker" style="margin-left: 230px"> 
+      </li>
+    
+    </ul>
+
+
+
+    <ul class="comment_strip_tape"> </ul>
+
+    </div>
+  <div id="commentbox<%=@model.get("_id")%>" class="commentbox_tape"> 
+    <div class="body"> 
+
+      <div id="comment_box_tape"> 
+        <div class="send_track_button" id="send_track_button_tape">
           Post
         </div>
 
-        <label id="comment_tape_label" for="comment_tape_field">Post something about this Tape...</label>
-        <textarea type="text" name="comment_tape_field" id="comment_tape_field" value=""></textarea>
+        <label class="comment_label_tape" id="comment_tape_label_<%= @model.get("id")%>" for="comment_tape_field_<%= @model.get("id")%>">Post a Comment</label>
+        <textarea class="comment_field_tape comment_field_tape_new" type="text" name="comment_tape_field_<%= @model.get("id")%>" id="comment_tape_field_<%= @model.get("id")%>" value=""></textarea>
 
-         </div> <div id="comment_hint_arrow">&nbsp;<div>
-        </div> 
-        </div> 
-    </li>
+         </div> 
 
-
-
-
-
-
+    
+    
+    </div>
+    <div class="snip"> </div>
+  
+  </div>
+  </div>
 
 
     
-  </ul>
+  </div>
 

@@ -40,7 +40,7 @@
   
   #time_stamp {
     background: none;
-    width: 225px;
+    width: 150px;
     height: 50px;
     position: absolute;
     @include c_g_2;
@@ -53,11 +53,11 @@
 
   }
   #time_zone {
-    width: 735px;
+    width: 800px;
     height: 50px;
     clear: both;
     background: none;
-    margin-left: 225px;
+    margin-left: 150px;
     position: absolute;
     list-style-type: none;
     padding: 0px;
@@ -132,14 +132,35 @@
 
     
 
-    #stop {
+    #stop:hover {
       background-image: url("/assets/header/icon_stop_on.png");
       background-position: center center ;
       background-repeat: no-repeat ;
+
+
+      width: 36px;
+      height: 34px;
+      display: inline-block;
+      //background: #00FF00;
+      float: left;
+      margin-right: 5px;
+      @include round(3px);
+      @include c_g_4_b;
+      @include border(3px, #7c7c7c);
+
+
     }
     
-    #stop:hover {
+    #stop {
+      background: none;
+      @include border(3px, $c_g_2);
+      width: 36px;
+      height: 34px;
+      cursor: pointer;
       background-image: url("/assets/header/icon_stop_off.png");
+      background-position: center center ;
+      background-repeat: no-repeat ;
+
 
     }    
     #resume {
@@ -992,7 +1013,64 @@
 
 
     }    
+
+    #remix:hover {
+      display: inline-block;
+      position: absolute;
+      //float: right;
+
+      //position: relative;
+      height: 40px;
+      width: 135px;
+      //@include c_g_4_b;
+      z-index: 6000;
+      @include fh_b(12px);
+      @include c_g_5;
+      @include round(3px);
+      line-height: 40px;
+
+      margin-left: 162px;
+
+      .m_button {
+        @include c_1_b;
+        color: white;
+      
+      
+      }
+
+
+    }
+    #remix {
+      display: inline-block;
+      position: absolute;
+      cursor: pointer;
+      //float: right;
+
+      //position: relative;
+      height: 40px;
+      width: 135px;
+      //@include c_g_4_b;
+      z-index: 6000;
+      @include fh_b(12px);
+      @include c_g_5;
+      @include round(3px);
+      line-height: 40px;
+
+      margin-left: 162px;
+
+      .m_button {
+        @include c_g_5_b;
+        @include c_1;
+      
+      
+      }
+
+
+    }
+
+
     #add_track {
+      cursor: pointer;
       display: inline-block;
       position: absolute;
       //float: right;
@@ -1298,10 +1376,11 @@
 
     #tape_scrabber {
       height: 0px;
-      width: 700px;
-      margin-left: 225px;
+      width: 775px;
+      margin-left: 150px;
       position: absolute;
       z-index: 1000;
+      background: #FF00FF;
       
       #scrabber_position {
 
@@ -1321,14 +1400,6 @@
         width: 1px;
       
       
-      }
-      #scrabber_hotspot {
-        opacity: 0.1;
-        background: #FF0000;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        cursor: pointer; 
       }
       #scrabber_label {
         width: 50px;

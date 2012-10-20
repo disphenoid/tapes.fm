@@ -1,0 +1,36 @@
+<div id="tapes_hint">
+ Start a New Tape 
+</div>
+<div id="tapes_header">
+  <div id="tapes_filter">
+    <div class="headline">
+      Tapes
+    </div>
+    <ul class="filters">
+     <li class="filter active"> All</li>
+     <li class="filter"> Own</li>
+     <li class="filter"> Collaborate</li>
+     <li class="filter"> Remix</li>
+    </ul>
+
+
+  </div>
+</div>
+
+
+<div id="tapes_list">
+
+  <div class="add_tape"> 
+    <div class="outline"> </div>
+    <div class="cover"> </div>
+  </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+

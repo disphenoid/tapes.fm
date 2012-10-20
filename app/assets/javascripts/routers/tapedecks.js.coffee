@@ -24,7 +24,6 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
   routes:
     'tapedeck/:id' : 'tapedeck'
   initialize: ->
-    #console.log "init routes"
     
   tapedeck: (id) ->
     #id = "testid"
@@ -41,7 +40,14 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
       @tapedeck.attributes.tape.set({id:Tapesfm.bootstrap.tape.id})
       @tapedeck.attributes.tape.set({_id:Tapesfm.bootstrap.tape._id})
       @tapedeck.attributes.tape.attributes.tracks = new Tapesfm.Collections.Tracks(Tapesfm.bootstrap.tape.tracks)
+      @tapedeck.attributes.tape.attributes.tracks.each (track, index) ->
+        track.attributes.comments = new Tapesfm.Collections.Comments(Tapesfm.bootstrap.tape.tracks[index].comments)
+        track.get("comments").url = "/api/track_comments/"+track.get("id")+"?tapedeck=#{Tapesfm.bootstrap.id}"
+
+
+      @tapedeck.attributes.tape.attributes.track_settings = new Tapesfm.Collections.TrackSettings(Tapesfm.bootstrap.tape.track_settings)
       @tapedeck.attributes.tape.attributes.comments = new Tapesfm.Collections.Comments(Tapesfm.bootstrap.tape.comments)
+      @tapedeck.attributes.tape.get("comments").url = "/api/tape_comments/"+@tapedeck.get("tape").get("id")+"?tapedeck=#{Tapesfm.bootstrap.id}"
     else
       @tapedeck.attributes.tape = new Tapesfm.Models.Tape()
       @tapedeck.attributes.tape.set({id:"0"})
@@ -49,6 +55,7 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
       @tapedeck.attributes.tape.set({"tapedeck_id":id})
       @tapedeck.attributes.tape.attributes.tracks = new Tapesfm.Collections.Tracks()
       @tapedeck.attributes.tape.attributes.comments = new Tapesfm.Collections.Comments()
+      @tapedeck.attributes.tape.attributes.track_settings = new Tapesfm.Collections.TrackSettings()
     #
     # List of all Collaborators
     @tapedeck.attributes.user = new Tapesfm.Models.User(Tapesfm.bootstrap.user)
@@ -84,7 +91,7 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
     collaboratorsView = new Tapesfm.Views.TapedeckCollaborators(collection: @tapedeck.get("collaborators"))
     $('#tapedeck_collaborators').html(collaboratorsView.render().el)
 
-
+    $("label").inFieldLabels()
 
 
     $("#tape_upload").hide()
@@ -143,8 +150,15 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
   newTape: (track) ->
     #coping Tape 
     new_track = new Tapesfm.Models.Track(track)
-
-    tape = Tapesfm.tapedeck.tapedeck.get("tape")
+    new_track.attributes.comments = new Tapesfm.Collections.Comments()
+    new_track.get("comments").url = "/api/track_comments/"+new_track.get("id")+"?tapedeck=#{Tapesfm.bootstrap.id}"
+   
+    unless Tapesfm.tapedeck.tapedeck.get("tape").get("_id") == "0"
+      tape = Tapesfm.tapedeck.tapedeck.get("tape")
+    else
+      tape = Tapesfm.tapedeck.tapedeck.get("tape")
+      tape.set({id: undefined, _id: undefined})
+    
     tape.get("tracks").unshift new_track
 
     if tape.get("track_ids")
@@ -168,6 +182,8 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
   newTapeWithTrack: (track,replace_track_id) ->
     #coping Tape 
     new_track = new Tapesfm.Models.Track(track)
+    new_track.attributes.comments = new Tapesfm.Collections.Comments()
+    new_track.get("comments").url = "/api/track_comments/"+new_track.get("id")+"?tapedeck=#{Tapesfm.bootstrap.id}"
 
     tape = Tapesfm.tapedeck.tapedeck.get("tape")
 

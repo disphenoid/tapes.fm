@@ -18,7 +18,23 @@ class TapesController < ApplicationController
       @tape.tapedeck_id = params[:tapedeck_id]
       @tape.track_ids = params[:track_ids]
       @tape.tapedeck.active_tape_id = @tape.id
+
+      #@tape.track_setting_ids = params[:track_setting_ids]
+
+
+      new_settings = params[:track_settings]
+
     if current_user && (@tape.tapedeck.collaborator? current_user)
+
+      new_settings.each do |setting|
+
+        @tape.track_setting_volume(setting[:track_id],setting[:volume])
+        @tape.track_setting_pan(setting[:track_id],setting[:pan])
+        @tape.track_setting_mute(setting[:track_id],setting[:mute])
+        @tape.track_setting_solo(setting[:track_id],setting[:solo])
+
+      end
+
       @tape.save
       @tape.tapedeck.save
 
@@ -28,12 +44,25 @@ class TapesController < ApplicationController
   end
   
   def update
-      tape = Tape.find(params[:id])
-    if current_user && (tape.tapedeck.collaborator? current_user)
-      if tape.user.id == current_user.id
-        tape.update_attributes!(params[:tape])
+    @tape = Tape.find(params[:id])
+    if current_user && (@tape.tapedeck.collaborator? current_user)
+      if @tape.user.id == current_user.id
+        @tape.update_attributes!(params[:tape])
+
+
+      new_settings = params[:track_settings]
+      new_settings.each do |setting|
+
+        @tape.track_setting_volume(setting[:track_id],setting[:volume])
+        @tape.track_setting_pan(setting[:track_id],setting[:pan])
+        @tape.track_setting_mute(setting[:track_id],setting[:mute])
+        @tape.track_setting_solo(setting[:track_id],setting[:solo])
+
       end
-      render :json => tape
+
+      # end
+      end
+      render :json => @tape
     end
   end
 

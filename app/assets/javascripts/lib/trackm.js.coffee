@@ -1,11 +1,11 @@
-class Trackm
+class window.Trackm
   sm: undefined
   tempPosition: 0
   constructor: (soundManager) ->
     @sm = soundManager
 
   duration: 0
-  trackWidth: 700
+  trackWidth: 775
   leadTrack: null
   tracks: []
   
@@ -142,13 +142,14 @@ class Trackm
       @sm.setPosition(t.id, 0)
 
       $(("#"+t.id+"_progress")).css({width: 0})
-      $("#scrabber_position").css({left: 0})
+      # $("#scrabber_position").css({left: 0})
+      $(".track_position").css({"margin-left": -42})
       $("#scrabber_label").css({left: 0})
-      $("#scrabber_value").html(0)
+      $("#scrabber_value").html(window.tools.toTime(0))
 
 
   seek: (pixel_pos) ->
-    baseWidth = 700
+    baseWidth = 775
 
     loaded = true
     position = window.tools.map(pixel_pos, 0, Number(baseWidth), 0,  @leadTrack.duration)
@@ -165,6 +166,7 @@ class Trackm
       playstate = Tapesfm.trackm.leadTrack.playState
       paused = Tapesfm.trackm.leadTrack.paused
 
+      $(".track_position").css({"margin-left": (Number(val) - 42)})
       _.each @tracks, (t) =>
         console.log("Seek – "+t.id)
 
@@ -184,7 +186,8 @@ class Trackm
 
     if true
       
-      $("#scrabber_position").css({left: val})
+      # $("#scrabber_position").css({left: val})
+      $(".track_position").css({"margin-left": (Number(val) - 42)})
       $("#scrabber_label").css({left: val})
       $("#scrabber_value").html(window.tools.toTime(position))
 
@@ -193,14 +196,15 @@ class Trackm
       return false
   position: ->
 
-    baseWidth = 700
+    baseWidth = 775
     #console.log "position = "+ String(this.position) + " / " + String(this.durationEstimate)
     
     val = window.tools.map(this.position, 0, this.durationEstimate, 0, Tapesfm.trackm.trackWidth)
 
-    $("#scrabber_position").css({left: val})
+    $(".track_position").css({"margin-left": (Number(val) - 42)})
     $("#scrabber_label").css({left: val})
     $("#scrabber_value").html(window.tools.toTime(this.position))
+
     _.each window.Tapesfm.trackm.tracks, (t) =>
       unless Number(val) > Number($(("#"+t.id+"_clip")).width())
         $(("#"+t.id+"_progress")).css({width: val})
@@ -225,17 +229,8 @@ class Trackm
   finish: ->
     #alert "end"
     Tapesfm.trackm.stop()
-jQuery ->
-  soundManager.setup
-    url: "/assets/"
-    flashVersion: "9"
-    useFlashBlock: false
-    onready: ->
-      window.Tapesfm.trackm = new Trackm(soundManager)
-      Tapesfm.tapedeck.loadTape()
-      # window.Tapesfm.trackm.addTrack {name:"track2",url:"/assets/army_drums.mp3" }
-      # window.Tapesfm.trackm.addTrack {name:"track3",url:"/assets/army_vox.mp3" }
-      # window.Tapesfm.trackm.addTrack {name:"track4",url:"/assets/army_vox.mp3" }
+
+
 
 
 

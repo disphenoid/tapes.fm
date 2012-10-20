@@ -1,6 +1,6 @@
       <div id="tapedeck_collaborators_header">
         <h3> 
-          Working on this Tape
+          Collaborators
           <%# @model.get("collaborators").last().get("name") %> 
         </h3>
       </div> 

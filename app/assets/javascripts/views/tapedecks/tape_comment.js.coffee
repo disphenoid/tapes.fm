@@ -1,5 +1,7 @@
 class Tapesfm.Views.TapedeckTapeComment extends Backbone.View
   template: JST['tapedecks/tape_comment']
+  tag: "li"
+  className: "comment_set"
   events: ->
     "click .delete" : "removeCollaborator"
   initialize: ->
@@ -31,6 +33,7 @@ class Tapesfm.Views.TapedeckTapeComment extends Backbone.View
 
     rendertContent = @template(model: @model)
     $(@el).html(rendertContent)
+    $(@el).find(".date").timeago()
     #$(@el).fadeIn(2000)
     #$(@el).find(".date").timeago()
     

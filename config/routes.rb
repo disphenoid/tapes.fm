@@ -1,4 +1,8 @@
 Tapesfm::Application.routes.draw do
+  get "home/index"
+
+  get "track_comments/show"
+
   #get "users", :to => "users#index"
   mount Resque::Server, :at => "/resque"
 
@@ -16,12 +20,15 @@ Tapesfm::Application.routes.draw do
     resources :tapedeck
     resources :tapes
     resources :tracks
+    resources :track_comments
+    resources :tape_comments
     resources :versions
     resources :collaborators
     resources :comments
     resources :invites
   end
 
+  match 'tapes', to: "webapp#tapes"
   match 'tapedeck/:id', to: "webapp#tapedeck"
   match 'tapedeck', to: "webapp#tapedeck"
   match 'tapedeck/*path', to: "webapp#tapedeck"
@@ -34,7 +41,7 @@ Tapesfm::Application.routes.draw do
   post "upload_track" => "webapp#upload_track", :defaults => {:format => :json}
 
 
-  root to: "webapp#uploadtest"
+  root to: "home#index"
   #match '*path', to: "webapp#index"
 
   # The priority is based upon order of creation:

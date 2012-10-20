@@ -83,7 +83,7 @@
       <div class="m_button" id="from_lib">From Library </div> 
     </div>
     <% else: %>
-    <div class="" id="add_track"> 
+    <div class="" id="remix"> 
       <div class="m_button" id="add_btn"> Remix</div>
     </div>
 

@@ -1,4 +1,397 @@
 // Place all the styles related to the tapes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
 
+
+.settings {
+  padding: 25px 0px;
+  
+  .update_tape_btn:hover {
+    
+    @include c_2b_b;
+    color: white; 
+  }  
+  .new_tape_btn:hover {
+    
+    @include c_3b_b;
+    color: white; 
+  }
+  .new_tape_btn {
+    cursor: pointer;
+    margin-top: 10px;
+    @include c_3_b;
+    @include c_g_0;
+    width: 270px;
+    padding: 10px 0px;
+    @include fh_b(16px);
+    @include round(5px);
+    text-align: center;
+    margin-left: 15px;
+  
+  }
+  .update_tape_btn {
+    cursor: pointer;
+    margin-top: 10px;
+    @include c_2_b;
+    @include c_g_0;
+    width: 270px;
+    padding: 10px 0px;
+    @include fh_b(16px);
+    @include round(5px);
+    text-align: center;
+    margin-left: 15px;
+  
+  }  
+
+  .title {
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    width: 175px;
+    display: inline-block;
+
+    .headline {
+      @include c_g_5;
+      @include fh_b(16px);
+      margin-bottom: 6px;
+    
+    
+    }
+    .subline {
+      @include c_g_4;
+      @include fh(12px);
+    
+    }  
+
+  }
+    .switch {
+      display: inline-block;
+      width: 50px;
+    
+    }
+  
+
+  .header {
+  
+    padding-left: 15px;
+    padding-right: 15px;
+
+    .headline {
+      @include c_g_5;
+      @include fh_b(18px);
+      margin-bottom: 6px;
+    
+    
+    }
+    .subline {
+      @include c_g_4;
+      @include fh(12px);
+    
+    }
+  }
+  .fields {
+  
+    
+    margin-top: 20px;
+    p {
+    
+      margin: 0px;
+      padding: 0px;
+    }
+
+    label {
+      
+      padding: 10px 15px;
+      @include fh(14px);
+      @include c_g_4;
+      position: absolute;
+      z-index: 500;
+      clear: both;
+      margin: 0px;
+    
+    }
+    input {
+      
+      padding: 10px 15px;
+      margin: 0px;
+      width: 270px;
+      line-height: 20px;
+      @include fh_b(14px);
+      outline: none;
+      background: none;
+      border: none;
+      color: white;
+      background: url("/assets/tapes/field_bg.png") repeat-x 
+      
+    
+    }  
+  }
+
+
+}
+
+#tapes_header {
+
+  background: #FF00FF;
+  background: url("/assets/tapedeck/header_bg.png") no-repeat bottom center;
+  height: 70px;
+
+
+  #tapes_filter {
+    .headline {
+      @include c_g_1;
+      @include fh_b(16px); 
+      display: inline-block;
+      margin-right: 20px;
+      float: left;
+      padding-top: 42px;
+      padding-bottom: 12px;
+    }
+
+    .filters {
+      padding: 0px;
+      margin: 0px;
+      list-style-type: none;
+      @include c_g_1;
+      @include fh_b(14px); 
+      display: inline-block;
+
+      .filter {
+        cursor: pointer;
+        display: inline-block;
+        padding: 0px 20px;
+        padding-top: 42px;
+        padding-bottom: 12px;
+        color: $c_g_2;
+
+        float: left;
+      
+      
+      }
+      .filter:hover {
+        
+        background: #f6f6f6;
+      }      
+      .filter.active {
+        
+        background: #f6f6f6;
+        color: $c_g_1;
+      }
+
+
+    }
+  
+  
+  }
+
+
+}
+
+
+#tapes_list {
+
+  margin-left: -20px;
+  .add_tape:hover {
+
+    .cover {
+       opacity: 1;
+    } 
+  }
+
+  .add_tape {
+    cursor: pointer;
+    width: 140px; 
+    height: 170px; 
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+
+    .cover {
+      width: 130px;
+      height: 130px;
+      position: absolute;
+      @include c_g_5_b;
+      margin: 5px;
+      margin-top: 10px;
+      @include round(3px);
+      background: url("/assets/tapes/add_tape.png") no-repeat center center;
+      opacity: 0.5;
+
+
+    
+    }
+    .outline {
+      width: 140px;
+      height: 130px;
+      position: absolute;
+      margin: 2px;
+      margin-top: 2px;
+      margin-left: -6px;
+      @include round(10px);
+      border-style: solid;
+      border-width: 5px;
+      border-color: $c_g_2;
+      opacity: 0.3;
+
+    
+    }
+
+
+  }  
+  .tape:hover {
+    .outline {
+      //opacity: 0.4;
+    }
+    .info {
+
+      .headline {
+        @include c_g_0;
+      
+      }
+      .subline {
+        display: inline;
+      
+      }
+    }
+    .settings_btn {
+      display: inline; 
+    
+    }
+
+  }
+
+  .tape {
+    cursor: pointer;
+    width: 140px; 
+    height: 170px; 
+    margin-left: 20px;
+    margin-top: 20px;
+    display: inline-block;
+
+    .settings_btn {
+      display: none;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      @include round(5px);
+      margin-top: 15px;
+      margin-left: 105px;
+      background: url("/assets/tapes/settings_icon_off.png") no-repeat;
+      background-color: rgba(0,0,0,0.1);
+    
+    }
+
+    .settings_btn:hover {
+    
+      background: url("/assets/tapes/settings_icon_on.png") no-repeat;
+      background-color: rgba(0,0,0,0.4);
+    
+    }
+
+
+    .cover {
+      width: 130px;
+      height: 120px;
+      position: absolute;
+      @include c_g_5_b;
+      margin: 5px;
+      margin-top: 10px;
+      @include round(3px); 
+    
+    }
+    .outline {
+      width: 142px;
+      height: 134px;
+      position: absolute;
+      margin: 2px;
+      margin-top: 2px;
+      margin-left: -6px;
+      @include round(10px);
+      border-style: solid;
+      border-width: 5px;
+      border-color: $c_g_2;
+      opacity: 0;
+
+    
+    }
+
+
+    .info {
+      margin-top: 150px; 
+      text-align: center;
+      position: absolute;
+      width: 130px;
+      @include  fh_b(12px);
+      @include c_g_2;
+      .headline {
+        margin-bottom: 3px;
+        
+      
+      }
+      .subline {
+        @include  fh(10px);
+        display: none;
+        
+      
+      }
+    
+    
+    }
+
+
+    .wheels {
+      width: 78px;
+      height: 23px;
+      margin-left: 31px;
+      margin-top: 60px;
+      background: url("/assets/tapes/tape_wheels.png") no-repeat center center;
+      position: absolute;
+      @include round(20px);
+    
+    }    
+    .remix {
+      width: 140px;
+      height: 170px;
+      background: url("/assets/tapes/remix_off.png") no-repeat top left;
+      position: absolute;
+    
+    }    
+
+
+    .case {
+      width: 140px;
+      height: 170px;
+      background: url("/assets/tapes/tape_cover_off.png") no-repeat top left;
+      position: absolute;
+    
+    }    
+    .case:hover {
+      width: 140px;
+      height: 170px;
+      background: url("/assets/tapes/tape_cover.png") no-repeat top left;
+      position: absolute;
+    
+    }     
+  }
+
+
+}
+
+#tapes_hint {
+
+  clear: both;
+  @include c_g_5_b;
+  @include round(5px);
+  opacity: 0.4;
+  text-align: center;
+
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+
+}

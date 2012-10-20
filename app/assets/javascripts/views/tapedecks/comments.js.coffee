@@ -35,6 +35,7 @@ class Tapesfm.Views.TapedeckComments extends Backbone.View
       comment = new Tapesfm.Models.Comment()
       comment.set({tapedeck_id: Tapesfm.tapedeck.tapedeck.get("id")})
       comment.set({tape_id: Tapesfm.tapedeck.tapedeck.get("active_tape_id")})
+      comment.set({tape_name: Tapesfm.tapedeck.tapedeck.get("tape").get("name")})
       comment.set({body: $("#comment_field").val()})
       comment.set({user_name: Tapesfm.user.name})
       comment.save()
@@ -45,6 +46,11 @@ class Tapesfm.Views.TapedeckComments extends Backbone.View
     #Tapesfm.tapedeck.tapedeck.get("comments").fetch()
 
     #@commentlection.fet
+
+
+
+
+
   appendComment: (comment) ->
     commentView = new Tapesfm.Views.TapedeckComment(model: comment)
     $('.comments').prepend(commentView.render().el)

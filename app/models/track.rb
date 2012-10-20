@@ -6,6 +6,8 @@ class Track
   #embedded_in :track
 
   belongs_to :user
+  has_many :comments
+  has_and_belongs_to_many :track_settings, inverse_of: nil
   #belongs_to :tape
   #belongs_to :track 
   

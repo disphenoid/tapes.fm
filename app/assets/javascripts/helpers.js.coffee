@@ -1,6 +1,3 @@
-# window.waveform = (data) ->
-#   alert("jo")
-#   console.log data
 
 String.prototype.toHHMMSS =  ->
     sec_numb    = Math.floor(parseInt(this) / 1000)
@@ -44,16 +41,3 @@ window.tools =
     #return ((h > 0 ? h + ":" : "") + (m > 0 ? (h > 0 && m < 10 ? "0" : "") + m + ":" : "0:") + (s < 10 ? "0" : "") + s)
 
     
-window.Tapesfm =
-  Models: {}
-  Collections: {}
-  Views: {}
-  Routers: {}
-  pusher: new Pusher("c288f18f7c9bdc724b14")
-  init: ->
-    window.Tapesfm.tapedeck = new Tapesfm.Routers.Tapedecks()
-    new Tapesfm.Routers.Login()
-    Backbone.history.start({pushState: true})
-
-$(document).ready ->
-  Tapesfm.init()

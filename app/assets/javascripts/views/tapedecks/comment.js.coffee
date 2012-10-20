@@ -1,5 +1,6 @@
 class Tapesfm.Views.TapedeckComment extends Backbone.View
   template: JST['tapedecks/comment']
+
   events: ->
     "click .delete" : "removeCollaborator"
   initialize: ->

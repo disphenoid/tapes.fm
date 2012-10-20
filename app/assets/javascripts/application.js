@@ -13,11 +13,9 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
-//= require .//tapesfm
-//= require_tree ../templates/
-//= require_tree .//models
-//= require_tree .//collections
-//= require_tree .//views
-//= require_tree .//routers
-//= require_tree .//lib
-//= require_tree .
+//= require helpers
+//=require iphone-style-checkboxes
+//= require_tree .//vendor
+
+
+

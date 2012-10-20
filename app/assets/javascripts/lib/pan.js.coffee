@@ -35,6 +35,10 @@ class window.Pan
 
    setRawValue: (value) ->
      @rawValue = value
+     if @rawValue > 50
+       @rawValue = 50
+     else if @rawValue < -50
+       @rawValue = -50
 
    render: ->
 

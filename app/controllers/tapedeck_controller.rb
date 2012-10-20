@@ -10,14 +10,27 @@ class TapedeckController < ApplicationController
   end
 
   def create
-    entry = Tapedeck.create! params
-    render :json => entry
+
+    @tapedeck = Tapedeck.new 
+    @tapedeck.user_id = current_user.id
+    @tapedeck.remixable = params[:remixable]
+    @tapedeck.commentable = params[:commentable]
+    @tapedeck.public = params[:public]
+    @tapedeck.collaborator_ids.push current_user.id
+    @tapedeck.name =  params[:name]
+    @tapedeck.save
+
+
+    render :json => @tapedeck
   end
   
   def update
+    
     tapedeck = Tapedeck.find(params[:id])
     tapedeck.update_attributes!(params[:tapedeck])
+
     render :json => tapedeck
+
   end
 
   def destroy

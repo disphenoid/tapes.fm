@@ -1,0 +1,76 @@
+<div class="settings">
+  <div class="header">
+  
+    <div class="headline">
+      <%=@title%>
+    </div>
+    <div class="subline">
+      Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+    </div>
+  </div>
+
+  <div class="fields">
+
+    <form>
+      <p>
+        <label for="tape_name_field_<%=@settingId%>">Tape Name</label>
+        <input type="text" name="tape_name_field_<%=@settingId%>" id="tape_name_field_<%=@settingId%>" value="<%=@model.get("name")%>">
+      </p>
+      <p>
+        <label for="tape_author_field_<%=@settingId%>">Project</label>
+        <input type="text" name="tape_author_field_<%=@settingId%>" id="tape_author_field_<%=@settingId%>" value="<%=@model.get("user_name")%>">
+      </p>
+      <p>
+        <label for="tape_genre_field_<%=@settingId%>">Genre</label>
+        <input type="text" name="tape_genre_field_<%=@settingId%>" id="tape_genre_field_<%=@settingId%>" value="<%=@model.get("genre")%>">
+      </p>
+
+    </form>
+  </div>
+
+  <div class="checkbox_set">
+    <div class="title">
+      <div class="headline">
+        Remixeable
+      </div>
+      <div class="subline">
+        fdfjsh fjkhjdks fhdkjsh fds
+      </div>
+    </div>
+    <div class="switch">
+      <input type="checkbox" name="tape_remixable_<%=@settingId%>" id="tape_remixable_<%=@settingId%>" <%=("checked=\"#{@model.get("remixable")}\"") if @model.get("remixable")%>>
+    </div>
+  </div>
+    <div class="title">
+      <div class="headline">
+        Commentable
+      </div>
+      <div class="subline">
+        fdfjsh fjkhjdks fhdkjsh fds
+      </div>
+    </div>
+    <div class="switch">
+      <input type="checkbox" name="tape_commentable_<%=@settingId%>" id="tape_commentable_<%=@settingId%>" <%=("checked=\"#{@model.get("commentable")}\"") if @model.get("commentable")%>>
+    </div>
+    <div class="title">
+      <div class="headline">
+        Public
+      </div>
+      <div class="subline">
+        fdfjsh fjkhjdks fhdkjsh fds
+      </div>
+    </div>
+    <div class="switch">
+      <input type="checkbox" name="tape_public_<%=@settingId%>" id="tape_public_<%=@settingId%>" <%=("checked=\"#{@model.get("public")}\"") if @model.get("public")%>>
+    </div>
+  
+
+  <% if @model.isNew(): %>
+    <div class="new_tape_btn">New Tape</div>
+  <% else: %>
+    <div class="update_tape_btn">Update Tape</div>
+  <% end %>
+  
+  </div>
+
+</div>

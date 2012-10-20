@@ -21,7 +21,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem 'ios-checkboxes'
 gem 'devise'
 gem 'jquery-rails'
 gem 'backbone-on-rails'

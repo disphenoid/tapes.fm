@@ -4,6 +4,7 @@
 @import "tools/fonts";
 @import "tools/colors";
 @import "tools/effects";
+        
 
   .from_file {
     text-align: left;
@@ -96,6 +97,7 @@
      background: #f5f5f5;
     
     }
+
     .track:first-child {
       @include round_top(10px);
       .track_info {
@@ -130,6 +132,7 @@
           .title_set {
             .title { 
               @include ts_in($c1b);
+              @include c_1_b;
             }
             .sub { 
              color: $c1b; 
@@ -137,7 +140,11 @@
           }
         }
     }
+
+
    .track .track_clip_box.c1 {
+
+
 
       @include c_1_b;
       .track_loaded {
@@ -158,6 +165,7 @@
           .title_set {
             .title { 
               @include ts_in($c2b);
+              @include c_2_b;
             }
             .sub { 
              color: $c2b; 
@@ -165,7 +173,14 @@
           }
         }
     }
+
+
+
+
    .track .track_clip_box.c2 {
+
+
+
       @include c_2_b;
       .track_loaded {
         @include c_2b_b; 
@@ -185,6 +200,7 @@
           .title_set {
             .title { 
               @include ts_in($c3b);
+              @include c_3_b;
             }
             .sub { 
              color: $c3b; 
@@ -211,6 +227,7 @@
           .title_set {
             .title { 
               @include ts_in($c4b);
+              @include c_4_b;
             }
             .sub { 
              color: $c4b; 
@@ -238,6 +255,7 @@
           .title_set {
             .title { 
               @include ts_in($c5b);
+              @include c_5_b;
             }
             .sub { 
              color: $c5b; 
@@ -266,6 +284,7 @@
           .title_set {
             .title { 
               @include ts_in($c6b);
+              @include c_6_b;
             }
             .sub { 
              color: $c6b; 
@@ -293,6 +312,7 @@
           .title_set {
             .title { 
               @include ts_in($c7b);
+              @include c_7_b;
             }
             .sub { 
              color: $c7b; 
@@ -322,6 +342,7 @@
           .title_set {
             .title { 
               @include ts_in($c8b);
+              @include c_8_b;
             }
             .sub { 
              color: $c8b; 
@@ -343,15 +364,40 @@
     }
 
   }
+    .track:hover {
+
+      .add_track_to_track {
+
+        .track_btn#add_track { display: none;}
+        .track_btn#from_remove { visibility: visible;}
+        .track_btn#from_library { visibility: visible;}
+        .track_btn.from_file { visibility: visible;}
+        .uploadify { visibility: visible;}
+        //background: rgba(0,0,0,0.05);
+
+
+      }
+        .track_comments {
+          background: url("/assets/tapedeck/bottom_shadow_dark.png") no-repeat bottom;
+          background-color: rgba(0,0,0,0);
+
+        
+        }
+
+
+    }
     .track {
         height: 85px;
         background: #969696;
         list-style-type: none;
         color: white;    
+        cursor: pointer;
+
+
       .track_info {
         z-index: 6000; 
         height: 85px;
-        width: 225px;
+        width: 150px;
         display: inline-block;
         //background: #FF00FF;
         float: left; 
@@ -364,33 +410,40 @@
         
         }
         .control_set {
-          width: 120px;
+          width: 130px;
           height: 85px;
           padding-left: 5px;
-          background: rgba(255,255,255,0.1);
+          //background: rgba(255,255,255,0.1);
           display: inline-block;
           @include fh_b(12px);
           float: left;
           .title_set {
             height: 35px;
             .title {
-              padding-top: 10px;
+              margin-top: 5px;
+              padding-top: 5px;
+              padding-bottom: 5px;
               padding-left: 10px; 
               @include fh_b(12px);
               color: #FFF;
+              background: #000;
+              position: absolute;
+              z-index: 9200;
+              @include round(5px);
             }
             .sub {
-              padding-top: 3px;
+              margin-top: 26px;
               padding-left: 10px; 
               @include c_g_3;
               @include fh(11px); 
+              position: absolute;
               
             }
           
           }
           .controller {
             //background: #FF00FF;
-            width: 115px;
+            width: 145px;
             height: 30px;
             padding-left: 10px;
             padding-top: 10px;
@@ -481,6 +534,54 @@
               z-index: 9500;
             
             }
+
+
+
+
+
+            .volume.moving {
+              opacity: 1;
+              background: url("/assets/track/vol_icon_on.png") no-repeat center;
+            }
+            .volume:hover {
+              opacity: 1;
+              background: url("/assets/track/vol_icon_on.png") no-repeat center;
+            }
+            .volume {
+              opacity: 0.4;
+              @include round(24px);
+              width: 30px;
+              height: 30px;
+              margin-left: 35px;
+              background: url("/assets/track/vol_icon_off.png") no-repeat center;
+              cursor: pointer;
+
+              //margin-top: 10px;
+              //margin-left: 0px;
+              //margin-right: 0px;
+              //display: inline-block;
+              position: absolute;
+              //margin-left: -13px;
+              @include fh_b(13px);
+              color: rgba(0,0,0,0.1);
+
+            
+            }
+
+
+
+
+
+
+
+
+
+
+
+            .pan.moving {
+              opacity: 1;
+              background: url("/assets/track/pan_icon_on.png") no-repeat center;
+            }
             .pan:hover {
               opacity: 1;
               background: url("/assets/track/pan_icon_on.png") no-repeat center;
@@ -504,53 +605,12 @@
 
             
             }
-            .volume:hover {
-                
-              opacity: 1;
-            }
-            .volume {
-              opacity: 0.3;
-              z-index: 9000;
-              @include round(24px);
-              width: 14px;
-              height: 66px;
-              cursor: pointer;
-              //background: rgba(255,255,255,0.3);
 
-              //border-width: 3px;
-              background-color: rgba(0,0,0,0.05);
-
-              //margin-top: 10px;
-              @include fh_b(13px);
-
-              position: absolute;
-              margin-top: -35px;
-              margin-left: 90px;
-              .inner {
-                height: 66px;
-                width: 14px;
-                position: absolute;
-                @include round(24px);
-                bottom: 0px;
-                background: #FFF;
-              }
-            
-            }
           }
         
         }        
       }
-      .add_track_to_track:hover {
 
-        .track_btn#add_track { display: none;}
-        .track_btn#from_remove { visibility: visible;}
-        .track_btn#from_library { visibility: visible;}
-        .track_btn.from_file { visibility: visible;}
-        .uploadify { visibility: visible;}
-        //background: rgba(0,0,0,0.05);
-
-
-      }
       .add_track_to_track {
         width: 35px;
         height: 85px;
@@ -634,6 +694,18 @@
         //display: inline-block;
         //float: left; 
       }
+       .track_dotted {
+        position: absolute;
+        height: 85px;
+        width: 775px;
+        //display: inline-block;
+
+        background: none;
+        background-image: url("/assets/track/track_line.png");
+        background-repeat: repeat-x;
+        //float: left; 
+      
+      }     
       .track_base {
         position: absolute;
         background: #64c0a1;
@@ -642,6 +714,356 @@
         //display: inline-block;
         //float: left; 
       
+      }
+      .track_position {
+
+        width: 80px;
+        height: 85px;
+        background: url("/assets/tapedeck/indicator.png");
+        margin-left: -42px;
+        position: absolute;
+
+      
+      }
+      .track_hotspot {
+        position: absolute;
+        height: 85px;
+        width: 775px;
+        //display: inline-block;
+        //float: left; 
+      
+      }
+      .track_comments:hover {
+      
+        .strip {
+          #marker{ 
+            display: inline;
+          }
+
+        }
+      }
+
+
+      .track_comments {
+        margin: 0px;
+        padding: 0px;
+        position: absolute;
+        margin-top: 60px;
+        height: 25px;
+        width: 775px;
+        background: #000;
+        opacity: 1;
+        list-style-type: none;
+        //display: inline-block;
+        
+        background-color: rgba(0,0,0,0);
+
+          .comment_field {
+              background: #FF00FF;
+            
+            }
+
+
+        .comment{
+          background-color: rgba(0,0,0,0.1);
+          height: 25px;
+          width: 25px;
+          position: absolute;
+          //min-height: 50px;
+          //@include round(40px);
+
+          .track_comments_box {
+            z-index: 11000;
+          
+            padding: 0px;
+            margin: 0px;
+            @include fh(12px);
+
+            padding: 10px;
+            line-height: 15px;
+            padding-bottom: 0px;
+            padding-top: 0px;
+
+            color: white;
+            list-style-type: none;
+            .comment_set:last-child {
+            
+              border-bottom-style: none;
+            }
+
+            .comment_set:hover {
+              .date {
+                opacity: 1;
+              }
+              .user_name {
+                opacity: 1;
+              }
+            }
+            .comment_set {
+              padding: 0px;
+              margin: 0px;
+              margin-bottom: 0px;
+              padding-bottom: 5px;
+              padding-top: 5px;
+              padding-left: 5px;
+              border-color: rgba(0,0,0,0.05);
+              border-bottom-width: 1px;
+              border-bottom-style: solid;
+              .comment_body {
+                @include fh(12px);
+                margin-top: 10px; 
+                @include c_g_5;
+                line-height: 17px;
+                
+              
+              }
+              .date {
+                opacity: 0.5;
+                @include fh(11px);
+                @include round(2px);
+                margin-top: 10px; 
+                @include c_g_2;
+                line-height: 17px;
+                margin-left: 7px;
+                
+              
+              }
+              .user_name {
+                opacity: 0.5;
+                @include c_g_4_b;
+                @include fh_b(12px);
+                padding: 3px 5px;
+                @include round(5px);
+                margin-left: -5px;
+                line-height: 30px;
+                color: $c_g_2
+                      
+              
+              }
+
+
+            }
+
+            
+
+          }
+
+        
+        }
+      .comment_strip {
+        list-style-type: none; 
+        padding: 0px;
+        margin: 0px;
+        width: 775px;
+        height: 25px;
+      }
+      .strip {
+        list-style-type: none; 
+        padding: 0px;
+        margin: 0px;
+        width: 775px;
+        height: 25px;
+        position: absolute;
+
+        #marker{
+          display: none;
+          height: 25px;
+          width: 25px;
+          position: absolute;
+          background: url("/assets/tapedeck/add_comment_btn.png");
+          //@include round(40px);
+        
+        }        
+      }
+
+
+
+
+      .comment {
+      
+        .commentbox2 {
+          display: none;
+          margin-top: -60px;
+          margin-left: -98px;
+        }
+      }
+      .comment:hover {
+      
+        .commentbox2 {
+          display: inline;
+        }
+      }
+      
+
+        //float: left; 
+      }
+      
+     .commentbox {
+      
+      //display: inline;
+      margin-left: -110px;
+      position: absolute;
+      z-index: 18000;
+
+        .body {
+          position: absolute;
+          width: 218px;
+          min-height: 10px;
+          bottom: -50px;
+          @include round(3px);
+          @include c_g_1_b;
+          z-index: 8000;
+
+          #comment_box {
+          
+            .comment_field:focus {
+                background-color: white;
+            }
+            .comment_field {
+                width: 125px;
+                border-color: #e9e9e9;
+                border-style: solid;
+                border-width: 1px;
+                outline: none;
+                @include fh_b(12px);
+                @include round(5px);
+                @include c_g_5_b;
+                background-color: $c_g_5;
+                @include c_g_1;
+                padding: 10px 10px;
+                height: 12px;
+                margin-left: 5px;
+                margin-bottom: 5px;
+                margin-top: 5px;
+                padding-right: 70px;
+
+              
+              }
+              .comment_label {
+                width: 180px;
+                border: none;
+                outline: none;
+                @include fh_b(12px);
+                @include round(5px);
+                @include c_g_2;
+                padding: 10px 10px; 
+                padding-left: 15px;
+                padding-top: 16px;
+              
+              }          
+
+              .send_track_button {
+                  @include c_g_1_b;
+                  color: white;
+                  padding: 8px 12px;
+                  display: inline-block;
+                  @include round(3px);
+                  @include fh_b(12px);
+                  position: absolute;
+                  margin-left: 160px; 
+                  margin-top: 7px;
+                  z-index: 6000;
+                  cursor: pointer;
+                  @include btn($c_g_2);
+              }
+
+
+          }
+        
+        
+        }
+        .snip {
+          position: absolute;
+          background: url("/assets/tapedeck/arrow_down.png") no-repeat center center;
+          width: 220px;
+          height: 10px;
+          bottom: -60px;
+        
+        }
+      }
+
+      .commentbox2 {
+      
+      //display: inline;
+      margin-left: -110px;
+      position: absolute;
+      z-index: 18000;
+
+        .body {
+          position: absolute;
+          width: 218px;
+          min-height: 10px;
+          bottom: -50px;
+          @include round(3px);
+          @include c_g_1_b;
+          z-index: 8000;
+
+          #comment_box {
+            .comment_field:focus {
+                background-color: white;
+                border-style: solid;
+            }          
+            .comment_field {
+                width: 125px;
+                border-color: rgba(0,0,0,0.05);
+                border-style: solid;
+                border-width: 1px;
+                outline: none;
+                @include fh_b(12px);
+                @include round(5px);
+                @include c_g_5_b;
+                background-color: rgba(0,0,0,0.1);
+                @include c_g_1;
+                padding: 10px 10px;
+                height: 12px;
+                margin-left: 5px;
+                margin-bottom: 5px;
+                margin-top: 5px;
+                padding-right: 70px;
+
+              
+              }
+              .comment_label {
+                width: 180px;
+                border: none;
+                outline: none;
+                @include fh_b(12px);
+                @include round(5px);
+                @include c_g_2;
+                padding: 10px 10px; 
+                padding-left: 15px;
+                padding-top: 16px;
+              
+              }          
+
+              .send_track_button {
+                  @include c_g_1_b;
+                  color: white;
+                  padding: 8px 12px;
+                  display: inline-block;
+                  @include round(3px);
+                  @include fh_b(12px);
+                  position: absolute;
+                  margin-left: 160px; 
+                  margin-top: 7px;
+                  z-index: 6000;
+                  cursor: pointer;
+                  @include btn($c_g_2);
+              }
+
+
+          }
+        
+        
+        }
+        .snip {
+          position: absolute;
+          background: url("/assets/tapedeck/arrow_down.png") no-repeat center center;
+          width: 220px;
+          height: 10px;
+          bottom: -60px;
+        
+        }
       }
       .track_loaded {
         position: absolute;
@@ -663,7 +1085,7 @@
       }
       .track_clip_box {
         height: 85px;
-        width: 735px;
+        width: 810px;
         //display: inline-block;
         float: left; 
       
@@ -682,7 +1104,7 @@
         position: absolute;
         //background: #FF00FF;
         height: 20px;
-        width: 700px;
+        width: 775px;
 
         margin-top: 30px;
         text-align: center;

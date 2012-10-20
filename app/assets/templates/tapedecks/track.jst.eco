@@ -1,9 +1,8 @@
 <div class="track_info c<%=@color%>">
-  <div class="user_image"></div>
   <div class="control_set"> 
     <div class="title_set">
       
-      <div class="title">
+      <div class="title" data-full_text="<%=@track.get("name")%>">
         <%=@track.get("name")%> 
         <%#@track.get("id")%> 
       </div>
@@ -16,9 +15,9 @@
       <div class="element mute" id="mute"><%=@index%></div>
       <div class="element solo" id="solo" data-index="<%=@index%>">S</div>
       <canvas class="pan" id="pan" width=150 > </canvas>
-      <div class="volume vol" id="volume">
-        <div class="inner">&nbsp;</div>
-      </div>
+      <canvas class="volume" id="volume" width=150 > </canvas>
+
+
 
     </div>
   </div>
@@ -31,13 +30,55 @@
 
 
 <div id="track_<%=@track.get("_id")%>_box" class="track_clip_box c<%=@color%>" data-id="<%=@track.get("_id")%>" data-duration="<%=@track.get("duration")%>"> 
+
+
   
   <div id="track_<%=@track.get("_id")%>_base" class="track_base"> </div>
+  
+
+  <div id="track_<%=@track.get("_id")%>_dotted" class="track_dotted"> </div>
   <div id="track_<%=@track.get("_id")%>_loaded" class="track_loaded"> </div>
   <div id="track_<%=@track.get("_id")%>_progress" class="track_progress"> </div>
   <div id="track_<%=@track.get("_id")%>_clip" class="track_clip"> </div> 
+  <div id="track_<%=@track.get("_id")%>_position" class="track_position"> </div>
+  <div id="track_<%=@track.get("_id")%>_hotspot" class="track_hotspot"> </div>
+  <div id="track_<%=@track.get("_id")%>_comments" class="track_comments"> 
+    
+    <ul class="strip"> 
 
-</div>
+      <li id="marker" style="margin-left: 230px"> 
+      </li>
+    
+    </ul>
+
+
+
+    <ul class="comment_strip"> </ul>
+
+    </div>
+  <div id="commentbox<%=@track.get("_id")%>" class="commentbox"> 
+    <div class="body"> 
+
+      <div id="comment_box"> 
+        <div class="send_track_button" id="send_track_button_new">
+          Post
+        </div>
+
+        <label class="comment_label" id="comment_tape_label_<%= @track.get("id")%>" for="comment_tape_field_<%= @track.get("id")%>">Post a Comment</label>
+        <textarea class="comment_field" type="text" name="comment_tape_field_<%= @track.get("id")%>" id="comment_tape_field_<%= @track.get("id")%>" value=""></textarea>
+
+         </div> 
+
+    
+    
+    </div>
+    <div class="snip"> </div>
+  
+  </div>
+    
+  </div>
+
+
 
 <% if Tapesfm.user: %>
 <div class="add_track_to_track">

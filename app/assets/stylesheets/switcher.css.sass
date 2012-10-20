@@ -1,0 +1,68 @@
+
+@import "tools/colors"
+@import "tools/fonts"
+@import "tools/effects" 
+@import "ios-checkboxes/mixins"
+
+
+// Override the ios-checboxes defaults
+// Empty string disables the property (can't be applied to height)
+$iphone-style-font: ''
+$iphone-style-height: 30px
+$iphone-style-font-size: ''
+$iphone-style-images-path: ''
+
+// Define additional variables
+$onoff-active: #136785
+$onoff-active-alt: #1c94bf
+$onoff-back: #bfbfbf
+
+$onoff-radius: 10px
+
+=iphone-style-visual-container
+  width: 10px
+  @include round(20px)
+
+
+=iphone-style-label
+  @include round(20px)
+
+=iphone-style-label-on
+  left: 0px
+  background: url("/assets/tapes/on_icon.png") no-repeat center center
+  padding-right: 30px
+  @include c_3_b
+  @include round(20px)
+  color: rgba(0,0,0,0)
+  // Don't squeeze the On button too much to make sure the handle overlaps fully with it
+  // this way it can interset with handler
+  min-width: 0px
+
+
+
+=iphone-style-label-off
+  background: url("/assets/tapes/off_icon.png") no-repeat center center
+  margin-left: 0px
+  text-align: right
+  color: rgba(0,0,0,0)
+  @include c_g_1_b
+  @include round(20px)
+  span
+    padding-right: 10px
+    @include round(20px)
+
+
+=iphone-style-visual-handle
+  width: 21px
+  height: 30px
+  background: #f6f6f6
+  @include round(20px)
+  color: rgba(0,0,0,0)
+
+// Additional hooks that you can override are:
+// =iphone-style-visual-handle-right
+// =iphone-style-visual-handle-center
+
+
+// And finally emit the stylesheet
++iphone-style

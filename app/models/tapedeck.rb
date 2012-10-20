@@ -15,6 +15,9 @@ class Tapedeck
   field :description, :type => String
   field :genre, :type => String
   field :genre_sub, :type => String
+  field :remixable, :type => Boolean
+  field :commentable, :type => Boolean
+  field :public, :type => Boolean
 
   def collaborator?(user)
 

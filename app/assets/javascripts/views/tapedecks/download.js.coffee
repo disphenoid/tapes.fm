@@ -7,6 +7,8 @@ class Tapesfm.Views.TapedeckDownload extends Backbone.View
   render: ->
     rendertContent = @template(model: @model)
     $(@el).html(rendertContent)
+    $(@el).find(".title").trunacat(18, false)
+    
     this
 
 

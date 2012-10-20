@@ -1,0 +1,14 @@
+
+<div class="outline"> </div> 
+<div class="cover"> </div>
+<div class="wheels"> </div> 
+<a href="/tapedeck/<%=@model.get("id")%>">
+<div class="case"> </div> 
+</a>
+<div class="settings_btn" id="test_add_<%=@model.get("_id")%>"></div> 
+<div class="info"> 
+
+<div class="headline"> <%=@model.get("name")%></div> 
+<div class="subline"> Great Sea Monster find </div> 
+
+</div> 
