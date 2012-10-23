@@ -28,7 +28,11 @@ class WebappController < ApplicationController
 
   def tapes
 
-      @tapedecks = Tapedeck.all
+      if current_user
+        @tapedecks = Tapedeck.where({collaborator_ids: current_user.id}).desc(:created_at) #Tapedeck.where({user_id: current_user.id})
+      else
+        @tapedecks = []
+      end
 
       @json = render_to_string( template: 'tapes/index.json.jbuilder', locals: { tape: @tapedecks}) 
       respond_to do |format|

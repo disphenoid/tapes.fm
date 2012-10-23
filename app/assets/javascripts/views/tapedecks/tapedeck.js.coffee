@@ -6,6 +6,7 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
 
     $(document).bind('keydown', this.keyown)
     setTimeout(this.scrabberHotspot, 1)
+    
 
     #window.bla = @model.on('change', @start, this)
   events:
@@ -96,8 +97,23 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
     #$('#tapedeck_tape').prepend(view.render().el)
   resetScrabber: ->
 
-    
+  disable: ->
+    if @model.get("versions").length == 0
+      $(@el).find("#tapedeck_main_set").fadeTo(50,0.1)
+      $(@el).find("#tapedeck_lower").fadeTo(50,0.1)
+      $(@el).find("#tapedeck_tape").hide()
+      $(@el).find("#download_tracks").hide()
+      $(@el).find("#tapedeck_notape").show()
+  enable: ->
+    $(@el).find("#tapedeck_main_set").fadeTo(50,1)
+    $(@el).find("#tapedeck_lower").fadeTo(50,1)
+    $(@el).find("#tapedeck_tape").show()
+    $(@el).find("#download_tracks").show()
+    $(@el).find("#tapedeck_notape").hide()
+
+
   render: ->
     rendertContent = @template(model: @model)
     $(@el).html(rendertContent)
+    @disable()
     this

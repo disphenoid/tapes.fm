@@ -29,7 +29,7 @@ class SoundUploader < CarrierWave::Uploader::Base
 
   end
   def extension_white_list
-    %w(wav)
+    %w(aiff aif wav)
   end
 
   def add_to_process_queu(argue)
@@ -59,13 +59,16 @@ class SoundUploader < CarrierWave::Uploader::Base
     jsonp(model.id)
     
     #gets duration from wav an saves to track
-    wave = WaveInfo.new("#{file.path}") 
-    model.duration = (wave.duration * 1000).round
-    model.sample_rate = wave.sample_rate
-    model.channels = wave.channels
+    if file.extension == "wav"
+      #saves meta data
+      wave = WaveInfo.new("#{file.path}") 
+      model.duration = (wave.duration * 1000).round
+      model.sample_rate = wave.sample_rate
+      model.channels = wave.channels
+    end
     model.name = File.basename(file.filename, '.*')
     model.file_name = File.basename(file.filename, '.*')
-    puts "########## duration = #{(wave.duration)}"
+    #puts "########## duration = #{(wave.duration)}"
 
     
     #Resque.enqueue(ConvertTracksS3,model.id)

@@ -33,6 +33,8 @@ Tapesfm::Application.routes.draw do
   match 'tapedeck', to: "webapp#tapedeck"
   match 'tapedeck/*path', to: "webapp#tapedeck"
   match 'download/:id', to: "webapp#download"
+
+  post 'api/update_cover/:id', to: "tapedeck#update_cover"
   
   match 'login', to: "webapp#login"
 

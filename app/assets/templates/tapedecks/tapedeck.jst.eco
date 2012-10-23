@@ -3,6 +3,7 @@
 <div id="tape_upload">
   <div id="upload_title"> Uploads </div>
 </div>
+<div id="tapedeck_main_set">
   <div id="tapedeck_controlls">
     <div class="c_button" id="play">  </div>
     <div class="c_button" id="pause">  </div>
@@ -60,6 +61,7 @@
     </div>  
   </div>  
 
+</div>
   <div id="tape_menu">
 
     <% if Tapesfm.user && Tapesfm.user.collaborator: %>
@@ -91,7 +93,10 @@
   </div>
   
 
-<div id="tapedeck_tape"> </div>
+<div id="tapedeck_tape"></div>
+<div id="tapedeck_notape"> 
+  Add a Track
+</div>
 <div id="tapedeck_lower"> 
   <div id="tapedeck_comments"> 
   <div id="new_comment"></div>

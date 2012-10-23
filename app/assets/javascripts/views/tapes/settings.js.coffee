@@ -1,9 +1,39 @@
 class Tapesfm.Views.TapeSetting extends Backbone.View
   template: JST['tapes/settings']
   events:
-    "click .headline" : "infield"
     "click .new_tape_btn" : "new_tapedeck"
     "click .update_tape_btn" : "new_tapedeck"
+    #"submit .tape_cover_form" : "submitTape"
+    "change .setting_cover_input" : "submitTape"
+
+
+  submitTape: (e) ->
+    console.log "dd"
+    e.preventDefault()
+    console.log $(@el).find(".tape_cover_form").first()
+
+    $(@el).find(".tape_cover_form").ajaxSubmit
+      success: (e) =>
+        console.log e
+
+        # if @model.isNew()
+        #   console.log "dd"
+        #   tapedeck = new Tapesfm.Models.Tapedeck(response)
+        #   tapedeck.set({id: response._id})
+          
+
+        @model.set({cover: e.cover.url, id: e._id})
+
+        #$(@el).find(".cover_pic").replace("ddsad")#attr("src", ("http://"+e.cover.url))
+        $(@el).find(".cover_pic").attr('src', ("http://"+e.cover.url))
+        $(@el).find(".cover_pic").show(500)
+        $(@el).find(".cover_label").addClass("active")
+        $(@el).find(".cover_pic").removeClass("inactive")
+
+        console.log "http://"+e.cover.url
+        #$(@el).find(".cover_pic").hide()
+        
+        #@render()
 
   new_tapedeck: (e) ->
     
@@ -23,10 +53,15 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
 
       @model.set({name: $("#tape_name_field_#{settingId}").val(), remixable: remixable, commentable: commentable, public: public_tape })
       @model.save(
-        {name:  $("#tape_name_field_#{settingId}").val()}
-        {success: (model, response)->
-          console.log response.id
+        {}
+        {success: (model, response) ->
+          console.log "response " + response.id
           #window.location = "/tapedeck/"+response._id
+          tapedeck = new Tapesfm.Models.Tapedeck(response)
+          tapedeck.set({id: response._id})
+
+          Tapesfm.tapes.unshift(tapedeck)
+
           $(".popin-overlay").removeClass("active")
 
           $(".setting-popin").removeClass("active")
@@ -35,34 +70,11 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
         })
 
 
-  infield: (e) ->
-    alert "dd"
-    #$(e.currentTarger).html("dd")
-    # $(@el).find("label").inFieldLabels()
+
 
   initialize: ->
-   
-   # $(".new_tape_btn").live "click", -> 
-
-   #   remixable = ($("#tape_remixable").attr('checked') == "checked")
-
-   #   #new_tapdeck = new Tapesfm.Models.Tapedeck()
-
-
-   #   @model.set({name: $("#tape_name_field").val(), remixable: remixable, commentable: $("#tape_commentable").val(), public: $("#tape_public").val() })
-   #   @model.save(
-   #    {name:  $("#tape_name_field").val()}
-   #    {success: (model, response)->
-   #      console.log response.id
-   #      window.location = "/tapedeck/"+response._id
-   #    })
-        
-
-
+    #@model.on("change", @render, this)
    $(".settings input").live "focus", ->
-     
-     
-     
 
   render: ->
     
@@ -81,6 +93,10 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
     rendertContent = @template(model: @model, title: title, settingId: settingId )
     
     $(@el).html(rendertContent)
+
+      
+    $(@el).find("#setting-popin_#{@model.id} label").inFieldLabels()
+
 
     this
 

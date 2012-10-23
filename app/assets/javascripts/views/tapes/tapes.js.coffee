@@ -1,4 +1,5 @@
 class Tapesfm.Views.Tapes extends Backbone.View
+  animationTime: []
   template: JST['tapes/tapes']
   events:
     "click .add_tape" : "addTape"
@@ -6,13 +7,13 @@ class Tapesfm.Views.Tapes extends Backbone.View
 
   initialize: ->
     
-    #@model.on('change', @render, this)
+    @collection.on('add', @prependTapedeck, this)
     #@collection.on('reset', @render, this)
     #@render()
     
     #@collection.on('changed:name', @render, this)
     #@collection.on('add', @render, this)
-
+    Tapesfm.tapes = @collection
   removeNew: (e) ->
     if $(e.target).is('.popin-overlay')
       $(".popin-overlay").removeClass("active")
@@ -37,10 +38,19 @@ class Tapesfm.Views.Tapes extends Backbone.View
     tapedeckView = new Tapesfm.Views.Tape(model: tapedeck)
     #$(@el).append("ddd")
     $(@el).find("#tapes_list").append(tapedeckView.render().el)
-  
+    #$(@el).find(tapedeckView.render().el).fadeIn( @animationTime.pop)
+
+  prependTapedeck: (tapedeck) =>
+    console.log tapedeck.get("name")
+    tapedeckView = new Tapesfm.Views.Tape(model: tapedeck)
+    #$(@el).append("ddd")
+    $(@el).find("#tapes_list").prepend(tapedeckView.render().el)
+    $(@el).find(tapedeckView.render().el).hide().fadeIn("slow")
+    
 
   initPopIn: (key) ->
   
+
     new_tapdeck = new Tapesfm.Models.Tapedeck({remixable: true, commentable: true, public: true})
     settingView = new Tapesfm.Views.TapeSetting(model: new_tapdeck)
     
@@ -63,6 +73,10 @@ class Tapesfm.Views.Tapes extends Backbone.View
 
     
     $(@el).html(rendertContent)
+
+    @animationTime = []
+    # @collection.each (tapedeck) =>
+    #   @animationTime.push 1000
 
     @collection.each @appendTapedeck
     

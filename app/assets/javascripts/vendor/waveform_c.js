@@ -38,14 +38,36 @@
     Waveform.prototype.setData = function(data) {
       return this.data = data;
     };
+    Waveform.prototype.setData_r = function(data) {
+      return this.data_r = data;
+    };
+    Waveform.prototype.setData_l = function(data) {
+      return this.data_l = data;
+    };
+
 
     Waveform.prototype.setDataInterpolated = function(data) {
       return this.setData(this.interpolateArray(data, this.width));
     };
 
+    Waveform.prototype.setDataLInterpolated = function(data) {
+      return this.setData_l(this.interpolateArray(data, this.width));
+    };
+    Waveform.prototype.setDataRInterpolated = function(data) {
+      return this.setData_r(this.interpolateArray(data, this.width));
+    };
+
     Waveform.prototype.setDataCropped = function(data) {
       return this.setData(this.expandArray(data, this.width));
     };
+
+    Waveform.prototype.setDataLCropped = function(data) {
+      return this.setData_l(this.expandArray(data, this.width));
+    };
+    Waveform.prototype.setDataRCropped = function(data) {
+      return this.setData_r(this.expandArray(data, this.width));
+    };
+
 
     Waveform.prototype.update = function(options) {
       if (options.interpolate != null) {
@@ -53,8 +75,12 @@
       }
       if (this.interpolate === false) {
         this.setDataCropped(options.data);
+        this.setDataLCropped(options.data_l);
+        this.setDataRCropped(options.data_r);
       } else {
         this.setDataInterpolated(options.data);
+        this.setDataLInterpolated(options.data_l);
+        this.setDataRInterpolated(options.data_r);
       }
       return this.redraw();
     };
@@ -68,10 +94,23 @@
       _ref = this.data;
       _ref_l = this.data_l;
       _ref_r = this.data_r;
+      
+      if (_ref_l.length >= _ref_r.length) {
+        _r_length = _ref_l.length
+      }
+      else
+      {
+        _r_length = _ref_r.length
+      }
+
+
       _results = [];
       // Value!
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      for (_i = 0, _len = _r_length; _i < _len; _i++) {
+        
+        
         if(_ref_l[_i] < 0.005) {
+
 
           d_l = 0.005//_ref[_i];
         }else{
@@ -83,7 +122,9 @@
         }else{
           d_r = _ref_r[_i];
         }
-        t = this.width / this.data.length;
+        t_l = this.width / this.data_l.length;
+        t_r = this.width / this.data_r.length;
+        t = this.width / this.data_l.length;
 
         if (typeof this.innerColor === "function") {
           this.context.fillStyle = this.innerColor(i / this.width, d_l);

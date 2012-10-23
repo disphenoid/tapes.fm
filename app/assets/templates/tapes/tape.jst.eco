@@ -1,6 +1,9 @@
 
+
 <div class="outline"> </div> 
-<div class="cover"> </div>
+<div class="cover"> 
+<img src="http://<%= @model.get("cover")%>">
+</div>
 <div class="wheels"> </div> 
 <a href="/tapedeck/<%=@model.get("id")%>">
 <div class="case"> </div> 

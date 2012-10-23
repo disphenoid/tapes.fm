@@ -1,6 +1,7 @@
 <div id="tapedeck_info">
     <div id="tapedeck_image">
-      <img src="#" alt="" />
+    <div id="tapedeck_image_cover"> </div>
+      <img src="http://<%=@tapedeck.get("cover")%>" alt="" />
     </div>
     <div id="tapedeck_meta">
 

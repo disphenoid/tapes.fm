@@ -1,5 +1,8 @@
 class TapedeckController < ApplicationController
   respond_to :json
+  protect_from_forgery :except => [:update_cover]
+
+
   def index
     render :json => Tapedeck.all
   end
@@ -26,11 +29,28 @@ class TapedeckController < ApplicationController
   
   def update
     
-    tapedeck = Tapedeck.find(params[:id])
-    tapedeck.update_attributes!(params[:tapedeck])
+    @tapedeck = Tapedeck.find(params[:id])
+    @tapedeck.update_attributes!(params[:tapedeck])
 
-    render :json => tapedeck
 
+    #render :json => @tapedeck
+
+  end
+
+
+  def update_cover
+
+    @tapedeck = Tapedeck.find_or_initialize_by({:id => params[:id]})
+    @tapedeck.cover = params[:tapedeck][:cover]
+    @tapedeck.collaborator_ids.push current_user.id
+    @tapedeck.user_id = current_user.id
+
+
+    if @tapedeck.save
+
+      render :json => @tapedeck
+    end
+    
   end
 
   def destroy

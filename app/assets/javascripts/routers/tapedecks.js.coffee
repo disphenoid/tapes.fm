@@ -176,6 +176,14 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
     #tape.set({name:"#{tape.get("name")} copy"})
     tape.trigger("newTrack")
     tape.trigger("new")
+
+    if Tapesfm.tapedeck.tapedeck.get("tape").get("tracks").length == 1
+      $("#tapedeck_main_set").fadeTo(500,1)
+      $("#tapedeck_lower").fadeTo(500,1)
+      $("#tapedeck_tape").fadeIn("slow")
+      $("#download_tracks").fadeIn("slow")
+      $("#tapedeck_notape").hide()
+    
     #modefiy values
     
 

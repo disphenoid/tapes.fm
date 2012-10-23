@@ -3,13 +3,10 @@
 @import "tools/fonts";
 @import "tools/effects";
 
-html, body {
-	overflow: auto; /* TIP: set it to 'auto' if you have long content pages */
-  min-height: 630px;
-}
+
 
 .setting-popin {
-	position: absolute;
+	position: fixed;
   @include c_g_0_b;
 	overflow: hidden;
 	visibility: hidden;
@@ -57,7 +54,7 @@ html, body {
 
 .popin-overlay {
 	background: #f6f6f6;
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -66,12 +63,20 @@ html, body {
 	visibility: hidden;
 	opacity: 0;
 	filter: alpha(opacity=0);
+
+	-webkit-transition: 0.2s all ease-out;
+	-moz-transition: 0.2s all ease-out;
+	-ms-transition: 0.2s all ease-out;
+	-o-transition: 0.2s all ease-out;
+	transition: 0.2s all ease-out;
+
+
 }
 
 .popin-overlay.active {
 	visibility: visible;
 	opacity: .5;
-	filter: alpha(opacity=50);
+	filter: alpha(opacity=60);
 }
 
 body.avgrund-ready, 

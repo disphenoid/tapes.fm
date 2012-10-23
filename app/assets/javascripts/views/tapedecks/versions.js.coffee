@@ -12,17 +12,18 @@ class Tapesfm.Views.TapedeckVersions extends Backbone.View
 
     #$("#tapedeck_versions").slideToggle(0)
 
-    $("#tape_select_button, #tapedeck_current_version, .tape_version_el").live "click", ->
-      if $("#version_list").css('height') == "40px"
-        $("#tapedeck_versions").animate({opacity: 1,height: "toggle"}, 200)
-        $("#version_list").animate({top: 40}, 200)
-        $("#tape_select").addClass("open")
-        $(".active_version").hide()
-      else
-        $("#tapedeck_versions").animate({opacity: 1,height: "toggle"}, 200)
-        $("#version_list").animate({top: 0}, 100)
-        $("#tape_select").removeClass("open")
-        $(".active_version").show()
+    $("#tape_select_button, #tapedeck_current_version, .tape_version_el").live "click", =>
+      if @model.get("versions").length > 1
+        if $("#version_list").css('height') == "40px"
+          $("#tapedeck_versions").animate({opacity: 1,height: "toggle"}, 200)
+          $("#version_list").animate({top: 40}, 200)
+          $("#tape_select").addClass("open")
+          $(".active_version").hide()
+        else
+          $("#tapedeck_versions").animate({opacity: 1,height: "toggle"}, 200)
+          $("#version_list").animate({top: 0}, 100)
+          $("#tape_select").removeClass("open")
+          $(".active_version").show()
 
   newMode: (data) ->
       $('#tape_select').hide()

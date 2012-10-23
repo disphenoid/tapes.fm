@@ -9,7 +9,11 @@ class Tapedeck
   has_many :tapes
   has_many :comments
   belongs_to :tape, :foreign_key => :active_tape_id
-  has_and_belongs_to_many :collaborators, inverse_of: nil, class_name: "User"
+  has_and_belongs_to_many :collaborators, class_name: "User"
+
+  #validates_attachment_content_type :cover, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif','image/pjpeg','image/x-png',"image/bmp","image/x-bmp"]
+  #
+
 
   field :name, :type => String
   field :description, :type => String
@@ -19,11 +23,21 @@ class Tapedeck
   field :commentable, :type => Boolean
   field :public, :type => Boolean
 
+  mount_uploader :cover, CoverUploader
+
+
+
   def collaborator?(user)
 
     self.collaborator_ids.include? user.id
     
   end
+
+
+  def to_s
+    File.basename file.to_s
+  end
+
 
 
   # def tape

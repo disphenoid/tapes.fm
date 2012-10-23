@@ -9,6 +9,91 @@
 .settings {
   padding: 25px 0px;
   
+  .cover_img:hover {
+
+    .cover_label.active {
+      display: inline;
+    
+    }
+
+    .cover_label {
+
+      color: white;
+    }
+  }
+
+
+  .cover_img {
+  
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-right: 10px;
+    @include round(2px);
+
+    .cover_label {
+      background: rgba(0,0,0,0.3);
+      position: absolute;
+      width: 60px;
+      height: 40px;
+      @include fh_b(12px);
+      color: white;
+      @include c_g_2;
+      text-align: center;
+      padding-top: 20px;
+      @include round(2px);
+
+    }
+
+    .cover_label.active {
+      background: rgba(0,0,0,0.5);
+      position: absolute;
+      width: 60px;
+      height: 40px;
+      @include fh_b(12px);
+      color: white;
+      text-align: center;
+      padding-top: 20px;
+      display: none;
+      @include round(2px);
+
+    }
+
+    .cover_pic {
+      
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      @include round(2px);
+      cursor: pointer;
+    
+    }
+
+
+
+    .cover_pic.inactive {
+      
+      display: none;    
+    }
+
+
+    input {
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      border: none;
+      outline: none; 
+      background: none;
+      -moz-opacity: 0;
+	    opacity: 0; 
+      cursor: pointer;
+    }
+
+
+  
+  }
+
+
   .update_tape_btn:hover {
     
     @include c_2b_b;
@@ -58,6 +143,7 @@
       @include c_g_5;
       @include fh_b(16px);
       margin-bottom: 6px;
+      
     
     
     }
@@ -77,6 +163,9 @@
 
   .header {
   
+    padding: 0px;
+    margin: 0px;
+    margin-top: -10px;
     padding-left: 15px;
     padding-right: 15px;
 
@@ -84,6 +173,7 @@
       @include c_g_5;
       @include fh_b(18px);
       margin-bottom: 6px;
+      padding-top: 5px;
     
     
     }
@@ -199,6 +289,7 @@
 
     .cover {
        opacity: 1;
+
     } 
   }
 
@@ -243,6 +334,16 @@
 
   }  
   .tape:hover {
+
+    transform:rotate(-2deg);
+    -ms-transform:rotate(-2deg); /* IE 9 */
+    -moz-transform:rotate(-2deg); /* Firefox */
+    -webkit-transform:rotate(-2deg); /* Safari and Chrome */
+    -o-transform:rotate(-2deg); /* Opera */
+    overflow: hidden;
+
+    top: -5px;
+
     .outline {
       //opacity: 0.4;
     }
@@ -261,16 +362,25 @@
       display: inline; 
     
     }
+    .wheels {
+      background: url("/assets/tapes/tape_wheels_on.gif") no-repeat center center;
+    
+    }
 
   }
 
   .tape {
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    transition: all .2s ease;
+
     cursor: pointer;
     width: 140px; 
-    height: 170px; 
+    height: 175px; 
     margin-left: 20px;
     margin-top: 20px;
     display: inline-block;
+    position: relative;
 
     .settings_btn {
       display: none;
@@ -301,6 +411,16 @@
       margin: 5px;
       margin-top: 10px;
       @include round(3px); 
+
+      img {
+      
+        overflow: hidden;
+        width: 130px;
+        height: 120px;
+      
+      }
+
+
     
     }
     .outline {
@@ -348,7 +468,7 @@
       height: 23px;
       margin-left: 31px;
       margin-top: 60px;
-      background: url("/assets/tapes/tape_wheels.png") no-repeat center center;
+      background: url("/assets/tapes/tape_wheels_off.gif") no-repeat center center;
       position: absolute;
       @include round(20px);
     

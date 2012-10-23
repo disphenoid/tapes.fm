@@ -41,6 +41,9 @@ gem 'carrierwave_backgrounder'
 gem 'simple_form'
 gem "waveinfo"
 gem 'pusher'
+
+
+
 #gem "cancan"
 
 # To use ActiveModel has_secure_password

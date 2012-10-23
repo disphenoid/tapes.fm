@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
-  layout :nil
+  layout "splash"
   def index
+    redirect_to("/tapes") if current_user
   end
 end

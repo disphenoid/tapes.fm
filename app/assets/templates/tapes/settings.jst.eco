@@ -1,5 +1,28 @@
 <div class="settings">
   <div class="header">
+    <div class="cover_img" >
+      <% if @model.get("cover"):%>
+      <img class="cover_pic" src="http://<%=@model.get("cover")%>">
+        
+      <div class="cover_label active">Change Cover</div>
+      <%else:%>
+      <img class="cover_pic inactive" >
+      <div class="cover_label">Add Cover</div>
+
+      <%end%>
+
+
+      <form accept-charset="UTF-8" enctype=multipart/form-data action="/api/update_cover/<%=@settingId%>" data-remote="true" class="tape_cover_form" id="tape_cover_field_<%=@settingId%>" method="post">
+      
+      <input name="utf8" type="hidden" value="&#x2713;" />
+      
+        <input class="setting_cover_input" id="cover_field" name="tapedeck[cover]" type="file" />
+
+        <input class="hidden" id="tapedeck_id" name="tapedeck[tapedeck_id]" type="hidden" value="<%=@settingId %>" />
+      </form>
+
+
+    </div>
   
     <div class="headline">
       <%=@title%>

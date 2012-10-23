@@ -122,4 +122,20 @@ form p {
 
 label  { 
   position:absolute; 
+
+}
+
+footer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 50px;
+  background: url("/assets/footer_logo_off.png") no-repeat center center;
+
+}
+
+
+footer:hover {
+
+  //background: url("/assets/footer_logo.png") no-repeat center center;
+
 }
