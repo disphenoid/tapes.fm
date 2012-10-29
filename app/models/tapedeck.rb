@@ -1,3 +1,6 @@
+# require "friendly_id"
+# require "friendly_id/mongoid"
+
 class Tapedeck
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -22,6 +25,8 @@ class Tapedeck
   field :remixable, :type => Boolean
   field :commentable, :type => Boolean
   field :public, :type => Boolean
+
+  #has_friendly_id :name, :use_slug => true
 
   mount_uploader :cover, CoverUploader
 

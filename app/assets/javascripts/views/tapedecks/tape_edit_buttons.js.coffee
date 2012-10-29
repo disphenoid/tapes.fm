@@ -4,6 +4,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
   events: ->
     "click .remove_tape_button" : "removeTape"
     "click .edit_tape_button" : "editTape"
+    "mouseover .edit_button" : "editTapeHover"
     "click .undo_tape_button" : "undoTape"
     "click .ctrl_buttons#plus" : "plusBPM"
     "click .ctrl_buttons#minus" : "minusBPM"
@@ -57,11 +58,17 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
       else
         Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
 
+  editTapeHover: (e) ->
+    console.log "hove"
+    console.log e.currentTarget
+    $(e.currentTarget).tipsy("show")
+
   editTape: (tape) ->
     window.existing_tape = true
     window.lastTape_obj = @model.get("tape").attributes
     @model.get("tape").trigger("edit")
-
+    
+    
     console.log "edit"
   removeTape: (tape) ->
     #removeID = $(tape.currentTarget).data("id")
@@ -113,6 +120,9 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
     window.existing_tape = false
     rendertContent = @template(model:@model, edit_mode: false)
     $(@el).html(rendertContent)
+    $(".tipsy").remove()
+    
+
     this
 
   render_undo: ->
@@ -120,6 +130,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
     window.existing_tape = true
     rendertContent = @template(model:@model, edit_mode: true)
     $(@el).html(rendertContent)
+    $(".tipsy").remove()
     this
     
   render: ->
@@ -127,6 +138,8 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
       @render_undo()
     else
       @render_normal()
+
+    
 
 
 

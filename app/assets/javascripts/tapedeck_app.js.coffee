@@ -20,3 +20,4 @@ window.Tapesfm =
 
 $(document).ready ->
   Tapesfm.init()
+  $('.tip').tipsy( {live: true , gravity: 's', offset: 3})

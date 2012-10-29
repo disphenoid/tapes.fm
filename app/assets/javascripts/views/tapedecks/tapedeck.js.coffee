@@ -40,6 +40,7 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
   keyown: (e) ->
     console.log "playstate= #{Tapesfm.trackm.tracks[0].playState
 }"
+    e.preventDefault()
     if e.keyCode == 32 && !$("input, textarea").is(":focus")
       if !Tapesfm.trackm.leadTrack.playState || Tapesfm.trackm.leadTrack.paused
         $("#play").hide()

@@ -5,11 +5,11 @@
 
   <% if Tapesfm.user && Tapesfm.user.collaborator && Tapesfm.user._id == @model.get("tape").get("user_id"): %>
     
-    <li class="edit_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>"></li>
-    <li class="remove_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>"></li>
+    <li class="edit_tape_button edit_button tip" title="Edit" data-id="<%=@model.get("tape").get("_id")%>"></li>
+    <li class="remove_tape_button edit_button tip" title="Remove" data-id="<%=@model.get("tape").get("_id")%>"></li>
   <% end %>
-    <li class="star_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>"></li>
-    <li class="bpm_tape_button edit_button" data-id="<%=@model.get("tape").get("_id")%>">
+    <li class="star_tape_button edit_button tip" title="Mark" data-id="<%=@model.get("tape").get("_id")%>"></li>
+    <li class="bpm_tape_button edit_button tip" title="BPM" data-id="<%=@model.get("tape").get("_id")%>">
 
     <form> 
       <input type="text" name="bpm_value" id="bpm_value" value="<%=@model.get("tape").get("bpm")%>"></input>

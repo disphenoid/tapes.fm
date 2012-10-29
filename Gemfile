@@ -31,6 +31,8 @@ gem 'jbuilder'
 gem 'thin'
 gem 'fog'
 gem "resque", :require => "resque/server"
+# gem "friendly_id" 
+# gem "friendly_id_datamapper"
 
 gem 'carrierwave'
 gem "carrierwave-mongoid", :git => "git://github.com/jnicklas/carrierwave-mongoid.git", :branch => "mongoid-3.0"

@@ -33,10 +33,10 @@
 
 
   
+  <div id="track_<%=@track.get("_id")%>_dotted" class="track_dotted"> </div>
   <div id="track_<%=@track.get("_id")%>_base" class="track_base"> </div>
   
 
-  <div id="track_<%=@track.get("_id")%>_dotted" class="track_dotted"> </div>
   <div id="track_<%=@track.get("_id")%>_loaded" class="track_loaded"> </div>
   <div id="track_<%=@track.get("_id")%>_progress" class="track_progress"> </div>
   <div id="track_<%=@track.get("_id")%>_clip" class="track_clip"> </div> 
