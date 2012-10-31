@@ -3,6 +3,7 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
   events:
     "click .new_tape_btn" : "new_tapedeck"
     "click .update_tape_btn" : "new_tapedeck"
+    "click .delete_tape_btn" : "delete_tapedeck"
     #"submit .tape_cover_form" : "submitTape"
     "change .setting_cover_input" : "submitTape"
 
@@ -34,6 +35,12 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
         #$(@el).find(".cover_pic").hide()
         
         #@render()
+  delete_tapedeck: (e) ->
+    Tapesfm.tapes.remove(@model)
+    @model.destroy()
+    $(".popin-overlay").removeClass("active")
+    $(".setting-popin").removeClass("active")
+    $(".popin-overlay").die "click"
 
   new_tapedeck: (e) ->
     

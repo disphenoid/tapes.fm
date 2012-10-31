@@ -17,5 +17,8 @@
 //=require iphone-style-checkboxes
 //= require_tree .//vendor
 
+$('.min_tip').tipsy( {live: true , gravity: 'n', offset: 3})
 
-
+$(document).ready(function(){
+  $(".form-inputs label").inFieldLabels();
+});

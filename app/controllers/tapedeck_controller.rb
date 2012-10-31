@@ -55,7 +55,7 @@ class TapedeckController < ApplicationController
 
   def destroy
     #respond_with Tapedeck.destroy(params[:id])
-    render :json => Tapedeck.destroy(params[:id])
+    render :json => Tapedeck.find(params[:id]).destroy()
   end
 
 

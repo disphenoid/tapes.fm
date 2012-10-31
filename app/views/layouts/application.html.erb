@@ -17,21 +17,27 @@
 </head>
 <body>
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-         <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
   <header> 
     <div id="h_box" class="container_12">
       <div class="logo">
       </div>
       <div id="quick_buttons">
         <a href="/dashboard">
-        <div id="to_dash" class="quick_button"></div>
+          <div id="to_dash" class="quick_button">
+            <div class="shadow_el"> </div>
+          </div>
         </a>
         <a href="/tapes">
-          <div id="to_tapes" class="quick_button"></div>
+          <div id="to_tapes" class="quick_button">
+            <div class="shadow_el"> </div>
+          </div>
         </a>
         <a href="/listen">
-        <div id="to_listen" class="quick_button"></div>
+          <div id="to_listen" class="quick_button">
+            <div class="shadow_el"> </div>
+          </div>
         </a>
 
         <div id="search">
@@ -49,17 +55,35 @@
         </div>
 
 
-      <div id="user_login">
-      <% if current_user %>
-        <%= current_user.name unless current_user.blank?%>
-        <%= current_user.email unless current_user.blank?%>
+      <% if current_user %> 
+      <div id="user_info">
+        <div class="user_image"> 
+          <div class="shadow_el"> </div>
+        </div>
+          
+        <div class="user_set"> 
+          <div class="user_name"> 
+            Hey,
+            <%= current_user.name unless current_user.blank?%>
+          </div>
+          <a href="/logout">
+            <div class="user_logout"> </div>
+          </a>
+        </div>
+        <div title="123 / 300 min" class="user_bar min_tip">
+          <div class="min_bar">
+          </div>
+        
+        </div>
+      </div>
       <% else %>
+      <div id="user_login">
         <a href="/login">Login</a>
         or
         <a href="/users/sign_up">Join</a>
         for free 
-      <% end %>
       </div>
+      <% end %>
       </div>
     </div>
   </header>

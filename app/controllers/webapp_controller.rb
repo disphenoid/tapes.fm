@@ -4,7 +4,6 @@ require 'waveinfo'
 require 'fileutils'
 
 class WebappController < ApplicationController
-  layout :resolve_layout
   #skip_before_filter :verify_authenticity_token
   protect_from_forgery :except => [:upload, :upload_track]
 
@@ -56,9 +55,6 @@ class WebappController < ApplicationController
 
 
   end
-
-
-
 
 
   def login
@@ -126,14 +122,7 @@ class WebappController < ApplicationController
 
   end
 
-  def resolve_layout
-    case action_name
-    when "login"
-      "application"
-    else
-      "application"
-    end
-  end
+
 
   private 
   def coerce(params)

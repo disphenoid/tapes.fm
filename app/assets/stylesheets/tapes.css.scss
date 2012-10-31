@@ -122,15 +122,29 @@
     margin-top: 10px;
     @include c_2_b;
     @include c_g_0;
-    width: 270px;
+    width: 210px;
     padding: 10px 0px;
     @include fh_b(16px);
     @include round(5px);
     text-align: center;
     margin-left: 15px;
+    display: inline-block;
   
   }  
-
+  .delete_tape_btn {
+    cursor: pointer;
+    margin-top: 10px;
+    @include c_1_b;
+    @include c_g_0;
+    width: 50px;
+    padding: 10px 0px;
+    @include fh_b(16px);
+    @include round(5px);
+    text-align: center;
+    margin-left: 10px;
+    display: inline-block;
+  
+  }  
   .title {
 
     margin-top: 20px;
@@ -141,8 +155,9 @@
 
     .headline {
       @include c_g_5;
-      @include fh_b(16px);
+      @include fh_b(14px);
       margin-bottom: 6px;
+      color: $c_g_2;
       
     
     
@@ -196,12 +211,13 @@
     label {
       
       padding: 10px 15px;
-      @include fh(14px);
+      @include fh_b(14px);
       @include c_g_4;
       position: absolute;
       z-index: 500;
       clear: both;
       margin: 0px;
+      color: $c_g_2;
     
     }
     input {

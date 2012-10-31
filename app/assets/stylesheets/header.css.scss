@@ -1,4 +1,5 @@
 @import "tools/colors";
+@import "tools/effects";
 @import "tools/fonts";
 
 header {
@@ -28,51 +29,64 @@ header {
   
     .quick_button{
       display: inline-block;
-      background: #2e2e2e;
-      height: 53px;
-      width: 53px;
+      background: rgba(46,46,46,0.6);
+      height: 54px;
+      width: 54px;
       float: left;
-      margin-right: 1px;
-      margin-top: 1px;
-      opacity: 0.6;
+      margin-right: 0px;
+      margin-top: 0px;
+      .shadow_el {
+
+        //background: rgba(255,255,255,0.2);
+        position: absolute;
+        width: 54px;
+        height: 54px;
+        background: url("/assets/shadow_el.png");
+      
+      
+      }
       
     }
     .quick_button:hover {
     
-      opacity: 1;
+      background: rgba(46,46,46,1);
       cursor: pointer;
     }
 
 
     .quick_button#to_dash {
-      background-image: url("/assets/header/icon_dashboard_on.png")
+      background-image: url("/assets/header/icon_dashboard_on.png");
+      background-position: center center;
     }
     
     .quick_button#to_tapes {
-      background-image: url("/assets/header/icon_tapes_on.png")
+      background-image: url("/assets/header/icon_tapes_on.png");
+      background-position: center center;
     }
     .quick_button#to_listen {
-      background-image: url("/assets/header/icon_listen_on.png")
+      background-image: url("/assets/header/icon_listen_on.png");
+      background-position: center center;
     }
 
     .quick_button#search_button {
-      background-image: url("/assets/header/icon_search_on.png")
+      background-image: url("/assets/header/icon_search_on.png");
+      background-position: center center;
     }
 
 
     
 
     #search {
-      float: left;
-      
-
-    
+      float: left; 
       #search_box {
         float: left;
         width: 280px;
         height: 53px;
         padding-top: 1px;
         @include c_g_0_b;
+        background-image: url("/assets/shadow_el.png");
+        background-position: left;
+        background-repeat: no-repeat;
 
         //background: #343434;
         p {
@@ -103,13 +117,16 @@ header {
           background: url("/assets/header/inner.png") no-repeat right;
           @include fh_b(13px);
           @include c_g_3;
+          -webkit-transition: all .6s ease;
+          -moz-transition: all .6s ease;
+          transition: all .6s ease;
           
 
         }
 
         input:focus {
           //@include c_g_0_b;
-          background-color: rgba(0,0,0,0.1)
+          background-color: rgba(0,0,0,0.2)
         }
           
       }
@@ -118,6 +135,119 @@ header {
     }
   
   }
+
+    #user_info {
+      float: left;
+      display: inline-block;
+      background: none;
+      height: 53px;
+      width: 304px;
+      text-align: left;
+      @include fh(14px);
+      @include c_g_2;
+      
+      .user_image {
+      
+        height: 53px;
+        width: 54px;
+        display: inline-block;
+        background: rgba(255,255,255,0.1);
+        float: left;
+        background-image: url("/assets/user_default.png");
+
+        .shadow_el {
+
+          position: absolute;
+          width: 54px;
+          height: 54px;
+          background: url("/assets/shadow_el.png");
+        
+        
+        }
+      
+      }
+
+      .user_set {
+      
+        padding-left: 5px;
+        height: 54px;
+        display: inline-block;
+        float: left;
+        @include fh_b(12px);
+        background: url("/assets/shadow_el.png") no-repeat left;
+        
+        
+        .user_name {
+          padding: 10px;
+          padding-top: 14px;
+          padding-bottom: 0px;
+          padding-right: 0px;
+          height: 20px;
+          float: left;
+          display: inline-block;
+        
+        }
+        .user_logout {
+          width: 20px;
+          height: 20px;
+          background: #00FF00;
+          float: left;
+          margin-top: 10px;
+          margin-left: 5px;
+          display: inline-block;
+          background: rgba(0,0,0,0.1);
+          @include round(10px);
+          background-image: url("/assets/header/logout_icon.png");
+          background-position: center center;
+          background-repeat: no-repeat;
+          cursor: pointer;
+        
+        }
+        .user_logout:hover {
+        
+          background-color: rgba(0,0,0,0.3);
+        
+        
+        }
+
+
+      }
+        .user_bar {
+        
+          width: 220px;
+          height: 5px;
+          background: rgba(0,0,0,0.1);
+          position: absolute;
+          margin-top: 37px;
+          margin-left: 69px;
+          @include round(10px);
+          overflow: hidden;
+          cursor: pointer;
+
+          .min_bar {
+            
+            height: 5px;
+            width: 80px;
+            background: $c1;
+            
+          }
+        
+        }
+      
+
+      a {
+        @include c_g_3;
+        @include fh_b(14px);
+        text-decoration: none;
+      }
+      a:hover{
+        @include c_g_4;
+      }
+
+
+    }
+
+
     #user_login {
       float: left;
       display: inline-block;

@@ -8,6 +8,7 @@ class Tapesfm.Views.Tapes extends Backbone.View
   initialize: ->
     
     @collection.on('add', @prependTapedeck, this)
+    @collection.on('remove', @render, this)
     #@collection.on('reset', @render, this)
     #@render()
     
