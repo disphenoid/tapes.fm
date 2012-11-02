@@ -15,19 +15,22 @@ class ApplicationController < ActionController::Base
     #json.partial! "users/user.json.jbuilder", user: current_user
 
 
-    @user_j = Jbuilder.encode do |json|
+    if current_user
+      @user_j = Jbuilder.encode do |json|
 
-      json.(current_user, :id,:_id, :name, :created_at)
-      json.projects(current_user.projects) do |json, project|
-        
-        json.(project,:id, :name)
-        json.users(project.users, :name)
+        json.(current_user, :id,:_id, :name, :created_at)
+        json.projects(current_user.projects) do |json, project|
+          
+          json.(project,:id, :name)
+          json.users(project.users, :name)
 
+        end
+
+        #@user_j = json.partial! "users/user.json.jbuilder", user: current_user
       end
-
-      #@user_j = json.partial! "users/user.json.jbuilder", user: current_user
+    else
+      @user_j = nil
     end
-    
   end
 
   def after_sign_in_path_for(resource) 
