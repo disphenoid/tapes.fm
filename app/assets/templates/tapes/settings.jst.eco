@@ -1,4 +1,41 @@
 <div class="settings">
+  <div class="settings_project">  
+ 
+    
+
+
+    <div class="project_btn"> <div class="headline"> No Project </div>
+
+      <div class="subline"> 
+        Only you
+      </div> 
+    </div>
+
+
+
+
+    <div class="create_group_btn">New Project</div>
+  </div>  
+  <div class="settings_genre">  
+  
+    <div class="genre_btn" data-genre_name="Electronic" > Electronic </div>
+    <div class="genre_btn" data-genre_name="Pop" > Pop </div>
+    <div class="genre_btn" data-genre_name="Rock" > Rock </div>
+    <div class="genre_btn" data-genre_name="Hiphop" > Hiphop </div>
+    <div class="genre_btn" data-genre_name="House" > House </div>
+    <div class="genre_btn" data-genre_name="Techno" > Techno </div>
+    <div class="genre_btn" data-genre_name="Jazz" > Jazz </div>
+    <div class="genre_btn" data-genre_name="Classic" > Classic </div>
+    <div class="genre_btn" data-genre_name="R&B" > R&B </div>
+    <div class="genre_btn" data-genre_name="Blues" > Blues </div>
+    <div class="genre_btn" data-genre_name="Country" > Country </div>
+    <div class="genre_btn" data-genre_name="Other" > Other </div>
+   
+  </div>
+  <div class="settings_main">  
+  
+  
+
   <div class="header">
     <div class="cover_img" >
       <% if @model.get("cover"):%>
@@ -40,12 +77,12 @@
         <input type="text" name="tape_name_field_<%=@settingId%>" id="tape_name_field_<%=@settingId%>" value="<%=@model.get("name")%>">
       </p>
       <p>
-        <label for="tape_author_field_<%=@settingId%>">Add a Project</label>
-        <input type="text" name="tape_author_field_<%=@settingId%>" id="tape_author_field_<%=@settingId%>" value="<%=@model.get("user_name")%>">
+        <label for="tape_genre_field_<%=@settingId%>">Add a Genre</label>
+        <input type="text" name="tape_genre_field_<%=@settingId%>" class="genre_field" id="tape_genre_field_<%=@settingId%>" value="<%=@model.get("genre")%>">
       </p>
       <p>
-        <label for="tape_genre_field_<%=@settingId%>">Add a Genre</label>
-        <input type="text" name="tape_genre_field_<%=@settingId%>" id="tape_genre_field_<%=@settingId%>" value="<%=@model.get("genre")%>">
+        <label for="tape_author_field_<%=@settingId%>">Add a Project (optional)</label>
+        <input type="text" name="tape_author_field_<%=@settingId%>" class="project_field" id="tape_author_field_<%=@settingId%>" value="<%=@model.get("user_name")%>">
       </p>
 
     </form>
@@ -97,4 +134,5 @@
   
   </div>
 
+  </div>
 </div>

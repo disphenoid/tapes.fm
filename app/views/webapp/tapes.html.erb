@@ -8,7 +8,7 @@
   Tapesfm.bootstrap = <%= raw @json %>;
   
 
-  Tapesfm.user = <%= raw current_user.to_json %>;
+  Tapesfm.user = <%= raw @user_j %>;
   <% if current_user %>
   //Tapesfm.user.collaborator = <%# raw (@tapedeck.collaborator?(current_user)).to_json %>;
   <% else %>

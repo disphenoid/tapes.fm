@@ -7,8 +7,118 @@
 
 
 .settings {
-  padding: 25px 0px;
+  .settings_main {
+    padding: 20px 0px;
+    width: 300px; 
+    height: 440px;
+    position: absolute;
+    left: 0px;
   
+  }  
+
+  .settings_project {
+    width: 300px; 
+    height: 440px;
+    position: absolute;
+    left: 300px;
+    
+    .project_btn {
+      
+      background: url("/assets/tapes/project_bg.png");
+      width: 300px;
+      height: 30px;
+      float: left;
+      cursor: pointer;
+      padding: 20px;
+      padding-bottom: 20px;
+      padding-bottom: 20px;
+      
+      .headline {
+        @include fh_b(12px);
+        margin-bottom: 3px;
+        @include c_g_2;
+        
+      }
+
+      .subline {
+        @include fh(11px); 
+        @include c_g_4;
+      
+      }
+
+
+    
+    }
+
+    .project_btn:hover {
+    
+      background: $c1;
+      .headline {
+        color: white;
+      
+      }
+      .subline {
+        color: $c1b;
+      
+      }    
+    }
+      .create_group_btn {
+        cursor: pointer;
+        margin-top: 10px;
+        @include c_g_4_b;
+        @include c_g_0;
+        width: 270px;
+        padding: 10px 0px;
+        @include fh_b(16px);
+        @include round(5px);
+        text-align: center;
+        margin-left: 15px;
+        height: 15px;
+        position: absolute;
+        bottom: 50px;
+        //background: url("/assets/tapes/green_button_bg.gif");
+      
+      }  
+
+    .create_group_btn:hover {
+    
+      color: white;
+    }
+  }
+
+
+
+  .settings_genre {
+    width: 300px; 
+    height: 440px;
+    position: absolute;
+    left: 300px;
+    
+    .genre_btn {
+      
+      background: rgba(255,255,255,0.05);
+      background-image: url("/assets/tapes/genre_bg.png");
+      width: 100px;
+      height: 100px;
+      float: left;
+      cursor: pointer;
+      text-align: center;
+      @include fh_b(14px);
+      color: $c1;
+      line-height: 100px;
+      position: relative;
+      
+    
+    }
+
+    .genre_btn:hover {
+    
+      background: $c1;
+      color: white;
+    
+    }
+  
+  }
   .cover_img:hover {
 
     .cover_label.active {
@@ -115,6 +225,7 @@
     @include round(5px);
     text-align: center;
     margin-left: 15px;
+    background: url("/assets/tapes/green_button_bg.gif");
   
   }
   .update_tape_btn {
@@ -129,6 +240,7 @@
     text-align: center;
     margin-left: 15px;
     display: inline-block;
+    background: url("/assets/tapes/yellow_button_bg.gif");
   
   }  
   .delete_tape_btn {
@@ -148,15 +260,15 @@
   .title {
 
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     padding-left: 15px;
     width: 175px;
     display: inline-block;
 
     .headline {
       @include c_g_5;
-      @include fh_b(14px);
-      margin-bottom: 6px;
+      @include fh_b(12px);
+      margin-bottom: 3px;
       color: $c_g_2;
       
     
@@ -211,7 +323,7 @@
     label {
       
       padding: 10px 15px;
-      @include fh_b(14px);
+      @include fh(12px);
       @include c_g_4;
       position: absolute;
       z-index: 500;
@@ -226,7 +338,7 @@
       margin: 0px;
       width: 270px;
       line-height: 20px;
-      @include fh_b(14px);
+      @include fh_b(12px);
       outline: none;
       background: none;
       border: none;

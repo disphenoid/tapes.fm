@@ -51,6 +51,7 @@ class User
 
   has_many :tapedecks
   has_many :tracks
+  has_and_belongs_to_many :projects
 
   field :name, :type => String
 

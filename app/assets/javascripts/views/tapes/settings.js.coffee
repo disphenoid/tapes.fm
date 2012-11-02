@@ -4,12 +4,42 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
     "click .new_tape_btn" : "new_tapedeck"
     "click .update_tape_btn" : "new_tapedeck"
     "click .delete_tape_btn" : "delete_tapedeck"
+    "click .project_field" : "showProjects"
+    "click .project_field_label" : "showProjects"
+    "click .project_btn" : "selectProject"
+    "click .genre_field" : "showGenres"
+    "click .genre_field_label" : "showGenres"
+    "click .genre_btn" : "selectGenre"
     #"submit .tape_cover_form" : "submitTape"
     "change .setting_cover_input" : "submitTape"
 
 
+  selectGenre: (e) ->
+    $(@el).find(".settings_main").animate({left: "0px"}, 300, "easeOutExpo")
+    $(@el).find(".settings_genre").animate({left: "300px"},300, "easeOutExpo")
+
+    $(@el).find(".genre_field").val($(e.currentTarget).data("genre_name")).focus().blur()
+
+    console.log $(e.currentTarget).data("genre_name")
+    @model.set({genre: $(e.currentTarget).data("genre_name")}, {silent: true})
+
+  selectProject: (e) ->
+    $(@el).find(".settings_main").animate({left: "0px"}, 300, "easeOutExpo")
+    $(@el).find(".settings_project").animate({left: "300px"},300, "easeOutExpo")
+
+  showGenres: (e) ->
+    $(@el).find(".settings_main").animate({left: "-300px"}, 300, "easeOutExpo")
+    $(@el).find(".settings_genre").animate({left: "0px"},300, "easeOutExpo")
+    console.log "dsa"
+
+
+  showProjects: (e) ->
+    $(@el).find(".settings_main").animate({left: "-300px"}, 300, "easeOutExpo")
+    $(@el).find(".settings_project").animate({left: "0px"},300, "easeOutExpo")
+
+    console.log "dsa"
+
   submitTape: (e) ->
-    console.log "dd"
     e.preventDefault()
     console.log $(@el).find(".tape_cover_form").first()
 
@@ -83,6 +113,9 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
     #@model.on("change", @render, this)
    $(".settings input").live "focus", ->
 
+
+  addProjects: (project) ->
+    alert "ddd"
   render: ->
     
 
@@ -103,6 +136,17 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
 
       
     $(@el).find("#setting-popin_#{@model.id} label").inFieldLabels()
+
+
+    _.each Tapesfm.user.projects, (project) =>
+      # _.each project.users, (user) =>
+      #   $(_el).find(".settings_project subline").append(user.name)
+
+
+      $(@el).find(".settings_project").append(" <div class=\"project_btn\"> <div class=\"headline\"> #{project.name} </div> <div class=\"subline\">  </div> </div>
+
+")
+
 
 
     this

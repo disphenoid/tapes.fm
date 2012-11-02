@@ -10,6 +10,10 @@ header {
   position: fixed;
   top: 0px; 
   z-index: 12000;
+  .logo:hover {
+    background-color: $c1;
+    background: url("/assets/header/tapesfm_logo_over.png");
+  }
 
   .logo {
     
@@ -17,7 +21,8 @@ header {
     width: 160px;
     height: 54px;
     display: inline-block;
-    float: left
+    float: left;
+    cursor: pointer;
     
 
   }
