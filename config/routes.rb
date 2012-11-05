@@ -28,7 +28,9 @@ Tapesfm::Application.routes.draw do
     resources :invites
   end
 
+  match 'dashboard', to: "webapp#dashboard"
   match 'tapes', to: "webapp#tapes"
+  match 'explore', to: "webapp#explore"
   match 'tapedeck/:id', to: "webapp#tapedeck"
   match 'tapedeck', to: "webapp#tapedeck"
   match 'tapedeck/*path', to: "webapp#tapedeck"

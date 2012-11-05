@@ -1,0 +1,309 @@
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
+
+
+.mini_cover {
+
+  width: 60px;
+  height: 73px;
+  margin-top: 0px;
+  @include round(3px); 
+  position: absolute;
+
+  img {
+    overflow: hidden;
+    width: 54px;
+    height: 54px;
+    margin-left: 3px;
+    margin-top: 4px;
+    position: absolute;
+  
+  }
+
+  .case {
+    width: 60px;
+    height: 73px;
+    background: url("/assets/dashboard/tape_cover_off.png") no-repeat top left;
+    position: absolute;
+  
+  }    
+  .case:hover {
+    background: url("/assets/dashboard/tape_cover_off.png") no-repeat top left;
+    position: absolute;
+  
+  }    
+  .wheels {
+    width: 39px;
+    height: 12px;
+    margin-left: 11px;
+    margin-top: 25px;
+    background: url("/assets/dashboard/wheels_off.gif") no-repeat center center;
+    position: absolute;
+    @include round(20px);
+  
+  } 
+}
+
+.dashboard_widgets {
+  float: right; 
+
+}
+
+.dashboard_tape_header {
+
+  background: url("/assets/dashboard/active_tape_icon.png") no-repeat;
+
+}
+
+.dashboard_invite_header {
+  background: url("/assets/dashboard/active_invite_icon.png") no-repeat;
+
+}
+
+.dashboard_header {
+  height: 50px;
+  cursor: pointer;
+  @include round(5px);
+  margin-bottom: 5px;
+  margin-top: 20px;
+  @include fh_b(14px);
+  @include c_g_2;
+  padding-left: 75px;
+  line-height: 50px; 
+  // background: url("/assets/dashboard/widget_bg.png") no-repeat bottom center;
+  background-color: rgba(0,0,0,0.04);
+}
+
+#dashboard_invites {
+  display: none;
+
+}
+.dashboard_widget {
+  width: 295px;
+  margin-right: 10px;
+
+
+
+  .dashboard_content {
+    clear: both;
+    margin-top: 10px;
+    
+    .dashboard_tape:hover {
+    
+      //background: rgba(0,0,0,0.03);
+      @include round(5px);
+
+
+      .mini_cover {
+
+        .wheels {
+          background: url("/assets/dashboard/wheels.gif") no-repeat center center;
+        
+        }
+      
+      }
+      
+    
+    }
+    .dashboard_tape {
+      margin-bottom: 5px;
+      height: 60px;
+      cursor: pointer;
+
+      .info_box {
+        display: inline-block;
+        width: 190px;
+        height: 20px;
+        float: left;
+        margin-top: 10px;
+        padding: 0px 10px;
+        @include fh_b(12px);
+        @include c_g_4;
+        margin-left: 65px;
+        .headline {
+            overflow: hidden;
+            white-space: nowrap;
+            height: 13px;
+          
+          }
+        .invite_btn {
+          background: $c_g_2;
+          display: inline-block;
+          @include fh_b(12px);
+          line-height: 20px;
+          margin-top: 5px;
+          padding: 2px 10px;
+          @include round(3px);
+    
+
+        
+        }
+
+        .accept {
+          
+
+          background: url("/assets/dashboard/accept_icon_off.png") no-repeat;
+          background-color: $c3;
+          color: $c3b; 
+          padding-left: 24px;
+
+
+
+
+        }
+        .accept:hover {
+          background: url("/assets/dashboard/accept_icon.png") no-repeat;
+          
+
+          background-color: $c3b;
+          color: white; 
+        }
+        .decline {
+          background: url("/assets/dashboard/decline_icon_off.png") no-repeat;
+          background-color: $c_g_5;
+          color: $c_g_2;
+          width: 5px;
+          height: 20px;
+
+
+
+        
+        }
+        .decline:hover {
+          background: url("/assets/dashboard/decline_icon.png") no-repeat;
+          background-color: rgba(0,0,0,0.1);
+          color: $c1;         
+    
+
+        
+        }
+      }
+      
+    
+    }
+
+  }
+ .dashboard_widget_header { 
+
+ width: 295px; 
+ height: 60px;
+ display: inline-block;
+ 
+
+ // background: url("/assets/dashboard/widget_bg.png") no-repeat bottom center;
+
+
+  #dashboard_modul {
+    clear: both;
+    .headline {
+      @include c_g_1;
+      @include fh_b(16px); 
+      display: inline-block;
+      margin-right: 20px;
+      float: left;
+      padding-top: 42px;
+      padding-bottom: 12px;
+    }
+
+    .filters {
+      padding: 0px;
+      margin: 0px;
+      list-style-type: none;
+      @include c_g_2;
+      @include fh_b(14px); 
+      display: inline-block;
+
+      .filter {
+        cursor: pointer;
+        display: inline-block;
+        padding: 0px 20px;
+        padding-top: 42px;
+        padding-bottom: 12px;
+        color: $c_g_4;
+
+        float: left;
+      
+      
+      }
+      .filter:hover {
+        
+        background: #f6f6f6;
+      }      
+      .filter.active {
+        
+        background: #f6f6f6;
+        color: $c_g_2;
+      }
+
+
+    }
+  
+  }
+  
+  }
+
+
+}
+
+#dashboard_stream {
+  display: inline-block;
+
+  background: url("/assets/dashboard/stream_bg.png") no-repeat bottom center;
+  height: 70px;
+  width: 630px;
+
+
+  #dashboard_filter {
+    .headline {
+      @include c_g_1;
+      @include fh_b(16px); 
+      display: inline-block;
+      margin-right: 20px;
+      float: left;
+      padding-top: 42px;
+      padding-bottom: 12px;
+    }
+
+    .filters {
+      padding: 0px;
+      margin: 0px;
+      list-style-type: none;
+      @include c_g_2;
+      @include fh_b(14px); 
+      display: inline-block;
+
+      .filter {
+        cursor: pointer;
+        display: inline-block;
+        padding: 0px 20px;
+        padding-top: 42px;
+        padding-bottom: 12px;
+        color: $c_g_4;
+
+        float: left;
+      
+      
+      }
+      .filter:hover {
+        
+        background: #f6f6f6;
+      }      
+      .filter.active {
+        
+        background: #f6f6f6;
+        color: $c_g_2;
+      }
+
+
+    }
+  
+  
+  }
+
+
+}
+
+
+
+

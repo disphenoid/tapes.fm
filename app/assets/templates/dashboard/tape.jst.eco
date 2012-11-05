@@ -1,0 +1,25 @@
+<div class="dashboard_tape">
+  <div class="mini_cover">
+
+    <img src="http://<%= @tape.get("cover")%>">
+    <div class="wheels"> </div> 
+    <a href="/tapedeck/<%=@tape.get("id")%>">
+    <div class="case"> </div> 
+    </a>
+
+
+  </div>
+  <div class="info_box">
+    <div class="headline">
+      <%= @tape.get("name") %> 
+      /
+      <%= @tape.get("project_name") %> 
+
+    </div> 
+    <div class="subline">
+      
+    </div> 
+  </div> 
+</div>
+
+

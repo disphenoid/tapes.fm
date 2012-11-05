@@ -24,13 +24,38 @@ class WebappController < ApplicationController
 
 
   end
+  
+  def dashboard
+      if current_user
+      
+        @tapedecks = Tapedeck.where({collaborator_ids: current_user.id}).limit(4).sort({created_at:-1}) #Tapedeck.where({user_id: current_user.id})
+        @invites = Invite.where({accepted: false,invited_id: current_user.id}) #Tapedeck.where({user_id: current_user.id})
+      else
+        @tapedecks = [] 
+        @invites = [] 
+      end
+      
+      @json = render_to_string( template: 'dashboard/index.json.jbuilder', locals: { tape: @tapedecks, invite: @invites })
+
+      respond_to do |format|
+          format.html
+      end
+
+  end
+  def explore
+
+      respond_to do |format|
+          format.html
+      end
+
+  end
 
   def tapes
 
       if current_user
         @tapedecks = Tapedeck.where({collaborator_ids: current_user.id}).desc(:created_at) #Tapedeck.where({user_id: current_user.id})
       else
-        @tapedecks = []
+        @tapedecks = [] 
       end
 
       @json = render_to_string( template: 'tapes/index.json.jbuilder', locals: { tape: @tapedecks}) 

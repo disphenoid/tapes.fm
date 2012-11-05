@@ -1,0 +1,40 @@
+<%# "<div id="tapes_hint"> Start a New Tape </div>" %>
+
+<div id="dashboard_stream">
+  <div id="dashboard_filter">
+    <div class="headline">
+      Stream
+    </div>
+    <ul class="filters">
+     <li class="filter active"> All</li>
+
+    </ul>
+
+
+  </div>
+</div>
+
+
+
+
+<div class="dashboard_widgets">
+
+
+
+<div id="dashboard_invites" class="dashboard_widget"> </div>
+
+<div id="dashboard_tapes" class="dashboard_widget"> </div>
+
+<div id=stream_list">
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+

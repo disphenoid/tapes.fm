@@ -27,6 +27,22 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
     $(@el).find(".settings_main").animate({left: "0px"}, 300, "easeOutExpo")
     $(@el).find(".settings_project").animate({left: "300px"},300, "easeOutExpo")
 
+    console.log $(e.currentTarget).data("project_name")
+    console.log $(e.currentTarget).data("project_id")
+
+
+    unless $(e.currentTarget).data("project_name") == "none"
+      @model.set({project_id: $(e.currentTarget).data("project_id")}, {silent: true})
+      $(@el).find(".project_field").val($(e.currentTarget).data("project_name")).focus().blur()
+
+    else
+      @model.set({project_id: null}, {silent: true})
+      $(@el).find(".project_field").val("").focus().blur()
+
+
+
+
+
   showGenres: (e) ->
     $(@el).find(".settings_main").animate({left: "-300px"}, 300, "easeOutExpo")
     $(@el).find(".settings_genre").animate({left: "0px"},300, "easeOutExpo")
@@ -143,7 +159,7 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
       #   $(_el).find(".settings_project subline").append(user.name)
 
 
-      $(@el).find(".settings_project").append(" <div class=\"project_btn\"> <div class=\"headline\"> #{project.name} </div> <div class=\"subline\">  </div> </div>
+      $(@el).find(".settings_project").append(" <div class=\"project_btn\" data-project_id=\"#{project.id}\" data-project_name=\"#{project.name}\"> <div class=\"headline\"> #{project.name} </div> <div class=\"subline\">  </div> </div>
 
 ")
 

@@ -4,10 +4,10 @@
     
 
 
-    <div class="project_btn"> <div class="headline"> No Project </div>
+    <div class="project_btn" data-project_id="none" data-project_name="none"> 
+    <div class="headline"> No Project </div>
 
-      <div class="subline"> 
-        Only you
+      <div class="subline" >         Only you
       </div> 
     </div>
 
@@ -82,7 +82,7 @@
       </p>
       <p>
         <label for="tape_author_field_<%=@settingId%>">Add a Project (optional)</label>
-        <input type="text" name="tape_author_field_<%=@settingId%>" class="project_field" id="tape_author_field_<%=@settingId%>" value="<%=@model.get("user_name")%>">
+        <input type="text" name="tape_author_field_<%=@settingId%>" class="project_field" id="tape_author_field_<%=@settingId%>" value="<%=@model.get("project_name")%>">
       </p>
 
     </form>
