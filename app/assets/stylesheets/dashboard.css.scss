@@ -3,6 +3,24 @@
 @import "tools/effects";
 
 
+#stream_list {
+  float: left;
+  width: 600px;
+  //min-height: 50px;
+  #welcome {
+  width: 600px;
+  @include round(5px);
+  padding: 20px;
+  text-align: center;
+  @include fh_b(12px);
+  background: rgba(255,255,255,0.5);
+  color: $c1;
+  
+  }
+
+  
+
+}
 .mini_cover {
 
   width: 60px;
@@ -125,8 +143,19 @@
             overflow: hidden;
             white-space: nowrap;
             height: 13px;
+            .author {
+            color: $c_g_2;
+            
+            }
           
-          }
+         }
+
+          .subline {
+            height: 13px;
+            margin-top: 5px;
+            @include fh(12px); 
+            color: $c_g_2;
+         }
         .invite_btn {
           background: $c_g_2;
           display: inline-block;
@@ -196,6 +225,7 @@
 
   #dashboard_modul {
     clear: both;
+
     .headline {
       @include c_g_1;
       @include fh_b(16px); 
@@ -255,6 +285,21 @@
 
 
   #dashboard_filter {
+    .icon {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      float: left;
+      margin-top: 37px;
+      margin-right: 5px;
+      background: url("/assets/dashboard/dash_icon.png") no-repeat center center;
+
+
+      
+    
+    }
+
+
     .headline {
       @include c_g_1;
       @include fh_b(16px); 
@@ -263,6 +308,7 @@
       float: left;
       padding-top: 42px;
       padding-bottom: 12px;
+      width: 52px;
     }
 
     .filters {

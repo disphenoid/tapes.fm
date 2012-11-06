@@ -198,16 +198,15 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
   
   volumeTrackReset: (event) ->
-    @vol_el.setValue(1)
-    @vol_el.setRawValue(50)
+    @vol_el.setValue(50)
+    @vol_el.setRawValue(100)
 
     setValue = 100
-
 
     trackSettings = Tapesfm.tapedeck.tapedeck.get("tape").get("track_settings").where({"track_id":@model.get("id")})[0]
     trackSettings.set({"volume": setValue})
 
-    Tapesfm.trackm.panTrack(@getIndex(),setValue)
+    Tapesfm.trackm.volumeTrack(@getIndex(),setValue)
 
     if Tapesfm.user
       unless window.existing_tape
@@ -286,7 +285,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
   panTrackReset: ->
 
     @pan_el.setValue(0)
-
+    @pan_el.setRawValue(0)
     setValue = 0
 
 
@@ -586,34 +585,35 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
       time = comment.get("timestamp")
 
       time_in_pixel = Math.round(window.tools.map(Number(time), 0, Tapesfm.trackm.duration,0,775))
+      if time_in_pixel <= 775
 
       #$(@el).find(".comment_strip").html("ddskjfls")
  
-      this.$('.comment_strip').append("<li id=\"#{comment.get("timestamp")}\" class='comment #{comment.get("timestamp")}' style='margin-left: #{time_in_pixel}px'> 
-        
-      <div id=\"commentbox#{comment.get("_id")}\" class=\"commentbox2\"> 
-        <div class=\"body\"> 
-           <ul class=\"track_comments_box\">
-           </ul>
-          <div id=\"comment_box\"> <div id=\"send_track_button_replay\" class=\"send_track_button send_track_button_replay\"> Post </div> 
-           <label class=\"comment_label answer_label\" id=\"comment_tape_label_#{ comment.get("timestamp")}_#{ comment.get("id")}\" for=\"comment_tape_field_#{ comment.get("timestamp")}_#{comment.get("id")}\">Add a Comment</label> 
-           <textarea data-timestamp=\"#{ comment.get("timestamp")}\" class=\"comment_field answer_field\" type=\"text\" name=\"comment_tape_field_#{ comment.get("timestamp")}_#{comment.get("id")}\" id=\"comment_tape_field_#{ comment.get("timestamp")}_#{comment.get("id")}\" value=\"\"></textarea> </div> </div>
+        this.$('.comment_strip').append("<li id=\"#{comment.get("timestamp")}\" class='comment #{comment.get("timestamp")}' style='margin-left: #{time_in_pixel}px'> 
+          
+        <div id=\"commentbox#{comment.get("_id")}\" class=\"commentbox2\"> 
+          <div class=\"body\"> 
+             <ul class=\"track_comments_box\">
+             </ul>
+            <div id=\"comment_box\"> <div id=\"send_track_button_replay\" class=\"send_track_button send_track_button_replay\"> Post </div> 
+             <label class=\"comment_label answer_label\" id=\"comment_tape_label_#{ comment.get("timestamp")}_#{ comment.get("id")}\" for=\"comment_tape_field_#{ comment.get("timestamp")}_#{comment.get("id")}\">Add a Comment</label> 
+             <textarea data-timestamp=\"#{ comment.get("timestamp")}\" class=\"comment_field answer_field\" type=\"text\" name=\"comment_tape_field_#{ comment.get("timestamp")}_#{comment.get("id")}\" id=\"comment_tape_field_#{ comment.get("timestamp")}_#{comment.get("id")}\" value=\"\"></textarea> </div> </div>
 
 
-           <div class=\"snip\"> </div>
-           </div>
-        
-        </li>")
+             <div class=\"snip\"> </div>
+             </div>
+          
+          </li>")
 
-      tapeCommentView = new Tapesfm.Views.TapedeckTapeComment(model: comment)
+        tapeCommentView = new Tapesfm.Views.TapedeckTapeComment(model: comment)
 
-      #$(@el).find("#comment_tape_label_#{comment.get("timestamp")}_#{comment.get("id")}").inFieldLabels()
+        #$(@el).find("#comment_tape_label_#{comment.get("timestamp")}_#{comment.get("id")}").inFieldLabels()
 
-      #this.$("##{comment.get("timestamp")} ").append(tapeCommentView.render().el)
+        #this.$("##{comment.get("timestamp")} ").append(tapeCommentView.render().el)
 
 
-      $(@el).find(".comment_strip").find(".#{comment.get("timestamp")} .track_comments_box").prepend(tapeCommentView.render().el)
-      $(@el).find("#send_track_button_replay").hide()
+        $(@el).find(".comment_strip").find(".#{comment.get("timestamp")} .track_comments_box").prepend(tapeCommentView.render().el)
+        $(@el).find("#send_track_button_replay").hide()
 
 
 

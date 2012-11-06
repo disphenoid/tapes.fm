@@ -8,5 +8,8 @@ class Tapesfm.Views.DashboardTape extends Backbone.View
   render: ->
    rendertContent = @template(tape: @model)
    $(@el).html(rendertContent)
+
+
+   $(@el).find(".date").timeago()
    this
 

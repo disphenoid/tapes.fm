@@ -82,11 +82,13 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
         
         #@render()
   delete_tapedeck: (e) ->
-    Tapesfm.tapes.remove(@model)
-    @model.destroy()
-    $(".popin-overlay").removeClass("active")
-    $(".setting-popin").removeClass("active")
-    $(".popin-overlay").die "click"
+    agree = confirm("Delete this Tape?")
+    if agree
+      Tapesfm.tapes.remove(@model)
+      @model.destroy()
+      $(".popin-overlay").removeClass("active")
+      $(".setting-popin").removeClass("active")
+      $(".popin-overlay").die "click"
 
   new_tapedeck: (e) ->
     
@@ -108,7 +110,7 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
       @model.save(
         {}
         {success: (model, response) ->
-          console.log "response " + response.id
+          #console.log "response " + response.id
           #window.location = "/tapedeck/"+response._id
           tapedeck = new Tapesfm.Models.Tapedeck(response)
           tapedeck.set({id: response._id})

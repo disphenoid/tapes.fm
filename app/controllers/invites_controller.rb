@@ -10,10 +10,10 @@ class InvitesController < ApplicationController
       user = User.where({name: params[:value]}).first
       
 
+
       puts "####"+params[:value]
       
-      if user
-        
+      if user && !Invite.where({invited_id: user.id, tapedeck_id: tapedeck.id }).first && !tapedeck.collaborator_ids.include?(user.id)       
         invite = Invite.new
 
         invite.user_id = current_user.id

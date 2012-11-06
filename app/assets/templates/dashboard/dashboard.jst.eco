@@ -2,12 +2,12 @@
 
 <div id="dashboard_stream">
   <div id="dashboard_filter">
+    <div class="icon"> </div>
     <div class="headline">
       Stream
     </div>
     <ul class="filters">
-     <li class="filter active"> All</li>
-
+     <li class="filter active">All</li> 
     </ul>
 
 
@@ -25,12 +25,15 @@
 
 <div id="dashboard_tapes" class="dashboard_widget"> </div>
 
-<div id=stream_list">
-
-
-</div>
 </div>
 
+<div id="stream_list"> 
+  <div id="welcome"> 
+
+    Welcome to TA PS AFFFF AM, !!!! 
+  </div>
+
+</div>
 
 
 

@@ -296,7 +296,9 @@
     padding-left: 15px;
     padding-right: 15px;
 
+
     .headline {
+      display: inline-block;
       @include c_g_5;
       @include fh_b(18px);
       margin-bottom: 6px;
@@ -360,6 +362,21 @@
 
 
   #tapes_filter {
+    .icon {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      float: left;
+      background: #FF00FF;
+      margin-top: 37px;
+      margin-right: 5px;
+      background: url("/assets/tapes/tapes_icon.png") no-repeat center center;
+
+      
+    
+    }
+
+
     .headline {
       @include c_g_1;
       @include fh_b(16px); 
@@ -368,6 +385,7 @@
       float: left;
       padding-top: 42px;
       padding-bottom: 12px;
+      width: 52px;
     }
 
     .filters {
@@ -411,7 +429,7 @@
 
 
 #tapes_list {
-
+  padding-top: 20px;
   margin-left: -20px;
   .add_tape:hover {
 
@@ -427,7 +445,7 @@
     height: 170px; 
     float: left;
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 0px;
 
     .cover {
       width: 130px;
@@ -476,7 +494,9 @@
       //opacity: 0.4;
     }
     .info {
-
+      .private_icon {
+        display: none;
+      }
       .headline {
         @include c_g_0;
       
@@ -504,9 +524,9 @@
 
     cursor: pointer;
     width: 140px; 
-    height: 175px; 
+    height: 190px; 
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 0px;
     display: inline-block;
     position: relative;
 
@@ -518,15 +538,15 @@
       @include round(5px);
       margin-top: 15px;
       margin-left: 105px;
-      background: url("/assets/tapes/settings_icon_off.png") no-repeat;
-      background-color: rgba(0,0,0,0.1);
+      background: url("/assets/tapes/settings_icon_on.png") no-repeat;
+      background-color: rgba(255,255,255,0.9);
     
     }
 
     .settings_btn:hover {
     
       background: url("/assets/tapes/settings_icon_on.png") no-repeat;
-      background-color: rgba(0,0,0,0.4);
+      background-color: rgba(82,82,82,0.9);
     
     }
 
@@ -575,13 +595,29 @@
       width: 130px;
       @include  fh_b(12px);
       @include c_g_2;
+      .private_icon {
+        display: inline-block;
+        position: absolute;
+        background: #FF00FF;
+        height: 20px;
+        width: 20px;
+        left:  50%;
+        margin-left: -10px;
+        margin-top: 15px;
+        background: url("/assets/tapes/private_icon.png");
+      
+    
+    }
       .headline {
+        display: inline-block;
+        position: relative;
         margin-bottom: 3px;
         
       
       }
       .subline {
-        @include  fh(10px);
+        //position: absolute;
+        @include fh(10px);
         display: none;
         
       

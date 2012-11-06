@@ -9,9 +9,15 @@
 <div class="case"> </div> 
 </a>
 <div class="settings_btn" id="test_add_<%=@model.get("_id")%>"></div> 
+
+
 <div class="info"> 
 
+<% unless @model.get("public"): %>
+  <div class="private_icon tip" title="Private Tape"> </div> 
+<% end %>
 <div class="headline"> <%=@model.get("name")%></div> 
-<div class="subline"> Great Sea Monster find </div> 
+<br />
+<div class="subline"> by <%=@model.get("project_name")%> </div> 
 
 </div> 
