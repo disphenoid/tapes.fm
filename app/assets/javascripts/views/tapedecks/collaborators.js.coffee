@@ -48,6 +48,9 @@ class Tapesfm.Views.TapedeckCollaborators extends Backbone.View
     $(@el).find("#invite_send_button").hide()
 
     @collection.each @appendCollaborator
+    
+
+
     this
 
 

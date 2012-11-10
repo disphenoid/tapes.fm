@@ -147,6 +147,10 @@ class window.Trackm
       $("#scrabber_label").css({left: 0})
       $("#scrabber_value").html(window.tools.toTime(0))
 
+      $("#pause").hide()
+      $("#resume").hide()
+      $("#play").show()
+
 
   seek: (pixel_pos) ->
     baseWidth = 775

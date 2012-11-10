@@ -3,7 +3,7 @@ class CollaboratorsController < ApplicationController
 
   def show
 
-    @collaborators = Tapedeck.find(params[:id]).collaborators
+    @collaborators = Tapedeck.find(params[:id]).all_collaborators
 
   end
 

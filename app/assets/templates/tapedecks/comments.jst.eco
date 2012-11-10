@@ -4,7 +4,7 @@
       <%# @model.get("collaborators").last().get("name") %> 
     </h3>
   </div> 
-  <% if Tapesfm.user && Tapesfm.user.collaborator: %>
+  <% if Tapesfm.user && Tapesfm.user.collaborator || Tapesfm.tapedeck.tapedeck.get("commentable"): %>
   <div id="tapedeck_comments_add">
     <p>
       <div id="send_button">

@@ -25,13 +25,14 @@
   - tapesfm_production_haproxy
   - tapesfm_production_collectd
   - tapesfm_production_monit
-  external_host: ec2-23-21-24-90.compute-1.amazonaws.com
-  external_ip: 23.21.24.90
+  external_host: ec2-54-243-140-162.compute-1.amazonaws.com
+  external_ip: 54.243.140.162
   internal_host: ip-10-110-105-183.ec2.internal
   internal_ip: 10.110.105.183
   zone: us-east-1d
   platform: linux
   root_device_type: instance-store
+  static_ip: 54.243.126.20
 - !ruby/object:Rubber::Configuration::InstanceItem
   name: app01
   domain: foo.com
@@ -58,13 +59,14 @@
   - tapesfm_production_passenger_nginx
   - tapesfm_production_collectd
   - tapesfm_production_monit
-  external_host: ec2-107-20-95-32.compute-1.amazonaws.com
-  external_ip: 107.20.95.32
+  external_host: ec2-184-72-190-255.compute-1.amazonaws.com
+  external_ip: 184.72.190.255
   internal_host: ip-10-212-111-152.ec2.internal
   internal_ip: 10.212.111.152
   zone: us-east-1a
   platform: linux
   root_device_type: instance-store
+  static_ip: 54.243.207.150
 - !ruby/object:Rubber::Configuration::InstanceItem
   name: resque01
   domain: foo.com
@@ -90,12 +92,16 @@
   - tapesfm_production_resque_worker
   - tapesfm_production_collectd
   - tapesfm_production_monit
-  external_host: ec2-23-21-21-220.compute-1.amazonaws.com
-  external_ip: 23.21.21.220
+  external_host: ec2-54-242-166-109.compute-1.amazonaws.com
+  external_ip: 54.242.166.109
   internal_host: domU-12-31-39-06-CC-01.compute-1.internal
   internal_ip: 10.208.211.239
   zone: us-east-1d
   platform: linux
   root_device_type: instance-store
+  static_ip: 54.243.126.41
 - volumes: {}
-  static_ips: {}
+  static_ips:
+    web01: 54.243.126.20
+    app01: 54.243.207.150
+    resque01: 54.243.126.41

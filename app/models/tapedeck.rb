@@ -11,12 +11,12 @@ class Tapedeck
   belongs_to :project
   has_many :tapes
   has_many :comments
+  has_many :invites
   belongs_to :tape, :foreign_key => :active_tape_id
   has_and_belongs_to_many :collaborators, class_name: "User"
 
   #validates_attachment_content_type :cover, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif','image/pjpeg','image/x-png',"image/bmp","image/x-bmp"]
-  #
-
+  # 
 
   field :name, :type => String
   field :description, :type => String
@@ -28,9 +28,23 @@ class Tapedeck
 
   #has_friendly_id :name, :use_slug => true
 
-  mount_uploader :cover, CoverUploader
+  mount_uploader :cover, CoverUploader 
+  
+  def all_collaborators 
+      
+    pending = self.pending_collaborators.map {|d| d.invited.pending = true; d.invited;  }
+    accepted = self.collaborators
+    joined = accepted + pending
+
+  end
 
 
+  def pending_collaborators
+    
+    self.invites.where({accepted: false})
+    
+    
+  end
 
   def collaborator?(user)
 
@@ -42,7 +56,7 @@ class Tapedeck
   def to_s
     File.basename file.to_s
   end
-
+  
 
 
   # def tape

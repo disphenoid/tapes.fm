@@ -13,7 +13,6 @@ class Tapesfm.Views.DashboardInvite extends Backbone.View
     success: (model,response) ->
       #@model.trigger("")
 
-   console.log "go"
     
   declineInvite: (e) ->
    @model.destroy()

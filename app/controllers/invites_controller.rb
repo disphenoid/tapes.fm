@@ -3,6 +3,9 @@ class InvitesController < ApplicationController
   def index
     
   end
+
+  
+
   def create
 
       tapedeck = Tapedeck.find(params[:tapedeck_id])

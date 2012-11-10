@@ -28,10 +28,43 @@
 </div>
 
 <div id="stream_list"> 
-  <div id="welcome"> 
+  
+  <div class="stream_item"> 
+    <div class="image"> 
 
-    Welcome to TA PS AFFFF AM, !!!! 
+    </div>
+
+    <div class="content">
+    <div class="top_box">
+
+      <div class="headline">
+        <span class="bold"> Tapedeck_name </span>
+        <span class="normal"> left a comment </span>
+      
+      </div>
+      <div class="subline">
+      22 minutes ago
+      </div>
+    </div>
+    <div class="text">
+      Donec sed odio dui. Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras m
+      Donec sed odio dui. Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus 
+    </div>
+    </div>
+
   </div>
+
+  <div class="stream_item"> <div class="image"> </div> <div class="content"> <div class="top_box"> <div class="headline"> <span class="bold"> Tapedeck_name </span> <span class="normal"> left a comment </span> </div> <div class="subline"> 22 minutes ago </div> </div> <div class="text"> Donec sed odio 
+    </div>
+    </div>
+
+  </div>
+
+
+
+
+ <%# <div id="welcome"> Welcome to TA PS AFFFF AM, !!!!  </div>%>
+
 
 </div>
 
