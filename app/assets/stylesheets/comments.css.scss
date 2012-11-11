@@ -18,6 +18,7 @@
 
   color: white;
   list-style-type: none;
+ 
   .comment_set:last-child {
   
     border-bottom-style: none;
@@ -566,30 +567,49 @@
           
         }
         .user_name {
-          @include c_g_5_b;
+          //@include c_g_5_b;
           @include fh_b(12px);
-          padding: 3px 5px;
+          padding: 3px 3px;
           @include round(5px);
           margin-left: -4px;
           @include c_g_1; 
         
         }
-
+        .user_name:hover {
+          @include c_g_5_b; 
+          @include c_1; 
+          cursor: pointer;
+        }
 
         .tape_name {
-          @include c_g_5_b;
+          //@include c_g_5_b;
           @include fh_b(12px);
-          padding: 3px 5px;
+          padding: 3px 3px;
           @include round(5px);
-          margin-left: 0px;
+          margin: 0px;
+          cursor: pointer;
+          margin-right: 3px;
 
           
         
         }
-        .tape_time {
+
+        .tape_name:hover {
           @include c_g_5_b;
           @include fh_b(12px);
-          padding: 3px 5px;
+          padding: 3px 3px;
+          @include round(5px);
+          @include c_1;
+
+          
+        
+        }
+
+
+        .tape_time {
+          //@include c_g_5_b;
+          @include fh_b(12px);
+          padding: 3px 3px;
           @include round(5px);
           margin-left: 0px;
 
@@ -598,7 +618,7 @@
         }
         .normal {
           @include fh(12px);
-          padding: 3px 4px;
+          padding: 0px 0px;
           @include round(2px);
           margin-left: 0px;
 

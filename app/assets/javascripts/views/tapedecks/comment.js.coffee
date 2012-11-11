@@ -3,7 +3,14 @@ class Tapesfm.Views.TapedeckComment extends Backbone.View
 
   events: ->
     "click .delete" : "removeCollaborator"
+    "click .tape_name" : "switchTape"
   initialize: ->
+
+  switchTape: (e) ->
+    #alert $(e.currentTarget).data("id")
+    $("body").scrollTop(0)
+    Tapesfm.tapedeck.tapedeck.set({active_tape_id: $(e.currentTarget).data("id")})
+    Tapesfm.tapedeck.tapedeck.get("tape").trigger("edit_done")
 
   removeCollaborator: (e) ->
     #alert $(e.currentTarget).data("id")

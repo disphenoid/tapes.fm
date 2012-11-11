@@ -180,6 +180,7 @@ GEM
       rake
       resque (~> 1.20)
       trollop (~> 1.16)
+    rmagick (2.13.1)
     rubber (2.0.4)
       capistrano (~> 2.12)
       clamp
@@ -248,6 +249,7 @@ DEPENDENCIES
   rails (= 3.2.7)
   resque
   resque-pool
+  rmagick
   rubber
   sass-rails (~> 3.2.3)
   simple_form

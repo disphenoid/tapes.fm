@@ -28,7 +28,7 @@
 
   <div id="tape_scrabber">
     <div id="scrabber_label">
-      <div id="scrabber_value">00:00</div>
+      <div id="scrabber_value"><%= window.tools.toTime(Tapesfm.trackm.duration) %></div>
       <div id="scrabber_snip"></div>
     </div>
 

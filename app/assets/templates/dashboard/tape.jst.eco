@@ -1,7 +1,7 @@
 <div class="dashboard_tape">
   <div class="mini_cover">
 
-    <img src="http://<%= @tape.get("cover")%>">
+    <img src="http://<%= @tape.get("cover_s")%>">
     <div class="wheels"> </div> 
     <a href="/tapedeck/<%=@tape.get("id")%>">
     <div class="case"> </div> 
@@ -14,7 +14,7 @@
       <%= @tape.get("name") %> 
       <span class="author">
       /
-        <%= @tape.get("project_name") %> 
+        <%= @tape.get("author") %> 
       </span>
     </div> 
     <div class="subline">

@@ -6,9 +6,22 @@ require 'resque'
 require 'digest/md5'
 
 class CoverUploader < CarrierWave::Uploader::Base
+  include CarrierWave::RMagick
   permissions 0777
   storage :fog
   #after :store, :add_to_process_queu
+  
+  process :resize_to_fill => [200, 200]
+  
+  version :s do
+    process :resize_to_fill => [50,50]
+  end
+  version :m do
+    process :resize_to_fill => [150,150]
+  end
+  # def default_url
+  #   "tapes.fm.s3.amazonaws.com/covers/" + [version_name, "default.png"].compact.join('_')
+  # end
 
   def store_dir
     #"public/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -20,22 +33,22 @@ class CoverUploader < CarrierWave::Uploader::Base
   end
 
 
-  def move_to_cache
-    true
-  end
+  # def move_to_cache
+  #   true
+  # end
 
-  def move_to_store
-    true
-  end
-
+  # def move_to_store
+  #   true
+  # end
 
   def filename
-    if original_filename
-    
-    file_name = model.id.to_s + Time.now.to_s
-    
-    "#{Digest::MD5.hexdigest(file_name)}.#{file.extension}"
-    end
+     "#{secure_token(10)}.#{file.extension}" if original_filename.present?
+  end
+
+  protected
+  def secure_token(length=16)
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.hex(length/2))
   end
 
   

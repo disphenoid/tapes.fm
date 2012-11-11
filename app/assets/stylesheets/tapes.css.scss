@@ -4,8 +4,29 @@
 @import "tools/colors";
 @import "tools/fonts";
 @import "tools/effects";
+  a {
+  
+  text-decoration: none;
+  }
+.more_tapes:hover {
+  
+  background: rgba(0,0,0,0.05);
+  color: $c1;
+
+}
+.more_tapes {
+  background: rgba(0,0,0,0.02);
+  @include fh_b(12px);
+  color: $c_g_2;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  @include round(5px);
+  cursor: pointer;
 
 
+}
 .settings {
   .settings_main {
     padding: 20px 0px;

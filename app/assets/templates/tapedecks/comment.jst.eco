@@ -6,19 +6,22 @@
         <span class="user_name">
           <%= @model.get("user_name")%>
         </span>
+        <% if @model.get("tape_name"): %>
+          <span class="normal">
+          on
+          </span>
+          <span class="tape_name tape_trigger" data-id="<%= @model.get("tape_id")%>">
+            <%= @model.get("tape_name")%>
+          </span>
+        <% end %>
+        <% if @model.get("timestamp"): %>
         <span class="normal">
-        on
+          at
         </span>
-        <span class="tape_name" data-id="<%= @model.get("tape_id")%>">
-          <%= @model.get("tape_name")%>
-        </span>
-        <span class="normal">
-        at
-        </span>
-        <span class="tape_time" data-id="<%= @model.get("tape_id")%>">
-          03:22
-          <%= @model.get("timestamp")%>
-        </span>
+          <span class="tape_time" data-id="<%= @model.get("tape_id")%>">
+            <%= window.tools.toTime(@model.get("timestamp")) %>
+          </span>
+        <% end %>
         <br />
         <br />
 

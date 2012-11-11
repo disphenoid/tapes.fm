@@ -4,11 +4,34 @@
 @import "tools/colors";
 @import "tools/fonts";
 @import "tools/effects";
+#open_button:hover {
+
+  background: url("/assets/tapedeck/invite_plus_on.png") no-repeat center center;
+
+}
+
+#open_button {
+    
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  margin-left: -10px;
+  margin-top: 7px;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 3px;
+  border-color: $c_g_5;
+  @include round(5px);
+  background: url("/assets/tapedeck/invite_plus_off.png") no-repeat center center;
+
+
+}
 
 
     #tapedeck_invite_add {
-
+      opacity: 0;
       margin-top: -10px;
+      position: absolute;
       #invite_send_button:hover {
 
           @include c_4_b;
@@ -27,7 +50,7 @@
           @include fh_b(12px);
           position: absolute;
           margin-left: 236px; 
-          margin-top: 7px;
+          margin-top: 5px;
           z-index: 6000;
           cursor: pointer;
           @include btn($c_g_2);
@@ -41,7 +64,7 @@
         @include round(5px);
         @include c_g_2;
         padding: 11px 10px; 
-        padding-top: 16px;
+        padding-top: 14px;
         margin-left: -10px;
       
       }
@@ -70,12 +93,16 @@
       
       }    
     }
+
+
   .collaborators {
+    position: absolute;
+    width: 200px;
     clear: both;
     list-style-type: none;
     padding: 0px;
-    margin: 0px;
-    margin-left: -10px;
+    margin: 7px;
+    margin-left: 45px;
 
 
 
@@ -1433,7 +1460,6 @@
       display: inline-block;
       float: left;
       margin-right: 20px;
-      @include c_g_5_b;
 
         
 

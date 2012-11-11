@@ -13,8 +13,6 @@ class window.Trackm
     tracks_array.each (track) =>
       if Number(track.get("duration")) > @duration
         @duration = Number(track.get("duration"))
-
-
     #@duration = 456
 
   muteTrack: (track_id) ->
@@ -227,6 +225,7 @@ class window.Trackm
     val = window.tools.map(this.bytesLoaded, 0, this.bytesTotal, 0, tWidth)
 
     $(("#"+this.id+"_loaded")).css({width: val})
+    
     #val = window.tools.map(300, 0,400,0,1000)
     #console.log Math.round(val)
 

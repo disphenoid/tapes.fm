@@ -6,11 +6,19 @@
 
 
 
-.tipsy { font-size: 10px; position: absolute; padding: 5px; z-index: 100000; }
-  .tipsy-inner { background-color: $c_g_1; color: #FFF; max-width: 200px; padding: 7px 10px 6px 10px; text-align: center; 
+.tipsy { font-size: 10px; position: absolute; padding: 5px; z-index: 100000; 
+
+  opacity: 1;
+
+}
+
+  .tipsy-inner { 
+    background-color: $c_g_1; 
+    color: #FFF; 
+    max-width: 200px; 
+    padding: 7px 10px 6px 10px; 
+    text-align: center; 
     @include fh_b(11px);
-  
-    
   
   }
 
@@ -40,9 +48,4 @@
   .tipsy-e .tipsy-arrow { right: 0; top: 50%; margin-top: -5px; border-left-style: solid; border-right: none; border-top-color: transparent; border-bottom-color: transparent; }
   .tipsy-w .tipsy-arrow { left: 0; top: 50%; margin-top: -5px; border-right-style: solid; border-left: none; border-top-color: transparent; border-bottom-color: transparent; }
 
-.tip{
-  .tipsy {
-    background: #FF00FF;
-  }
 
-}

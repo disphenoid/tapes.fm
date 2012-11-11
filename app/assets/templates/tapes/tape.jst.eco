@@ -1,14 +1,12 @@
-
-
 <div class="outline"> </div> 
 <div class="cover"> 
-<img src="http://<%= @model.get("cover")%>">
+<img src="http://<%= @model.get("cover_m")%>">
 </div>
 <div class="wheels"> </div> 
 <a href="/tapedeck/<%=@model.get("id")%>">
 <div class="case"> </div> 
 </a>
-<div class="settings_btn" id="test_add_<%=@model.get("_id")%>"></div> 
+<div class="settings_btn tip" title="Settings" id="test_add_<%=@model.get("_id")%>"></div> 
 
 
 <div class="info"> 
@@ -18,6 +16,6 @@
 <% end %>
 <div class="headline"> <%=@model.get("name")%></div> 
 <br />
-<div class="subline"> by <%=@model.get("project_name")%> </div> 
+<div class="subline"> by <%=@model.get("author")%> </div> 
 
 </div> 

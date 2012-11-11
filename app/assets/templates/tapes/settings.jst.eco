@@ -38,8 +38,8 @@
 
   <div class="header">
     <div class="cover_img" >
-      <% if @model.get("cover"):%>
-      <img class="cover_pic" src="http://<%=@model.get("cover")%>">
+      <% if @model.get("cover_s"):%>
+      <img class="cover_pic" src="http://<%=@model.get("cover_s")%>">
         
       <div class="cover_label active">Change Cover</div>
       <%else:%>

@@ -28,7 +28,8 @@ class WebappController < ApplicationController
   def dashboard
       if current_user
       
-        @tapedecks = Tapedeck.where({collaborator_ids: current_user.id}).limit(4).sort({created_at:-1}) #Tapedeck.where({user_id: current_user.id})
+        @tapedecks = Tapedeck.where({collaborator_ids: current_user.id}).sort({updated_at:-1}).limit(5) #Tapedeck.where({user_id: current_user.id})
+
         @invites = Invite.where({accepted: false,invited_id: current_user.id}) #Tapedeck.where({user_id: current_user.id})
       else
         @tapedecks = [] 

@@ -11,11 +11,7 @@
       </h2>
       <span class="title_spliter"> / </span>
       <h2>
-      <% if @tapedeck.get("project_name"): %> 
-        <%= @tapedeck.get("project_name") %>
-      <% else:  %> 
-        <%= @tapedeck.get("user").get("name") %>
-      <% end %>
+        <%= @tapedeck.get("author") %>
       </h2>
       <div id="metas">
 

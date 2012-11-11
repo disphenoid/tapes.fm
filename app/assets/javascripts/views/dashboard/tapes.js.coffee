@@ -7,7 +7,7 @@ class Tapesfm.Views.DashboardTapes extends Backbone.View
 
   addTape: (tape) ->
    tapeView = new Tapesfm.Views.DashboardTape(model: tape)
-   $(@el).find('.dashboard_content').prepend(tapeView.render().el)
+   $(@el).find('.dashboard_content').append(tapeView.render().el)
 
     
   

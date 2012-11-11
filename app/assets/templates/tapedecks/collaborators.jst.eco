@@ -4,6 +4,7 @@
           <%# @model.get("collaborators").last().get("name") %> 
         </h3>
       </div> 
+
         <div id="tapedeck_invite_add">
           <p>
             <div id="invite_send_button">
@@ -11,8 +12,9 @@
             </div>
             <div class="pic">
             </div>
-            <label id="invite_label" for="invite_field">Name or email...</label>
+            <label id="invite_label" for="invite_field">Invite someone by Name...</label>
             <input type="text" name="invite_field" id="invite_field" value=""></textarea>
           </p>        
       </div> 
+      <div id="open_button"> </div> 
 
