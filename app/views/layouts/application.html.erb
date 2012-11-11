@@ -87,7 +87,8 @@
       </div>
     </div>
   </header>
-  
+
+
     <%= yield %> 
   
     <footer> </footer>
@@ -97,6 +98,9 @@
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
-
+  <script>  
+    Tapesfm.settings = {}
+    Tapesfm.settings.bucket = "<%=ENV['s3_bucket_name']%>"
+  </script>
 </body>
 </html>

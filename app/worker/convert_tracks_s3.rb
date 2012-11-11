@@ -24,7 +24,7 @@ class ConvertTracksS3
     )
 
     directory = connection.directories.create(
-      :key    => "tapes.fm", # globally unique name
+      :key    => ENV['s3_bucket_name'], # globally unique name
       :public => true
     )
  
@@ -50,7 +50,7 @@ class ConvertTracksS3
     #convert and upload mp3
     curl = `curl #{wav_path} #{mp3_path}` 
 
-    curl = `curl http://tapes.fm.s3.amazonaws.com/tracks/#{id}/#{id}.wav -o #{wav_path}`
+    curl = `curl http://#{ENV['s3_bucket_name']}.s3.amazonaws.com/tracks/#{id}/#{id}.wav -o #{wav_path}`
 
     lameOut = `lame #{wav_path} #{mp3_path}` 
     puts "######### convert mp3 #{lameOut}"

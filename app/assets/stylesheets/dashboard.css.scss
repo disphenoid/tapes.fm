@@ -1,7 +1,29 @@
 @import "tools/colors";
 @import "tools/fonts";
 @import "tools/effects";
+  a {
+  
+  text-decoration: none;
+  }
+.more_tapes:hover {
+  
+  background: rgba(0,0,0,0.05);
+  color: $c1;
 
+}
+.more_tapes {
+  background: rgba(0,0,0,0.02);
+  @include fh_b(12px);
+  color: $c_g_2;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  @include round(5px);
+  cursor: pointer;
+  width: 295px; 
+
+}
 
 #stream_list {
   float: left;
@@ -23,9 +45,7 @@
 
     width: 640px;
     min-height: 60px;
-    padding-bottom: 30px;
-
-    
+    padding-bottom: 30px; 
     //background: #FF00FF;
 
     .image {
@@ -80,9 +100,9 @@
         padding-top: 35px;
         margin-left: 80px;
         padding-bottom: 30px;
-    border-bottom: solid;
-    border-width: 1px;
-    border-color: rgba(0,0,0,0.05);
+        border-bottom: solid;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.05);
     
     }
   
@@ -184,7 +204,11 @@
 
 
       .mini_cover {
-
+        transform:rotate(-2deg);
+        -ms-transform:rotate(-2deg); /* IE 9 */
+        -moz-transform:rotate(-2deg); /* Firefox */
+        -webkit-transform:rotate(-2deg); /* Safari and Chrome */
+        -o-transform:rotate(-2deg); /* Opera */
         .wheels {
           background: url("/assets/dashboard/wheels.gif") no-repeat center center;
         
@@ -198,6 +222,12 @@
       margin-bottom: 5px;
       height: 60px;
       cursor: pointer;
+      .mini.cover {
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        transition: all .5s ease;
+      
+      }
 
       .info_box {
         display: inline-block;

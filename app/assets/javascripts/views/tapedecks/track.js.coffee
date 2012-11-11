@@ -508,7 +508,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
 
 
-      Tapesfm.trackm.addTrack {toptions: trackOptions,name:"track_"+@model.get("_id"),url:"http://tapes.fm.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.mp3", duration:@model.get("duration")}
+      Tapesfm.trackm.addTrack {toptions: trackOptions,name:"track_"+@model.get("_id"),url:"http://#{Tapesfm.settings.bucket}.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.mp3", duration:@model.get("duration")}
     else
       track_channel = Tapesfm.pusher.subscribe(String(@model.get("id")))
       track_channel.bind "track", (data) =>
@@ -525,7 +525,8 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     $(@el).html(rendertContent)
     #$(@el).fadeIn(500)
     #setTimeout(this.addWavefrom, 30)
-    url = "http://tapes.fm.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.json"
+    url = "http://#{Tapesfm.settings.bucket}.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.json"
+    
     jQuery.getJSON url+"?callback=?"
     
 

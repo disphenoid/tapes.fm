@@ -1,5 +1,5 @@
 development: &DEVELOP
-  bucket: "tapes.fm"
+  bucket: "dev.tapes.fm"
   access_key_id: AKIAJLUDMFIAAGNUJOIQ
   secret_access_key: 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
 

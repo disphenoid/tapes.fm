@@ -162,7 +162,7 @@ class SoundUploader < CarrierWave::Uploader::Base
       :aws_access_key_id        => "AKIAJLUDMFIAAGNUJOIQ"
     )
     directory = connection.directories.create(
-      :key    => "tapes.fm", # globally unique name
+      :key    => ENV['s3_bucket_name'], # globally unique name
       :public => true
     )
 

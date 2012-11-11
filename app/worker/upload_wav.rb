@@ -17,7 +17,7 @@ class UploadWav
     )
 
     directory = connection.directories.create(
-      :key    => "tapesfm", # globally unique name
+      :key    => ENV['s3_bucket_name'], # globally unique name
       :public => true
     )
     wav_file = directory.files.create(

@@ -18,10 +18,12 @@ class TapedeckController < ApplicationController
     @tapedeck.user_id = current_user.id
     @tapedeck.genre = params[:genre]
     @tapedeck.remixable = params[:remixable]
-    @tapedeck.project_id = params[:project_id]
+    @tapedeck.collaborator_ids.push current_user.id
+    if params[:project_id]
+      @tapedeck.project_id = params[:project_id] 
+    end
     @tapedeck.commentable = params[:commentable]
     @tapedeck.public = params[:public]
-    @tapedeck.collaborator_ids.push current_user.id
     @tapedeck.name =  params[:name]
     @tapedeck.save
 
