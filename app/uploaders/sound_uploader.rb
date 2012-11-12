@@ -33,7 +33,7 @@ class SoundUploader < CarrierWave::Uploader::Base
   end
 
   def add_to_process_queu(argue)
-    Resque.enqueue(ConvertTracksS3,model.id)
+    Resque.enqueue(ConvertTracksS3,model.id, model.org_sufix)
   end
 
   def waveform
@@ -56,16 +56,34 @@ class SoundUploader < CarrierWave::Uploader::Base
 
     puts "######### chaka #{out}"
     puts "############### waveform1 #{file.path}" 
+    
+    if file.extension
+      model.org_sufix = file.extension
+    end
+
     jsonp(model.id)
     
     #gets duration from wav an saves to track
-    if file.extension == "wav"
-      #saves meta data
-      wave = WaveInfo.new("#{file.path}") 
-      model.duration = (wave.duration * 1000).round
-      model.sample_rate = wave.sample_rate
-      model.channels = wave.channels
-    end
+    # if file.extension == "wav"
+    #   #saves meta data
+    #   wave = WaveInfo.new("#{file.path}") 
+    #   model.duration = (wave.duration * 1000).round
+    #   model.sample_rate = wave.sample_rate
+    #   model.channels = wave.channels
+    # else
+      duration = `soxi -D #{file.path}`
+      model.duration = (duration.gsub("\n","").to_f * 1000).round
+
+      sample_rate = `soxi -r #{file.path}`
+      model.sample_rate = sample_rate.gsub("\n","").to_i
+
+      channels = `soxi -c #{file.path}`
+      model.channels = channels.gsub("\n","").to_i    
+    # end
+    
+
+
+
     model.name = File.basename(file.filename, '.*')
     model.file_name = File.basename(file.filename, '.*')
     #puts "########## duration = #{(wave.duration)}"

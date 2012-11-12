@@ -13,7 +13,7 @@ class ConvertTracksS3
   #extend Resque::Heroku
   @queue = :convert_tracks_s3
    
-  def self.perform(id)
+  def self.perform(id, sufix)
 
     puts "UPLOAD THE FILE NOW" 
 
@@ -35,9 +35,9 @@ class ConvertTracksS3
       Dir.mkdir("#{Rails.root}/tmp/tracks/#{id}", 0777)
     end
 
-    file = directory.files.get("tracks/#{id}/#{id}.wav")
+    file = directory.files.get("tracks/#{id}/#{id}.#{sufix}")
 
-    wav_path = "#{Rails.root}/tmp/tracks/#{id}/#{id}.wav"
+    wav_path = "#{Rails.root}/tmp/tracks/#{id}/#{id}.#{sufix}"
     mp3_path = "#{Rails.root}/tmp/tracks/#{id}/#{id}.mp3" 
 
     #local_file = File.open(wav_path, "wb")
@@ -50,7 +50,7 @@ class ConvertTracksS3
     #convert and upload mp3
     curl = `curl #{wav_path} #{mp3_path}` 
 
-    curl = `curl http://#{ENV['s3_bucket_name']}.s3.amazonaws.com/tracks/#{id}/#{id}.wav -o #{wav_path}`
+    curl = `curl http://#{ENV['s3_bucket_name']}.s3.amazonaws.com/tracks/#{id}/#{id}.#{sufix} -o #{wav_path}`
 
     lameOut = `lame #{wav_path} #{mp3_path}` 
     puts "######### convert mp3 #{lameOut}"

@@ -20,6 +20,7 @@ class Track
   field :group, :type => String 
   field :duration, :type => String 
   field :wav, :type => String 
+  field :aif, :type => String 
   field :mp3, :type => String 
   field :wavedata, :type => String
   field :color, :type => Integer, :default => 1
@@ -27,6 +28,7 @@ class Track
   field :asset_tmp, :type => String
   field :sample_rate, :type => String
   field :channels, :type => String
+  field :org_sufix, :type => String
 
   mount_uploader :asset, SoundUploader
   #store_in_background :asset, ConvertTracks
