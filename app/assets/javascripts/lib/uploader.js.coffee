@@ -35,6 +35,7 @@ class window.Uploader
         $("#tape_upload").hide()
       onUpload          : ->
         $("#tape_upload").show("slow")
+        #Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
 
   onUploadComplete: (file, data, response) ->
     #alert "complete"
@@ -91,5 +92,11 @@ class window.Uploader
       queueID           : "tape_upload"
       onQueueComplete   : ->
         $("#tape_upload").hide()
+        #$("#tape_save_button").show()
+        $("#tape_save_button").removeClass("wait")
+        $("#tape_save_hint_sub").show()
       onUpload   : ->
         $("#tape_upload").show("slow")
+        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+        $("#tape_save_button").addClass("wait")
+        $("#tape_save_hint_sub").hide()

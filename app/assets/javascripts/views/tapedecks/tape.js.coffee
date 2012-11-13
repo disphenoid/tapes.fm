@@ -283,6 +283,7 @@ class Tapesfm.Views.TapedeckTape extends Backbone.View
           $("#tape_upload").hide()
         onUpload          : ->
           $("#tape_upload").show("slow")
+          #Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
         onAddQueueItem: ->
           data = {}
           data = Tapesfm.crsf.uploadify_script_data

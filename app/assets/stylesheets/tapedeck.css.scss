@@ -457,6 +457,21 @@
       @include c_g_3_b;
 
     }  
+
+    #tape_save_button_wait {
+      position: absolute;
+      display: none;
+      margin-left: 270px;
+      height: 40px;
+      width: 40px;
+      //background: url("/assets/header/icon_open.png") no-repeat;    
+      @include round_right(3px);
+      @include c_3_b;
+
+    }  
+
+
+
   }
   .arrow_left {
     
@@ -664,6 +679,8 @@
     z-index: 10000;
     //width: 380px;
     left: 0px;
+
+
     #tape_save_button.edit:hover {
       background: url("/assets/tapedeck/done_tape_icon_on.png") no-repeat;
       @include c_2_b;
@@ -680,6 +697,30 @@
       @include c_g_4_b;
       cursor: pointer;
     }
+
+
+    #tape_save_button.wait:hover {
+      background: url("/assets/tapedeck/wait_yellow.gif") no-repeat center center;
+      //@include c_2_b;
+      @include c_g_4_b;
+      
+    }    
+    #tape_save_button.wait {
+      position: absolute;
+      //display: inline-block;
+      margin-left: 270px;
+      height: 40px;
+      width: 40px;
+      //background: url("/assets/tapedeck/wait.gif") no-repeat;
+      background: url("/assets/tapedeck/wait_yellow.gif") no-repeat center center;
+
+      @include round_right(3px);
+      @include c_g_4_b;
+      cursor: pointer;
+    }
+
+
+
     #tape_save_button:hover {
       background: url("/assets/tapedeck/done_tape_icon_on.png") no-repeat;
       @include c_3_b;

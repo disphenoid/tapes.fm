@@ -18,16 +18,18 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
     "click #stop": "stop"
     "click #add_track": "addTrack"
     #'change #change_tape' : 'changeTape'
-  saveTape: ->
-    name = this.$("#tape_edit_field").val()
-    if name
-       @model.get("tape").set({"name":name}, {silent: true})
-       this.$("#tape_edit_field").val("")
+  saveTape: (e) ->
 
-    @model.get("tape").save()
-    window.existing_tape = false
-    @model.get("tape").trigger("edit_done")
-    @model.get("tape").fetch()
+    unless $(e.currentTarget).hasClass("wait")
+      name = this.$("#tape_edit_field").val()
+      if name
+         @model.get("tape").set({"name":name}, {silent: true})
+         this.$("#tape_edit_field").val("")
+
+      @model.get("tape").save()
+      window.existing_tape = false
+      @model.get("tape").trigger("edit_done")
+      @model.get("tape").fetch()
 
   changeTape2: (event) ->
     #console.log $(event.currentTarget).data("id")

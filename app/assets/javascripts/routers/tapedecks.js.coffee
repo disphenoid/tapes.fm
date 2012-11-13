@@ -154,6 +154,9 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
 
   newTape: (track) ->
     #coping Tape 
+
+    
+
     new_track = new Tapesfm.Models.Track(track)
     new_track.attributes.comments = new Tapesfm.Collections.Comments()
     new_track.get("comments").url = "/api/track_comments/"+new_track.get("id")+"?tapedeck=#{Tapesfm.bootstrap.id}"
