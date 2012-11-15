@@ -1,0 +1,47 @@
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
+
+#profile_panel {
+  
+  width: 160px;
+  height: 360px;
+  float: left;
+  margin-top: -70px;
+  //@include c_g_5_b;
+  @include round(5px);
+
+  #profile_image {
+    width: 160px;
+    height: 160px;
+    background: url("/assets/user/user_img.png");
+    background-color: rgba(0,0,0,0.03);
+    
+
+  
+  }
+  #profile_headline {
+    width: 160px;
+    height: 160px;
+    @include c_1;
+    @include fh_b(16px);
+    height: 50px;
+    padding-top: 40px;
+  
+  }
+}
+
+.profile_tapes {
+  
+  margin-left: 150px;
+
+}
+
+
+#tapes_header.profile_filters {
+  
+  margin-left: 180px;
+  background: #FF00FF;
+  background: url("/assets/user/header_bg.png") bottom center;
+}
+

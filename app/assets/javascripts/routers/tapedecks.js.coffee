@@ -224,13 +224,13 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
     tape.trigger("newTrack")
 
     
-    $(".complete").each (index,item) ->
-      $(item).remove()
+    # $(".complete").each (index,item) ->
+    #   $(item).remove()
 
     
 
-    if $(".uploadifive-queue-item").length == 0
-      $("#tape_upload").hide("slow")
+    # if $(".uploadifive-queue-item").length == 0
+    #   $("#tape_upload").hide("slow")
 
 
 

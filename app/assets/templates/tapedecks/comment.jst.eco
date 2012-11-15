@@ -3,9 +3,12 @@
       <div class="pic">
       </div>
       <div class="body">
-        <span class="user_name">
-          <%= @model.get("user_name")%>
-        </span>
+          
+        <a href="/user/<%= @model.get("user_id")%>">
+          <span class="user_name">
+            <%= @model.get("user_name")%>
+          </span>
+        </a>
         <% if @model.get("tape_name"): %>
           <span class="normal">
           on

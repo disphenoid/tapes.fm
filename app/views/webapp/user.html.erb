@@ -1,0 +1,44 @@
+<%= javascript_include_tag "user" %>
+
+<div id="container" class="container_12">
+  user
+
+</div>
+
+<div class="popin-overlay"> </div>
+
+<script>
+  window.Tapesfm.bootstrap = <%= raw @json %>;
+  
+
+  window.Tapesfm.user = <%= raw @user_j %>;
+  <% if current_user %>
+  //Tapesfm.user.collaborator = <%# raw (@tapedeck.collaborator?(current_user)).to_json %>;
+  <% else %>
+  <% end %>
+
+
+  <% key = Rails.application.config.session_options[:key] %>
+
+  Tapesfm.crsf = {};
+  Tapesfm.crsf.uploadify_script_data = {};
+  Tapesfm.crsf.param = $('meta[name=csrf-param]').attr('content');
+  Tapesfm.crsf.token = $('meta[name=csrf-token]').attr('content');
+  Tapesfm.crsf.uploadify_script_data[Tapesfm.crsf.param] = encodeURI(encodeURIComponent(Tapesfm.crsf.token ));
+  Tapesfm.crsf.uploadify_script_data['<%= key %>'] = '<%= cookies[key] %>';
+  
+
+
+  //var uploadify_script_data = {};
+  //var csrf_param = $('meta[name=csrf-param]').attr('content');
+  //var csrf_token = $('meta[name=csrf-token]').attr('content');
+  //uploadify_script_data[csrf_param] = encodeURI(encodeURIComponent(csrf_token));
+  //uploadify_script_data['<%= key %>'] = '<%= cookies[key] %>';
+  
+  $(document).ready(function() {
+  //var uploadify_script_data = {};
+});
+</script>
+
+
+

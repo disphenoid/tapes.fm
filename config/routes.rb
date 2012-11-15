@@ -31,6 +31,7 @@ Tapesfm::Application.routes.draw do
   match 'dashboard', to: "webapp#dashboard"
   match 'tapes', to: "webapp#tapes"
   match 'explore', to: "webapp#explore"
+  match 'user/:id', to: "webapp#user"
   match 'tapedeck/:id', to: "webapp#tapedeck"
   match 'tapedeck', to: "webapp#tapedeck"
   match 'tapedeck/*path', to: "webapp#tapedeck"

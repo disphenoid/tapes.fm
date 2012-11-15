@@ -90,6 +90,17 @@ class window.Uploader
       height            : 40
       width             : 150
       queueID           : "tape_upload"
+      onCancel: ->
+
+        $("#tape_save_button").removeClass("wait")
+        $("#tape_save_hint_sub").show()
+
+
+      onError: ->
+
+        $("#tape_save_button").removeClass("wait")
+        $("#tape_save_hint_sub").show()
+
       onQueueComplete   : ->
         $("#tape_upload").hide()
         #$("#tape_save_button").show()

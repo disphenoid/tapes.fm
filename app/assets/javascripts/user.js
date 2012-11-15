@@ -1,9 +1,8 @@
-//= require .//tapes_app
+//= require .//user_app
 //= require_tree ../templates/
 //= require_tree .//models
 //= require_tree .//collections
 //= require_tree .//views
-//= require .//routers/tapes
+//= require .//routers/user
 //= require_tree .//lib
-
 

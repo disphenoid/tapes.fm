@@ -1,0 +1,39 @@
+<%# "<div id="tapes_hint"> Start a New Tape </div>" %>
+<div id="tapes_header" class="profile_filters" >
+  <div id="tapes_filter"  class="dd">
+    <div class="icon"> </div>
+    <div class="headline">
+      Tapes
+    </div>
+    <ul class="filters">
+     <li class="filter active"> All</li>
+    <%# <li class="filter"> Own</li> <li class="filter"> Collaborate</li> <li class="filter"> Remix</li> %>
+    </ul>
+
+  </div>
+</div>
+
+  <div id="profile_panel"> 
+    <div id="profile_headline"> 
+      disphenoid
+    </div>
+    
+    <div id="profile_image"> </div>
+  </div>
+
+
+<div id="tapes_list" class="profile_tapes">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+

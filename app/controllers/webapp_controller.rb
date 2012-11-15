@@ -24,7 +24,24 @@ class WebappController < ApplicationController
 
 
   end
-  
+
+  def user
+
+      @user = User.find(params[:id])
+
+      if current_user
+        @tapedecks = Tapedeck.where({collaborator_ids: @user.id}).desc(:created_at) #Tapedeck.where({user_id: current_user.id})
+      else
+        @tapedecks = [] 
+      end
+
+      @json = render_to_string( template: 'tapes/index.json.jbuilder', locals: { tape: @tapedecks}) 
+      respond_to do |format|
+          format.html
+      end
+  end
+
+
   def dashboard
       if current_user
       
