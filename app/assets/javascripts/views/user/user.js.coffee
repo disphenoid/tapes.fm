@@ -3,6 +3,28 @@ class Tapesfm.Views.User extends Backbone.View
   template: JST['user/user']
   events:
     "click .add_tape" : "addTape"
+    "click .follow_btn" : "follow"
+
+  follow: (e) ->
+    
+    # alert ($(e.currentTarget).data("following") == true)
+
+    if $(e.currentTarget).data("following") == true
+
+      follower = new Tapesfm.Models.Follower({follow: "false", id: $(e.currentTarget).data("id"), _id: $(e.currentTarget).data("id")})
+      console.log follower
+      follower.destroy()
+      $(e.currentTarget).removeClass("inactive").html("Follow")
+      $(e.currentTarget).data("following",false)
+      
+    else
+      follower = new Tapesfm.Models.Follower({follow: "true", target_id: $(e.currentTarget).data("id")})
+      follower.save()
+      console.log follower
+
+      $(e.currentTarget).addClass("inactive").html("Unfollow")
+      $(e.currentTarget).data("following",true)
+
 
   initialize: ->
     
@@ -70,7 +92,8 @@ class Tapesfm.Views.User extends Backbone.View
   render: ->
     
     
-    rendertContent = @template()
+    user = new Tapesfm.Models.User(Tapesfm.bootstrap.user)
+    rendertContent = @template(is_following: Tapesfm.bootstrap.is_following, user: user)
 
     
     $(@el).html(rendertContent)

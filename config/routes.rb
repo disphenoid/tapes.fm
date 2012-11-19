@@ -26,6 +26,7 @@ Tapesfm::Application.routes.draw do
     resources :collaborators
     resources :comments
     resources :invites
+    resources :follows
   end
 
   match 'dashboard', to: "webapp#dashboard"

@@ -1,4 +1,42 @@
 <%# "<div id="tapes_hint"> Start a New Tape </div>" %>
+  <div id="profile_panel"> 
+  <div id="profile_headline"> 
+    @<%= @user.get("name")%>
+  </div>
+
+  
+  <div id="profile_image"> </div>
+  <div class="spliter"> </div>
+  <% if @is_following: %>
+  <div class="follow_btn inactive" data-id="<%= @user.get("id")%>" data-following="<%=true %>"> Unfollow </div>
+  <% else: %>
+  <div class="follow_btn" data-id="<%= @user.get("id")%>" data-following="<%= false %>"> Follow </div>
+  <% end %>
+
+  <div class="spliter"> </div>
+
+  <div class="profile_info"> 
+    Sed posuere consectetur est at lobortis. Maecenas sed diam eget risuts varius blandit sit amet non magna.
+  </div>
+
+  <div class="info_box"> 
+    <h3>Followers</h3>
+    <div class="info_spliter"> </div>
+    <div class="content"> 
+    Sed posuere consectetur est at lobortis. Maecenas sed diam eget risuts varius blandit sit amet non magna.
+    </div>
+  </div>
+  <div class="info_box"> 
+    <h3>Website</h3>
+    <div class="info_spliter"> </div>
+    <div class="content"> 
+      <a href="#"> greatseamonsterfind.com </a>
+    </div>
+  </div>
+
+</div>
+
+
 <div id="tapes_header" class="profile_filters" >
   <div id="tapes_filter"  class="dd">
     <div class="icon"> </div>
@@ -13,13 +51,7 @@
   </div>
 </div>
 
-  <div id="profile_panel"> 
-    <div id="profile_headline"> 
-      disphenoid
-    </div>
-    
-    <div id="profile_image"> </div>
-  </div>
+
 
 
 <div id="tapes_list" class="profile_tapes">

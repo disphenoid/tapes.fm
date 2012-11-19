@@ -1,0 +1,61 @@
+
+  
+  <div class="stream_item"> 
+    <div class="image"> 
+
+    </div>
+
+    <div class="content">
+    <div class="top_box">
+
+      <div class="headline">
+        <a href="/user/<%= @activity.get("user_id")%>">
+          <span class="bold"> <%= @activity.get("user_name")%> </span>
+        </a>
+        <span class="normal"> started a new 
+        <span class="red"> Tape</span>
+        </span>
+      
+      </div>
+      <div class="date" title="<%= @activity.get("created_at")%>">
+       <%= @activity.get("created_at")%>
+      </div>
+    </div>
+    <% if true:%>
+    <div class="comment_box">
+      <div class="lip">
+      </div> 
+      <div class="cover_box">
+
+       <div class="mini_cover">
+
+          <img src="http://<%= @activity.get("cover_s")%>">
+          <div class="wheels"> </div> 
+          <a href="/tapedeck/<%=@activity.get("tapedeck_id")%>">
+          <div class="case"> </div> 
+          </a> 
+        </div>
+
+          <div class="info_box">
+            <div class="headline">
+              <%= @activity.get("tapedeck_name") %> 
+              <span class="author">
+              /
+                 <%=  @activity.get("author") %> 
+              </span>
+            </div> 
+            <div class="version">
+              <%= @activity.get("version_name") %>
+              
+            </div> 
+          </div>         
+
+      </div>
+    </div>
+    <% end %>
+    </div>
+
+  </div>
+
+
+

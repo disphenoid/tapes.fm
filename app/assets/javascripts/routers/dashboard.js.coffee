@@ -8,6 +8,7 @@ class Tapesfm.Routers.Dashboard extends Backbone.Router
 
     @latest_tapes = new Tapesfm.Collections.Tapedecks(Tapesfm.bootstrap.lates_tapes)
     @invites = new Tapesfm.Collections.Invites(Tapesfm.bootstrap.invites)
+    @activities = new Tapesfm.Collections.Activities(Tapesfm.bootstrap.activities)
 
 
     view = new Tapesfm.Views.Dashboard()
@@ -21,6 +22,8 @@ class Tapesfm.Routers.Dashboard extends Backbone.Router
     invitesView = new Tapesfm.Views.DashboardInvites(collection: @invites)
     $('#dashboard_invites').html(invitesView.render().el)
 
+    streamView = new Tapesfm.Views.DashboardStream(collection: @activities)
+    $('#dashboard_stream').html(streamView.render().el)
 
     #$('h1').html(view2.render().el)
 

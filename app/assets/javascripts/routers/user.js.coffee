@@ -2,6 +2,8 @@ class Tapesfm.Routers.User extends Backbone.Router
   @user
   routes:
     'user/:id' : 'user'
+
+
   initialize: ->
     #console.log "init routes"
   user: (id) ->

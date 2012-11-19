@@ -35,7 +35,8 @@ class WebappController < ApplicationController
         @tapedecks = [] 
       end
 
-      @json = render_to_string( template: 'tapes/index.json.jbuilder', locals: { tape: @tapedecks}) 
+      @json = render_to_string( template: 'user/index.json.jbuilder', locals: { tape: @tapedecks}) 
+
       respond_to do |format|
           format.html
       end
@@ -48,12 +49,17 @@ class WebappController < ApplicationController
         @tapedecks = Tapedeck.where({collaborator_ids: current_user.id}).sort({updated_at:-1}).limit(5) #Tapedeck.where({user_id: current_user.id})
 
         @invites = Invite.where({accepted: false,invited_id: current_user.id}) #Tapedeck.where({user_id: current_user.id})
+        
+        @activities = current_user.stream
+
+
       else
         @tapedecks = [] 
         @invites = [] 
+        @activities = [] 
       end
       
-      @json = render_to_string( template: 'dashboard/index.json.jbuilder', locals: { tape: @tapedecks, invite: @invites })
+      @json = render_to_string( template: 'dashboard/index.json.jbuilder', locals: { tape: @tapedecks, invite: @invites, activities: @activities })
 
       respond_to do |format|
           format.html

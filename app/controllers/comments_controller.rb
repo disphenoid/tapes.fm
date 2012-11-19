@@ -13,7 +13,12 @@ class CommentsController < ApplicationController
   def create
     entry = Comment.new params[:comment]
     entry.user_id = current_user.id
-    entry.save
+    if entry.save
+      
+      current_user.push_activity "comment", entry
+
+
+    end
     render :json => entry
   end
   

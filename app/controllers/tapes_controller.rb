@@ -35,8 +35,15 @@ class TapesController < ApplicationController
 
       end
 
-      @tape.save
-      @tape.tapedeck.save
+      if @tape.save && @tape.tapedeck.save
+
+        if @tape.tapedeck.tapes.count == 1
+          current_user.push_activity "tape", @tape
+        else
+          current_user.push_activity "version", @tape
+        end
+
+      end
 
     end
 

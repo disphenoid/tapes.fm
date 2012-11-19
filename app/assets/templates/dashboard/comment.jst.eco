@@ -1,0 +1,40 @@
+
+  
+  <div class="stream_item"> 
+    <div class="image"> 
+
+    </div>
+
+    <div class="content">
+    <div class="top_box">
+
+      <div class="headline">
+        <a href="/user/<%= @activity.get("user_id")%>">
+          <span class="bold"> <%= @activity.get("user_name")%> </span>
+        </a>
+        <span class="normal"> left a
+        <span class="green"> comment</span>
+        on
+        </span>
+        <span class="bold"> <%= @activity.get("tapedeck_name")%> </span>
+      
+      </div>
+      <div class="date" title="<%= @activity.get("created_at")%>">
+       <%= @activity.get("created_at")%>
+      </div>
+    </div>
+    <% if @activity.get("comment_body"):%>
+    <div class="comment_box">
+      <div class="lip">
+      </div>
+
+      <div class="text">
+        &quot;<%= @activity.get("comment_body")%>&quot;
+      </div>
+    </div>
+    <% end %>
+    </div>
+
+  </div>
+
+

@@ -6,3 +6,9 @@ end
 json.invites @invites do |json, invite|
   json.partial! "dashboard/invite.json.jbuilder", invite: invite
 end
+
+
+json.activities @activities do |json, activity|
+  json.partial! "dashboard/activity.json.jbuilder", activity: activity
+end
+

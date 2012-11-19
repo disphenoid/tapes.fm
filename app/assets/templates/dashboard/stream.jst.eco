@@ -1,32 +1,20 @@
-  
-  <div class="stream_item"> 
-    <div class="image"> 
-
-    </div>
-
-    <div class="content">
-    <div class="top_box">
-
-      <div class="headline">
-        <span class="bold"> Tapedeck_name </span>
-        <span class="normal"> left a comment </span>
-      
-      </div>
-      <div class="subline">
-      22 minutes ago
-      </div>
-    </div>
-    <div class="text">
-      Donec sed odio dui. Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras m
-      Donec sed odio dui. Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus 
-    </div>
-    </div>
-
+<div id="dashboard_filter_box">
+<div id="dashboard_filter">
+  <div class="icon"> </div>
+  <div class="headline">
+    Stream
   </div>
+  <ul class="filters">
+   <li class="filter active">All</li> 
+  </ul>
 
-  <div class="stream_item"> <div class="image"> </div> <div class="content"> <div class="top_box"> <div class="headline"> <span class="bold"> Tapedeck_name </span> <span class="normal"> left a comment </span> </div> <div class="subline"> 22 minutes ago </div> </div> <div class="text"> Donec sed odio 
-    </div>
-    </div>
 
-  </div>
+</div>
+</div>
+
+
+<div id="stream_list"> 
+
+</div>
+
 

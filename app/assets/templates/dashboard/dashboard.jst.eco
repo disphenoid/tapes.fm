@@ -1,19 +1,8 @@
 <%# "<div id="tapes_hint"> Start a New Tape </div>" %>
 
 <div id="dashboard_stream">
-  <div id="dashboard_filter">
-    <div class="icon"> </div>
-    <div class="headline">
-      Stream
-    </div>
-    <ul class="filters">
-     <li class="filter active">All</li> 
-    </ul>
-
-
-  </div>
+ 
 </div>
-
 
 
 
@@ -30,18 +19,6 @@
   </div>
 </a>
 </div>
-
-<div id="stream_list"> 
-
-
-
-
- <div id="welcome"> 
- 
-  Welcome to tapes.fm where your can collect, share and collaborate on your musical ideas.   
- 
- </div>
-
 
 </div>
 

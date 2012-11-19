@@ -1,21 +1,90 @@
 @import "tools/colors";
 @import "tools/fonts";
 @import "tools/effects";
+.info_box {
+
+  margin-top: 10px;
+  h3 {
+    padding: 0px;
+    margin: 0px;
+    height: 30px;
+    @include fh_b(12px);    
+    @include c_g_3;  
+    line-height: 30px;
+    
+  }
+
+  .info_spliter{
+    height: 15px;
+    width: 140px;
+    background: url("/assets/user/spliter.png");  
+  }
+
+  .content {
+  
+    margin-top: -5px;
+    @include fh(11px);    
+    @include c_g_2;  
+    a {
+      @include fh_b(12px);
+      @include c_1;
+    
+    }
+  }
+
+}
+.spliter {
+
+  height: 15px;
+  width: 140px;
+  background: url("/assets/user/spliter.png");
+
+}
+.follow_btn:hover {
+  
+  @include c_3_b;
+
+
+}
+.follow_btn {
+
+  @include c_1_b;
+  height: 34px; 
+  width: 140px;
+  color: white; 
+  text-align: center;
+  @include fh_b(13px);
+  line-height: 35px;
+  @include round(3px);
+  cursor: pointer;
+  
+}
+.follow_btn.inactive {
+
+  @include c_g_5_b;
+  @include c_g_3;
+
+
+
+  
+}
+
 
 #profile_panel {
   
-  width: 160px;
-  height: 360px;
+  width: 140px;
+  //height: 360px;
   float: left;
-  margin-top: -70px;
   //@include c_g_5_b;
   @include round(5px);
+  // overflow: auto;
 
   #profile_image {
-    width: 160px;
-    height: 160px;
-    background: url("/assets/user/user_img.png");
+    width: 140px;
+    height: 130px;
+    background: url("/assets/user/user_img.png") no-repeat center center;
     background-color: rgba(0,0,0,0.03);
+    @include round(3px);
     
 
   
@@ -27,8 +96,21 @@
     @include fh_b(16px);
     height: 50px;
     padding-top: 40px;
+
   
   }
+
+  .profile_info {
+
+    margin-top: 0px;
+    @include fh(11px);
+    @include c_g_2;
+    line-height: 14px;
+  
+  
+  }
+
+
 }
 
 .profile_tapes {
@@ -40,7 +122,8 @@
 
 #tapes_header.profile_filters {
   
-  margin-left: 180px;
+  margin-left: 160px;
+  height: 65px;
   background: #FF00FF;
   background: url("/assets/user/header_bg.png") bottom center;
 }

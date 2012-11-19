@@ -1,10 +1,12 @@
 @import "tools/colors";
 @import "tools/fonts";
 @import "tools/effects";
-  a {
-  
+
+
+
+a {
   text-decoration: none;
-  }
+}
 .more_tapes:hover {
   
   background: rgba(0,0,0,0.05);
@@ -12,7 +14,7 @@
 
 }
 .more_tapes {
-  background: rgba(0,0,0,0.02);
+  // background: rgba(0,0,0,0.02);
   @include fh_b(12px);
   color: $c_g_2;
   text-align: center;
@@ -21,14 +23,12 @@
   margin-top: 10px;
   @include round(5px);
   cursor: pointer;
-  width: 295px; 
+  width: 285px; 
 
 }
 
 #stream_list {
-  float: left;
   width: 600px;
-  margin-top: 5px;
   //min-height: 50px;
   #welcome {
     width: 600px;
@@ -40,20 +40,37 @@
     color: $c1;
   
   }
+  .stream_item:hover {
+    background: url("/assets/dashboard/activity_bg_on.png") no-repeat top center;
+    .top_box {
+    .date {
+      
+      color: $c_g_4;
+    
+    }
+    }
+  }
  
   .stream_item {
 
     width: 640px;
-    min-height: 60px;
+    min-height: 40px;
     padding-bottom: 30px; 
+    padding-top: 10px; 
     //background: #FF00FF;
+    clear: both;
+    background: url("/assets/dashboard/activity_bg.png") no-repeat top center;
+    margin-top: -5px;
 
     .image {
 
-      background: $c_g_5;
+      background: url("/assets/dashboard/activity_image.png");
+      background-color: $c_g_5;
       position: absolute;
       width: 60px;
       height: 60px;
+      @include round(3px);
+
     
     }
 
@@ -63,23 +80,48 @@
     
     .headline {
       width: 300px;
-      padding-top: 5px;
+      padding-top: 18px;
       margin-left: 80px;
+      
       float: left;
       .bold {
         @include fh_b(14px);
-        color: $c_g_4;
+        color: $c_g_1;
       
       }
       .normal {
         @include fh(14px);
         color: $c_g_2;
+        margin: 0px 5px; 
+      .green {
+        color: $c3; 
+        @include fh_b(14px);
+        
+        }
+      .yellow {
+        color: $c2; 
+        @include fh_b(14px);
+        
+        }
+      .red {
+        color: $c1; 
+        @include fh_b(14px);
+        
+        }      
+      .blue {
+        color: $c4; 
+        @include fh_b(14px);
+        
+        }
 
-      
+
+
       }
+
+
     }
-    .subline {
-        padding-top: 10px;
+    .date {
+        padding-top: 22px;
         float: right;
         @include fh(12px);
         color: $c_g_5;
@@ -89,22 +131,86 @@
     
     }  
     }
-    
-    .text {
-        width: 550px;
-        padding-top: 5px;
-        @include fh(13px);
-        color: $c_g_4;
-        margin-right: 10px;
-        line-height: 16px;
-        padding-top: 35px;
-        margin-left: 80px;
-        padding-bottom: 30px;
-        border-bottom: solid;
-        border-width: 1px;
-        border-color: rgba(0,0,0,0.05);
-    
-    }
+    .comment_box {
+      float: left;
+      margin-top: 45px;
+      margin-left: 80px;
+      padding-bottom: 10px;
+      .lip {
+        height: 15px;
+        width: 560px;
+        background: url("/assets/dashboard/lip.png") no-repeat left bottom;
+      
+      }
+      .text {
+          padding-top: 5px;
+          @include fh(12px);
+          color: $c_g_4;
+          line-height: 16px;
+          line-height: 18px;
+          background: rgba(0,0,0,0.03);
+          
+          padding: 15px 20px;
+          @include round(5px);
+          display: inline-block;
+
+      
+      }
+      .cover_box {
+          @include fh(12px);
+          color: $c_g_4;
+          line-height: 16px;
+          line-height: 18px;
+          background: rgba(0,0,0,0.03);
+          
+          padding: 10px 15px;
+          @include round(5px);
+          display: inline-block;
+          min-height: 60px;
+          min-width: 60px;
+      .info_box {
+        display: inline-block;
+        height: 20px;
+        float: left;
+        margin-top: 12px;
+        padding: 0px 10px;
+        @include fh_b(12px);
+        @include c_g_4;
+        margin-left: 65px;
+        .headline {
+            overflow: hidden;
+            white-space: nowrap;
+            height: 13px;
+            .author {
+            color: $c_g_2;
+            
+            }
+          
+         }
+
+         .version {
+            margin-top: 5px;
+            height: 24px;
+            @include fh(11px); 
+            color: $c_g_2;         
+            @include c_g_1;
+            line-height: 26px;
+            @include round(3px);
+            padding: 0px 7px;
+            background: rgba(255,255,255,0.5);
+         }
+          .subline {
+            height: 13px;
+            margin-top: 5px;
+            @include fh(11px); 
+            color: $c_g_2;
+         }
+       }
+      
+      }
+
+
+    } 
   
   
   }
@@ -377,6 +483,13 @@
 }
 
 #dashboard_stream {
+  float: left;
+
+}
+
+
+
+#dashboard_filter_box {
   display: inline-block;
 
   background: url("/assets/dashboard/stream_bg.png") no-repeat bottom center;

@@ -1,6 +1,9 @@
+require 'resque'
+
 class User
   include Mongoid::Document
-  include Mongoid::Timestamps
+  include Mongoid::Timestamps 
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -28,7 +31,6 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
   field :pending,    :type => String
-
   ## Confirmable
   # field :confirmation_token,   :type => String
   # field :confirmed_at,         :type => Time
@@ -55,8 +57,171 @@ class User
   has_and_belongs_to_many :projects
 
   field :name, :type => String
+  
+
+  def stream( p_page=1)
+     
+      p = redis_pagination(p_page)
+
+      stream = []
+      stream_array = REDIS.zrevrange("activities:user:#{self.id}",p[:start],p[:end])
+
+      stream_array.each do |activity_id| 
+        activity = Activity.find(activity_id) rescue nil 
+        if activity
+          stream <<  activity
+        end
+      end
+
+      stream
+
+  end
+
+
+  def stream_list(count=0)
+
+    if count == 0
+      REDIS.zrevrange "activities:user:#{self.id}", 0, -1
+    else
+      REDIS.zrevrange "activities:user:#{self.id}", 0, -1
+    end
+
+  end
+
+  def push_activity(type,object)
+
+    case type
+    
+      when "comment"
+        
+        activity = Activity.find_or_create_by({:type => "comment", :user_id => self.id, :comment_id => object.id} )
+        Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
+      
+      when "follow"
+
+        activity = Activity.find_or_create_by({:type => "follow", :user_id => self.id} ) 
+        REDIS.zadd "activities:user:#{object.id}", Time.now.to_i, activity.id
+        #activity = Activity.create_f!({:type => "comment", :user_id => self.id, :comment_id => object.id} )
+
+      when "tape"
+        activity = Activity.find_or_create_by({:type => "tape", :user_id => self.id, :tapedeck_id => object.tapedeck_id} )
+        Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
+
+      when "version"
+        activity = Activity.find_or_create_by({:type => "version", :user_id => self.id,:tape_id => object.id, :tapedeck_id => object.tapedeck_id} )
+        Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
+
+    end
+
+    
+  end
+
+  #follower feature (redis)
+
+  # follow a user
+
+
+
+
+  def follow!(user)
+    REDIS.multi do
+      REDIS.sadd(self.follow_key(:following), user.id)
+      REDIS.sadd(user.follow_key(:followers), self.id)
+    end
+  end
+  
+  # unfollow a user
+  def unfollow!(user)
+    REDIS.multi do
+      REDIS.srem(self.follow_key(:following), user.id)
+      REDIS.srem(user.follow_key(:followers), self.id)
+    end
+  end
+
+  # users that self follows
+  def followers_list
+    user_ids = REDIS.smembers(self.follow_key(:followers))
+  end
+  def followers
+    user_ids = REDIS.smembers(self.follow_key(:followers))
+    User.where(:id => user_ids)
+  end
+
+  # users that follow self
+  def following_list
+    user_ids = REDIS.smembers(self.follow_key(:following))
+  end
+  def following
+    user_ids = REDIS.smembers(self.follow_key(:following))
+    User.where(:id => user_ids)
+  end
+
+  # users who follow and are being followed by self
+  def friends
+    user_ids = REDIS.sinter(self.follow_key(:following), self.follow_key(:followers))
+    User.where(:id => user_ids)
+  end
+
+  # does the user follow self
+  def followed_exist?
+    REDIS.exists(self.follow_key(:followers))
+  end
+  
+  # does self follow user
+  def following?(user)
+    REDIS.sismember(self.follow_key(:following), user.id)
+  end
+
+ # does self follow user
+  def following?(user)
+    REDIS.sismember(self.follow_key(:following), user.id)
+  end
+
+
+
+  # number of followers
+  def followers_count
+    REDIS.scard(self.follow_key(:followers))
+  end
+
+  # number of users being followed
+  def following_count
+    REDIS.scard(self.follow_key(:following))
+  end
+  
+  # helper method to generate redis keys
+  def follow_key(str)
+    "user:#{self.id}:#{str}"
+  end
+
+  #redis keys
+
+
+  def self.redis_key(item_id)
+    "user:#{item_id}"
+  end
+  def redis_key(item_id)
+    "user:#{item_id}"
+  end
+
+
+
+  def redis_pagination(p_page)
+
+      chunk_size = 10
+      page = p_page.to_i
+      
+      if page == 1
+        range_begin = 0
+        range_end = chunk_size 
+      else
+
+        range_begin = (chunk_size * page) 
+        range_end = (chunk_size * page) +chunk_size -1
+      end
+      
+      return {:start => range_begin, :end => range_end} 
+
+  end
 
 end
-
-
-
