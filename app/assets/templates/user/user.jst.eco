@@ -6,38 +6,31 @@
 
   
   <div id="profile_image"> 
-  
 
   <% if @user.get("picture"):%>
     <img src="<%= "http://" + @user.get("picture")%>"> 
-  <% end %>
-
-  
-  
+  <% end %> 
   
   </div>
   <div class="spliter"> </div>
-  <% if @is_following: %>
-  <div class="follow_btn inactive" data-id="<%= @user.get("id")%>" data-following="<%=true %>"> Unfollow </div>
-  <% else: %>
-  <div class="follow_btn" data-id="<%= @user.get("id")%>" data-following="<%= false %>"> Follow </div>
+
+  <% unless @user.get("id") == Tapesfm.user.id: %>
+    <% if @is_following: %>
+    <div class="follow_btn inactive" data-id="<%= @user.get("id")%>" data-following="<%=true %>"> Unfollow </div>
+    <% else: %>
+    <div class="follow_btn" data-id="<%= @user.get("id")%>" data-following="<%= false %>"> Follow </div>
+    <% end %>
   <% end %>
 
   <div class="spliter"> </div>
 
   <div class="profile_info"> 
-    Sed posuere consectetur est at lobortis. Maecenas sed diam eget risuts varius blandit sit amet non magna.
+    <%= @user.get("about")%>
   </div>
 
+
   <div class="info_box"> 
-    <h3>Followers</h3>
-    <div class="info_spliter"> </div>
-    <div class="content"> 
-    Sed posuere consectetur est at lobortis. Maecenas sed diam eget risuts varius blandit sit amet non magna.
-    </div>
-  </div>
-  <div class="info_box"> 
-    <h3>Website</h3>
+    <h3>Links</h3>
     <div class="info_spliter"> </div>
     <div class="content"> 
       <a href="#"> greatseamonsterfind.com </a>

@@ -17,7 +17,6 @@
 </head>
 <body>
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-  <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
   <header> 
     <div id="h_box" class="container_12">
@@ -33,18 +32,19 @@
         </div>
       </div>
       <div id="quick_buttons">
-        <a href="/dashboard">
-          <div id="to_dash" class="quick_button tip_header" title="Dashboard">
+        <a href="/tapes">
+          <div id="to_tapes" class="quick_button tip_header <%=  "active "if request.path == "/tapes"%>" title="Tapes">
             <div class="shadow_el"> </div>
           </div>
         </a>
-        <a href="/tapes">
-          <div id="to_tapes" class="quick_button tip_header" title="Tapes">
+        <a href="/dashboard">
+          <div id="to_dash" class="quick_button tip_header <%=  "active "if request.path == "/dashboard"%>" title="Dashboard">
+            
             <div class="shadow_el"> </div>
           </div>
         </a>
         <a href="/explore">
-          <div id="to_listen" class="quick_button tip_header" title="Explore">
+          <div id="to_listen" class="quick_button tip_header <%=  "active "if request.path == "/explore"%>" title="Explore">
             <div class="shadow_el"> </div>
           </div>
         </a>
@@ -66,20 +66,24 @@
 
       <% if current_user %> 
       <div id="user_info">
+          <a href="/user/<%= current_user.id unless current_user.blank?%>">
         <div class="user_image"> 
-          <% if current_user.picture.m.url%>
-          <img class="image" src="<%= "http://"+current_user.picture.m.url%>">
+            <% if current_user.picture.m.url%>
+            <img class="image" src="<%= "http://"+current_user.picture.m.url%>">
         <% end %>
           <div class="shadow_el"> </div>
         </div>
+          </a>
           
         <div class="user_set"> 
           <div class="user_name"> 
             Hey,
-            <%= current_user.name unless current_user.blank?%>
+            <a href="/user/<%= current_user.id unless current_user.blank?%>">
+              <%= current_user.name unless current_user.blank?%>
+            </a>
           </div>
  
-            <div class="badge"> <%= current_user.plan[:name] %> </div>
+            <div class="badge"> <%= "UPGRADE" %> </div>
         <div class="user_bar ">
           <div class="min_bar" data-used_time="<%= current_user.upload_min%>" data-total_time="<%= current_user.plan[:minutes]%>">
           </div>
@@ -115,7 +119,15 @@
       </div>
     </div>
   </header>
+  
+  <% if notice %>
+    
+    <div class="flash"><%= notice %></div>
+  <% end %>
 
+  <% if alert %>
+    <div class="flash"><%= alert %></div>
+  <% end %>
 
     <%= yield %> 
   

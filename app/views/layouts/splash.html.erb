@@ -23,5 +23,15 @@
   <div class="login_btn"></div>
 </a>
 <%= yield %> 
+
+  <% if notice %>
+    <div class="flash marge"><%= notice %></div>
+  <% end %>
+
+  <% if alert %>
+    <div class="flash marge"><%= alert %></div>
+  <% end %>
+
+
 </body>
 </html>

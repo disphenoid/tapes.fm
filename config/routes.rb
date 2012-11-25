@@ -51,6 +51,11 @@ Tapesfm::Application.routes.draw do
 
 
   root to: "home#index"
+  
+  get "/:name", to: "webapp#user"
+
+
+
   #match '*path', to: "webapp#index"
 
   # The priority is based upon order of creation:

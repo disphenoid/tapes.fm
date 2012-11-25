@@ -2,14 +2,36 @@
 @import "tools/effects";
 @import "tools/fonts";
 
+.flash {
+  height: 20px;
+  @include c_1_b; 
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  @include fh_b(12px);
+  line-height: 20px;
+  text-align: center;
+  color: white;
+
+}
+.flash.marge {
+
+  top: 0px;
+
+}
+
+
 header {
   
   background: rgba(75,75,75,0.95);
-  height: 54px;
+  height: 50px;
   width: 100%;
   position: fixed;
   top: 0px; 
   z-index: 12000;
+
+
+
   .logo:hover {
     background-color: $c1;
     background: url("/assets/header/tapesfm_logo_over.png");
@@ -23,7 +45,7 @@ header {
     
     background: url("/assets/header/tapesfm_logo.png");
     width: 160px;
-    height: 54px;
+    height: 50px;
     display: inline-block;
     float: left;
     cursor: pointer;
@@ -31,7 +53,7 @@ header {
     .dropdown {
       width: 160px;
       background: $c1;
-      margin-top: 53px; 
+      margin-top: 50px; 
       visibility: hidden;
 
       @include round_bottom(2px);
@@ -58,7 +80,7 @@ header {
         background: rgba(255,255,255,0.1);
         line-height: 40px;
         padding-left: 20px;
-        color: $c_g_1;
+        color: white;
       
       }  
     }
@@ -72,8 +94,8 @@ header {
     .quick_button{
       display: inline-block;
       background: rgba(46,46,46,0.6);
-      height: 54px;
-      width: 54px;
+      height: 50px;
+      width: 50px;
       float: left;
       margin-right: 0px;
       margin-top: 0px;
@@ -81,8 +103,8 @@ header {
 
         //background: rgba(255,255,255,0.2);
         position: absolute;
-        width: 54px;
-        height: 54px;
+        width: 50px;
+        height: 50px;
         background: url("/assets/shadow_el.png");
       
       
@@ -96,20 +118,37 @@ header {
     }
 
 
+    .quick_button#to_tapes {
+      background-image: url("/assets/header/icon_tapes_on.png");
+      background-position: center center;
+    } 
+    .quick_button.active#to_tapes {
+      background-image: url("/assets/header/icon_tapes_off.png");
+      background-color: $c1;
+      background-position: center center;
+    }
+
+
     .quick_button#to_dash {
       background-image: url("/assets/header/icon_dashboard_on.png");
       background-position: center center;
     }
-    
-    .quick_button#to_tapes {
-      background-image: url("/assets/header/icon_tapes_on.png");
+    .quick_button.active#to_dash {
+      background-image: url("/assets/header/icon_dashboard_off.png");
+      background-color: $c3;
       background-position: center center;
     }
+
+
     .quick_button#to_listen {
       background-image: url("/assets/header/icon_listen_on.png");
       background-position: center center;
     }
-
+    .quick_button.active#to_listen {
+      background-image: url("/assets/header/icon_listen_off.png");
+      background-color: $c4;
+      background-position: center center;
+    }
     .quick_button#search_button {
       background-image: url("/assets/header/icon_search_on.png");
       background-position: center center;
@@ -123,7 +162,7 @@ header {
       #search_box {
         float: left;
         width: 280px;
-        height: 53px;
+        height: 48px;
         padding-top: 1px;
         @include c_g_0_b;
         background-image: url("/assets/shadow_el.png");
@@ -146,11 +185,11 @@ header {
           left:0;
           background: none;
           padding: 0px 20px;
-          line-height: 53px;
+          line-height: 50px;
         }
         input{
           width: 240px;
-          height: 52px;
+          height: 46px;
           background: none;
           border: none;
           outline: none;
@@ -195,16 +234,17 @@ header {
       float: left;
       display: inline-block;
       background: none;
-      height: 53px;
+      height: 50px;
       width: 295px;
       text-align: left;
       @include fh(14px);
       @include c_g_2;
+
       
       .user_image {
       
-        height: 53px;
-        width: 54px;
+        height: 50px;
+        width: 50px;
         display: inline-block;
         background: rgba(255,255,255,0.1);
         float: left;
@@ -213,8 +253,8 @@ header {
         .shadow_el {
 
           position: absolute;
-          width: 54px;
-          height: 54px;
+          width: 50px;
+          height: 50px;
           background: url("/assets/shadow_el.png");
         
         
@@ -223,8 +263,8 @@ header {
 
         //background: rgba(255,255,255,0.2);
         position: absolute;
-        width: 54px;
-        height: 54px;
+        width: 50px;
+        height: 50px;
 
       
       
@@ -233,19 +273,22 @@ header {
 
       .user_set {
       
-        height: 54px;
+        height: 50px;
         
         float: left;
         @include fh_b(12px);
         background: url("/assets/shadow_el.png") no-repeat left;
-        width: 236px;
+        width: 245px;
         cursor: pointer;
-
+        a {
+        
+          @include fh_b(12px); 
+        }
         .dropdown {
         
           visibility: hidden;
-          margin-top: 53px;
-          width: 241px;
+          margin-top: 50px;
+          width: 245px;
           background: #323232;
           position: absolute;
           @include round_bottom(2px);
@@ -355,7 +398,7 @@ header {
       }
         .user_bar {
         
-          width: 220px;
+          width: 225px;
           height: 5px;
           background: rgba(0,0,0,0.1);
           position: absolute;

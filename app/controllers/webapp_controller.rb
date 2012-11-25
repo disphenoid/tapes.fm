@@ -39,7 +39,11 @@ class WebappController < ApplicationController
 
   def user
 
-      @user = User.find(params[:id])
+      if params[:id]
+        @user = User.find(params[:id])
+      else
+        @user = User.find_by({name: params[:name]})
+      end
 
       if current_user
         @tapedecks = Tapedeck.where({collaborator_ids: @user.id}).desc(:created_at) #Tapedeck.where({user_id: current_user.id})

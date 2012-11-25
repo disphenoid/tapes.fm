@@ -21,4 +21,17 @@ $('.min_tip').tipsy( {live: true , gravity: 'n', offset: 3})
 
 $(document).ready(function(){
   $(".form-inputs label").inFieldLabels();
+  
+  if($(".flash").length != 0) {
+    
+
+    window.setTimeout(function(){
+      $(".flash").fadeOut(2000);
+    
+    },2000);
+
+
+  }
+
+
 });
