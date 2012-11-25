@@ -15,8 +15,7 @@ class CommentsController < ApplicationController
     entry.user_id = current_user.id
     if entry.save
       
-      current_user.push_activity "comment", entry
-
+      current_user.push_activity "comment", entry 
 
     end
     render :json => entry

@@ -1,0 +1,160 @@
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
+
+.list_explore_box {
+  margin: 0px;
+  float: left;
+  padding: 0px;
+  width: 300px;
+  margin-right: 18px;
+  display: inline-block;
+
+.list_header {
+  margin: 0px;
+  width: 305px;
+  height: 60px; 
+  background: url("/assets/explore/list_top_bg.png") no-repeat bottom center;
+
+  .headline {
+    position: absolute;
+    padding-left: 85px;
+    @include fh_b(16px);
+    @include c_g_4;
+    line-height: 60px;
+  
+  
+  }
+
+  .icon {
+    
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
+  
+  }
+
+  .Top, .Featured {
+    background: url("/assets/explore/top_icon.png") no-repeat center center;
+  
+  }
+  .Active {
+    background: url("/assets/explore/active_icon.png") no-repeat center center;
+  
+  }
+  .New {
+    background: url("/assets/explore/new_icon.png") no-repeat center center;
+  
+  }
+
+}
+
+
+
+.explore_list.last {
+  margin-right: 0px;
+}
+
+.explore_list {
+
+  margin: 0px;
+  float: left;
+  padding: 0px;
+  width: 305px;
+  margin-right: 18px;
+  display: inline-block;
+
+
+
+
+
+
+  .explore_tape.one { background-color: rgba(0,0,0,0.04); }
+  .explore_tape.two { background-color: rgba(0,0,0,0.03); }
+  .explore_tape.three { background-color: rgba(0,0,0,0.02); }
+  .explore_tape.four { background-color: rgba(0,0,0,0.01); }
+
+  .explore_tape:last-child {
+    @include round_bottom(5px);
+  
+  }
+
+  .explore_tape:first-child {
+    @include round_top(5px);
+  
+  }
+  .explore_tape:hover {
+  
+      -webkit-transition: all .2s ease;
+      -moz-transition: all .2s ease;
+      transition: all .2s ease;
+    background-color: white;
+      .mini_cover {
+        transform:rotate(-2deg);
+        -ms-transform:rotate(-2deg); /* IE 9 */
+        -moz-transform:rotate(-2deg); /* Firefox */
+        -webkit-transform:rotate(-2deg); /* Safari and Chrome */
+        -o-transform:rotate(-2deg); /* Opera */
+        .wheels {
+          background: url("/assets/dashboard/wheels.gif") no-repeat center center;
+        
+        }
+      }
+  }
+  .explore_tape {
+    cursor: pointer;
+    margin: 0px;
+    padding: 10px;
+    padding-top: 5px;
+    list-style-type: none;
+    background: url("/assets/explore/list_bg.png") no-repeat bottom center;
+
+    height: 60px;
+  
+
+
+
+      .info_box {
+        display: inline-block;
+        height: 20px;
+        float: left;
+        margin-top: 12px;
+        padding: 0px 10px;
+        @include fh_b(12px);
+        @include c_g_4;
+        margin-left: 65px;
+        .headline {
+            overflow: hidden;
+            white-space: nowrap;
+            height: 13px;
+            .author {
+            color: $c_g_2;
+            
+            }
+          
+         }
+
+         .version {
+            margin-top: 5px;
+            height: 24px;
+            @include fh(11px); 
+            color: $c_g_2;         
+            @include c_g_1;
+            line-height: 26px;
+            @include round(3px);
+            padding: 0px 7px;
+            background: rgba(255,255,255,0.5);
+         }
+          .subline {
+            height: 13px;
+            margin-top: 5px;
+            @include fh(11px); 
+            color: $c_g_2;
+         }
+       }
+  
+  }
+}
+
+}

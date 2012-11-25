@@ -377,22 +377,33 @@ class Tapesfm.Views.TapedeckTape extends Backbone.View
       time_in_pixel = Math.round(window.tools.map(Number(time), 0, Tapesfm.trackm.duration,0,775))
 
       #$(@el).find(".comment_strip").html("ddskjfls")
- 
-      this.$('.comment_strip_tape').append("<li id=\"#{comment.get("timestamp")}\" class='comment #{comment.get("timestamp")}' style='margin-left: #{time_in_pixel}px'> 
-        
-      <div id=\"commentbox#{comment.get("_id")}\" class=\"commentbox2_tape\"> 
-        <div class=\"body\"> 
-           <ul class=\"tape_comments_box\">
-           </ul>
-          <div id=\"comment_box_tape\"> <div id=\"send_track_button_tape_replay\" class=\"send_track_button send_track_button_tape_replay\"> Post </div> 
-           <label class=\"comment_label_tape answer_label_tape\" id=\"comment_tape_label_#{ comment.get("timestamp")}_#{ comment.get("id")}\" for=\"comment_tape_field_#{ comment.get("timestamp")}_#{comment.get("id")}\">Add a Comment</label> 
-           <textarea data-timestamp=\"#{ comment.get("timestamp")}\" class=\"comment_field_tape answer_field_tape\" type=\"text\" name=\"comment_tape_field_#{ comment.get("timestamp")}_#{comment.get("id")}\" id=\"comment_tape_field_#{ comment.get("timestamp")}_#{comment.get("id")}\" value=\"\"></textarea> </div> </div>
+
+      if time_in_pixel <= 775
+        if comment.get("user_picture_s")
+
+          user_image = "<img class=\"image\" src=\"http://#{comment.get("user_picture_s")}\">" 
+        else
+          user_image = ""
 
 
-           <div class=\"snip\"> </div>
-           </div>
-        
-        </li>")
+
+        this.$('.comment_strip_tape').append("<li id=\"#{comment.get("timestamp")}\" class='comment #{comment.get("timestamp")}' style='margin-left: #{time_in_pixel}px'> 
+          
+        #{user_image}
+
+        <div id=\"commentbox#{comment.get("_id")}\" class=\"commentbox2_tape\"> 
+          <div class=\"body\"> 
+             <ul class=\"tape_comments_box\">
+             </ul>
+            <div id=\"comment_box_tape\"> <div id=\"send_track_button_tape_replay\" class=\"send_track_button send_track_button_tape_replay\"> Post </div> 
+             <label class=\"comment_label_tape answer_label_tape\" id=\"comment_tape_label_#{ comment.get("timestamp")}_#{ comment.get("id")}\" for=\"comment_tape_field_#{ comment.get("timestamp")}_#{comment.get("id")}\">Add a Comment</label> 
+             <textarea data-timestamp=\"#{ comment.get("timestamp")}\" class=\"comment_field_tape answer_field_tape\" type=\"text\" name=\"comment_tape_field_#{ comment.get("timestamp")}_#{comment.get("id")}\" id=\"comment_tape_field_#{ comment.get("timestamp")}_#{comment.get("id")}\" value=\"\"></textarea> </div> </div>
+
+
+             <div class=\"snip\"> </div>
+             </div>
+          
+          </li>")
 
 
       #$(@el).find("#comment_tape_label_#{comment.get("timestamp")}_#{comment.get("id")}").inFieldLabels()

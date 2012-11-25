@@ -1,0 +1,207 @@
+<div id="tapes_header">
+  <div id="tapes_filter">
+    <div class="icon"> </div>
+    <div class="headline">
+      Settings
+    </div>
+    <ul class="filters">
+     <li class="filter active"> Account</li> <li class="filter"> Profile</li> <li class="filter"> Subcription</li>
+    </ul>
+
+  </div>
+
+</div>
+
+  <div class="settings_fields">
+
+
+    <div class="field_box">
+      <div class="headline">
+        Email Adress 
+      </div>
+      <div class="field"> 
+        <form>
+            <input type="text" name="user_email" id="user_email" value="<%=@model.get("email")%>">
+        </form>
+      </div>
+      <div class="info">
+        Enter here your email Adresse, will stay private.
+      </div>
+
+
+    </div>
+
+
+
+    <div class="splitter"></div>
+
+
+    <div class="field_box">
+      <div class="headline">
+        New password 
+      </div>
+      <div class="field"> 
+        <form>
+            <input type="password" name="user_password" id="user_password">
+        </form>
+      </div>
+      <div class="info">
+        6 character minimum
+      </div>
+
+
+    </div>
+
+    <div class="splitter"></div>
+
+
+    <div class="field_box">
+      <div class="headline">
+        New Confirm Password 
+      </div>
+      <div class="field"> 
+        <form>
+            <input type="password" name="user_password_confirm" id="user_password_confirm">
+        </form>
+      </div>
+      <div class="info">
+        Retype it to verify your new password
+      </div>
+
+
+    </div>
+
+    <div class="splitter"></div>
+
+  <h1>Profile</h1>
+
+    <div class="field_box prebox">
+      <div class="headline">
+        Username 
+      </div>
+      <div class="preline"> tapes.fm/ </div>
+      <div class="field"> 
+        <form>
+            <input type="text" name="username" id="username" value="<%=@model.get("name")%>">
+        </form>
+      </div>
+      <div class="info">
+        This is the name everybody will see
+      </div>
+
+
+    </div>
+
+    <div class="splitter"></div>
+
+
+    <div class="field_box picture ">
+      <div class="headline">
+        Picture 
+      </div>
+      <div class="field"> 
+
+
+        <form accept-charset="UTF-8" enctype=multipart/form-data action="/api/update_picture/" data-remote="true" class="profile_picture_form" id="profile_picture_field" method="post">
+          <div class="profile_picture">
+            <img src="<%="http://" + @model.get("picture")%>">
+          </div>
+        
+          <input name="utf8" type="hidden" value="&#x2713;" />
+        
+          <input class="setting_picture_input" id="picture_field" name="user[picture]" type="file" />
+
+        </form>
+
+
+
+      </div>
+      <div class="info">
+        a picture of you
+      </div>
+
+
+    </div>
+
+    <div class="splitter"></div>
+
+
+    <div class="field_box about">
+      <div class="headline">
+        About 
+      </div>
+      <div class="field"> 
+        <form>
+            <textarea  name="user_about" id="user_about" ><%=@model.get("about")%></textarea>
+        </form>
+      </div>
+      <div class="info">
+        Leave a few words about yourself.
+      </div>
+
+
+    </div>
+
+    <div class="splitter"></div>
+
+
+     <div class="field_box prebox">
+      <div class="headline">
+        Twitter 
+      </div>
+      <div class="preline"> twitter.com/ </div>
+      <div class="field"> 
+        <form>
+            <input type="text" name="user_twitter" id="user_twitter" value="<%=@model.get("twitter_name")%>">
+        </form>
+      </div>
+      <div class="info">
+        This is the name everybody will see
+      </div>
+
+
+    </div>
+    <div class="splitter"></div>
+
+
+    <div class="field_box prebox">
+      <div class="headline">
+        Soundcloud 
+      </div>
+      <div class="preline"> soundcloud.com/ </div>
+      <div class="field"> 
+        <form>
+            <input type="text" name="user_soundcloud" id="user_soundcloud" value="<%=@model.get("soundcloud_name")%>">
+        </form>
+      </div>
+      <div class="info">
+        This is the name everybody will see
+      </div>
+
+
+    </div>
+
+
+    <div class="splitter"></div>
+
+
+    <div class="field_box prebox">
+      <div class="headline">
+        Facebook 
+      </div>
+      <div class="preline"> facebook.com/ </div>
+      <div class="field"> 
+        <form>
+            <input type="text" name="user_facebook" id="user_facebook" value="<%=@model.get("facebook_name")%>">
+        </form>
+      </div>
+      <div class="info">
+        This is the name everybody will see
+      </div>
+
+
+    </div> 
+
+  </div>
+  <div class="submit_settings">Save</div>
+

@@ -25,7 +25,14 @@ class Tape
    field :genre, :type => String
    field :genre_sub, :type => String
    field :bpm, :type => Integer, :default => 120
-   
+
+   after_create do |doc|
+    doc.tapedeck.inc(:version_count, 1)
+   end
+
+   after_destroy do |doc|
+    doc.tapedeck.inc(:version_count, -1)
+   end   
 
   
    def track_setting_volume(track_id, value)

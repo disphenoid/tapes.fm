@@ -1,6 +1,9 @@
     <li class="comment" id="<%= @model.get("id")%>"> 
         <div class="delete"  data-id="<%= @model.get("id")%>"> </div>
-      <div class="pic">
+      <div class="pic"> 
+        <% if @model.get("user_picture"):%>
+        <img src="<%= "http://" + @model.get("user_picture")%>"> 
+        <% end %>
       </div>
       <div class="body">
           

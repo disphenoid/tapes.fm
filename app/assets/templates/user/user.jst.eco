@@ -5,7 +5,17 @@
   </div>
 
   
-  <div id="profile_image"> </div>
+  <div id="profile_image"> 
+  
+
+  <% if @user.get("picture"):%>
+    <img src="<%= "http://" + @user.get("picture")%>"> 
+  <% end %>
+
+  
+  
+  
+  </div>
   <div class="spliter"> </div>
   <% if @is_following: %>
   <div class="follow_btn inactive" data-id="<%= @user.get("id")%>" data-following="<%=true %>"> Unfollow </div>

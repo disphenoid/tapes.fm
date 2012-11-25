@@ -1,4 +1,4 @@
-<%= javascript_include_tag "tapes" %>
+<%= javascript_include_tag "explore" %>
 
 <div id="container" class="container_12">work in progress</div>
 
@@ -8,10 +8,6 @@
   
 
   Tapesfm.user = <%= raw @user_j %>;
-  <% if current_user %>
-  //Tapesfm.user.collaborator = <%# raw (@tapedeck.collaborator?(current_user)).to_json %>;
-  <% else %>
-  <% end %>
 
 
   <% key = Rails.application.config.session_options[:key] %>

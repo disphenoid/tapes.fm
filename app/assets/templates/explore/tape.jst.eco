@@ -1,0 +1,32 @@
+
+ 
+
+    <div class="mini_cover">
+
+      <% if @model.get("cover_s"): %>
+      <img src="http://<%= @model.get("cover_s")%>">
+      <% end %>
+      <div class="wheels"> </div> 
+      <a href="/tapedeck/<%=@model.get("id")%>">
+      <div class="case"> </div> 
+      </a>
+
+
+    </div>
+    <div class="info_box">
+      <div class="headline">
+        <%= @model.get("name") %> 
+        <span class="author">
+        /
+          <%= @model.get("author") %> 
+        </span>
+      </div> 
+      <div class="subline">
+        <span class="date" title="<%= @model.get("updated_at")%>">
+        <%= @model.get("updated_at") %>
+        </span>
+        
+      </div> 
+    </div> 
+
+

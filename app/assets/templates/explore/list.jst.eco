@@ -1,0 +1,16 @@
+
+
+<div class="list_explore_box">
+
+
+<div class="list_header">
+  <div class="headline"> <%= @title%></div>
+  <div class="icon <%= @title%>"> </div>
+
+</div>
+
+<ul class="explore_list" id="top_list">
+</ul>
+</div>
+
+

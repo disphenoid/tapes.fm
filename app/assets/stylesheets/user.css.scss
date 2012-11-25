@@ -81,21 +81,25 @@
 
   #profile_image {
     width: 140px;
-    height: 130px;
+    height: 140px;
     background: url("/assets/user/user_img.png") no-repeat center center;
     background-color: rgba(0,0,0,0.03);
     @include round(3px);
+    img {
+      width: 140px;
+      height: 140px;
+    
+    }
     
 
   
   }
   #profile_headline {
     width: 160px;
-    height: 160px;
     @include c_1;
     @include fh_b(16px);
-    height: 50px;
-    padding-top: 40px;
+    height: 40px;
+    padding-top: 45px;
 
   
   }

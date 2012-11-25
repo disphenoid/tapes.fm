@@ -11,6 +11,10 @@
         Post
       </div>
       <div class="pic">
+        <% if @picture:%>
+          <img class="image" src="<%= "http://" + @picture%>">
+        <% end %>
+
       </div>
       <label id="comment_label" for="comment_field">Post something about this Tape...</label>
       <textarea type="text" name="comment_field" id="comment_field" value=""></textarea>

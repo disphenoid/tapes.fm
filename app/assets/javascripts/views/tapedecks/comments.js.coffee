@@ -9,9 +9,7 @@ class Tapesfm.Views.TapedeckComments extends Backbone.View
     @collection.on("reset", @render,this)
     @collection.on("remove", @removeComment,this)
 
-    rendertContent = @template(model: @model)
-    $(@el).html(rendertContent)
-    $(@el).find("#send_button").hide()
+
     
 
   focusField: (e) =>
@@ -38,6 +36,7 @@ class Tapesfm.Views.TapedeckComments extends Backbone.View
       comment.set({tape_name: Tapesfm.tapedeck.tapedeck.get("tape").get("name")})
       comment.set({body: $("#comment_field").val()})
       comment.set({user_name: Tapesfm.user.name})
+      comment.set({user_picture: Tapesfm.user.picture.m.url})
       comment.save()
 
       @collection.add(comment)
@@ -60,7 +59,9 @@ class Tapesfm.Views.TapedeckComments extends Backbone.View
 
     #$(@el).fadeIn(2000)
     #$('.comments').html("")
-
+    rendertContent = @template(picture: Tapesfm.user.picture.m.url)
+    $(@el).html(rendertContent)
+    $(@el).find("#send_button").hide()
     @collection.each @appendComment
     this
 

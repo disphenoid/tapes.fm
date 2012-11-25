@@ -25,6 +25,7 @@ class Tapedeck
   field :remixable, :type => Boolean
   field :commentable, :type => Boolean
   field :public, :type => Boolean
+  field :version_count, :type => Integer
 
   #has_friendly_id :name, :use_slug => true
 

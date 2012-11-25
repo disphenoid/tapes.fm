@@ -13,6 +13,10 @@ header {
   .logo:hover {
     background-color: $c1;
     background: url("/assets/header/tapesfm_logo_over.png");
+    .dropdown {
+    
+    visibility: visible;
+    }
   }
 
   .logo {
@@ -23,8 +27,41 @@ header {
     display: inline-block;
     float: left;
     cursor: pointer;
-    
 
+    .dropdown {
+      width: 160px;
+      background: $c1;
+      margin-top: 53px; 
+      visibility: hidden;
+
+      @include round_bottom(2px);
+      a {
+        @include fh_b(12px);
+        @include c_g_2;
+
+      }
+
+      .header_button.one {   background: rgba(255,255,255,0.1);  }
+      .header_button.two {   background: rgba(255,255,255,0.15);  }
+      .header_button.three {   background: rgba(255,255,255,0.2);  }
+      .header_button.four {   background: rgba(255,255,255,0.25);  }
+      .header_button.five {   background: rgba(255,255,255,0.3);  }
+
+      .header_button:hover {
+       background: rgba(255,255,255,0); 
+       color: white;
+      }
+
+
+      .header_button {
+        height: 40px;
+        background: rgba(255,255,255,0.1);
+        line-height: 40px;
+        padding-left: 20px;
+        color: $c_g_1;
+      
+      }  
+    }
   }
 
 
@@ -50,7 +87,7 @@ header {
       
       
       }
-      
+   
     }
     .quick_button:hover {
     
@@ -141,12 +178,25 @@ header {
   
   }
 
+    #user_info:hover {
+      background: #323232;
+
+      .user_set {
+      
+        .dropdown {
+        
+          visibility: visible;
+        }
+      
+      }
+
+    }
     #user_info {
       float: left;
       display: inline-block;
       background: none;
       height: 53px;
-      width: 304px;
+      width: 295px;
       text-align: left;
       @include fh(14px);
       @include c_g_2;
@@ -169,17 +219,83 @@ header {
         
         
         }
+        .image {
+
+        //background: rgba(255,255,255,0.2);
+        position: absolute;
+        width: 54px;
+        height: 54px;
+
       
+      
+        }   
       }
 
       .user_set {
       
-        padding-left: 5px;
         height: 54px;
-        display: inline-block;
+        
         float: left;
         @include fh_b(12px);
         background: url("/assets/shadow_el.png") no-repeat left;
+        width: 236px;
+        cursor: pointer;
+
+        .dropdown {
+        
+          visibility: hidden;
+          margin-top: 53px;
+          width: 241px;
+          background: #323232;
+          position: absolute;
+          @include round_bottom(2px);
+          a {
+            @include fh_b(12px);
+            @include c_g_2
+
+          }
+
+          .header_button.one {   background: rgba(255,255,255,0.03);  }
+          .header_button.two {   background: rgba(255,255,255,0.06);  }
+          .header_button.three {   background: rgba(255,255,255,0.09);  }
+          .header_button.four {   background: rgba(255,255,255,0.12);  }
+          .header_button.five {   background: rgba(255,255,255,0.15);  }
+
+          .header_button:hover {
+           background: rgba(255,255,255,0); 
+           color: $c1;
+          }
+
+
+          .header_button {
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            line-height: 40px;
+            padding-left: 20px;
+          
+          }
+          .minutes {
+            height: 14px;
+            padding: 10px;
+            padding-top: 5px;
+
+            .minutes_used {
+              float: left; 
+              margin-left: 0px;
+              padding-left: 10px;
+              color: $c1;
+              background: url("/assets/header/arrow_left.png") no-repeat left center;
+            }
+            .minutes_total {
+              float: right; 
+              padding-right: 10px;
+              background: url("/assets/header/arrow_right.png") no-repeat right center;
+            
+            } 
+          }
+
+        
+        }
         
         
         .user_name {
@@ -192,6 +308,26 @@ header {
           display: inline-block;
         
         }
+
+        .badge {
+          background: #00FF00;
+          padding: 5px 8px;
+          float: right;
+          margin-top: 8px;
+          margin-left: 5px;
+          display: inline-block;
+          background: rgba(0,0,0,0.1);
+          @include round(2px);
+          @include fh_b(11px);
+          background-position: center center;
+          background-repeat: no-repeat;
+          cursor: pointer;
+          margin-right: 8px;
+          @include c_1_b;
+          color: white;
+        
+        }
+
         .user_logout {
           width: 20px;
           height: 20px;
@@ -224,7 +360,7 @@ header {
           background: rgba(0,0,0,0.1);
           position: absolute;
           margin-top: 37px;
-          margin-left: 69px;
+          margin-left: 10px;
           @include round(10px);
           overflow: hidden;
           cursor: pointer;
@@ -232,7 +368,7 @@ header {
           .min_bar {
             
             height: 5px;
-            width: 80px;
+            width: 0px;
             background: $c1;
             
           }

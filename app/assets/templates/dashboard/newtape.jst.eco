@@ -1,9 +1,13 @@
 
   
   <div class="stream_item"> 
-    <div class="image"> 
-
-    </div>
+    <a href="/user/<%= @activity.get("user_id")%>">
+      <div class="image"> 
+        <% if @activity.get("user_picture"):%>
+        <img src="<%= "http://" + @activity.get("user_picture")%>"> 
+        <% end %>
+      </div>
+    </a>
 
     <div class="content">
     <div class="top_box">

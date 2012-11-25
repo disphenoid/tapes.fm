@@ -8,7 +8,13 @@ class TracksController < ApplicationController
   end
 
   def create
-    entry = Track.create! params
+
+    if(entry = (Track.create! params))
+      
+      current_user.add_time entry.duration
+
+    end
+
     render :json => entry
   end
   

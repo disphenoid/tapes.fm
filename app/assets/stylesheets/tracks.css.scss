@@ -770,6 +770,11 @@
           height: 25px;
           width: 25px;
           position: absolute;
+          .image {
+            width: 25px;
+            height: 25px; 
+            position: absolute;
+          }
           //min-height: 50px;
           //@include round(40px);
 

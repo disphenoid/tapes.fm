@@ -27,6 +27,7 @@ Tapesfm::Application.routes.draw do
     resources :comments
     resources :invites
     resources :follows
+    resources :settings
   end
 
   match 'dashboard', to: "webapp#dashboard"
@@ -37,8 +38,10 @@ Tapesfm::Application.routes.draw do
   match 'tapedeck', to: "webapp#tapedeck"
   match 'tapedeck/*path', to: "webapp#tapedeck"
   match 'download/:id', to: "webapp#download"
+  match 'settings', to: "webapp#settings"
 
   post 'api/update_cover/:id', to: "tapedeck#update_cover"
+  post 'api/update_picture', to: "settings#update_picture"
   
   match 'login', to: "webapp#login"
 

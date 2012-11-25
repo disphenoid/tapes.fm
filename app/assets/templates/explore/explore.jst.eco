@@ -1,0 +1,15 @@
+<div id="tapes_header">
+  <div id="tapes_filter">
+    <div class="icon"> </div>
+    <div class="headline">
+      Explore
+    </div>
+    <ul class="filters">
+     <li class="filter active"> All</li> 
+
+    </ul>
+
+  </div>
+
+</div>
+

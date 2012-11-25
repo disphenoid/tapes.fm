@@ -471,6 +471,8 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
   getIndex: ->
     index = @model.collection.indexOf(@model)
     index + 1
+
+
     
   render: =>
     trackOptions = {}
@@ -589,8 +591,14 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
       if time_in_pixel <= 775
 
       #$(@el).find(".comment_strip").html("ddskjfls")
- 
+        if comment.get("user_picture_s") 
+          user_image = "<img class=\"image\" src=\"http://#{comment.get("user_picture_s")}\">"
+        else
+          user_image = ""
+
         this.$('.comment_strip').append("<li id=\"#{comment.get("timestamp")}\" class='comment #{comment.get("timestamp")}' style='margin-left: #{time_in_pixel}px'> 
+
+          #{user_image}
           
         <div id=\"commentbox#{comment.get("_id")}\" class=\"commentbox2\"> 
           <div class=\"body\"> 

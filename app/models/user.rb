@@ -31,6 +31,10 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
   field :pending,    :type => String
+
+  field :total_uploadtime,    :type => Integer, :default => 0
+  field :current_uploadtime,    :type => Integer, :default => 0
+
   ## Confirmable
   # field :confirmation_token,   :type => String
   # field :confirmed_at,         :type => Time
@@ -50,14 +54,42 @@ class User
   field :name
   field :nickname
   #validates_presence_of :name
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :about, :twitter_name, :soundcloud_name, :facebook_name
 
   has_many :tapedecks
   has_many :tracks
   has_and_belongs_to_many :projects
 
   field :name, :type => String
+  field :plan_id, :type => Integer
+  field :about, :type => String
+
+  field :twitter_name, :type => String
+  field :soundcloud_name, :type => String
+  field :facebook_name, :type => String
+
+
+  mount_uploader :picture, ProfileUploader
   
+
+  def add_time(mil)
+    self.total_uploadtime += mil.to_i
+    self.current_uploadtime += mil.to_i
+    self.save
+
+    self.current_uploadtime 
+
+  end
+
+  def upload_time
+    self.current_uploadtime
+  end
+  def upload_min
+    d = (self.current_uploadtime.to_f / 1000)
+    m = (d / 60).ceil
+
+  end
+
 
   def stream( p_page=1)
      
@@ -94,7 +126,7 @@ class User
     
       when "comment"
         
-        activity = Activity.find_or_create_by({:type => "comment", :user_id => self.id, :comment_id => object.id} )
+        activity = Activity.find_or_create_by({:type => "comment", :user_id => self.id, :comment_id => object.id, :tapedeck_id => object.tapedeck_id} )
         Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
       
       when "follow"
@@ -104,12 +136,12 @@ class User
         #activity = Activity.create_f!({:type => "comment", :user_id => self.id, :comment_id => object.id} )
 
       when "tape"
-        activity = Activity.find_or_create_by({:type => "tape", :user_id => self.id, :tapedeck_id => object.tapedeck_id} )
-        Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
+          activity = Activity.find_or_create_by({:type => "tape", :user_id => self.id, :tapedeck_id => object.tapedeck_id} )
+          Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
 
       when "version"
-        activity = Activity.find_or_create_by({:type => "version", :user_id => self.id,:tape_id => object.id, :tapedeck_id => object.tapedeck_id} )
-        Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
+          activity = Activity.find_or_create_by({:type => "version", :user_id => self.id,:tape_id => object.id, :tapedeck_id => object.tapedeck_id} )
+          Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
 
     end
 
@@ -223,5 +255,20 @@ class User
       return {:start => range_begin, :end => range_end} 
 
   end
+
+  
+  def plan
+
+    case self.plan_id
+    when 2
+      plan = { :name => "PLUS" ,:version => 1 ,:minutes => 300 ,:multi_upload => false ,:priority_upload => true ,:private_tapes => false ,:max_samplerate => 192000 ,:price_us => 7.90 ,:price_eu => 9.90 }
+    else
+      plan = { :name => "BASIC" ,:version => 1 ,:minutes => 100 ,:multi_upload => false ,:priority_upload => false ,:private_tapes => false ,:max_samplerate => 96000 ,:price_us => 0 ,:price_eu => 0 }
+    end
+
+    
+  end
+
+
 
 end

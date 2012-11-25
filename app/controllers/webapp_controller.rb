@@ -25,6 +25,18 @@ class WebappController < ApplicationController
 
   end
 
+  def settings
+
+      @json = render_to_string( template: 'settings/index.json.jbuilder', locals: { settings: current_user}) 
+
+
+
+      respond_to do |format|
+          format.html
+      end    
+  end
+
+
   def user
 
       @user = User.find(params[:id])
@@ -67,6 +79,13 @@ class WebappController < ApplicationController
 
   end
   def explore
+
+
+      @active = Tapedeck.where({public: true}).where(:version_count.ne => 1).sort({updated_at:-1})
+      @top = Tapedeck.all
+      @new = Tapedeck.where({public: true}).where(:version_count.in => [0,1]).desc(:created_at)
+
+       @json = render_to_string( template: 'explore/index.json.jbuilder', locals: { top: @top, active: @active, new: @new }) 
 
       respond_to do |format|
           format.html
@@ -128,6 +147,7 @@ class WebappController < ApplicationController
 
       respond_to do |format|
         if @track.save 
+          current_user.add_time @track.duration
           # format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
           # format.js { @picture.id }
           return  true
@@ -159,6 +179,7 @@ class WebappController < ApplicationController
 
       respond_to do |format|
         if @track.save 
+          current_user.add_time @track.duration
           # format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
           # format.js { @picture.id }
           return  true

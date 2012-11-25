@@ -64,12 +64,19 @@ a {
 
     .image {
 
-      background: url("/assets/dashboard/activity_image.png");
+      background: url("/assets/dashboard/activity_image.png") no-repeat center center;
       background-color: $c_g_5;
       position: absolute;
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
       @include round(3px);
+      z-index: 1000;
+      img {
+      width: 50px;
+      height: 50px;      
+      @include round(3px);
+      
+      }
 
     
     }
@@ -80,8 +87,8 @@ a {
     
     .headline {
       width: 300px;
-      padding-top: 18px;
-      margin-left: 80px;
+      padding-top: 13px;
+      margin-left: 65px;
       
       float: left;
       .bold {
@@ -133,8 +140,8 @@ a {
     }
     .comment_box {
       float: left;
-      margin-top: 45px;
-      margin-left: 80px;
+      margin-top: 35px;
+      margin-left: 65px;
       padding-bottom: 10px;
       .lip {
         height: 15px;

@@ -1,0 +1,176 @@
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
+
+  .submit_settings {
+  
+    width: 150px;
+    background: $c1;
+    @include fh_b(14px);
+    line-height: 30px;
+    margin-left: 200px;
+    padding: 5px 10px;
+    color: white;
+    @include round(3px);
+    cursor: pointer;
+
+  }
+
+.settings_fields {
+  margin-bottom: 40px;
+  h1 {
+    @include fh_b(20px);
+    margin-bottom: 30px;
+      @include c_g_4;
+  
+  }
+  margin-top: 20px;
+
+
+  .field_box.picture {
+    margin-bottom: 220px;
+  }
+
+  .field_box.about {
+    margin-bottom: 80px;
+  }
+
+  .field_box.prebox {
+    .preline {
+      padding-top: 10px;
+      @include fh_b(14px);
+      @include c_g_3;
+      width: 115px;
+      display: inline-block;
+      float: left;      
+      height: 10px;
+      @include fh_b(14px);
+      @include c_g_5;      
+      color: rgba(0,0,0,0.3);
+      padding: 10px;
+      padding-top: 12px;    
+      padding-left: 0px;
+      background-color: rgba(0,0,0,0.02);
+      padding-left: 15px;
+      height: 16px;
+    }
+    .field {
+      width: 255px;
+      display: inline-block;
+      float: left;
+      label {
+        @include fh_b(14px);
+        @include c_g_5;      
+        color: rgba(0,0,0,0.3);
+        padding: 10px;
+        padding-top: 12px;
+      
+      }
+      input {
+        @include fh_b(14px);
+        @include c_g_3;     
+        background: white;//rgba(0,0,0,0.05);
+        width: 210px;
+        outline: none;
+        border: solid;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.1);
+        padding: 10px;
+        @include round(3px);
+
+      
+      }
+      textarea {
+        @include fh(14px);
+        @include c_g_3;     
+        width: 350px;
+        height: 100px;
+        padding: 10px;
+        outline: none;
+        border: solid;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.1);  
+        @include round(3px);
+      }     
+
+  }
+}
+  .field_box {
+    padding-bottom: 20px;
+    clear: both;
+  
+    .headline {
+      padding-top: 10px;
+      @include fh_b(14px);
+      @include c_g_3;
+      width: 200px;
+      display: inline-block;
+      float: left;
+    }
+    
+    .field {
+      width: 400px;
+      display: inline-block;
+      float: left;
+      label {
+        @include fh_b(14px);
+        @include c_g_5;      
+        color: rgba(0,0,0,0.3);
+        padding: 10px;
+        padding-top: 12px;
+      
+      }
+      input {
+        @include fh_b(14px);
+        @include c_g_3;     
+        background: white;//rgba(0,0,0,0.05);
+        width: 350px;
+        outline: none;
+        border: solid;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.1);
+        padding: 10px;
+        @include round(3px);
+
+      
+      }
+      textarea {
+        @include fh(14px);
+        @include c_g_3;     
+        width: 350px;
+        height: 100px;
+        padding: 10px;
+        outline: none;
+        border: solid;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.1);  
+        @include round(3px);
+      }      
+      
+    }  
+    .info {
+      padding-top: 12px;
+      @include fh(12px);
+      @include c_g_3;
+      width: 300px;
+      display: inline-block;
+      float: left;
+    }  
+    .profile_picture {
+      width: 200px;
+      height: 200px;
+      background: rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+    
+    }
+  
+  }
+
+ .splitter {
+  
+   height: 40px;
+ 
+ }
+
+
+}
