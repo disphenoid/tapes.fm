@@ -10,8 +10,8 @@ admin_email: "root@#{full_host}"
 
 # OPTIONAL: If not set, you won't be able to access web_tools
 # server (graphite, graylog, monit status, haproxy status, etc)
-web_tools_user: tapes
-web_tools_password: thesims9946
+web_tools_user: admin
+web_tools_password: sekret
 
 # REQUIRED: The timezone the server should be in
 timezone: US/Eastern
@@ -53,6 +53,8 @@ cloud_providers:
     access_key: AKIAJLUDMFIAAGNUJOIQ
     secret_access_key: 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
     account: 010449933974
+
+
 
     # REQUIRED:  The name of the amazon keypair and location of its private key
     #
@@ -178,11 +180,12 @@ isolate_security_groups: true
 
 # OPTIONAL: Prompts one to sync security group rules when the ones in amazon
 # differ from those in rubber
-prompt_for_security_group_sync: false
+prompt_for_security_group_sync: true
 
 # OPTIONAL: The packages to install on all instances
 # You can install a specific version of a package by using a sub-array of pkg, version
 # For example, packages: [[rake, 0.7.1], irb]
+#packages: [postfix, build-essential, git-core, ec2-ami-tools, libxslt-dev, ntp]
 packages: [imagemagick,libmagickwand-dev, postfix, build-essential, git-core, ec2-ami-tools, libxslt-dev, ntp]
 
 # OPTIONAL: gem sources to setup for rubygems
@@ -212,7 +215,7 @@ stop_on_error_cmd: "function error_exit { exit 99; }; trap error_exit ERR"
 #           globally , unless you really do want all instances to have a
 #           static IP
 #
-#use_static_ip: true
+# use_static_ip: true
 
 # OPTIONAL: Specifies an instance to be created in the given availability zone
 #           Availability zones are sepcified by amazon to be somewhat isolated
@@ -298,12 +301,12 @@ stop_on_error_cmd: "function error_exit { exit 99; }; trap error_exit ERR"
 
 # OPTIONAL: You can also define your own variables here for use when
 # transforming config files, and they will be available in your config
-# templates as  <%= rubber_env.var_name %>
+# templates as  <%%= rubber_env.var_name %>
 #
 # var_name: var_value
 
-# All variables can also be overridden on the role and/or host level by creating
-# a sub level to the config under roles and hosts
+# All variables can also be overridden on the role, environment and/or host level by creating
+# a sub level to the config under roles, environments and hosts.  The precedence is host, environment, role
 # e.g. to install mysql only on db role, and awstats only on web01:
 
 # OPTIONAL: Role specific overrides
@@ -312,6 +315,13 @@ stop_on_error_cmd: "function error_exit { exit 99; }; trap error_exit ERR"
 #     packages: []
 #   somerole2:
 #     myconfig: someval
+
+# OPTIONAL: Environment specific overrides
+# environments:
+#   staging:
+#     myconfig: otherval
+#   production:
+#     myconfig: val
 
 # OPTIONAL: Host specific overrides
 # hosts:

@@ -65,7 +65,7 @@ gem 'rmagick'
 # To use debugger
 # gem 'debugger'
 # 
-gem 'rubber'
+gem 'rubber' , :git => "git://github.com/disphenoid/rubber.git"
 gem 'open4'
 gem 'resque', :require => 'resque/server'
 gem 'resque-pool'

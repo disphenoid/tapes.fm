@@ -2,13 +2,11 @@
 
 set :rails_env, Rubber.env
 
-set :assets_role, [:app]
-
 on :load do
   set :application, rubber_env.app_name
   set :runner,      rubber_env.app_user
   set :deploy_to,   "/mnt/#{application}-#{Rubber.env}"
-  set :copy_exclude, [".git/*", ".bundle/*", "log/*", ".rvmrc"]
+  set :copy_exclude, [".git/*", ".bundle/*", "log/*", ".rvmrc", ".rbenv-version"]
 end
 
 # Use a simple directory tree copy here to make demo easier.
@@ -78,17 +76,7 @@ end
 
 # capistrano's deploy:cleanup doesn't play well with FILTER
 after "deploy", "cleanup"
-after 'deploy', 'set_rights'
 after "deploy:migrations", "cleanup"
-
-task :set_rights do
-  
-  run "#{sudo} chmod 777 #{current_path}/tmp/tracks/"
-  run "#{sudo} chmod 777 #{current_path}/public/uploads/"
-  run "#{sudo} chmod 777 #{current_path}/public/uploads/tmp/"
-
-end
-
 task :cleanup, :except => { :no_release => true } do
   count = fetch(:keep_releases, 5).to_i
   
@@ -99,8 +87,6 @@ task :cleanup, :except => { :no_release => true } do
     for r in $remove; do rm -rf #{releases_path}/$r; done;
   CMD
 end
-
-
 
 if Rubber::Util.has_asset_pipeline?
   # load asset pipeline tasks, and reorder them to run after
