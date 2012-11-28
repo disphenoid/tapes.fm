@@ -1,4 +1,3 @@
-<div class="dashboard_tape">
   <div class="mini_cover">
 
     <img src="http://<%= @tape.get("cover_s")%>">
@@ -24,6 +23,5 @@
       
     </div> 
   </div> 
-</div>
 
 

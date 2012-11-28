@@ -1,6 +1,5 @@
 
   
-  <div class="stream_item"> 
     <a href="/user/<%= @activity.get("user_id")%>">
       <div class="image"> 
         <% if @activity.get("user_picture"):%>
@@ -39,6 +38,5 @@
     <% end %>
     </div>
 
-  </div>
 
 

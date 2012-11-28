@@ -14,6 +14,11 @@ class Tapesfm.Views.ExploreTape extends Backbone.View
       when 1 then "two"
       when 2 then "three"
       when 3 then "four"
+      when 4 then "five"
+      when 5 then "six"
+      when 6 then "seven"
+      when 7 then "eight"
+      when 8 then "nine"
       else ""
 
   render: ->
