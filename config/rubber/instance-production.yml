@@ -18,7 +18,7 @@
   - !ruby/object:Rubber::Configuration::RoleItem
     name: monit
     options: {}
-  instance_id: i-91c6d1ee
+  instance_id: i-a1d6c0de
   image_type: m1.small
   image_id: ami-eafa5883
   security_groups:
@@ -29,11 +29,11 @@
   - tapesfm_production_nginx
   - tapesfm_production_collectd
   - tapesfm_production_monit
-  external_host: ec2-54-234-61-78.compute-1.amazonaws.com
-  external_ip: 54.234.61.78
-  internal_host: ip-10-62-65-245.ec2.internal
-  internal_ip: 10.62.65.245
-  zone: us-east-1a
+  external_host: ec2-50-16-41-122.compute-1.amazonaws.com
+  external_ip: 50.16.41.122
+  internal_host: ip-10-6-126-145.ec2.internal
+  internal_ip: 10.6.126.145
+  zone: us-east-1d
   platform: linux
   root_device_type: instance-store
 - !ruby/object:Rubber::Configuration::InstanceItem
@@ -49,7 +49,7 @@
   - !ruby/object:Rubber::Configuration::RoleItem
     name: monit
     options: {}
-  instance_id: i-bfc1d6c0
+  instance_id: i-51d2c42e
   image_type: m1.small
   image_id: ami-eafa5883
   security_groups:
@@ -58,11 +58,11 @@
   - tapesfm_production_resque_worker
   - tapesfm_production_collectd
   - tapesfm_production_monit
-  external_host: ec2-54-234-62-228.compute-1.amazonaws.com
-  external_ip: 54.234.62.228
-  internal_host: ip-10-101-65-170.ec2.internal
-  internal_ip: 10.101.65.170
-  zone: us-east-1a
+  external_host: ec2-174-129-84-156.compute-1.amazonaws.com
+  external_ip: 174.129.84.156
+  internal_host: ip-10-191-19-124.ec2.internal
+  internal_ip: 10.191.19.124
+  zone: us-east-1d
   platform: linux
   root_device_type: instance-store
 - volumes: {}
