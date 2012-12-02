@@ -1,0 +1,69 @@
+---
+- !ruby/object:Rubber::Configuration::InstanceItem
+  name: app01
+  domain: foo.com
+  roles:
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: app
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: unicorn
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: nginx
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: collectd
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: monit
+    options: {}
+  instance_id: i-91c6d1ee
+  image_type: m1.small
+  image_id: ami-eafa5883
+  security_groups:
+  - tapesfm_production_default
+  - tapesfm_production_app
+  - tapesfm_production_app01
+  - tapesfm_production_unicorn
+  - tapesfm_production_nginx
+  - tapesfm_production_collectd
+  - tapesfm_production_monit
+  external_host: ec2-54-234-61-78.compute-1.amazonaws.com
+  external_ip: 54.234.61.78
+  internal_host: ip-10-62-65-245.ec2.internal
+  internal_ip: 10.62.65.245
+  zone: us-east-1a
+  platform: linux
+  root_device_type: instance-store
+- !ruby/object:Rubber::Configuration::InstanceItem
+  name: resque01
+  domain: foo.com
+  roles:
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: resque_worker
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: collectd
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: monit
+    options: {}
+  instance_id: i-bfc1d6c0
+  image_type: m1.small
+  image_id: ami-eafa5883
+  security_groups:
+  - tapesfm_production_default
+  - tapesfm_production_resque01
+  - tapesfm_production_resque_worker
+  - tapesfm_production_collectd
+  - tapesfm_production_monit
+  external_host: ec2-54-234-62-228.compute-1.amazonaws.com
+  external_ip: 54.234.62.228
+  internal_host: ip-10-101-65-170.ec2.internal
+  internal_ip: 10.101.65.170
+  zone: us-east-1a
+  platform: linux
+  root_device_type: instance-store
+- volumes: {}
+  static_ips: {}
