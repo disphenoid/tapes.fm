@@ -11,7 +11,7 @@ admin_email: "root@#{full_host}"
 # OPTIONAL: If not set, you won't be able to access web_tools
 # server (graphite, graylog, monit status, haproxy status, etc)
 web_tools_user: admin
-web_tools_password: sekret
+web_tools_password: thesims
 
 # REQUIRED: The timezone the server should be in
 timezone: US/Eastern
@@ -53,8 +53,6 @@ cloud_providers:
     access_key: AKIAJLUDMFIAAGNUJOIQ
     secret_access_key: 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
     account: 010449933974
-
-
 
     # REQUIRED:  The name of the amazon keypair and location of its private key
     #
@@ -180,7 +178,7 @@ isolate_security_groups: true
 
 # OPTIONAL: Prompts one to sync security group rules when the ones in amazon
 # differ from those in rubber
-prompt_for_security_group_sync: true
+prompt_for_security_group_sync: false
 
 # OPTIONAL: The packages to install on all instances
 # You can install a specific version of a package by using a sub-array of pkg, version
