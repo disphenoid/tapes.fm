@@ -2,7 +2,368 @@
 @import "tools/fonts";
 @import "tools/effects";
 
+#overlay {
+  width: 100%;
+  height: 100%;
+  background: white;
+  position: fixed;
+  z-index: 9000;
+  display: none;
+  opacity: 0;
 
+
+
+}
+
+#overlay.active {
+
+  display: inline;
+  opacity: 0.7;
+
+}
+
+#beta_form {
+
+  height: 0px;
+  width: 100%;
+  position: absolute;
+  z-index: 10000;
+  background-color: $c1;
+  // background-color: rgba(0,0,0,0.1);
+  overflow: hidden;
+  #beta_box {
+    width: 960px;
+    height: 105px;
+  
+    #beta_logo { 
+      background: url("/assets/home/logo_white.gif") no-repeat left center;
+      height: 105px;
+      margin-left: 15px;
+      margin-top: 0px;
+    }
+
+    .field_box {
+      height: 50px;
+      width: 750px;
+      position: absolute;
+      margin-top: 31px;
+      margin-left: 200px;
+      p {
+        margin: 0px;
+        padding: 0px;
+        display: inline-block;
+      
+      }
+      label {
+        @include fh_b(14px);
+        @include c_g_2;
+        padding: 10px 15px;
+
+      
+      } 
+      input[type=text] {
+
+        width: 270px;
+        background-color: white;
+        padding: 10px 15px;
+        outline: none;
+        border: none;
+        
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    transition: all .2s ease;
+        @include round(5px);
+        @include fh_b(14px);
+        @include c_g_4;
+        margin-right: 10px;
+      
+      }
+      input[type=text]:focus {
+        @include bs_out_big2(#FFF);
+        background: #fff url("/assets/home/field_bg.gif")
+
+
+      }
+      
+
+
+      input[type=submit] {
+
+        width: 90px;
+        background-color: $c1b;
+        padding: 10px 15px;
+        outline: none;
+        border: none;
+        @include round(5px);
+        @include fh_b(14px);
+        color: white;
+        margin-right: 10px;
+      
+      }
+
+
+    }
+  }
+}
+
+
+#nav_back {
+  position: absolute;
+  width: 230px;
+  height: 330px;
+  background: rgba(255,255,255,0.7);
+  z-index: 1000;
+  margin-top: 230px;
+  @include round(5px);
+
+}
+.s1 {
+  background: #f6f6f6;
+
+}
+
+.s2 {
+  background: #f6f6f6;
+
+}
+
+.s3 {
+  background: #f6f6f6;
+
+}
+
+.s4 {
+  background: #f6f6f6;
+
+}
+
+.home_left {
+  
+  width: 50%;
+  height: 100%;
+  position: fixed;
+  left: 0px;
+
+}
+
+.home_right {
+  
+  width: 50%;
+  height: 100%;
+  position: fixed;
+  right: 0px;
+
+}
+
+
+#container.container_12.home {
+  margin-top: 0px;
+  
+  
+
+
+}
+.home_top {
+
+  z-index: 9000;
+  position: absolute;
+  .home_header {
+    height: 105px;
+    
+
+    width: 904px;
+    background: url("/assets/home/logo.png") no-repeat left center;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    .right_header { 
+      margin-top: 38px;
+      width: 300px;
+      float: right;
+      
+      .login {
+        @include fh_b(13px);
+        @include c_g_1;
+        float: right;
+        line-height: 15px;
+        padding: 10px 10px;
+      
+      }
+      .beta_button {
+        height: 15px;
+        @include fh_b(13px);
+        line-height: 15px;
+        color: white;
+        padding: 10px 25px;
+        background: $c1;
+        display: inline-block;
+        @include round(30px);
+        float: right;
+        cursor: pointer;
+        background: url("/assets/home/button_bg.gif");
+
+        .normal {
+          @include fh(13px);
+        
+        }
+        
+      
+      }
+    }
+    
+
+  
+  }
+
+  .hightlight {
+  
+    @include fh_b(18px);
+    text-decoration: underline;
+    color: $c1;
+  
+  }
+  h1 {
+    @include fh_b(53px);
+    padding: 0px;
+    margin: 0px;
+    letter-spacing: -4px;
+    color: #4c4c4c;
+    margin-left: 15px;
+    @include ts_out(white);
+
+  
+  }
+  h2 {
+    @include fh(18px);
+    padding: 0px;
+    color: #4c4c4c;
+    margin: 0px;
+    padding: 15px 0px;
+    margin-left: 15px;
+  
+  }
+}
+
+.home_bottom {
+    width: 930px;
+    height: 100%;
+    position: absolute;
+    padding-bottom: 50px;
+
+  .col.last {
+    width: 234px;
+
+  }
+  .col.tapes {
+    h3 {
+      color: $c1;
+    }
+      .image {
+        background: url("/assets/home/tapes_imgae.png") no-repeat center center;
+      
+      }
+  
+  }
+    .col.collaborate {
+    h3 {
+      color: $c3;
+    }
+      .image {
+        background: url("/assets/home/collaborate_imgae.png") no-repeat center center;      
+      }
+  
+  }
+    .col.explore {
+    h3 {
+      color: $c4;
+    }
+      .image {
+        background: url("/assets/home/explore_image.png") no-repeat center center;      
+      }
+  
+  }
+  .col.more {
+    h3 {
+      color: $c2;
+    }
+      .image {
+        background: url("/assets/home/more_image.png") no-repeat center center;      
+      }
+  
+  }
+  .col {
+    width: 232px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    position: relative;
+    z-index: 2000;
+    
+    .image {
+      margin-top: 20px;
+      width: 200px;
+      height: 130px;
+      margin-left: 15px;
+    }
+
+    h3 {
+      margin-left: 15px;
+      width: 200px;
+      text-align: center;
+      @include fh_b(22px);
+    
+    
+    }
+
+    p {
+      margin-left: 15px;
+      @include fh(13px);
+      @include c_g_3;
+      width: 200px;
+      text-align: center;
+    }
+    .col_content {
+      width: 230px;
+      padding-top: 240px; 
+    
+    }
+  }
+  .home_screen_box {
+
+    width: 930px;
+    height: 790px;
+    position: absolute;
+    top: 490px;
+    img {
+      @include round(5px);
+    }
+  .splitter {
+    height: 102px;
+    background: url("/assets/home/screen_top.png");
+  }
+  .home_screen {
+    width: 930px;
+    height: 650px;
+    @include bs_out_big(rgba(0,0,0,0.4));
+    @include round(5px);
+    position: absolute;
+    
+  }
+  #screen2 { display: none }
+  #screen3 { display: none }
+  #screen4 { display: none }
+    
+    
+    
+
+    
+
+  }
+  .home_footer {
+    height: 40px;
+  
+  }
+
+}
 .login_btn:hover {
   opacity: 1;
 }

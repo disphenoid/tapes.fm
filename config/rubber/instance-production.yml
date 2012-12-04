@@ -29,8 +29,8 @@
   - tapesfm_production_nginx
   - tapesfm_production_collectd
   - tapesfm_production_monit
-  external_host: ec2-50-16-41-122.compute-1.amazonaws.com
-  external_ip: 50.16.41.122
+  external_host: ec2-54-243-140-162.compute-1.amazonaws.com
+  external_ip: 54.243.140.162
   internal_host: ip-10-6-126-145.ec2.internal
   internal_ip: 10.6.126.145
   zone: us-east-1d
