@@ -7,14 +7,26 @@ c1 = "#ffffff"
 c2 = "#fcfcfc"
 c3 = "#f9f9f9"
 c4 = "#f6f6f6"
-aniTime = 200
-
+aniTime = 200 
 
 jQuery () ->
 
+  $("label").inFieldLabels()
+  
+  $("#beta_box input[type=submit]").attr("disabled", "disabled")
+  $("#beta_box input[type=submit]").fadeTo(0, 0.3)
+  
+  $("#email").keyup (e) ->
+    if /^[0-9A-Za-z._%+-]+@[0-9A-Za-z.-]+\.[A-Za-z]{2,6}$/.test($("#email").val())
+      $("#beta_box input[type=submit]").attr("disabled", "enabled")
+      $("#beta_box input[type=submit]").fadeTo(0, 1)
+    else
+      $("#beta_box input[type=submit]").attr("disabled", "disabled")
+      $("#beta_box input[type=submit]").fadeTo(300, 0.3)
+
   $(".beta_button").click (e) ->
     #console.log "dd"
-    $("#beta_form").animate({height: 105}, 400, "easeOutQuart")
+    $("#beta_form").animate({height: 245}, 400, "easeInOutQuart")
     $("#email").focus()
     $("#overlay").addClass("active")
   $("#overlay").click (e) ->
@@ -27,6 +39,10 @@ jQuery () ->
     $("#screen2").fadeOut(aniTime)
     $("#screen3").fadeOut(aniTime)
     $("#screen4").fadeOut(aniTime)
+    $("#col1").addClass("active")
+    $("#col2").removeClass("active")
+    $("#col3").removeClass("active")
+    $("#col4").removeClass("active")
     
     $("#nav_back").animate({left: 0}, 0)
 
@@ -35,24 +51,33 @@ jQuery () ->
     $("#screen2").fadeIn(aniTime)
     $("#screen3").fadeOut(aniTime)
     $("#screen4").fadeOut(aniTime)
-
+    $("#col1").removeClass("active")
+    $("#col2").addClass("active")
+    $("#col3").removeClass("active")
+    $("#col4").removeClass("active")
     $("#nav_back").animate({left: 230}, 0)
 
   $("#col3").mouseenter (e) ->
-    $("#screen1").fadeOut(aniTime)
-    $("#screen2").fadeOut(aniTime)
-    $("#screen3").fadeIn(aniTime)
-    $("#screen4").fadeOut(aniTime)
-
-    $("#nav_back").animate({left: 460}, 0)
+    # $("#screen1").fadeOut(aniTime)
+    # $("#screen2").fadeOut(aniTime)
+    # $("#screen3").fadeIn(aniTime)
+    # $("#screen4").fadeOut(aniTime)
+    # $("#col1").removeClass("active")
+    # $("#col2").removeClass("active")
+    # $("#col3").addClass("active")
+    # $("#col4").removeClass("active")
+    # $("#nav_back").animate({left: 460}, 0)
 
   $("#col4").mouseenter (e) ->
-    $("#screen1").fadeOut(aniTime)
-    $("#screen2").fadeOut(aniTime)
-    $("#screen3").fadeOut(aniTime)
-    $("#screen4").fadeIn(aniTime)
-
-    $("#nav_back").animate({left: 690},0)
+    # $("#screen1").fadeOut(aniTime)
+    # $("#screen2").fadeOut(aniTime)
+    # $("#screen3").fadeOut(aniTime)
+    # $("#screen4").fadeIn(aniTime)
+    # $("#col1").removeClass("active")
+    # $("#col2").removeClass("active")
+    # $("#col3").removeClass("active")
+    # $("#col4").addClass("active")
+    # $("#nav_back").animate({left: 690},0)
 
   # $("#col1").mouseenter (e) ->
   #   #$(".home_left, .home_right, .col").removeClass("s1").removeClass("s2").removeClass("s3").removeClass("s4")
