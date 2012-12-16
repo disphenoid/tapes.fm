@@ -2,7 +2,7 @@
 
 
 
-  <div class="dashboard_widget_header">
+  <div class="dashboard_widget_header tapes">
   <div class="dashboard_header dashboard_tape_header"> Active Tapes </div>
     <div id="dashboard_modul">
       <ul class="filters">

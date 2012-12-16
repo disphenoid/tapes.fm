@@ -43,7 +43,7 @@ class PushActivities
 
       unless activity_user_id.to_s == collaborator_id.to_s
         REDIS.zadd "activities:user:#{collaborator_id}", Time.now.to_i, activity_id
-        # trim_user_activities(collaborator_id.to_s) 
+        trim_user_activities(collaborator_id.to_s) 
       end
     end
     
@@ -56,7 +56,7 @@ class PushActivities
     if (REDIS.zcard k) >= indx
       n = indx - 1
       if (r = REDIS.zrevrange k, n, n, :with_scores => true)
-        REDIS.zremrangebyscore k, "-inf", "(#{r.last}"
+        REDIS.zremrangebyscore k, "-inf", "(#{r.last.last}"
       end
     end
 

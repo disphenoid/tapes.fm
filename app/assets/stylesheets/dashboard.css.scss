@@ -343,7 +343,7 @@ a {
     
 
 
-      background-color: rgba(0,0,0,0.05);
+      background-color: white;
       .mini_cover {
         transform:rotate(-2deg);
         -ms-transform:rotate(-2deg); /* IE 9 */
@@ -356,7 +356,19 @@ a {
         }
       
       }
-      
+      .info_box {
+
+
+        .headline {
+        
+          color: $c1;
+          .author {
+            color: $c1b;
+          
+          }
+
+        }
+      }
     
     }
 
@@ -405,6 +417,7 @@ a {
             height: 13px;
             .author {
             color: $c_g_2;
+            @include fh(12px);
             
             }
           
@@ -473,6 +486,16 @@ a {
     }
 
   }
+
+.dashboard_widget_header.invites {
+
+ background: url("/assets/dashboard/active_tape_icon.png") no-repeat left bottom;
+}
+.dashboard_widget_header.tapes {
+ background: url("/assets/dashboard/active_invite_icon.png") no-repeat left bottom;
+}
+
+
  .dashboard_widget_header { 
 
  width: 305px; 
