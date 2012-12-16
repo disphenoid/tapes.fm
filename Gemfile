@@ -29,7 +29,7 @@ gem "mongoid", "~> 3.0.0"
 # gem "mongoid_counter_cache"
 #gem 'bson_ext'
 gem 'jbuilder'
-gem 'thin'
+# gem 'thin'
 gem 'fog'
 gem "resque", :require => "resque/server"
 # gem "friendly_id" 
@@ -57,7 +57,7 @@ gem 'rmagick'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -65,8 +65,8 @@ gem 'rmagick'
 # To use debugger
 # gem 'debugger'
 # 
-gem 'rubber'
 gem 'open4'
 gem 'resque', :require => 'resque/server'
 gem 'resque-pool'
 gem 'puma'
+gem 'rubber' , :git => "git://github.com/disphenoid/rubber.git"

@@ -1,7 +1,6 @@
 role_dependencies:
-  web: [haproxy]
-  app: [passenger_nginx]
-  web_tools: [passenger_nginx]
+  app: [unicorn]
+  web_tools: [nginx]
 
 web_port: 80
 web_ssl_port: 443
@@ -9,7 +8,7 @@ web_tools_port: 8080
 web_tools_ssl_port: 8443
 
 security_groups:
-  web:
+  app:
     description: "To open up port #{web_port}/#{web_ssl_port} for http server on web role"
     rules:
       - protocol: tcp
@@ -33,7 +32,7 @@ security_groups:
         source_ips: [0.0.0.0/0]
 
 roles:
-  web:
-    assigned_security_groups: [web]
+  app:
+    assigned_security_groups: [app]
   web_tools:
     assigned_security_groups: [web_tools]

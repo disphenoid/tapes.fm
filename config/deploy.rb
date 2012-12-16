@@ -111,3 +111,4 @@ if Rubber::Util.has_asset_pipeline?
   before "deploy:assets:precompile", "deploy:assets:symlink"
   after "rubber:config", "deploy:assets:precompile"
 end
+

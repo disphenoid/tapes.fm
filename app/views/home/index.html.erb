@@ -1,9 +1,135 @@
-<div class="splash_bg">
-  <a href="mailto:j@tapes.fm?subject=Hey J from tapes.fm" target="_blank">
-  <div class="logo_bg"> </div>
-  </a>
-  <a href="http://twitter.com/tapesfm" target="_blank">
-  <div class="twitter"> </div>
-  </a>
+
+<div id="beta_form"> 
+  
+  <div id="beta_box" class="container_12"> 
+    <div class="field_box" > 
+        <%= form_tag('/api/requests') do -%>
+          <p>
+            <%= label_tag 'email', 'Your email address' %>
+            <%= text_field_tag 'email'  %>
+          </p>
+          <p>
+            <%= label_tag 'url', 'URL or Text (optional)' %>
+            <%= text_field_tag 'url'  %>
+          </p>
+
+          <%= hidden_field_tag 'from', request.referrer  %>
+          <%= submit_tag 'Send', :html => {:id => "beta_button"} %> 
+          
+
+        <% end -%>
+
+
+
+    </div>
+    <div id="beta_logo" > </div>
+    <div id="beta_headline" > 
+          <h1>Hello Beta!</h1>
+          <h2>Get notified as soon we're ready for you.</h2>
+
+    
+    </div>
+
+  </div>
 
 </div>
+
+<div id="container" class="container_12 home"> 
+  <div class="home_bottom">
+  <div id="nav_back"> </div>
+    <div class="col tapes active" id="col1"> 
+      <div class="col_content"> 
+        <div class="image"></div>
+        <h3>Tapes</h3>
+        <p> Every Tape can hold everything from a single Sample to a Multitrack Composition. Simply start by uploading your own Tracks. </p> 
+      </div> 
+    </div> 
+
+    <div class="col collaborate" id="col2"> 
+      <div class="col_content"> 
+        <div class="image"></div>
+        <h3>Collaborate</h3>
+        <p>Invite your friends and work together on your Tapes. Post comments, add new Tracks and use Versions to keep an eye on all changes.</p>
+      </div> 
+    </div> 
+    <div class="col  explore" id="col3"> 
+      <div class="col_content"> 
+        <div class="image"></div>
+        <h3>Explore & Remix</h3>
+        <p>Find and explore new Sounds, follow musicians and start to remix other Tapes with just a click!</p> 
+      </div> 
+    </div> 
+    <div class="col last more" id="col4"> 
+      <div class="col_content"> 
+        <div class="image"></div>
+        <h3>Learn More</h3>
+        <p>It's build for musicians from musicians. Join the Beta now and build tapes.fm together with us.</p> 
+      </div> 
+    </div> 
+
+
+    <div class="home_screen_box">
+      <div class="splitter" >
+      </div> 
+
+      <div class="home_screen" id="screen1">
+
+        <div class="tape_mini">
+        <div class="tape">
+
+          <div class="outline"> </div> 
+          <div class="cover"> 
+          <img src="http://">
+          </div>
+          <div class="wheels"> </div> 
+          <div class="case"> </div> 
+        
+        </div>
+        
+        </div>
+        <img src="/assets/home/screen_tapes.png"></img> 
+      </div> 
+
+      <div class="home_screen" id="screen2">
+        <img src="/assets/home/screen_tapedeck.png"></img> 
+      </div> 
+      <div class="home_screen" id="screen3">
+        <img src="/assets/home/screen_tapes.png"></img> 
+      </div> 
+      <div class="home_screen" id="screen4">
+        <img src="/assets/home/screen_tapedeck.png"></img> 
+      </div> 
+    </div> 
+  </div> 
+  <div class="home_top">
+    
+    <div class="home_header">
+      <div class="right_header">
+        <div class="beta_button">
+          <span class="normal">Join</span> Beta
+        </div>
+        <a href="/login">
+        <div class="login"> Login </div>
+        </a>
+
+      </div>
+      
+    </div>
+    <h1>Make music together –</h1>
+    <h2>tapes.fm is a simple way to <span class="hightlight">make</span>, <span class="hightlight">remix</span> and <span class="hightlight">explore</span> music <span class="hightlight">together</span>.</h2>
+    <div>
+
+  </div> 
+
+    <div class="social_buttons btn">
+      <div class="twitter_button btn" >
+                <a href="http://twitter.com/share" class="twitter-share-button" data-text= "tapes.fm is a simple way to collect, share & collaborate on your musical ideas." data-url="http://tapes.fm" data-count="horizontal" data-via="tapesfm">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>  
+      </div>
+      <div class="facebook_button">
+        <div class="fb-like" data-href="http://tapes.fm" data-send="false" data-layout="button_count" data-width="120" data-show-faces="true" data-font="arial"></div>
+      </div>
+
+    </div>
+    </div>
+</div>
+<div id="overlay"></div>
