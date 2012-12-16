@@ -18,7 +18,7 @@ jQuery () ->
   
   $("#email").keyup (e) ->
     if /^[0-9A-Za-z._%+-]+@[0-9A-Za-z.-]+\.[A-Za-z]{2,6}$/.test($("#email").val())
-      $("#beta_box input[type=submit]").attr("disabled", "enabled")
+      $("#beta_box input[type=submit]").attr("disabled", false)
       $("#beta_box input[type=submit]").fadeTo(0, 1)
     else
       $("#beta_box input[type=submit]").attr("disabled", "disabled")
