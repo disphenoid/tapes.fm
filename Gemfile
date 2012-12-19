@@ -44,7 +44,7 @@ gem 'carrierwave_backgrounder'
 gem 'simple_form'
 gem "waveinfo"
 gem 'pusher'
-gem 'rmagick'
+gem 'mini_magick'
 
 
 

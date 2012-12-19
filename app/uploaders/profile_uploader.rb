@@ -6,7 +6,7 @@ require 'resque'
 require 'digest/md5'
 
 class ProfileUploader < CarrierWave::Uploader::Base
-  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
   permissions 0777
   storage :fog
   #after :store, :add_to_process_queu
