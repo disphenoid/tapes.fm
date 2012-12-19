@@ -15,6 +15,9 @@ Tapesfm::Application.routes.draw do
   delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
   get 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
   end
+  scope "admin" do
+    get 'users', to: "webapp#admin_users"
+  end
 
   scope "api" do
     resources :tapedeck

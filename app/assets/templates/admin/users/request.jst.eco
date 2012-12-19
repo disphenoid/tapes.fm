@@ -1,0 +1,25 @@
+<li class="user_box"> 
+
+  <div class="icon"></div>
+
+  <div class="headline_box">
+    
+    <div class="line">
+      <%= @model.get("email")%> 
+    </div>
+    <div class="line">
+      <%= @model.get("origin")%> 
+    </div>
+  
+  </div>
+  <div class="headline_box last">
+    
+    <div class="line">
+      <%= @model.get("user_agent")%> 
+    </div>
+    <div class="line">
+      <%= @model.get("language")%> 
+    </div>
+  
+  </div>
+</li>

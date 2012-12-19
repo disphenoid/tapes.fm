@@ -196,6 +196,29 @@ class WebappController < ApplicationController
 
   end
 
+  ### Admin 
+  
+  def admin_users
+
+    
+    # prepend_view_path "app/views/admin/users"
+
+    @users = User.all
+    @requests = Request.all
+
+    @json = render_to_string( template: 'admin/users/index.json.jbuilder', locals: { users: @users, requests: @requests}) 
+    
+    respond_to do |format|
+      format.html
+      
+      # render :partial => 'admin/users/index.html.erb', :formats => [:html]
+
+    end
+    
+  end
+
+
+
 
 
   private 

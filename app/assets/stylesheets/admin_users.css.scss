@@ -1,0 +1,85 @@
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
+
+
+
+
+.admin_user_box {
+  
+  margin-top: 20px;
+  width: 450px;
+  margin-right: 20px;
+  // background: #FF00FF;
+  float: left;
+
+  .header {
+      display: inline-block;
+      @include c_g_4;
+      @include fh_b(18px);
+      margin-bottom: 6px;
+      padding-top: 5px;
+      padding-left: 10px;
+      line-height: 30px;
+      height: 30px;
+  
+  }
+  .list {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    .user_box {
+      margin: 0px;
+      height: 70px;
+      background: rgba(0,0,0,0.03);
+      margin-top: 5px;
+      
+      // @include round(5px);
+     
+
+      .icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(0,0,0,0.1);
+        position: absolute;
+        margin: 10px;
+        @include round(3px);
+        img {
+          @include round(3px);
+        }
+      
+      }
+      .headline_box.last {
+        margin-left: 15px;
+      }
+      .headline_box:hover {
+        overflow: visible;
+
+      }
+
+      .headline_box {
+        float: left;
+        overflow: hidden;
+        margin-left: 80px;
+        padding-top: 15px;
+        @include fh_b(12px);
+        width: 150px;
+        display: inline-block;
+        .line {
+          height: 22px;
+          line-height: 22px;
+          white-space:nowrap;
+        }
+
+      
+      }
+    
+      
+
+    }
+  }
+
+
+}
+
+
