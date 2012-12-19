@@ -14,6 +14,8 @@ public/uploads/tmp/*
 config/database.yml
 *.swp
 *.swo
+*.swm
+*.swl
 *.dropbox
 *~
 .#*
