@@ -77,6 +77,9 @@ namespace :rubber do
           
         # add ssh keys for root 
         if [[ ! -f /root/.ssh/id_dsa ]]; then ssh-keygen -q -t dsa -N '' -f /root/.ssh/id_dsa; fi
+
+        # move the wav2json_linux binary into place
+        if [ -f #{current_path}/bin/wav2json_linux ]; then cp #{current_path}/bin/wav2json_linux /usr/local/bin; fi
       ENDSCRIPT
     end
 
