@@ -14,8 +14,13 @@
 <% unless @model.get("public"): %>
   <div class="private_icon tip" title="Private Tape"> </div> 
 <% end %>
+
+<% if @model.get("name"): %>
 <div class="headline"> <%=@model.get("name")%></div> 
 <br />
 <div class="subline"> by <%=@model.get("author")%> </div> 
 
+<% else: %>
+  new tape
+<% end %>
 </div> 

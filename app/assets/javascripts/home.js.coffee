@@ -13,16 +13,16 @@ jQuery () ->
 
   $("label").inFieldLabels()
   
-  $("#beta_box input[type=submit]").attr("disabled", "disabled")
-  $("#beta_box input[type=submit]").fadeTo(0, 0.3)
+  # $("#beta_box input[type=submit]").attr("disabled", "disabled")
+  # $("#beta_box input[type=submit]").fadeTo(0, 0.3)
   
-  $("#email").keyup (e) ->
-    if /^[0-9A-Za-z._%+-]+@[0-9A-Za-z.-]+\.[A-Za-z]{2,6}$/.test($("#email").val())
-      $("#beta_box input[type=submit]").attr("disabled", false)
-      $("#beta_box input[type=submit]").fadeTo(0, 1)
-    else
-      $("#beta_box input[type=submit]").attr("disabled", "disabled")
-      $("#beta_box input[type=submit]").fadeTo(300, 0.3)
+  # $("#email").keyup (e) ->
+    # if /^[0-9A-Za-z._%+-]+@[0-9A-Za-z.-]+\.[A-Za-z]{2,6}$/.test($("#email").val())
+      # $("#beta_box input[type=submit]").attr("disabled", false)
+      # $("#beta_box input[type=submit]").fadeTo(0, 1)
+    # else
+      # $("#beta_box input[type=submit]").attr("disabled", "disabled")
+      # $("#beta_box input[type=submit]").fadeTo(300, 0.3)
 
   $(".beta_button").click (e) ->
     #console.log "dd"

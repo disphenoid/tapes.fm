@@ -33,7 +33,7 @@ class Tapesfm.Views.Tape extends Backbone.View
   
     settingView = new Tapesfm.Views.TapeSetting(model: @model)
 
-    console.log @model.get("remixable")
+    # console.log @model.get("remixable")
 
     $("body").append("<div class='setting-popin' id='setting-popin_#{key}'></div>")
     $("body").find("#setting-popin_#{key}").append(settingView.render().el)
@@ -56,5 +56,6 @@ class Tapesfm.Views.Tape extends Backbone.View
 
     $(@el).html(rendertContent)
     @initPopIn(@model.get("id"))
+    $(@el).attr('id', @model.get("id"))
     #$(@el).fadeIn(2000)
     this

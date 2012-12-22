@@ -2,7 +2,7 @@ class Tapesfm.Views.Tapes extends Backbone.View
   animationTime: []
   template: JST['tapes/tapes']
   events:
-    "click .add_tape" : "addTape" 
+    "click .add_tape" : "createNewTape"
 
   initialize: ->
     
@@ -14,6 +14,28 @@ class Tapesfm.Views.Tapes extends Backbone.View
     #@collection.on('changed:name', @render, this)
     #@collection.on('add', @render, this)
     Tapesfm.tapes = @collection
+
+
+
+  createNewTape: ->
+
+    tapedeck = new Tapesfm.Models.Tapedeck
+    settingId = "new"
+
+    tapedeck.set({name: $("#tape_name_field_#{settingId}").val(), remixable: true, commentable: true, public: true })
+
+    tapedeck.save(
+      {}
+      {success: (model, response) ->
+        #console.log "response " + response.id
+        #window.location = "/tapedeck/"+response._id
+        tapedeck = new Tapesfm.Models.Tapedeck(response)
+        tapedeck.set({id: response._id})
+
+        Tapesfm.tapes.unshift(tapedeck)
+
+
+      })
 
   removeNew: (e) ->
     if $(e.target).is('.popin-overlay')
@@ -35,22 +57,29 @@ class Tapesfm.Views.Tapes extends Backbone.View
         $(".popin-overlay").die "click"
 
   appendTapedeck: (tapedeck) =>
-    console.log tapedeck.get("name")
+    # console.log tapedeck.get("name")
     tapedeckView = new Tapesfm.Views.Tape(model: tapedeck)
     #$(@el).append("ddd")
     $(@el).find("#tapes_list").append(tapedeckView.render().el)
+    $(@el).find("#tapedeck_name_#{tapedeck.get("id")}").fadeTo(100,0.5)
+    $(@el).find(tapedeckView.render().el).css("display":"inline-block")
+
     #$(@el).find(tapedeckView.render().el).fadeIn( @animationTime.pop)
 
   prependTapedeck: (tapedeck) =>
-    console.log tapedeck.get("name")
+    # console.log tapedeck.get("name")
     tapedeckView = new Tapesfm.Views.Tape(model: tapedeck)
     #$(@el).append("ddd")
     $(@el).find("#tapes_list").prepend(tapedeckView.render().el)
-    $(@el).find(tapedeckView.render().el).hide().fadeIn("slow")
+    # $(@el).find(tapedeckView.render().el).hide().fadeIn("slow")
+    # $(@el).find("##{tapedeck.get("id")}").hide().show("slow")
+    #
+
+    $(@el).find("##{tapedeck.get("id")}").css("display":"inline-block", "width": 0, "opacity": 0).animate({width: 140}, 100).fadeTo(100,1)
+
     
 
-  initPopIn: (key) ->
-  
+  initPopIn: (key) -> 
 
     new_tapdeck = new Tapesfm.Models.Tapedeck({remixable: true, commentable: true, public: true})
     settingView = new Tapesfm.Views.TapeSetting(model: new_tapdeck)
@@ -63,10 +92,6 @@ class Tapesfm.Views.Tapes extends Backbone.View
 
     $("body").find("#setting-popin_#{key} label").inFieldLabels()
 
-
-  
-
-
   render: ->
     
     
@@ -76,23 +101,9 @@ class Tapesfm.Views.Tapes extends Backbone.View
     $(@el).html(rendertContent)
 
     @animationTime = []
-    # @collection.each (tapedeck) =>
-    #   @animationTime.push 1000
 
     @collection.each @appendTapedeck
-    
-    
     @initPopIn("new")
 
-
-    #$(@el).fadeIn(2000)
-    #
-    
-    
-    #$(@el).html(settingView.render().el)
-
-
-
-     
 
     this

@@ -8,6 +8,12 @@ Tapesfm::Application.configure do
 
   ENV["REDISTOGO_URL"] = "redis://redistogo:1c5c0818edd54887ab1a01edc6644b24@barb.redistogo.com:9579/"
 
+
+  # Mail settings
+  ENV['SENDGRID_DOMAIN']
+  ENV['SENDGRID_USERNAME']
+  ENV['SENDGRID_PASSWORD']
+
   # Code is not reloaded between requests
   config.cache_classes = true
 

@@ -8,27 +8,37 @@ class InvitesController < ApplicationController
 
   def create
 
-      tapedeck = Tapedeck.find(params[:tapedeck_id])
-      
+       
+      tapedeck = Tapedeck.find(params[:tapedeck_id]) 
       user = User.where({name: params[:value]}).first
       
-
-
-      puts "####"+params[:value]
+      if params[:value] && user
       
-      if user && !Invite.where({invited_id: user.id, tapedeck_id: tapedeck.id }).first && !tapedeck.collaborator_ids.include?(user.id)       
-        invite = Invite.new
+        if user && !Invite.where({invited_id: user.id, tapedeck_id: tapedeck.id }).first && !tapedeck.collaborator_ids.include?(user.id)       
+          invite = Invite.new
 
-        invite.user_id = current_user.id
-        invite.invited_id = user.id
-        invite.tapedeck_id = tapedeck.id
-        
-        #tapedeck.collaborator_ids.push user.id
+          invite.user_id = current_user.id
+          invite.invited_id = user.id
+          invite.tapedeck_id = tapedeck.id
+          
+          invite.save
+        end
 
-        invite.save
+      elsif params[:value]
+          
+        if /^.+@.+$/xi.match(params[:value].to_s)
+
+          email =  params[:value]          
+          invite = Invite.find_or_initialize_by({email: email})
+
+        end
+
       end
     
   end
+
+
+
   def update
 
     @invite = Invite.find(params[:id])
@@ -47,3 +57,5 @@ class InvitesController < ApplicationController
   end
 
 end
+
+
