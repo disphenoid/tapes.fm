@@ -67,6 +67,7 @@ gem 'unicorn'
 # 
 gem 'open4'
 gem 'resque', :require => 'resque/server'
+gem "resque_mailer", :git => "https://github.com/zapnap/resque_mailer.git"
 gem 'resque-pool'
 gem 'puma'
 gem 'rubber' , :git => "git://github.com/disphenoid/rubber.git"

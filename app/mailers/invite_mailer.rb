@@ -1,0 +1,24 @@
+class InviteMailer < ActionMailer::Base
+  include Resque::Mailer
+
+  default :from => '"tapes.fm" <j@tapes.fm>'
+  
+  def invite(recipient_id)   
+    #@mission = Mission.current_mission
+    @invite = Invite.find(recipient_id)
+
+    if @invite
+
+      email_subject = "You got an Invite for tapes.fm" 
+      mail(:to => @invite.email, :subject => email_subject ) 
+
+    end
+    
+  end
+
+
+
+end
+
+
+
