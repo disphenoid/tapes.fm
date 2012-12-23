@@ -36,7 +36,7 @@ class Tapesfm.Views.Tape extends Backbone.View
     # console.log @model.get("remixable")
 
     $("body").append("<div class='setting-popin' id='setting-popin_#{key}'></div>")
-    $("body").find("#setting-popin_#{key}").append(settingView.render().el)
+    $("body").find("#setting-popin_#{key}").html(settingView.render().el)
     $("body").find("#setting-popin_#{key} input:checkbox").iphoneStyle()
     $("body").find("#setting-popin_#{key} label").inFieldLabels()
 

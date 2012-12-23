@@ -2,7 +2,7 @@ class Tapesfm.Views.Tapes extends Backbone.View
   animationTime: []
   template: JST['tapes/tapes']
   events:
-    "click .add_tape" : "createNewTape"
+    "click .add_tape" : "createNewTape" 
 
   initialize: ->
     
@@ -36,6 +36,10 @@ class Tapesfm.Views.Tapes extends Backbone.View
 
 
       })
+
+
+
+
 
   removeNew: (e) ->
     if $(e.target).is('.popin-overlay')

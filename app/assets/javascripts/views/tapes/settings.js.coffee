@@ -46,14 +46,14 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
   showGenres: (e) ->
     $(@el).find(".settings_main").animate({left: "-300px"}, 300, "easeOutExpo")
     $(@el).find(".settings_genre").animate({left: "0px"},300, "easeOutExpo")
-    console.log "dsa"
+    # console.log "dsa"
+    # console.log $(@el).find(".settings_main")
 
 
   showProjects: (e) ->
     $(@el).find(".settings_main").animate({left: "-300px"}, 300, "easeOutExpo")
     $(@el).find(".settings_project").animate({left: "0px"},300, "easeOutExpo")
 
-    console.log "dsa"
 
   submitTape: (e) ->
     e.preventDefault()
@@ -162,7 +162,7 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
       #   $(_el).find(".settings_project subline").append(user.name)
 
 
-      $(@el).find(".settings_project").append(" <div class=\"project_btn\" data-project_id=\"#{project.id}\" data-project_name=\"#{project.name}\"> <div class=\"headline\"> #{project.name} </div> <div class=\"subline\">  </div> </div>
+      $(@el).find(".settings_project").html(" <div class=\"project_btn\" data-project_id=\"#{project.id}\" data-project_name=\"#{project.name}\"> <div class=\"headline\"> #{project.name} </div> <div class=\"subline\">  </div> </div>
 
 ")
 
