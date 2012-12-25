@@ -3,9 +3,9 @@ class InviteMailer < ActionMailer::Base
 
   default :from => '"tapes.fm" <j@tapes.fm>'
   
-  def invite(recipient_id)   
+  def invite(invite_id)   
     #@mission = Mission.current_mission
-    @invite = Invite.find(recipient_id)
+    @invite = Invite.find(invite_id)
 
     if @invite
 
