@@ -33,17 +33,15 @@ class Tapedeck
   
   def all_collaborators 
       
-    pending = self.pending_collaborators.map {|d| d.invited.pending = true; d.invited;  }
+    pending = self.pending_collaborators.map {|d| d.invited.pending = true; d;  }
     accepted = self.collaborators
     joined = accepted + pending
 
   end
 
-
   def pending_collaborators
     
-    self.invites.where({accepted: false})
-    
+    self.invites.where({accepted: false}) 
     
   end
 

@@ -17,6 +17,8 @@ config/database.yml
 *.swm
 *.swn
 *.swl
+*.swj
+*.swi
 *.dropbox
 *~
 .#*

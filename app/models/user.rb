@@ -31,6 +31,7 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
   field :pending,    :type => String
+  field :invited_id,    :type => String
 
   field :total_uploadtime,    :type => Integer, :default => 0
   field :current_uploadtime,    :type => Integer, :default => 0

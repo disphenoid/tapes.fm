@@ -12,7 +12,7 @@
             </div>
             <div class="pic">
             </div>
-            <label id="invite_label" for="invite_field">Invite someone by Name...</label>
+            <label id="invite_label" for="invite_field">Invite someone by Name or email...</label>
             <input type="text" name="invite_field" id="invite_field" value=""></textarea>
           </p>        
       </div> 

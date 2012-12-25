@@ -28,7 +28,7 @@ json.comments @tapedeck.comments.asc(:created_at) do |json,comment|
 end
 
 json.collaborators @tapedeck.all_collaborators do |json,collaborator|
-  json.partial! "users/user.json.jbuilder", user: collaborator
-  json.pending collaborator.pending 
-  json.user_picture collaborator.picture.m.url
+  json.partial! "tapedeck/collaborator.json.jbuilder", collaborator: collaborator 
+
 end
+

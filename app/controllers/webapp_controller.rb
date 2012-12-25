@@ -64,7 +64,7 @@ class WebappController < ApplicationController
       
         @tapedecks = Tapedeck.where({collaborator_ids: current_user.id}).sort({updated_at:-1}).limit(5) #Tapedeck.where({user_id: current_user.id})
 
-        @invites = Invite.where({accepted: false,invited_id: current_user.id}) #Tapedeck.where({user_id: current_user.id})
+        @invites = Invite.where({accepted: false,invited_user_id: current_user.id}) #Tapedeck.where({user_id: current_user.id})
         
         @activities = current_user.stream
 

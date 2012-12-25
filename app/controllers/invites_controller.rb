@@ -13,15 +13,19 @@ class InvitesController < ApplicationController
       #check if matches format of an email adresse
       if /^.+@.+$/xi.match(params[:value].to_s) 
           
+          tapedeck = Tapedeck.find(params[:tapedeck_id]) 
           user = User.where({email: params[:value]}).first
+
           if user && !Invite.where({invited_id: user.id, tapedeck_id: params[:tapedeck_id] }).first && !tapedeck.collaborator_ids.include?(user.id)       
             invite = Invite.new
 
             invite.user_id = current_user.id
-            invite.invited_id = user.id
+            invite.invited_user_id = user.id
             invite.tapedeck_id = params[:tapedeck_id]
             
             invite.save
+
+            render( template: 'invites/create.json.jbuilder', locals: { collaborator: invite})
           else
 
             email =  params[:value]          
@@ -41,17 +45,22 @@ class InvitesController < ApplicationController
         tapedeck = Tapedeck.find(params[:tapedeck_id]) 
         user = User.where({name: params[:value]}).first
       
-        if user && !Invite.where({invited_id: user.id, tapedeck_id: tapedeck.id }).first && !tapedeck.collaborator_ids.include?(user.id)       
+        if user && !Invite.where({invited_user_id: user.id, tapedeck_id: tapedeck.id }).first && !tapedeck.collaborator_ids.include?(user.id)       
           invite = Invite.new
 
           invite.user_id = current_user.id
-          invite.invited_id = user.id
+          invite.invited_user_id = user.id
           invite.tapedeck_id = tapedeck.id
           
           invite.save
+          # render :json => invite.invited
+          render( template: 'invites/create.json.jbuilder', locals: { collaborator: invite})
+
         end 
 
       end
+
+
     
   end
 
@@ -61,7 +70,7 @@ class InvitesController < ApplicationController
 
     @invite = Invite.find(params[:id])
     @invite.update_attributes!(params[:invite])
-    @invite.tapedeck.collaborator_ids.push @invite.invited_id
+    @invite.tapedeck.collaborator_ids.push @invite.invited_user_id
     @invite.tapedeck.save
 
 
