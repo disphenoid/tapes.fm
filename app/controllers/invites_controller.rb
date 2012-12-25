@@ -35,6 +35,7 @@ class InvitesController < ApplicationController
             invite.invite_hash = Digest::MD5.hexdigest(params[:value].to_s)
             invite.save
             InviteMailer.invite(invite.id).deliver
+            render( template: 'invites/create.json.jbuilder', locals: { collaborator: invite})
 
           end 
 
