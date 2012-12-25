@@ -23,6 +23,7 @@ class TapedeckController < ApplicationController
       @tapedeck.project_id = params[:project_id] 
     end
     @tapedeck.commentable = params[:commentable]
+    @tapedeck.bpm = params[:bpm]
     @tapedeck.public = params[:public]
     @tapedeck.name =  params[:name]
     @tapedeck.save
