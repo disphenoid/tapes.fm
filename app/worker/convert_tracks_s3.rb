@@ -52,7 +52,7 @@ class ConvertTracksS3
 
     curl = `curl http://#{ENV['s3_bucket_name']}.s3.amazonaws.com/tracks/#{id}/#{id}.#{sufix} -o #{wav_path}`
 
-    lameOut = `ffmpeg -b 128 -i #{wav_path} #{mp3_path}` 
+    lameOut = `ffmpeg -b:a 128 -i #{wav_path} #{mp3_path}` 
     puts "######### convert mp3 #{lameOut}"
 
     mp3_file = directory.files.create(
