@@ -44,7 +44,9 @@ class InvitesController < ApplicationController
       elsif params[:value]
 
         tapedeck = Tapedeck.find(params[:tapedeck_id]) 
-        user = User.where({name: params[:value]}).first
+        # user = User.where({name: params[:value]}).first
+
+        user = User.where({name: /^#{params[:value]}$/i}).first
       
         if user && !Invite.where({invited_user_id: user.id, tapedeck_id: tapedeck.id }).first && !tapedeck.collaborator_ids.include?(user.id)       
           invite = Invite.new

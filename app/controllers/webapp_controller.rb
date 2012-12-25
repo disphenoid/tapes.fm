@@ -42,7 +42,8 @@ class WebappController < ApplicationController
       if params[:id]
         @user = User.find(params[:id])
       else
-        @user = User.find_by({name: params[:name]})
+        @user = User.find_by({name: /^#{params[:name]}$/i})
+       
       end
 
       if current_user

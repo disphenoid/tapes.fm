@@ -1,4 +1,8 @@
 Tapesfm::Application.routes.draw do
+  get "register/index"
+
+  get "register/create"
+
   get "home/index"
 
   get "track_comments/show"
@@ -32,7 +36,9 @@ Tapesfm::Application.routes.draw do
     resources :follows
     resources :settings
     resources :requests
+    resources :register
   end
+  match 'signup', to: "register#index"
 
   match 'dashboard', to: "webapp#dashboard"
   match 'tapes', to: "webapp#tapes"

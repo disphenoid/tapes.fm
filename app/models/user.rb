@@ -16,6 +16,8 @@ class User
 
   validates_presence_of :email
   validates_presence_of :encrypted_password
+  validates_uniqueness_of :name, :case_sensitive => false
+  validates_uniqueness_of :email, :case_sensitive => false
 
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -35,6 +37,9 @@ class User
 
   field :total_uploadtime,    :type => Integer, :default => 0
   field :current_uploadtime,    :type => Integer, :default => 0
+
+  field :admin, :type => Boolean, :default => false
+  field :super, :type => Boolean, :default => false
 
   ## Confirmable
   # field :confirmation_token,   :type => String
