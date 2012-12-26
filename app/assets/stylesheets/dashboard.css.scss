@@ -2,7 +2,13 @@
 @import "tools/fonts";
 @import "tools/effects";
 
+h1 {
+  @include fh_b(60px);
+  color: $c_g_5;
+  margin-top: 30px;
+  margin-bottom: -10px;
 
+}
 
 a {
   text-decoration: none;

@@ -108,6 +108,11 @@ class window.Uploader
         $("#tape_save_hint_sub").show()
       onUpload   : ->
         $("#tape_upload").show("slow")
-        Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+        if Tapesfm.user
+          unless window.existing_tape
+            Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+            Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
+          else
+            Tapesfm.tapedeck.tapedeck.get("tape").trigger("new") 
         $("#tape_save_button").addClass("wait")
         $("#tape_save_hint_sub").hide()
