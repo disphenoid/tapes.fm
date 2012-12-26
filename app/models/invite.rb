@@ -7,7 +7,7 @@ class Invite
   belongs_to :tapedeck
   belongs_to :request
 
-  field :invite_hash, :type => String
+  field :invite_hash, :type => String , :default => "0"
   field :accepted, :type => Boolean, :default => false
   field :email, :type => String, :default => false
 

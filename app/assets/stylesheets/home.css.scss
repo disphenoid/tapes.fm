@@ -271,7 +271,7 @@
 
       
       } 
-      input[type=text] {
+      input[type=text], input[type=password] {
 
         width: 270px;
         background-color: white;
@@ -279,9 +279,9 @@
         outline: none;
         border: none;
         
-    -webkit-transition: all .2s ease;
-    -moz-transition: all .2s ease;
-    transition: all .2s ease;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        transition: all .2s ease;
         @include round(5px);
         @include fh_b(14px);
         @include c_g_4;
@@ -289,7 +289,7 @@
         color: $c1;
       
       }
-      input[type=text]:focus {
+      input[type=text]:focus input[type=password]:focus {
         @include bs_out_big2(#FFF);
         background: #fff url("/assets/home/field_bg.gif")
 

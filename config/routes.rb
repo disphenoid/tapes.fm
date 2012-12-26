@@ -37,6 +37,7 @@ Tapesfm::Application.routes.draw do
     resources :settings
     resources :requests
     resources :register
+    resources :users
   end
   match 'signup', to: "webapp#signup"
 
@@ -52,6 +53,7 @@ Tapesfm::Application.routes.draw do
 
   post 'api/update_cover/:id', to: "tapedeck#update_cover"
   post 'api/update_picture', to: "settings#update_picture"
+  get   'api/user_name_unique/:name', to: "users#user_name_unique"
   
   match 'login', to: "webapp#login"
 
