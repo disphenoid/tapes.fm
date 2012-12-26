@@ -10,6 +10,11 @@ class WebappController < ApplicationController
   def index
   end
   
+  def signup
+    
+  end
+
+
   def download 
     
     expires = Time.now + 5.minutes

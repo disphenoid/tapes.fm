@@ -38,7 +38,7 @@ Tapesfm::Application.routes.draw do
     resources :requests
     resources :register
   end
-  match 'signup', to: "register#index"
+  match 'signup', to: "webapp#signup"
 
   match 'dashboard', to: "webapp#dashboard"
   match 'tapes', to: "webapp#tapes"
