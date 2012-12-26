@@ -1,0 +1,157 @@
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
+
+#signup_form {
+
+  height: 0px;
+  width: 100%;
+  z-index: 15000;
+   // background-color: rgba(0,0,0,0.1);
+  overflow: hidden;
+  #signup_box {
+    width: 940px;
+    height: 105px;
+  
+    #beta_logo { 
+      background: url("/assets/home/logo_white.gif") no-repeat left center;
+      height: 105px;
+      margin-left: 15px;
+      margin-top: 0px;
+    }
+
+    .field_box {
+      height: 100px;
+      width: 940px;
+      position: absolute;
+      margin-top: 21px;
+      margin-left: 20px;
+      .email.fixed {
+        width: 225px;
+        background-color: $c1b;
+        padding: 10px 15px;
+        outline: none;
+        border: none;
+        
+
+        @include round(5px);
+        @include fh_b(14px);
+        @include c_g_4;
+        margin-right: 10px;
+        color: $c1;        
+        display: inline-block;
+      
+      }
+
+
+      p {
+        margin: 0px;
+        padding: 0px;
+        display: inline-block;
+
+
+      
+      }
+
+      p.terms {
+        margin: 0px;
+        padding: 0px;
+        display: inline;
+        margin-top: 10px;
+        width: 400px;
+        height: 25px;
+        position: absolute;
+        label {
+          margin-top: -6px;
+          margin-left: 8px;
+          color: white;
+        }
+      
+      }
+      label {
+        @include fh_b(14px);
+        @include c_g_2;
+        padding: 10px 15px;
+
+      
+      } 
+      input[type=text] {
+
+        width: 225px;
+        background-color: white;
+        padding: 10px 15px;
+        outline: none;
+        border: none;
+        
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    transition: all .2s ease;
+        @include round(5px);
+        @include fh_b(14px);
+        @include c_g_4;
+        margin-right: 10px;
+        color: $c1;
+      
+      }
+      input[type=text]:focus {
+        @include bs_out_big2(#FFF);
+        background: #fff url("/assets/home/field_bg.gif")
+
+
+      }
+      
+
+
+      input[type=submit] {
+
+        cursor: pointer;
+        width: 90px;
+        background-color: $c1b;
+        padding: 10px 15px;
+        outline: none;
+        border: none;
+        @include round(5px);
+        @include fh_b(14px);
+        color: white;
+        margin-right: 10px;
+      
+      }
+
+
+    }
+  }
+}
+
+
+
+.home_mid.signup {
+
+  background: #FF00FF;
+  height: 100px;
+  width: 940px;
+  position: absolute;
+  top: 210px;
+  @include round(20px);
+  background-color: $c1;
+  z-index: 15000;
+
+
+}
+
+.home_top.signup {
+
+  top: 90px;
+
+
+}
+
+
+.home_bottom.signup {
+  height: 90px;
+  margin-top: 100px;
+  position: relative;
+  padding-top: 90px;
+
+}
+
+

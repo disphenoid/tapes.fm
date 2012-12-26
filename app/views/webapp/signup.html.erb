@@ -1,0 +1,102 @@
+<div id="container" class="container_12 home"> 
+  <div class="home_bottom signup">
+    <div class="col tapes " id="col1"> 
+      <div class="col_content"> 
+        <div class="image"></div>
+        <h3>Tapes</h3>
+        <p> Every Tape can hold everything from a single Sample to a Multitrack Composition. Simply start by uploading your own Tracks. </p> 
+      </div> 
+    </div> 
+
+    <div class="col collaborate" id="col2"> 
+      <div class="col_content"> 
+        <div class="image"></div>
+        <h3>Collaborate</h3>
+        <p>Invite your friends and work together on your Tapes. Post comments, add new Tracks and use Versions to keep an eye on all changes.</p>
+      </div> 
+    </div> 
+    <div class="col  explore" id="col3"> 
+      <div class="col_content"> 
+        <div class="image"></div>
+        <h3>Explore & Remix</h3>
+        <p>Find and explore new Sounds, follow musicians and start to remix other Tapes with just a click!</p> 
+      </div> 
+    </div> 
+    <div class="col last more" id="col4"> 
+      <div class="col_content"> 
+        <div class="image"></div>
+        <h3>Learn More</h3>
+        <p>It's build for musicians from musicians. Join the Beta now and build tapes.fm together with us.</p> 
+      </div> 
+    </div> 
+    </div> 
+
+    <div class="home_mid signup">
+    <div id="signup_form"> 
+  
+  <div id="signup_box" class="container_12"> 
+    <div class="field_box" > 
+        <%= form_tag('/api/requests') do -%>
+          <p>
+            <div class="email fixed"> jay@tapes.fm</div> 
+
+          </p>
+          <%# <p>
+             <%= label_tag 'email', 'Your email address'
+             <%= text_field_tag 'email'  
+           </p>
+           %>
+          <p>
+            <%= label_tag 'name', 'Your user name' %>
+            <%= text_field_tag 'name'  %>
+          </p>
+          <p>
+            <%= label_tag 'password', 'password' %>
+            <%= text_field_tag 'password'  %>
+          </p>
+          <p>
+          <%= hidden_field_tag 'from', request.referrer  %>
+          <%= submit_tag 'Join', :html => {:id => "beta_button"} %> 
+          </p>          
+          <br />
+          <p class="terms">
+            <%= label_tag 'terms', 'I accept the tapes.fm Terms of Service' %>
+            <%= check_box_tag 'terms'  %>
+          </p>          
+
+        <% end -%> 
+    </div>
+
+
+
+
+  </div>
+
+</div>
+
+    
+    
+    
+    </div>
+
+   <div class="home_top signup">
+    
+
+    <h1>8 Tracks + You</h1>
+    <h2>Be part of tapes.fm. <span class="hightlight">Make</span>, <span class="hightlight">remix</span> and <span class="hightlight">explore</span> music <span class="hightlight">together</span>.</h2>
+    <div>
+
+  </div> 
+
+    <div class="social_buttons btn">
+      <div class="twitter_button btn" >
+                <a href="http://twitter.com/share" class="twitter-share-button" data-text= "tapes.fm is a simple way to collect, share & collaborate on your musical ideas." data-url="http://tapes.fm" data-count="horizontal" data-via="tapesfm">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>  
+      </div>
+      <div class="facebook_button">
+        <div class="fb-like" data-href="http://tapes.fm" data-send="false" data-layout="button_count" data-width="120" data-show-faces="true" data-font="arial"></div>
+      </div>
+
+    </div>
+    </div>
+</div>
+
