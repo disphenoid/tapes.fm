@@ -14,8 +14,16 @@ class Tapesfm.Routers.Signup extends Backbone.Router
     view = new Tapesfm.Views.Signup(model: @invite)
     $('#container').html(view.render().el)
     $("label").inFieldLabels()
+    $("#name").alphanumeric()
     $("#name").focus()
     #$('#container').html("Settings done")
+    # $('#check_icon_password').typing
+    #   start:(event, $elem) ->
+    #     console.log "start typing"
+    #   stop: (event, $elem) ->
+    #     console.log "stop typing"
+    #     
+    #   delay: 500
 
 
 

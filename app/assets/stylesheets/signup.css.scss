@@ -3,15 +3,15 @@
 @import "tools/effects";
 
 .check_icon.loading {
-  background: yellow;
+  background: url("/assets/signup/loading_icon.gif") no-repeat center center;
 
 }
 .check_icon.ok {
-  background: green; 
+  background: url("/assets/signup/ok_icon.png") no-repeat center center;
 
 }
 .check_icon.fail {
-  background: red; 
+  background: url("/assets/signup/fail_icon.png") no-repeat center center;
 
 }
 
@@ -20,7 +20,7 @@
   position: absolute;
   width: 36px;
   height: 36px;
-  background: gray;
+  // background: gray;
   margin-left: 219px; 
 }
 
@@ -123,7 +123,10 @@
 
       }
       
-
+      input[type=submit].active {
+        background: url("/assets/home/button_bg.gif") repeat-x;
+      
+      }
 
       input[type=submit] {
 
