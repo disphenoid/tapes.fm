@@ -12,14 +12,18 @@ class WebappController < ApplicationController
   
   def signup
 
-    unless current_user && params[:invite].blank?
+    unless current_user || params[:invite].blank?
 
       @invites = Invite.where({invite_hash: params[:invite]})
-      @invite = @invites.last 
-
-      @json = render_to_string( template: 'signup/index.json.jbuilder', locals: { invite: @invite}) 
-
       if @invites.count > 0
+        @invite = @invites.last 
+
+        @json = render_to_string( template: 'signup/index.json.jbuilder', locals: { invite: @invite}) 
+
+        respond_to do |format|
+            format.html
+        end   
+
         
       else
 
@@ -33,9 +37,8 @@ class WebappController < ApplicationController
         redirect_to "/"
 
     end
-      respond_to do |format|
-          format.html
-      end    
+
+ 
     
     
   end
