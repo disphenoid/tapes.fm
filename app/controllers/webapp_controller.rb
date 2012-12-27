@@ -15,7 +15,8 @@ class WebappController < ApplicationController
     unless current_user || params[:invite].blank?
 
       @invites = Invite.where({invite_hash: params[:invite]})
-      if @invites.count > 0
+
+      if @invites.count > 0 && @invites.last.invited_user_id == nil
         @invite = @invites.last 
 
         @json = render_to_string( template: 'signup/index.json.jbuilder', locals: { invite: @invite}) 

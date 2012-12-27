@@ -89,6 +89,12 @@
           margin-left: 8px;
           color: white;
         }
+        a {
+        
+         color: $c1c;
+         @include fh(14px);
+         margin-left: 66px;
+        }
       
       }
       label {

@@ -55,6 +55,7 @@
        <div class="field_box terms">
         <label for="terms">I accept </label>
         <input type="checkbox" id="terms" value="Join"> </input> 
+        <a href="/terms" target="_blank" class="terms_link">tapes.fm Terms of Service </a>
       </div>        
     </div>
 
@@ -81,7 +82,7 @@
                 <a href="http://twitter.com/share" class="twitter-share-button" data-text= "tapes.fm is a simple way to collect, share & collaborate on your musical ideas." data-url="http://tapes.fm" data-count="horizontal" data-via="tapesfm">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>  
       </div>
       <div class="facebook_button">
-        <div class="fb-like" data-href="http://tapes.fm" data-send="false" data-layout="button_count" data-width="120" data-show-faces="true" data-font="arial"></div>
+        <div class="fb-like" data-href="https://www.facebook.com/Tapesfm" data-send="false" data-layout="button_count" data-width="120" data-show-faces="true" data-font="arial"></div>
       </div>
 
     </div>
