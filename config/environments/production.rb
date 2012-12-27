@@ -10,9 +10,9 @@ Tapesfm::Application.configure do
 
 
   # Mail settings
-  ENV['SENDGRID_DOMAIN']
-  ENV['SENDGRID_USERNAME']
-  ENV['SENDGRID_PASSWORD']
+  ENV['SENDGRID_DOMAIN'] = "smtp.sendgrid.net"
+  ENV['SENDGRID_USERNAME'] = "tapesfm"
+  ENV['SENDGRID_PASSWORD'] = "thesims9946"
 
   # Code is not reloaded between requests
   config.cache_classes = true
