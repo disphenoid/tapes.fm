@@ -1,5 +1,5 @@
 <div class="header">
-  Waiting
+  Waiting<span class="count"> <%= @count %></span>
 </div>
 <ul id="requests" class="list" ></ul>
 

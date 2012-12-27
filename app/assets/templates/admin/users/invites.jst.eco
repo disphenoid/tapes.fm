@@ -1,0 +1,5 @@
+<div class="header">
+  Invited <span class="count"> <%= @count %></span>
+</div>
+<ul id="invites" class="list" ></ul>
+

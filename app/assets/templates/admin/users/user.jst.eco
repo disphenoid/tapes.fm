@@ -13,8 +13,6 @@
       <%= @model.get("email")%> 
     </div>
   
-  </div>
-  <div class="headline_box last">
     
     <div class="line">
       <%= @model.get("user_agent")%> 

@@ -11,17 +11,19 @@ class InvitesController < ApplicationController
 
        
       #check if matches format of an email adresse
+    if current_user
       if /^.+@.+$/xi.match(params[:value].to_s) 
           
-          tapedeck = Tapedeck.find(params[:tapedeck_id]) 
-          user = User.where({email: params[:value]}).first
+          tapedeck = Tapedeck.find(params[:tapedeck_id]) unless params[:tapedeck_id].blank?
+ 
+          user = User.where({email: params[:value]}).first 
 
           if user && !Invite.where({invited_id: user.id, tapedeck_id: params[:tapedeck_id] }).first && !tapedeck.collaborator_ids.include?(user.id)       
             invite = Invite.new
 
-            invite.user_id = current_user.id
+            invite.user_id = current_user.id if params[:request_id].blank?
             invite.invited_user_id = user.id
-            invite.tapedeck_id = params[:tapedeck_id]
+            invite.tapedeck_id = params[:tapedeck_id] unless params[:tapedeck_id].blank?
             
             invite.save
 
@@ -30,11 +32,14 @@ class InvitesController < ApplicationController
 
             email =  params[:value]          
             invite = Invite.find_or_initialize_by({email: email})
-            invite.user_id = current_user.id 
+            invite.user_id = current_user.id if params[:request_id].blank? 
             invite.tapedeck_id = params[:tapedeck_id] unless params[:tapedeck_id].blank?
             invite.invite_hash = Digest::MD5.hexdigest(params[:value].to_s)
-            invite.save
-            InviteMailer.invite(invite.id).deliver
+            if invite.save
+              Request.find(params[:request_id]).destroy unless params[:request_id].blank?
+              InviteMailer.invite(invite.id).deliver
+
+            end
             render( template: 'invites/create.json.jbuilder', locals: { collaborator: invite})
 
           end 
@@ -62,7 +67,7 @@ class InvitesController < ApplicationController
         end 
 
       end
-
+    end
 
     
   end

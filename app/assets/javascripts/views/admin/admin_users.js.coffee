@@ -9,7 +9,7 @@ class Tapesfm.Views.AdminUsers extends Backbone.View
    @$('#users').append(userView.render().el)
   
   render: ->
-    rendertContent = @template()
+    rendertContent = @template(count: @options.count)
     $(@el).html(rendertContent)
 
     @collection.each @appendUser, this

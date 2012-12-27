@@ -1,5 +1,5 @@
 <div class="header">
-  Users
+  Active<span class="count"> <%= @count %></span>
 </div>
 <ul id="users" class="list" ></ul>
 

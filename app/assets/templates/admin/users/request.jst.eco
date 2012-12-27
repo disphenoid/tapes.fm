@@ -1,5 +1,6 @@
 <li class="user_box"> 
-
+  <div id="invite_btn"></div>
+  
   <div class="icon"></div>
 
   <div class="headline_box">
@@ -8,18 +9,17 @@
       <%= @model.get("email")%> 
     </div>
     <div class="line">
+      <%= @model.get("url")%> 
+    </div>
+    <div class="line">
       <%= @model.get("origin")%> 
     </div>
-  
-  </div>
-  <div class="headline_box last">
-    
     <div class="line">
       <%= @model.get("user_agent")%> 
-    </div>
-    <div class="line">
+    </div>  
+        <div class="line">
       <%= @model.get("language")%> 
     </div>
-  
   </div>
+  
 </li>

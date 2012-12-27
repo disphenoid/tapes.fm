@@ -100,7 +100,7 @@ class WebappController < ApplicationController
       
         @tapedecks = Tapedeck.where({collaborator_ids: current_user.id}).sort({updated_at:-1}).limit(5) #Tapedeck.where({user_id: current_user.id})
 
-        @invites = Invite.where({accepted: false,invited_user_id: current_user.id}) #Tapedeck.where({user_id: current_user.id})
+        @invites = Invite.where({accepted: false,invited_user_id: current_user.id}).excludes(:tapedeck_id => nil) #Tapedeck.where({user_id: current_user.id})
         
         @activities = current_user.stream
 
@@ -240,9 +240,13 @@ class WebappController < ApplicationController
     # prepend_view_path "app/views/admin/users"
 
     @users = User.all
+    @user_count = User.count
+    @invites = Invite.all.excludes(:user_id => nil)
+    @invite_count = Invite.count
     @requests = Request.all
+    @request_count = Request.count
 
-    @json = render_to_string( template: 'admin/users/index.json.jbuilder', locals: { users: @users, requests: @requests}) 
+    @json = render_to_string( template: 'admin/users/index.json.jbuilder', locals: { users: @users, invites: @invites, requests: @requests}) 
     
     respond_to do |format|
       format.html

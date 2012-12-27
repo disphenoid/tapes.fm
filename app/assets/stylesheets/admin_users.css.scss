@@ -8,7 +8,7 @@
 .admin_user_box {
   
   margin-top: 20px;
-  width: 450px;
+  width: 300px;
   margin-right: 20px;
   // background: #FF00FF;
   float: left;
@@ -22,6 +22,12 @@
       padding-left: 10px;
       line-height: 30px;
       height: 30px;
+      .count {
+        @include c_g_5;
+        @include fh(18px);
+        padding: 0px 5px;
+      
+      }
   
   }
   .list {
@@ -31,8 +37,9 @@
     .user_box {
       margin: 0px;
       height: 70px;
-      background: rgba(0,0,0,0.03);
+      background: $c_g_5;
       margin-top: 5px;
+      @include round(5px);
       
       // @include round(5px);
      
@@ -40,21 +47,45 @@
       .icon {
         width: 50px;
         height: 50px;
-        background: rgba(0,0,0,0.1);
         position: absolute;
         margin: 10px;
         @include round(3px);
+        background: url("/assets/dashboard/activity_image.png") no-repeat center center;
+        background-color: rgba(0,0,0,0.1);
         img {
           @include round(3px);
         }
-      
       }
+      #invite_btn {
+        width: 25px;
+        height: 25px;
+        background: rgba(0,0,0,0.1);
+        position: absolute;
+        margin: 10px;
+        margin-left: 265px;
+        @include round(3px);
+        cursor: pointer;
+
+      }
+      #invite_btn:hover {
+        background: $c3;
+
+      }
+
+
       .headline_box.last {
         margin-left: 15px;
       }
       .headline_box:hover {
         overflow: visible;
-
+        height: auto;
+        width: auto;
+        position: absolute;
+        z-index: 5000;
+        .line {
+          white-space: wrap;
+          color: $c1;
+        }
       }
 
       .headline_box {
@@ -64,11 +95,14 @@
         padding-top: 15px;
         @include fh_b(12px);
         width: 150px;
+        height: 40px;
         display: inline-block;
+        background: $c_g_5;
         .line {
           height: 22px;
           line-height: 22px;
           white-space:nowrap;
+          color: $c_g_4;
         }
 
       
