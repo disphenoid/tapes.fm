@@ -9,7 +9,12 @@ class InviteMailer < ActionMailer::Base
 
     if @invite
 
-      email_subject = "You got an Invite for tapes.fm" 
+      unless @invite.user
+        email_subject = "You got an Invite for tapes.fm" 
+      else
+        email_subject = "#{@invite.user.name} invited you to join tapes.fm" 
+      end
+
       mail(:to => @invite.email, :subject => email_subject ) 
 
     end

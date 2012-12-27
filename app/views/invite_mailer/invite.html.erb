@@ -73,7 +73,7 @@
         
        }
        h1 {
-          font: 40px Helvetica,Arial, sans-serif;
+          font: 30px Helvetica,Arial, sans-serif;
           font-weight: bold;
           letter-spacing: -1px;
           line-height: 20px;
@@ -108,10 +108,12 @@
          color: #ff6c8f;
         }
         .grey {
+          color: #747575;
           color: #666666;
       
         }
         .grey_light {
+          color: #666666;
           color: #c3c2c0;
       
         }
@@ -123,6 +125,7 @@
         
         a {
           text-decoration: none;
+          color: #ff7357;
         
         }
         a:hover {
@@ -233,16 +236,33 @@
             <tr>
               <td width='100%'>
                 <div id='logo'></div>
-                <h1 class='grey_light'>
-                  Hey you got Invited to tapes.fm!
-                  <a class='grey' href='http://doonited.com/profiles/'></a>
-                  <br />
-                </h1>
-                <h1 class='full'>
-                  <a class='red' href='http://tapes.fm/signup?invite=<%=@invite.invite_hash%>'>
-                    Join now!
-                  </a>
-                </h1>
+                
+                <% unless @invite.user %>
+                  <h1 class='grey'>
+                    Hey you got Invited to tapes.fm!
+                    <a class='grey' href='http://doonited.com/profiles/'></a>
+                    <br />
+                  </h1>
+                  <h1 class='full'>
+                    <a class='red' href='http://tapes.fm/signup?invite=<%=@invite.invite_hash%>'>
+                      Join now!
+                    </a>
+                  </h1>
+                <% else %>
+
+                  <h1 class='grey'>
+                    Hey, <%= @invite.user.name %> (<%= @invite.user.email %>) invited you to collaborate on <%= @invite.tapedeck ? @invite.tapedeck.name : "tapes.fm" %>.
+                    <a class='grey' href='http://doonited.com/profiles/'></a>
+                    <br />
+                  </h1>
+                  <h1 class='full'>
+                    <a class='red' href='http://tapes.fm/signup?invite=<%=@invite.invite_hash%>'>
+                      Join tapes.fm now!
+                    </a>
+                  </h1>
+
+                <% end %>
+
                 <div class='split'></div>
                 <div class='split_w'></div>
                 <h2 class='full'>

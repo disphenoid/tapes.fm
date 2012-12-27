@@ -1,4 +1,4 @@
-unless(ENV['SENDGRID_USERNAME'].nil?) 
+if(ENV['SENDGRID_USERNAME'].blank?) 
 
   ActionMailer::Base.smtp_settings = {
     :address      => 'smtp.gmail.com',

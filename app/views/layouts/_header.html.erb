@@ -1,0 +1,102 @@
+  <header> 
+    <div id="h_box" class="container_12">
+      <div class="logo">
+        <div class="dropdown">
+          <a href="/projects">
+            <div class="header_button one">Getting Started</div>
+            <div class="header_button two">About</div>
+            <div class="header_button three">FAQ</div>
+            <div class="header_button four">Blog</div>
+            <div class="header_button five">Legals</div>
+          </a> 
+        </div>
+      </div>
+      <% if current_user %> 
+      <div id="quick_buttons">
+        <a href="/dashboard">
+          <div id="to_dash" class="quick_button tip_header <%=  "active "if request.path == "/dashboard"%>" title="Dashboard">
+            
+            <div class="shadow_el"> </div>
+          </div>
+        </a>
+        <a href="/tapes">
+          <div id="to_tapes" class="quick_button tip_header <%=  "active "if request.path == "/tapes"%>" title="Tapes">
+            <div class="shadow_el"> </div>
+          </div>
+        </a>
+        <a href="/explore">
+          <div id="to_listen" class="quick_button tip_header <%=  "active "if request.path == "/explore"%>" title="Explore">
+            <div class="shadow_el"> </div>
+          </div>
+        </a>
+
+        <div id="search">
+          
+          <div id="search_box">
+            <form>
+            <p>
+            <label for="search_field">Search for @users or #tapes</label>
+            <input type="text" name="search" id="search_field" value="">
+            </p>
+            </form>
+          </div>
+        <div id="search_button" class="quick_button"></div>
+          
+        </div>
+
+
+      <div id="user_info">
+          <a href="/user/<%= current_user.id unless current_user.blank?%>">
+        <div class="user_image"> 
+            <% if current_user.picture.m.url%>
+            <img class="image" src="<%= "http://"+current_user.picture.m.url%>">
+        <% end %>
+          <div class="shadow_el"> </div>
+        </div>
+          </a>
+          
+        <div class="user_set"> 
+          <div class="user_name"> 
+            Hey,
+            <a href="/user/<%= current_user.id unless current_user.blank?%>">
+              <%= current_user.name unless current_user.blank?%>
+            </a>
+          </div>
+ 
+            <div class="badge"> <%= "SUPREME" %> </div>
+        <div class="user_bar ">
+          <div class="min_bar" data-used_time="<%= current_user.upload_min%>" data-total_time="<%= current_user.plan[:minutes]%>">
+          </div>
+        
+        </div>
+        <div class="dropdown"> 
+          <div class="minutes"> 
+            <div class="minutes_used"> <%= current_user.upload_min%> min </div>
+            <div class="minutes_total"> <%= current_user.plan[:minutes] %> min</div>
+
+          </div>
+          <a href="/settings">
+            <div class="header_button one"> Settings</div>
+          </a>
+          <a href="/user/<%=current_user.id unless current_user.blank?%>">
+            <div class="header_button two">Profile</div>
+          </a>
+          <a href="/logout">
+            <div class="header_button three"> Logout</div>
+          </a>
+          
+        </div>
+        </div>
+      </div>
+      <% else %>
+      <div id="user_login">
+        <a href="/">Join</a>
+        or
+        <a href="/login">Login</a>
+         
+      </div>
+      <% end %>
+      </div>
+    </div>
+  </header>
+

@@ -433,22 +433,23 @@ header {
 
 
     #user_login {
-      float: left;
+      float: right;
       display: inline-block;
       background: none;
       height: 53px;
-      width: 304px;
+      width: 190px;
       text-align: center;
       @include fh(14px);
       @include c_g_2;
       line-height: 53px;
       a {
-        @include c_g_3;
+        @include c_1;
         @include fh_b(14px);
         text-decoration: none;
       }
       a:hover{
         @include c_g_4;
+        color: white;
       }
 
 
