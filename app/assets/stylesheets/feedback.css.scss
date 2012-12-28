@@ -66,10 +66,19 @@
     margin-left: 10px;
     float: left;
   }
-  #send_feedback:hover {
-    background: url("/assets/tapes/green_button_bg.gif");
-  
+  #send_feedback.loading:hover {
+    background: url("/assets/tapes/yellow_button_bg.gif"); 
   }
+  
+  #send_feedback.loading   {
+    background: url("/assets/tapes/yellow_button_bg.gif"); 
+  }
+
+
+  #send_feedback:hover {
+    background: url("/assets/tapes/green_button_bg.gif"); 
+  }
+
   #send_feedback {
   
     cursor: pointer;
