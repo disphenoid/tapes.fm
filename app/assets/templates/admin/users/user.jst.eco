@@ -20,7 +20,9 @@
     <div class="line">
       <%= @model.get("language")%> 
     </div>
-  
+    <div class="line">
+      <%= @model.get("id")%> 
+    </div>  
   </div>
 </li>
 

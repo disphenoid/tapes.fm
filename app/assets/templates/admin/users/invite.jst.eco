@@ -10,6 +10,9 @@
     <div class="line">
       <%= @model.get("from")%> 
     </div>
+    <div class="line">
+      <%= @model.get("id")%> 
+    </div>  
 
   
   </div>
