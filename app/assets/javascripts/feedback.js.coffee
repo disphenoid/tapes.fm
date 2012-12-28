@@ -14,7 +14,7 @@ jQuery ->
   $("#send_feedback").click ->
     unless sending_feedback
       sending_feedback = true
-      $("#send_feedback").html("Sending").addClass("loading")
+      $("#send_feedback").html("Sending...").addClass("loading")
       $.ajax
         url: "/api/feedbacks"
         type: "post"
