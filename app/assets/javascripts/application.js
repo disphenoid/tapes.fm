@@ -14,6 +14,7 @@
 //= require underscore
 //= require backbone
 //= require helpers
+//= require feedback
 //=require iphone-style-checkboxes
 //= require_tree .//vendor
 

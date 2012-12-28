@@ -1,0 +1,162 @@
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
+.feedback_bg {
+  position: fixed;
+  background: $c_g_1;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  z-index: 20000;
+  margin-top: -40px;
+  display: none;
+  cursor: pointer;
+
+}
+.feedback.active {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  
+  
+
+}
+
+.feedback {
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1);
+	-webkit-transition: 0.2s all ease-out;
+	-moz-transition: 0.2s all ease-out;
+	-ms-transition: 0.2s all ease-out;
+	-o-transition: 0.2s all ease-out;
+	transition: 0.2s all ease-out;  
+  opacity: 0;
+  // display: none;
+  visibility: hidden;
+  position: fixed;
+  width: 400px;
+  min-height: 220px; 
+  background: $c_g_5;
+  z-index: 20000;
+  left: 50%;
+  top: 50%;
+  margin-left: -200px;
+  margin-top: -150px;
+  @include round(5px);
+  @include bs_out_big(rgba(0,0,0,0.5));
+  padding: 10px;
+  a {
+    
+    color: $c1;
+  
+  }
+  .hint {
+  
+    @include fh(12px);
+    color: $c_g_4;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 10px;
+    float: left;
+  }
+  #send_feedback:hover {
+    background: url("/assets/tapes/green_button_bg.gif");
+  
+  }
+  #send_feedback {
+  
+    cursor: pointer;
+    padding: 5px 10px;
+    @include fh_b(14px);
+    line-height: 20px;
+    background: $c1;
+    float: right;
+    margin-right: 5px;
+    color: white;
+    margin-top: 5px;
+    @include round(3px);
+    background: url("/assets/home/button_bg.gif");
+  }
+  h2 {
+    
+    margin: 0px;
+    padding: 0px;
+    // margin-top: 10px;
+    // margin-bottom: 20px;
+    @include fh_b(18px);
+    color: $c1;
+    line-height: 50px;
+    height: 50px;
+    float: left;
+  
+  }
+  .feedback_icon {
+    width: 50px;
+    height: 50px;
+    background: url("/assets/feedback_icon.png");
+    float: left;
+  }
+
+  textarea {
+    
+    margin-top: 10px;
+    width: 375px;
+    height: 100px;
+    outline: none;
+    border-color: rgba(0,0,0,0.1) ;
+    background: rgba(255,255,255,0.4); 
+    @include round(5px);
+    @include fh(14px);
+    padding: 10px 10px;
+    color: $c_g_4;
+  
+  }
+
+  label {
+    position: absolute;
+    @include round(5px);
+    @include fh(14px);
+    padding: 10px 10px;
+    color: $c_g_4;
+    height: 375px;
+    margin-top: 10px;
+  
+  }
+  .feedback_field_box {
+    clear: both;
+
+  }
+  
+
+}
+.feedback_btn:hover {
+  
+
+  background-color: rgba(0,0,0,0.1);
+
+}
+
+
+.feedback_btn {
+  
+  position: fixed;
+  left: 0px;
+  top: 50%;
+  background: url("/assets/feedback_icon_on.png") no-repeat center center;
+  background-color: rgba(0,0,0,0.05);
+  width: 50px;
+  height: 50px;
+  margin-top: -50px;
+  @include round_right(3px);
+  z-index: 20000;
+  cursor: pointer;
+  
+
+}
