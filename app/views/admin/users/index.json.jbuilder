@@ -15,7 +15,7 @@ json.invites @invites do |json, invite|
 
   json.id invite.id
   json.created_at invite.created_at
-  json.email invite.email
+  json.email invite.email != "false" ? invite.email : invite.invited.name
   json.from invite.user.name if invite.user
   json.from_id invite.user_id
   json.to invite.tapedeck.name if invite.tapedeck
