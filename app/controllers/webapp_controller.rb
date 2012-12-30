@@ -150,7 +150,6 @@ class WebappController < ApplicationController
 
 
   def tapedeck 
-    @track = Track.new
 
     if params[:id]
       @tapedeck = Tapedeck.find(params[:id]) 

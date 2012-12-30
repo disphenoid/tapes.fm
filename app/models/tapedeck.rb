@@ -4,6 +4,7 @@
 class Tapedeck
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Document::Taggable
 
   #embedded_in :track
 

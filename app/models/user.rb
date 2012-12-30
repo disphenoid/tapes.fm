@@ -62,7 +62,7 @@ class User
   #validates_presence_of :name
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :about, :twitter_name, :soundcloud_name, :facebook_name
 
-  has_many :tapedecks
+  has_many :tapedecks, :dependent => :destroy
   has_many :tracks
   has_and_belongs_to_many :projects
 

@@ -26,6 +26,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'backbone-on-rails'
 gem "mongoid", "~> 3.0.0"
+gem "mongoid-simple-tags"
 # gem "mongoid_counter_cache"
 #gem 'bson_ext'
 gem 'jbuilder'

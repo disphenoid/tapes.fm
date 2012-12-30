@@ -39,6 +39,7 @@ Tapesfm::Application.routes.draw do
     resources :register
     resources :users
     resources :feedbacks
+    resources :tags
   end
   match 'signup', to: "webapp#signup"
 

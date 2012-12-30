@@ -2,7 +2,7 @@ json.(tapedeck, :id, :_id, :name, :remixable, :commentable, :public, :genre, :pr
 json.version_count = tapedeck.tapes.count
 
 unless tapedeck.project
-  json.author tapedeck.user.name
+  json.author tapedeck.user.name if tapedeck.user
 else
   json.author tapedeck.project.name 
 end
