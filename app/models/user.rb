@@ -2,7 +2,7 @@ require 'resque'
 
 class User
   include Mongoid::Document
-  include Mongoid::Timestamps 
+  include Mongoid::Timestamps
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -22,7 +22,7 @@ class User
   ## Recoverable
   field :reset_password_token,   :type => String
   field :reset_password_sent_at, :type => Time
- 
+
   ## Rememberable
   field :remember_created_at, :type => Time
 
@@ -55,7 +55,7 @@ class User
   ## Token authenticatable
   field :authentication_token, :type => String
   before_save :ensure_authentication_token
-  
+
   index({ email: 1 }, { unique: true, name: "email_index" })
   field :name
   field :nickname
@@ -76,98 +76,80 @@ class User
 
 
   mount_uploader :picture, ProfileUploader
-  
+
+  before_save do |document|
+    date = DateTime.now
+    if document.sign_in_count_changed?
+      UserStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "sign_in").inc(:count, 1)
+    end
+  end
 
   def add_time(mil)
     self.total_uploadtime += mil.to_i
     self.current_uploadtime += mil.to_i
     self.save
-
-    self.current_uploadtime 
-
+    self.current_uploadtime
   end
 
   def upload_time
     self.current_uploadtime
   end
+
   def upload_min
     d = (self.current_uploadtime.to_f / 1000)
     m = (d / 60).ceil
-
   end
 
 
   def stream( p_page=1)
-     
-      p = redis_pagination(p_page)
-
-      stream = []
-      stream_array = REDIS.zrevrange("activities:user:#{self.id}",p[:start],p[:end])
-
-      stream_array.each do |activity_id| 
-        activity = Activity.find(activity_id) rescue nil 
-        if activity
-          stream <<  activity
-        end
+    p = redis_pagination(p_page)
+    stream = []
+    stream_array = REDIS.zrevrange("activities:user:#{self.id}",p[:start],p[:end])
+    stream_array.each do |activity_id|
+      activity = Activity.find(activity_id) rescue nil
+      if activity
+        stream <<  activity
       end
-
-      stream
-
+    end
+    stream
   end
 
 
   def stream_list(count=0)
-
     if count == 0
       REDIS.zrevrange "activities:user:#{self.id}", 0, -1
     else
       REDIS.zrevrange "activities:user:#{self.id}", 0, -1
     end
-
   end
 
   def push_activity(type,object)
-
     case type
-    
       when "comment"
-        
         activity = Activity.find_or_create_by({:type => "comment", :user_id => self.id, :comment_id => object.id, :tapedeck_id => object.tapedeck_id} )
         Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
-      
       when "follow"
-
-        activity = Activity.find_or_create_by({:type => "follow", :user_id => self.id} ) 
+        activity = Activity.find_or_create_by({:type => "follow", :user_id => self.id} )
         REDIS.zadd "activities:user:#{object.id}", Time.now.to_i, activity.id
         #activity = Activity.create_f!({:type => "comment", :user_id => self.id, :comment_id => object.id} )
-
       when "tape"
           activity = Activity.find_or_create_by({:type => "tape", :user_id => self.id, :tapedeck_id => object.tapedeck_id} )
           Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
-
       when "version"
           activity = Activity.find_or_create_by({:type => "version", :user_id => self.id,:tape_id => object.id, :tapedeck_id => object.tapedeck_id} )
           Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
-
     end
-
-    
   end
 
   #follower feature (redis)
-
   # follow a user
-
-
-
-
   def follow!(user)
     REDIS.multi do
       REDIS.sadd(self.follow_key(:following), user.id)
       REDIS.sadd(user.follow_key(:followers), self.id)
     end
   end
-  
+
   # unfollow a user
   def unfollow!(user)
     REDIS.multi do
@@ -180,6 +162,7 @@ class User
   def followers_list
     user_ids = REDIS.smembers(self.follow_key(:followers))
   end
+
   def followers
     user_ids = REDIS.smembers(self.follow_key(:followers))
     User.where(:id => user_ids)
@@ -189,6 +172,7 @@ class User
   def following_list
     user_ids = REDIS.smembers(self.follow_key(:following))
   end
+
   def following
     user_ids = REDIS.smembers(self.follow_key(:following))
     User.where(:id => user_ids)
@@ -204,18 +188,16 @@ class User
   def followed_exist?
     REDIS.exists(self.follow_key(:followers))
   end
-  
+
   # does self follow user
   def following?(user)
     REDIS.sismember(self.follow_key(:following), user.id)
   end
 
- # does self follow user
+  # does self follow user
   def following?(user)
     REDIS.sismember(self.follow_key(:following), user.id)
   end
-
-
 
   # number of followers
   def followers_count
@@ -226,14 +208,13 @@ class User
   def following_count
     REDIS.scard(self.follow_key(:following))
   end
-  
+
   # helper method to generate redis keys
   def follow_key(str)
     "user:#{self.id}:#{str}"
   end
 
   #redis keys
-
 
   def self.redis_key(item_id)
     "user:#{item_id}"
@@ -242,39 +223,25 @@ class User
     "user:#{item_id}"
   end
 
-
-
   def redis_pagination(p_page)
-
-      chunk_size = 10
-      page = p_page.to_i
-      
-      if page == 1
-        range_begin = 0
-        range_end = chunk_size 
-      else
-
-        range_begin = (chunk_size * page) 
-        range_end = (chunk_size * page) +chunk_size -1
-      end
-      
-      return {:start => range_begin, :end => range_end} 
-
+    chunk_size = 10
+    page = p_page.to_i
+    if page == 1
+      range_begin = 0
+      range_end = chunk_size
+    else
+      range_begin = (chunk_size * page)
+      range_end = (chunk_size * page) +chunk_size -1
+    end
+    return {:start => range_begin, :end => range_end}
   end
 
-  
   def plan
-
     case self.plan_id
     when 2
       plan = { :name => "PLUS" ,:version => 1 ,:minutes => 300 ,:multi_upload => false ,:priority_upload => true ,:private_tapes => false ,:max_samplerate => 192000 ,:price_us => 7.90 ,:price_eu => 9.90 }
     else
       plan = { :name => "BASIC" ,:version => 1 ,:minutes => 100 ,:multi_upload => false ,:priority_upload => false ,:private_tapes => false ,:max_samplerate => 96000 ,:price_us => 0 ,:price_eu => 0 }
     end
-
-    
   end
-
-
-
 end
