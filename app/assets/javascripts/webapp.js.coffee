@@ -22,3 +22,5 @@
       #@mySound2.play()
 jQuery ->
   $("label").inFieldLabels()
+
+

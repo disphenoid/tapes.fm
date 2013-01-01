@@ -12,11 +12,12 @@ class Autocomplete
 
     tag.downcase!
     tag.strip!
-    (1..(tag.length)).each{|l|
-        prefix = tag[0...l]
-        REDIS.zadd(@scope,0,prefix)
-    }
-    REDIS.zadd(@scope,0,tag+"*")
+    if REDIS.zadd(@scope,0,tag+"*")
+      (1..(tag.length)).each{|l|
+          prefix = tag[0...l]
+          REDIS.zadd(@scope,0,prefix)
+      }
+    end
 
   end
   def remove(tag)

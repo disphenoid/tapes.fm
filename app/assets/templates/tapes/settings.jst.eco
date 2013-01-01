@@ -1,51 +1,26 @@
 <div class="settings">
-  <div class="settings_project">  
  
-    
 
-
-    <div class="project_btn" data-project_id="none" data-project_name="none"> 
-    <div class="headline"> No Project </div>
-
-      <div class="subline" >         Only you
-      </div> 
-    </div>
-
-
-
-
-    <div class="create_group_btn">New Project</div>
-  </div>  
-  <div class="settings_genre">  
-  
-    <div class="genre_btn" data-genre_name="Electronic" > Electronic </div>
-    <div class="genre_btn" data-genre_name="Pop" > Pop </div>
-    <div class="genre_btn" data-genre_name="Rock" > Rock </div>
-    <div class="genre_btn" data-genre_name="Hiphop" > Hiphop </div>
-    <div class="genre_btn" data-genre_name="House" > House </div>
-    <div class="genre_btn" data-genre_name="Techno" > Techno </div>
-    <div class="genre_btn" data-genre_name="Jazz" > Jazz </div>
-    <div class="genre_btn" data-genre_name="Classic" > Classic </div>
-    <div class="genre_btn" data-genre_name="R&B" > R&B </div>
-    <div class="genre_btn" data-genre_name="Blues" > Blues </div>
-    <div class="genre_btn" data-genre_name="Country" > Country </div>
-    <div class="genre_btn" data-genre_name="Other" > Other </div>
-   
-  </div>
   <div class="settings_main">  
   
   
 
   <div class="header">
+
+
+
     <div class="cover_img" >
       <% if @model.get("cover_s"):%>
+
       <img class="cover_pic" src="http://<%=@model.get("cover_s")%>">
+      <div class="cover_case"></div>
         
       <div class="cover_label active">Change Cover</div>
       <%else:%>
       <img class="cover_pic inactive" >
+      <div class="cover_case"></div>
       <div class="cover_label">Add Cover</div>
-
+      
       <%end%>
 
 
@@ -61,78 +36,70 @@
 
     </div>
   
-    <div class="headline">
-      <%=@title%>
-    </div>
-    <div class="subline">
-      Start a new Tape, Upload a Track, share it and Collaborate!
-    </div>
+
   </div>
 
   <div class="fields">
 
-    <form>
       <p>
-        <label for="tape_name_field_<%=@settingId%>">Add a Tape Name</label>
-        <input type="text" name="tape_name_field_<%=@settingId%>" id="tape_name_field_<%=@settingId%>" value="<%=@model.get("name")%>">
+        <label class="tape_name_label" for="tape_name_field_<%=@settingId%>">Add a Tape Name</label>
+        <input type="text" name="tape_name_field_<%=@settingId%>" class="tape_name_field" id="tape_name_field_<%=@settingId%>" value="<%=@model.get("name")%>">
       </p>
       <p>
-        <label for="tape_genre_field_<%=@settingId%>">Add a Genre</label>
+        <label class="genre_label" for="tape_genre_field_<%=@settingId%>">Add a Project</label>
         <input type="text" name="tape_genre_field_<%=@settingId%>" class="genre_field" id="tape_genre_field_<%=@settingId%>" value="<%=@model.get("genre")%>">
       </p>
-      <p>
-        <label for="tape_author_field_<%=@settingId%>">Add a Project (optional)</label>
-        <input type="text" name="tape_author_field_<%=@settingId%>" class="project_field" id="tape_author_field_<%=@settingId%>" value="<%=@model.get("project_name")%>">
-      </p>
 
-    </form>
+
+  </div>
+  <div class="tag_box">
+    <ul class="tags_field" id="tags_<%=@settingId%>">
+
+    </ul>
   </div>
 
   <div class="checkbox_set">
-    <div class="title">
+    <div class="title" id="switch_public">
       <div class="headline">
         Public
       </div>
-      <div class="subline">
-        Makes your Tape Public
+
+      <div class="switch" >
+        <input type="checkbox" name="tape_public_<%=@settingId%>" id="tape_public_<%=@settingId%>" <%=("checked=\"#{@model.get("public")}\"") if @model.get("public")%>>
       </div>
     </div>
-    <div class="switch">
-      <input type="checkbox" name="tape_public_<%=@settingId%>" id="tape_public_<%=@settingId%>" <%=("checked=\"#{@model.get("public")}\"") if @model.get("public")%>>
-    </div>
-    <div class="title">
+    
+
+    <div class="title" id="switch_remix">
       <div class="headline">
-        Remixeable
+        Remix
       </div>
-      <div class="subline">
-        Allows Users to Remix
-      </div>
-    </div>
-    <div class="switch">
+
+    <div class="switch" >
       <input type="checkbox" name="tape_remixable_<%=@settingId%>" id="tape_remixable_<%=@settingId%>" <%=("checked=\"#{@model.get("remixable")}\"") if @model.get("remixable")%>>
     </div>
   </div>
-    <div class="title">
+    <div class="title" id="switch_comments">
       <div class="headline">
-        Commentable
+        Comment
       </div>
-      <div class="subline">
-        Allows Users to Comment
-      </div>
-    </div>
-    <div class="switch">
+
+    <div class="switch" >
       <input type="checkbox" name="tape_commentable_<%=@settingId%>" id="tape_commentable_<%=@settingId%>" <%=("checked=\"#{@model.get("commentable")}\"") if @model.get("commentable")%>>
     </div>
   
+    </div>
 
+
+  
+  </div>
+  </div>
   <% if @model.isNew(): %>
     <div class="new_tape_btn">New Tape</div>
   <% else: %>
+    <div class="delete_tape_btn"></div>
     <div class="update_tape_btn">Update Tape</div>
-    <div class="delete_tape_btn">x</div>
-  <% end %>
-  
-  </div>
+  <% end %>  
 
   </div>
 </div>

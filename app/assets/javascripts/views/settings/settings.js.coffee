@@ -35,25 +35,10 @@ class Tapesfm.Views.Settings extends Backbone.View
       success: (e) =>
         console.log e
 
-        #@model.set({cover_s: e.cover.s.url, cover_m: e.cover.m.url, cover: e.cover.m.url, id: e._id})
-
-
-        #$(@el).find(".cover_pic").replace("ddsad")#attr("src", ("http://"+e.cover.url))
-        # $(@el).find(".cover_pic").attr('src', ("http://"+e.cover.url))
-        # $(@el).find(".cover_pic").show(500)
-        # $(@el).find(".cover_label").addClass("active")
-        # $(@el).find(".cover_pic").removeClass("inactive")
-
-        # console.log "http://"+e.cover.m.url
-        #$(@el).find(".cover_pic").hide()
-        
-
-
   render: ->
     rendertContent = @template(model: @model)
     $(@el).html(rendertContent)
     $(@el).find("input").focus().blur()
-
 
     this
 

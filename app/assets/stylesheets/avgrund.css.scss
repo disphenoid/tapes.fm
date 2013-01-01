@@ -8,14 +8,15 @@
 .setting-popin {
 	position: fixed;
   // @include c_g_0_b;
-	overflow: hidden;
+	// overflow: hidden;
 	visibility: hidden;
 	opacity: 0;
 	filter: alpha(opacity=0);
 	top: 50%;
 	left: 50%;
 	z-index: 12000;
-	box-shadow: 0 1px 10px 0 rgba(0, 0, 0, .2);
+	// box-shadow: 0 1px 10px 0 rgba(0, 0, 0, .2);
+  @include bs_out_big(rgba(0,0,0,0.5));
   @include round(5px);
 
   background: $c_g_5;
@@ -26,9 +27,10 @@
 	transform: scale(1.1);
 
   width: 400px;
-  min-height: 220px;
-  margin-left: -175px;
-  margin-top: -225px; 
+  min-height: 210px;
+  margin-left: -200px;
+  margin-top: -150px; 
+  padding-bottom: 15px;
   z-index: 1002;
 
 	-webkit-transition: 0.2s all ease-out;
@@ -54,7 +56,7 @@
 
 
 .popin-overlay {
-	// background: #f6f6f6;
+	background: #f6f6f6;
 	position: fixed;
 	width: 100%;
 	height: 100%;

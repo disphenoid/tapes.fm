@@ -16,6 +16,9 @@ class Tapesfm.Views.Tape extends Backbone.View
     $("#setting-popin_#{@model.get("id")}").addClass("active")
     $(".popin-overlay").addClass("active")
 
+
+
+    console.log "VALUE  " + $("#tags_#{@model.get("id")}").val()
     $(".popin-overlay").live "click", (e) ->
       if $(e.target).is('.popin-overlay')
         
@@ -24,6 +27,16 @@ class Tapesfm.Views.Tape extends Backbone.View
         $(".setting-popin").removeClass("active")
 
         $(".popin-overlay").die "click"
+
+  addTags: (tags) ->
+    if tags
+      for tag in tags
+        do (tag) =>
+           @addTag tag
+      
+
+  addTag: (tag) ->
+    $("#tags_#{@model.get("id")}").tagit("createTag", String(tag))
 
   removeOver: (e) ->
     alert "over"
@@ -58,4 +71,15 @@ class Tapesfm.Views.Tape extends Backbone.View
     @initPopIn(@model.get("id"))
     $(@el).attr('id', @model.get("id"))
     #$(@el).fadeIn(2000)
+    $("#tags_#{@model.get("id")}").tagit
+      placeholderText: "Click to add a tag"
+      autocomplete: {source: "/api/tags",delay: 0, minLength: 1}
+    
+    $('ul.tagit input').alpha({nocaps:true, allow: "1234567890"})
+    
+    # @addTag "blaaa"
+    @addTags @model.get("tags")
+
+
+
     this

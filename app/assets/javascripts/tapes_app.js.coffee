@@ -23,3 +23,5 @@ $(document).ready ->
   $('.tip').tipsy( {live: true , gravity: 's', offset: 3})
   $('.tip_header').tipsy( {live: true , gravity: 'n', offset: 3})
 
+
+

@@ -4,12 +4,12 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
     "click .new_tape_btn" : "new_tapedeck"
     "click .update_tape_btn" : "new_tapedeck"
     "click .delete_tape_btn" : "delete_tapedeck"
-    "click .project_field" : "showProjects"
-    "click .project_field_label" : "showProjects"
-    "click .project_btn" : "selectProject"
-    "click .genre_field" : "showGenres"
-    "click .genre_field_label" : "showGenres"
-    "click .genre_btn" : "selectGenre"
+    # "click .project_field" : "showProjects"
+    # "click .project_field_label" : "showProjects"
+    # "click .project_btn" : "selectProject"
+    # "click .genre_field" : "showGenres"
+    # "click .genre_field_label" : "showGenres"
+    # "click .genre_btn" : "selectGenre"
     #"submit .tape_cover_form" : "submitTape"
     "change .setting_cover_input" : "submitTape"
 
@@ -93,37 +93,40 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
 
   new_tapedeck: (e) ->
     
+    #console.log $("#tags_#{@model.get("id")}").tagit("assignedTags")
     if @model.isNew()
       settingId = "new"
     else
       settingId = @model.get("id")
 
 
-    if $("#tape_name_field_#{settingId}").val() != ""
 
-      remixable =   ($("#tape_remixable_#{settingId}").attr('checked') == "checked")
-      commentable = ($("#tape_commentable_#{settingId}").attr('checked') == "checked")
-      public_tape = ($("#tape_public_#{settingId}").attr('checked') == "checked")
+    name = $("#tape_name_field_#{settingId}").val()
+    remixable =   ($("#tape_remixable_#{settingId}").attr('checked') == "checked")
+    commentable = ($("#tape_commentable_#{settingId}").attr('checked') == "checked")
+    public_tape = ($("#tape_public_#{settingId}").attr('checked') == "checked")
+    tags = ($("#tags_#{@model.get("id")}").tagit("assignedTags"))
 
 
 
-      @model.set({name: $("#tape_name_field_#{settingId}").val(), remixable: remixable, commentable: commentable, public: public_tape })
-      @model.save(
-        {}
-        {success: (model, response) ->
-          #console.log "response " + response.id
-          #window.location = "/tapedeck/"+response._id
-          tapedeck = new Tapesfm.Models.Tapedeck(response)
-          tapedeck.set({id: response._id})
+    @model.set({name: name, remixable: remixable, commentable: commentable, public: public_tape, tags: tags })
+    @model.save(
+      {}
+      {success: (model, response) ->
+        #console.log "response " + response.id
+        #window.location = "/tapedeck/"+response._id
 
-          Tapesfm.tapes.unshift(tapedeck)
+        tapedeck = new Tapesfm.Models.Tapedeck(response)
+        tapedeck.set({id: response._id})
 
-          $(".popin-overlay").removeClass("active")
+        Tapesfm.tapes.unshift(tapedeck)
 
-          $(".setting-popin").removeClass("active")
+        $(".popin-overlay").removeClass("active")
 
-          $(".popin-overlay").die "click"
-        })
+        $(".setting-popin").removeClass("active")
+
+        $(".popin-overlay").die "click"
+      })
 
 
 
@@ -138,10 +141,7 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
   render: ->
     
 
-    if @model.isNew()
-     title = "New Tape"
-    else
-     title = "Edit Tape"
+
 
     if @model.isNew()
      settingId = "new"
@@ -149,7 +149,7 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
      settingId = @model.get("id")
 
 
-    rendertContent = @template(model: @model, title: title, settingId: settingId )
+    rendertContent = @template(model: @model,  settingId: settingId )
     
     $(@el).html(rendertContent)
 
@@ -157,16 +157,8 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
     $(@el).find("#setting-popin_#{@model.id} label").inFieldLabels()
 
 
-    _.each Tapesfm.user.projects, (project) =>
-      # _.each project.users, (user) =>
-      #   $(_el).find(".settings_project subline").append(user.name)
 
-
-      $(@el).find(".settings_project").html(" <div class=\"project_btn\" data-project_id=\"#{project.id}\" data-project_name=\"#{project.name}\"> <div class=\"headline\"> #{project.name} </div> <div class=\"subline\">  </div> </div>
-
-")
-
-
+ 
 
     this
 

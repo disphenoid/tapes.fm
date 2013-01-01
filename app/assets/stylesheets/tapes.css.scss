@@ -5,12 +5,22 @@
 @import "tools/fonts";
 @import "tools/effects";
 
+
+
+
+
+
+
+.checkbox_set {
+  height: 30px;
+
+}
 .settings {
   .settings_main {
     padding: 20px 0px;
     width: 300px; 
-    height: 440px;
-    position: absolute;
+    // height: 440px;
+    // position: absolute;
     left: 0px;
   
   }  
@@ -113,7 +123,7 @@
     .genre_btn:hover {
     
       background: $c1;
-      color: white;
+      color: $c_g_1;
     
     }
   
@@ -127,7 +137,7 @@
 
     .cover_label {
 
-      color: white;
+      color: $c_g_1;
     }
   }
 
@@ -135,43 +145,54 @@
   .cover_img {
   
     width: 60px;
-    height: 60px;
+    height: 73px;
     float: left;
     margin-right: 10px;
     @include round(2px);
-
-    .cover_label {
-      background: rgba(0,0,0,0.3);
-      position: absolute;
+    .cover_case {
       width: 60px;
-      height: 40px;
+      height: 73px;
+      background: url("/assets/dashboard/tape_cover_off.png") no-repeat top left;
+      position: absolute;
+    
+    }    
+    .cover_label {
+      background: rgba(0,0,0,0);
+      position: absolute;
+      width: 54px;
+      height: 37px;
       @include fh_b(12px);
       color: white;
       @include c_g_2;
       text-align: center;
-      padding-top: 20px;
+      padding-top: 16px;
       @include round(2px);
+      margin-left: 3px;
+      margin-top: 4px;
 
     }
 
     .cover_label.active {
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.3);
       position: absolute;
-      width: 60px;
-      height: 40px;
+      width: 54px;
+      height: 37px;
       @include fh_b(12px);
       color: white;
       text-align: center;
-      padding-top: 20px;
+      padding-top: 16px;
       display: none;
       @include round(2px);
-
+      margin-left: 3px;
+      margin-top: 4px;
     }
 
     .cover_pic {
       
-      width: 60px;
-      height: 60px;
+      width: 54px;
+      height: 54px;
+      margin-left: 3px;
+      margin-top: 4px;
       position: absolute;
       @include round(2px);
       cursor: pointer;
@@ -232,43 +253,62 @@
     margin-top: 10px;
     @include c_2_b;
     @include c_g_0;
-    width: 210px;
-    padding: 10px 0px;
-    @include fh_b(16px);
-    @include round(5px);
-    text-align: center;
-    margin-left: 15px;
-    display: inline-block;
-    background: url("/assets/tapes/yellow_button_bg.gif");
-  
-  }  
-  .delete_tape_btn {
-    cursor: pointer;
-    margin-top: 10px;
-    @include c_1_b;
-    @include c_g_0;
-    width: 50px;
+    width: 325px;
     padding: 10px 0px;
     @include fh_b(16px);
     @include round(5px);
     text-align: center;
     margin-left: 10px;
     display: inline-block;
+    background: url("/assets/tapes/green_button_bg.gif");
   
   }  
+  .delete_tape_btn {
+    float: left;
+    cursor: pointer;
+    margin-top: 10px;
+    @include c_1_b;
+    @include c_g_0;
+    width: 35px;
+    height: 35px;
+    @include fh_b(16px);
+    @include round(5px);
+    text-align: center;
+    margin-left: 15px;
+    display: inline-block;
+    background: $c1 url("/assets/tapes/delete_icon_on.png");
+  
+  }  
+
+  #switch_remix {
+  
+    margin-left: 120px;
+  }
+  #switch_comments {
+  
+    margin-left: 240px;
+  }
+
   .title {
 
-    margin-top: 20px;
+    // margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 5px;
     padding-left: 15px;
-    width: 175px;
+    width: 90px;
+    height: 70px;
     display: inline-block;
+    position: absolute;
 
     .headline {
-      @include c_g_5;
       @include fh_b(12px);
-      margin-bottom: 3px;
-      color: $c_g_2;
+      // margin-bottom: 3px;
+      height: 20px;
+      line-height: 20px;
+      color: $c_g_1;
+      margin-top: 5px;
+      margin-right: 5px;
+      display: inline-block;
       
     
     
@@ -279,12 +319,23 @@
     
     }  
 
-  }
+
     .switch {
+      // margin-top: 50px;
+      position: absolute;
       display: inline-block;
-      width: 50px;
-    
+      width: 20px; 
+      -webkit-transform: scale(0.6);
+      -moz-transform: scale(0.6);
+      -ms-transform: scale(0.6);
+      -o-transform: scale(0.6);
+      transform: scale(0.6);
+
+
+
     }
+
+  }
   
 
   .header {
@@ -298,7 +349,7 @@
 
     .headline {
       display: inline-block;
-      @include c_g_5;
+      @include c_g_4;
       @include fh_b(18px);
       margin-bottom: 6px;
       padding-top: 5px;
@@ -311,10 +362,39 @@
     
     }
   }
+  .tag_box {
+  
+    clear: both;
+    padding-left: 10px;
+    width: 370px;
+    @include fh_b(14px);   
+    li {
+      
+      @include fh_b(12px);   
+      @include c_g_1;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+    
+    }
+    
+    .tags_field {
+      background: none;
+      border: none;
+      @include c_g_5;
+      @include fh_b(14px);   
+      margin-bottom: 0px;
+    }
+
+  }
+
+
   .fields {
   
     
-    margin-top: 20px;
+    position: absolute;
+    // margin-top: 10px;
+    margin-left: 75px;
     p {
     
       margin: 0px;
@@ -335,19 +415,56 @@
     }
     input {
       
-      padding: 10px 15px;
+      padding: 5px 15px;
       margin: 0px;
-      width: 270px;
-      line-height: 20px;
-      @include fh_b(12px);
+      width: 280px;
+      line-height: 10px;
+      @include fh_b(14px);
       outline: none;
       background: none;
       border: none;
-      color: white;
-      background: url("/assets/tapes/field_bg.png") repeat-x 
+      color: $c_g_4;
+      @include round(5px);
+      // background: url("/assets/tapes/field_bg.png") repeat-x 
       
     
     }  
+    .tape_name_label {
+      @include fh(14px);
+      padding: 8px 10px;
+
+      margin-left: 10px;
+
+    
+    }
+    .tape_name_field {
+      color: $c_g_4;
+      @include fh_b(14px);
+      padding: 8px 10px;
+      margin-left: 10px;
+      background: rgba(0,0,0,0.05);
+      margin-bottom: 4px;
+    
+    }
+    .genre_label {
+      @include fh(12px);
+      padding: 5px 10px;
+      margin-left: 10px;
+
+    
+    }
+
+
+    .genre_field {
+      color: $c_g_3;
+      @include fh_b(12px);
+      padding: 5px 10px;
+      margin-left: 10px;
+    
+    }
+
+
+
   }
 
 

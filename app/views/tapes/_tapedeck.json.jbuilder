@@ -15,6 +15,8 @@ else
 
 end
 
+json.tags tapedeck.tags
+
 
 json.cover tapedeck.cover.url
 json.cover_m tapedeck.cover.m.url
