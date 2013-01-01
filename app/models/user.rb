@@ -82,6 +82,12 @@ class User
     if document.sign_in_count_changed?
       UserStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "sign_in").inc(:count, 1)
     end
+    if document.current_uploadtime_changed?
+      # the first field of the change array is the old value and the second the new one, according to the documentation
+      # the delta is always positive?
+      delta = document.current_uploadtime_change[1] - document.current_uploadtime_change[0]
+      UserStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "uploadtime").inc(:count, delta)
+    end
   end
 
   def add_time(mil)

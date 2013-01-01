@@ -1,13 +1,8 @@
-# This is basically just a bunch of counters
-# associated with a date and an hour.
-# This is just a global counter at this point,
-# althought making it per user should be trivial
-# if so desired.
-class UserStat
+class TrackStat
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :type, :type => String
+  field :type, type: String
   field :date, type: Date
   field :hour, type: Integer, default: 0
   field :count, type: Integer, default: 0

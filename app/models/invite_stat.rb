@@ -1,9 +1,4 @@
-# This is basically just a bunch of counters
-# associated with a date and an hour.
-# This is just a global counter at this point,
-# althought making it per user should be trivial
-# if so desired.
-class UserStat
+class InviteStat
   include Mongoid::Document
   include Mongoid::Timestamps
 
