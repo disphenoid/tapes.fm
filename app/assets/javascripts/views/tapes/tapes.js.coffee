@@ -2,7 +2,7 @@ class Tapesfm.Views.Tapes extends Backbone.View
   animationTime: []
   template: JST['tapes/tapes']
   events:
-    "click .add_tape" : "createNewTape" 
+    "click .add_tape" : "createNewTape"
 
   initialize: ->
     
@@ -81,9 +81,10 @@ class Tapesfm.Views.Tapes extends Backbone.View
 
     $(@el).find("##{tapedeck.get("id")}").css("display":"inline-block", "width": 0, "opacity": 0).animate({width: 140}, 100).fadeTo(100,1)
 
+    tapedeck.trigger("settings")
     
 
-  initPopIn: (key) -> 
+  initPopIn: (key) ->
 
     new_tapdeck = new Tapesfm.Models.Tapedeck({remixable: true, commentable: true, public: true})
     settingView = new Tapesfm.Views.TapeSetting(model: new_tapdeck)

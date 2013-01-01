@@ -10,6 +10,7 @@ class Tapesfm.Views.Tape extends Backbone.View
   initialize: ->
 
     @model.on("change",@render, this)
+    @model.on("settings",@openSettings, this)
 
   openSettings: (e) ->
     #settingView = new Tapesfm.Views.TapeSetting(model: @model)
