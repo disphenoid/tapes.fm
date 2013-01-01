@@ -114,9 +114,15 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
     $(@el).find("#download_tracks").show()
     $(@el).find("#tapedeck_notape").hide()
 
+  
+
+      
+
 
   render: ->
     rendertContent = @template(model: @model)
     $(@el).html(rendertContent)
     @disable()
+
+
     this

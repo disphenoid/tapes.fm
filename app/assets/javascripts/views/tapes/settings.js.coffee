@@ -3,14 +3,7 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
   events:
     "click .new_tape_btn" : "new_tapedeck"
     "click .update_tape_btn" : "new_tapedeck"
-    "click .delete_tape_btn" : "delete_tapedeck"
-    # "click .project_field" : "showProjects"
-    # "click .project_field_label" : "showProjects"
-    # "click .project_btn" : "selectProject"
-    # "click .genre_field" : "showGenres"
-    # "click .genre_field_label" : "showGenres"
-    # "click .genre_btn" : "selectGenre"
-    #"submit .tape_cover_form" : "submitTape"
+    "click .delete_tape_btn" : "delete_tapedeck" 
     "change .setting_cover_input" : "submitTape"
 
 
@@ -38,9 +31,6 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
     else
       @model.set({project_id: null}, {silent: true})
       $(@el).find(".project_field").val("").focus().blur()
-
-
-
 
 
   showGenres: (e) ->

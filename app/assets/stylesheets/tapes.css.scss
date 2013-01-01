@@ -453,7 +453,14 @@
 
     
     }
+    .project_label {
+      @include fh(12px);
+      padding: 5px 10px;
+      margin-left: 10px;
+      color: $c_g_2;
 
+    
+    }
 
     .genre_field {
       color: $c_g_3;

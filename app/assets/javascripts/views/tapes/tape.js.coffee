@@ -58,26 +58,18 @@ class Tapesfm.Views.Tape extends Backbone.View
 
   render: ->
 
-    #tapdeck = new Tapesfm.Models.Tapedeck({remixable: true, commentable: true, public: true})
-    
-    
-    #$(@el).html(settingView.render().el)
-
-    #$(@el).remove()
-
     rendertContent = @template(model: @model)
 
     $(@el).html(rendertContent)
     @initPopIn(@model.get("id"))
     $(@el).attr('id', @model.get("id"))
-    #$(@el).fadeIn(2000)
+
     $("#tags_#{@model.get("id")}").tagit
       placeholderText: "Click to add a tag"
       autocomplete: {source: "/api/tags",delay: 0, minLength: 1}
     
     $('ul.tagit input').alpha({nocaps:true, allow: "1234567890"})
     
-    # @addTag "blaaa"
     @addTags @model.get("tags")
 
 

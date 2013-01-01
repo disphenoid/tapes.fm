@@ -1521,144 +1521,45 @@
     } 
     #tapedeck_meta {
       //margin-top: 10px;
-      padding-top: 20px;
+      padding-top: 10px;
       margin-left: -20px;
       h1 {
         margin: 0px;
         padding: 0px;
-        display: inline-block;
         @include fh_b(18px);
         @include c_g_4;
         margin-bottom: 6px;
         @include ts_in(#FFF);
       }
 
-      .title_spliter {
-        margin: 0px;
-        padding: 0px;
-        display: inline-block;
-        @include fh_b(18px);
-        @include c_g_5;
-        margin-bottom: 6px;
-        @include ts_in(#FFF);      
-      
-      }
+
       
       h2 {
         margin: 0px;
         padding: 0px;
-        display: inline-block;
-        @include fh_b(18px);
+        @include fh(16px);
         @include c_g_2;
-        margin-bottom: 6px;
+        margin-bottom: 0px;
       }
 
       
 
-      #metas { 
-        @include fh(11px);
-        @include c_g_2;
-        
+      #tags { 
+        position: absolute;
 
-        #meta_genre:hover {
-        
-          .meta_title {
-            @include c_1_b;
-            @include c_1b;
-          }
-          .meta_value {
-            @include c_1c_b;
-            color: white;
-
-          }
+        margin: 0px;
+        margin-left: 59px;
+        margin-top: -12px;
+        .tags_field {
+          width: 860px;
+          border: none;
+          background: none;
 
         }
 
-        #meta_tapes:hover {
         
-          .meta_title {
-            @include c_2_b;
-            @include c_2b;
-          }
-          .meta_value {
-            @include c_2c_b;
-            color: white;
-
-          }
-
-        }
 
 
-        #meta_plays:hover {
-        
-          .meta_title {
-            @include c_3_b;
-            @include c_3b;
-          }
-          .meta_value {
-            @include c_3c_b;
-            color: white;
-
-          }
-
-        }
-
-
-        #meta_comments:hover {
-        
-          .meta_title {
-            @include c_4_b;
-            @include c_4b;
-          }
-          .meta_value {
-            @include c_4c_b;
-            color: white;
-
-          }
-
-        }
-
-
-        .meta {
-          display: inline-block;
-          margin-right: 5px;
-          margin-top: 2px;
-          border-style: solid;
-          border-width: 1px;
-          border-color: rgba(0,0,0,0.03);
-          @include round(10px);
-          .meta_title {
-            display: inline-block;
-            height: 20px;
-            //@include c_g_5_b;
-            @include c_g_2;
-
-
-
-            line-height: 22px;
-            padding-left: 8px;
-            padding-right: 5px;
-            @include round_left(10px);
-            float: left;
-          
-          }
-          .meta_value {
-            @include fh_b(11px);
-            display: inline-block;
-            height: 20px;
-            @include c_g_4;
-            // border-style: solid;
-            // border-width: 1px;
-            // border-color: $c_g_5;
-            line-height: 22px;
-            padding-left: 8px;
-            padding-right: 10px;
-            @include round_right(10px);
-            float: left;
-          
-          }
-        
-        }
 
       } 
     } 

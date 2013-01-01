@@ -46,8 +46,9 @@
         <input type="text" name="tape_name_field_<%=@settingId%>" class="tape_name_field" id="tape_name_field_<%=@settingId%>" value="<%=@model.get("name")%>">
       </p>
       <p>
-        <label class="genre_label" for="tape_genre_field_<%=@settingId%>">Add a Project</label>
-        <input type="text" name="tape_genre_field_<%=@settingId%>" class="genre_field" id="tape_genre_field_<%=@settingId%>" value="<%=@model.get("genre")%>">
+        <div class="project_label">
+          by <%=@model.get("author")%>
+        </div>
       </p>
 
 

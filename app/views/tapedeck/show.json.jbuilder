@@ -32,3 +32,5 @@ json.collaborators @tapedeck.all_collaborators do |json,collaborator|
 
 end
 
+json.tags @tapedeck.tags
+

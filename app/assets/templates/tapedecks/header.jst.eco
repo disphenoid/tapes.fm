@@ -9,46 +9,14 @@
       <h1>
       <%= @tapedeck.get("name") %>
       </h2>
-      <span class="title_spliter"> / </span>
+     
       <h2>
-        <%= @tapedeck.get("author") %>
+        by <%= @tapedeck.get("author") %>
       </h2>
-      <div id="metas">
+      <div id="tags">
+        <ul class="tags_field" id="tags_<%=@tapedeck.get("id")%>">
 
-      <div class="meta" id="meta_genre"> 
-        <div class="meta_title">
-        Genre
-        </div>
-        <div class="meta_value">
-        <%= @tapedeck.get("genre") %>
-        </div> 
-      </div>        
-
-      <div class="meta" id="meta_tapes"> 
-        <div class="meta_title">
-        Tapes
-        </div>
-        <div class="meta_value">
-        <%= @tapedeck.get("versions").length %>
-        </div> 
-      </div>
-
-      <div class="meta"  id="meta_plays"> 
-        <div class="meta_title">
-          Plays 
-        </div>
-        <div class="meta_value">
-          263
-        </div> 
-      </div>
-
-      <div class="meta"  id="meta_comments"> 
-        <div class="meta_title">
-          Comments 
-        </div>
-        <div class="meta_value">
-          <%= @tapedeck.get("comments").length %>
-        </div> 
+        </ul>
       </div>
     </div>
 
