@@ -17,7 +17,7 @@ class Track
   field :asset, :type => String
   field :bpm, :type => Float, :default => 120
   field :group, :type => String 
-  field :duration, :type => String 
+  field :duration, :type => Float 
   field :wav, :type => String 
   field :aif, :type => String 
   field :mp3, :type => String 
