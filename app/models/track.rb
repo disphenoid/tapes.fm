@@ -37,6 +37,11 @@ class Track
   #validates :asset, presence: true
   attr_accessible :asset
 
+  after_create do |doc|
+    date = DateTime.now
+    TrackStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "create").inc(:count, 1)
+  end
+
   def to_s
     File.basename file.to_s
   end

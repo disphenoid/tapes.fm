@@ -11,8 +11,23 @@ class Invite
   field :accepted, :type => Boolean, :default => false
   field :email, :type => String
 
-  def invited
+  after_create do |document|
+    date = DateTime.now
+    if document.invited_user
+      InviteStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "internal").inc(:count, 1)
+    else
+      InviteStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "external").inc(:count, 1)
+    end
+  end
 
+  after_save do |document|
+    date = DateTime.now
+    if document.invited_user.changed?
+      InviteStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "accepted").inc(:count, 1)
+    end
+  end
+
+  def invited
     if self.invited_user
       return self.invited_user
     else
@@ -21,8 +36,5 @@ class Invite
       user.pending = true
       user 
     end
-    
   end
-
-
 end

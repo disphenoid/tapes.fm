@@ -17,7 +17,6 @@ class Tapedeck
   has_and_belongs_to_many :collaborators, class_name: "User"
 
   #validates_attachment_content_type :cover, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif','image/pjpeg','image/x-png',"image/bmp","image/x-bmp"]
-  # 
 
   field :name, :type => String
   field :description, :type => String
@@ -30,34 +29,36 @@ class Tapedeck
 
   #has_friendly_id :name, :use_slug => true
 
-  mount_uploader :cover, CoverUploader 
-  
-  def all_collaborators 
-      
+  mount_uploader :cover, CoverUploader
+
+  after_create do |doc|
+    date = DateTime.now
+    TapedeckStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "create").inc(:count, 1)
+  end
+
+  after_destroy do |doc|
+    date = DateTime.now
+    TapedeckStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "destroy").inc(:count, 1)
+    doc.tapedeck.inc(:version_count, -1)
+  end
+
+  def all_collaborators
     pending = self.pending_collaborators.map {|d| d.invited.pending = true; d;  }
     accepted = self.collaborators
     joined = accepted + pending
-
   end
 
   def pending_collaborators
-    
-    self.invites.where({accepted: false}) 
-    
+    self.invites.where({accepted: false})
   end
 
   def collaborator?(user)
-
     self.collaborator_ids.include? user.id
-    
   end
-
 
   def to_s
     File.basename file.to_s
   end
-  
-
 
   # def tape
   #   if self.active_tape_id
@@ -70,7 +71,4 @@ class Tapedeck
   #     self.save
   #   end
   # end
-
-
 end
-

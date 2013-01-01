@@ -17,65 +17,52 @@ class Tape
   has_many :track_settings
 
   #embeds_many :tracks
-  #belongs_to :track2, :foreign_key => 'attribute_secondary_id' 
+  #belongs_to :track2, :foreign_key => 'attribute_secondary_id'
 
-   field :name, :type => String
-   field :open, :type => Boolean, :default => true
-   field :description, :type => String
-   field :genre, :type => String
-   field :genre_sub, :type => String
-   field :bpm, :type => Integer, :default => 120
+  field :name, :type => String
+  field :open, :type => Boolean, :default => true
+  field :description, :type => String
+  field :genre, :type => String
+  field :genre_sub, :type => String
+  field :bpm, :type => Integer, :default => 120
 
-   after_create do |doc|
+  after_create do |doc|
+    date = DateTime.now
+    TapeStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "create").inc(:count, 1)
     doc.tapedeck.inc(:version_count, 1)
-   end
+  end
 
-   after_destroy do |doc|
+  after_destroy do |doc|
+    date = DateTime.now
+    TapeStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "destroy").inc(:count, 1)
     doc.tapedeck.inc(:version_count, -1)
-   end   
+  end
 
-  
-   def track_setting_volume(track_id, value)
-      
-      setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})
-      setting.volume = value
+  def track_setting_volume(track_id, value)
+    setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})
+    setting.volume = value
+    self.track_settings.push(setting)
+    self.save
+  end
 
-      self.track_settings.push(setting)
+  def track_setting_pan(track_id, value)
+    setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})
+    setting.pan = value
+    self.track_settings.push(setting)
+    self.save
+  end
 
-      self.save
-     
-   end
-   def track_setting_pan(track_id, value)
-      
-      setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})
-      setting.pan = value
+  def track_setting_mute(track_id, value)
+    setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})
+    setting.mute = value
+    self.track_settings.push(setting)
+    self.save
+  end
 
-      self.track_settings.push(setting)
-
-      self.save
-     
-   end
-   def track_setting_mute(track_id, value)
-      
-      setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})
-      setting.mute = value
-
-      self.track_settings.push(setting)
-
-      self.save
-     
-   end
-   def track_setting_solo(track_id, value)
-      
-      setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})
-      setting.solo = value
-
-      self.track_settings.push(setting)
-
-      self.save
-     
-   end
-
+  def track_setting_solo(track_id, value)
+    setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})
+    setting.solo = value
+    self.track_settings.push(setting)
+    self.save
+  end
 end
-
-
