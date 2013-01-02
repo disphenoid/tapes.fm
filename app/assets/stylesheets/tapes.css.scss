@@ -25,10 +25,13 @@
   background: rgba(255,255,255,0.3) ;
 
 }
+.license_box.inactive {
+  opacity: 0.3;
+}
 
 .license_box {
-  height: 40px;
-  padding: 10px 15px;
+  height: 54px;
+  padding: 5px 15px;
   @include fh_b(12px);
   color: $c_g_1;
   background: rgba(0,0,0,0.07);
@@ -38,7 +41,68 @@
 	-ms-transition: 0.2s all ease-out;
 	-o-transition: 0.2s all ease-out;
 	transition: 0.2s all ease-out;
+  .setting_title {
+  
+    height: 54px;
+    width: 60px;
+    display: inline-block;
+    line-height: 54px;
+    float: left;
 
+  }
+
+  .license.active {
+  
+    opacity: 0.7;
+  
+  }
+
+  .license:hover {
+    background: rgba(0,0,0,0.02);
+  }
+  .license {
+  
+    display: inline-block;
+    height: 54px;
+    width: 54px;
+    background: rgba(0,0,0,0.02);
+    float: left;
+    margin-right: 7px;
+    cursor: pointer;
+    opacity: 0.1;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        transition: all .5s ease;  
+  }
+
+
+  .license.cc {
+    
+    background: url("/assets/tapes/cc_cc.png") no-repeat center center;
+  
+  }
+
+  .license.by {
+    
+    background: url("/assets/tapes/cc_by.png") no-repeat center center;
+  
+  }
+  .license.sa {
+    
+    background: url("/assets/tapes/cc_sa.png") no-repeat center center;
+  
+  }
+  .license.nc {
+    
+    background: url("/assets/tapes/cc_nc.png") no-repeat center center;
+  
+  }
+
+  .license.nd {
+    
+    background: url("/assets/tapes/cc_nd.png") no-repeat center center;
+  
+  }
 }
 
 .checkbox_set:hover {
@@ -314,14 +378,17 @@
     background: $c1 url("/assets/tapes/delete_icon_on.png");
   
   }  
-
+  #switch_public {
+  
+    margin-left: 0px;
+  }
   #switch_remix {
   
     margin-left: 120px;
   }
   #switch_comments {
   
-    margin-left: 240px;
+    margin-left: 120px;
   }
 
   .title {
@@ -359,7 +426,7 @@
       // margin-top: 50px;
       position: absolute;
       display: inline-block;
-      width: 20px; 
+      width: 40px; 
       -webkit-transform: scale(0.6);
       -moz-transform: scale(0.6);
       -ms-transform: scale(0.6);

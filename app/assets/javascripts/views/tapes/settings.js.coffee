@@ -6,43 +6,14 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
     "click .delete_tape_btn" : "delete_tapedeck" 
     "change .setting_cover_input" : "submitTape"
 
+    "click .checkable" : "checkLicense"
 
-  selectGenre: (e) ->
-    $(@el).find(".settings_main").animate({left: "0px"}, 300, "easeOutExpo")
-    $(@el).find(".settings_genre").animate({left: "300px"},300, "easeOutExpo")
+  checkLicense: (e) ->
 
-    $(@el).find(".genre_field").val($(e.currentTarget).data("genre_name")).focus().blur()
-
-    console.log $(e.currentTarget).data("genre_name")
-    @model.set({genre: $(e.currentTarget).data("genre_name")}, {silent: true})
-
-  selectProject: (e) ->
-    $(@el).find(".settings_main").animate({left: "0px"}, 300, "easeOutExpo")
-    $(@el).find(".settings_project").animate({left: "300px"},300, "easeOutExpo")
-
-    console.log $(e.currentTarget).data("project_name")
-    console.log $(e.currentTarget).data("project_id")
-
-
-    unless $(e.currentTarget).data("project_name") == "none"
-      @model.set({project_id: $(e.currentTarget).data("project_id")}, {silent: true})
-      $(@el).find(".project_field").val($(e.currentTarget).data("project_name")).focus().blur()
-
+    if $(e.currentTarget).hasClass("active")
+      $(e.currentTarget).removeClass("active")
     else
-      @model.set({project_id: null}, {silent: true})
-      $(@el).find(".project_field").val("").focus().blur()
-
-
-  showGenres: (e) ->
-    $(@el).find(".settings_main").animate({left: "-300px"}, 300, "easeOutExpo")
-    $(@el).find(".settings_genre").animate({left: "0px"},300, "easeOutExpo")
-    # console.log "dsa"
-    # console.log $(@el).find(".settings_main")
-
-
-  showProjects: (e) ->
-    $(@el).find(".settings_main").animate({left: "-300px"}, 300, "easeOutExpo")
-    $(@el).find(".settings_project").animate({left: "0px"},300, "easeOutExpo")
+      $(e.currentTarget).addClass("active")
 
 
   submitTape: (e) ->
@@ -97,9 +68,14 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
     public_tape = ($("#tape_public_#{settingId}").attr('checked') == "checked")
     tags = ($("#tags_#{@model.get("id")}").tagit("assignedTags"))
 
+    #creative common
+    cc_by = $("#license_by_#{@model.get("id")}").hasClass("active")
+    cc_sa = $("#license_sa_#{@model.get("id")}").hasClass("active")
+    cc_nd = $("#license_nd_#{@model.get("id")}").hasClass("active")
+    cc_nc = $("#license_nc_#{@model.get("id")}").hasClass("active")
 
 
-    @model.set({name: name, remixable: remixable, commentable: commentable, public: public_tape, tags: tags })
+    @model.set({name: name, remixable: remixable, commentable: commentable, public: public_tape, tags: tags, cc_by: cc_by, cc_sa: cc_sa, cc_nd: cc_nd, cc_nc: cc_nc })
     @model.save(
       {}
       {success: (model, response) ->
@@ -128,16 +104,20 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
 
   addProjects: (project) ->
     alert "ddd"
+  checkPublicSwitch: (e) ->
+    # alert @model.id
+    if ($("#tape_public_#{@model.id}").attr('checked') == "checked")
+      $(@el).find(".license_box").removeClass("inactive")
+    else
+      $(@el).find(".license_box").addClass("inactive")
+      # $(@el).find(".license.sa").removeClass("active")
+
   render: ->
-    
-
-
 
     if @model.isNew()
      settingId = "new"
     else
      settingId = @model.get("id")
-
 
     rendertContent = @template(model: @model,  settingId: settingId )
     
@@ -146,9 +126,12 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
       
     $(@el).find("#setting-popin_#{@model.id} label").inFieldLabels()
 
+    $(@el).find("#switch_public_#{@model.id}").click (e) =>
+      console.log "change public"
 
-
- 
+    $(@el).find("#switch_public_#{@model.id}").click (e) =>
+      console.log "change remix"
+      @checkPublicSwitch e
 
     this
 

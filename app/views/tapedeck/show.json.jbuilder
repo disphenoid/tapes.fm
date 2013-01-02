@@ -34,3 +34,11 @@ end
 
 json.tags @tapedeck.tags
 
+#creative common
+
+json.cc tapedeck.cc
+json.cc_by tapedeck.cc_by
+json.cc_sa tapedeck.cc_sa
+json.cc_nc tapedeck.cc_nc
+json.cc_nd tapedeck.cc_nd
+

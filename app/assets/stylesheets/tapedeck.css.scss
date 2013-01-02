@@ -50,7 +50,7 @@
           @include fh_b(12px);
           position: absolute;
           margin-left: 236px; 
-          margin-top: 10px;
+          margin-top: 5px;
           z-index: 6000;
           cursor: pointer;
           @include btn($c_g_2);
@@ -96,8 +96,8 @@
 
 
   .collaborators {
-    position: absolute;
-    width: 200px;
+    position: relative;
+    width: 290px;
     clear: both;
     list-style-type: none;
     padding: 0px;
@@ -105,7 +105,7 @@
     margin-left: 45px;
 
 
-
+  
 
 
 
@@ -170,23 +170,113 @@
     background: url("/assets/tapedeck/sidebar_bg.png") no-repeat;
     min-height: 100px;
 
-    #tapedeck_collaborators_header {
+    .side_widged, #tapedeck_collaborators_header {
+      clear: both;
       padding: 0px;
       margin: 0px;
       @include c_g_4;
       @include fh_b(12px);
-      height: 55px;
-      // border-color: $c_g_5;
-      // border-bottom-width: 1px;
-      // border-bottom-style: solid;
+      min-height: 55px;
+
       @include ts_out(#FFF);
       width: 295px;
-      h3 {
-        line-height: 35px;
+      margin-left: -8px;
+      .icon.collaborators_icon {
+        background: url("/assets/tapedeck/collaborator_icon.png");
+      }
+      .icon.license_icon {
+        background: url("/assets/tapedeck/license_icon.png");
+      }
+
+      .icon {
+        
+        margin-top: 10px;
         display: inline-block;
+        height: 35px;
+        width: 35px;
         float: left;
+        margin-right: 5px;
+
       
       }
+
+      .headline {
+        margin-top: 10px;
+        height: 35px;
+        float: left; 
+        @include fh_b(14px);
+        line-height: 35px;
+      }
+
+
+
+        
+
+      }
+
+      .license_info {
+        @include fh(11px);
+        color: $c_g_2;
+        clear: both;
+        height: 30px;
+        line-height: 30px;
+        a {
+          
+          color: $c_g_4;
+          @include fh_b(11px);
+          
+        
+        }
+        a:hover {
+          
+          color: $c1;
+          
+        
+        }
+      }
+      .license_icons {
+        margin-left: -8px;
+        .license.active {
+          opacity: 0.7;
+
+        }
+        .license {
+          width: 54px;
+          height: 54px;
+          background: red;
+          float: left;
+          opacity: 0.3;
+        
+        }
+        .license.cc {
+          
+          background: url("/assets/tapes/cc_cc.png") no-repeat center center;
+        
+        }
+
+        .license.by {
+          
+          background: url("/assets/tapes/cc_by.png") no-repeat center center;
+        
+        }
+        .license.sa {
+          
+          background: url("/assets/tapes/cc_sa.png") no-repeat center center;
+        
+        }
+        .license.nc {
+          
+          background: url("/assets/tapes/cc_nc.png") no-repeat center center;
+        
+        }
+
+        .license.nd {
+          
+          background: url("/assets/tapes/cc_nd.png") no-repeat center center;
+        
+        }
+
+
 
     }
 
@@ -201,7 +291,6 @@
       height: 35px;
       @include c_g_5_b;
       position: absolute;
-      margin-top: 0px;
       margin-left: 270px;
       background: url("/assets/track/add_track_icon.png") no-repeat center center;
       @include round(5px);

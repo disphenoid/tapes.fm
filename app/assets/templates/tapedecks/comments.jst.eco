@@ -1,8 +1,9 @@
   <div id="tapedeck_comments_header">
-    <h3> 
+    <div class="icon"></div>
+    <div class="headline"> 
       Comments
       <%# @model.get("collaborators").last().get("name") %> 
-    </h3>
+    </div>
   </div> 
   <% if Tapesfm.user && Tapesfm.user.collaborator || Tapesfm.tapedeck.tapedeck.get("commentable"): %>
   <div id="tapedeck_comments_add">

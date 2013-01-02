@@ -1,8 +1,9 @@
       <div id="tapedeck_collaborators_header">
-        <h3> 
+        <div class="icon collaborators_icon">
+        </div>
+        <div class="headline"> 
           Collaborators
-          <%# @model.get("collaborators").last().get("name") %> 
-        </h3>
+        </div>
       </div> 
 
         <div id="tapedeck_invite_add">

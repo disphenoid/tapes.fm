@@ -1,0 +1,17 @@
+<div class="side_widged">
+  <div class="icon license_icon">
+  </div>
+  <div class="headline"> 
+    License
+  </div>
+</div> 
+
+<div class="license_icons">
+  <div class="license by <%= "active "if @model.get("cc_by") %>"> </div>
+  <div class="license sa <%= "active "if @model.get("cc_sa") %>"> </div>
+  <div class="license nd <%= "active "if @model.get("cc_nd") %>"> </div>
+  <div class="license nc <%= "active "if @model.get("cc_nc") %>"> </div>
+</div>
+<div class="license_info">
+  Read more about <a href="http://creativecommons.org/licenses/" target="_blank"> Creative Commons licenses</a> .
+</div>

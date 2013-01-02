@@ -21,3 +21,12 @@ json.tags tapedeck.tags
 json.cover tapedeck.cover.url
 json.cover_m tapedeck.cover.m.url
 json.cover_s tapedeck.cover.s.url
+
+
+#creative common
+
+json.cc tapedeck.cc
+json.cc_by tapedeck.cc_by
+json.cc_sa tapedeck.cc_sa
+json.cc_nc tapedeck.cc_nc
+json.cc_nd tapedeck.cc_nd

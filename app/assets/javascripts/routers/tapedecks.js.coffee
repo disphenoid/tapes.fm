@@ -94,7 +94,9 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
     $('#tapedeck_collaborators').html(collaboratorsView.render().el)
 
     invitesView = new Tapesfm.Views.TapedeckInvites(collection: @tapedeck.get("invited"))
-    #$('#collaborators').html(collaboratorsView.render().el)
+
+    licenseView = new Tapesfm.Views.TapedeckLicense(model: @tapedeck)
+    $('#tapedeck_license').html(licenseView.render().el)
 
 
     # invitesView = new Tapesfm.Views.TapedeckInvites(collection: @tapedeck.get("collaborators"))

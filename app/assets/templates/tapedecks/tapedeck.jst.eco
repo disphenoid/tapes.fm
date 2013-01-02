@@ -105,17 +105,21 @@
   </ul> 
   </div>
   <div id="tapedeck_sidebar"> 
+    <div>
     <div id="tapedeck_collaborators">
 
     </div> 
       <ul class="collaborators" id="collaborators">
       </ul>  
-      <ul class="invites" id="invites">
-      </ul>  
+
+     </div>
+
+     <div id="tapedeck_license"> 
+
+     </div>
+
   </div>
 </div>
-  <div id="tapedeck_collaborator"> 
-  </div>
-  <div id="tapedeck_invites"> 
-  </div>
+
+
 </div>

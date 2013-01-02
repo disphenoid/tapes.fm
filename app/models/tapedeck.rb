@@ -27,6 +27,13 @@ class Tapedeck
   field :public, :type => Boolean
   field :version_count, :type => Integer
 
+  #Creative common
+  field :cc, :type => Boolean, :default => true
+  field :cc_by, :type => Boolean, :default => true
+  field :cc_sa, :type => Boolean, :default => false
+  field :cc_nc, :type => Boolean, :default => false
+  field :cc_nd, :type => Boolean, :default => false
+
   #has_friendly_id :name, :use_slug => true
 
   mount_uploader :cover, CoverUploader

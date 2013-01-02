@@ -701,11 +701,25 @@
       // border-bottom-style: solid;
       @include ts_out(#FFF);
       width: 615px;
-
-      h3 {
-        line-height: 35px;
+      .icon {
+        
+        margin-top: 10px;
         display: inline-block;
+        height: 35px;
+        width: 35px;
+        float: left;
+        margin-right: 5px;
+        background: url("/assets/tapedeck/comment_icon.png");
+
+      
+      }
+
+      .headline {
+        margin-top: 10px;
+        height: 35px;
         float: left; 
+        @include fh_b(14px);
+        line-height: 35px;
       }
 
     }

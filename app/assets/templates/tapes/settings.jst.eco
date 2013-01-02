@@ -60,32 +60,29 @@
   </div>
 
   <div class="checkbox_set">
-    <div class="title" id="switch_public">
+   <div class="setting_title">
+      
+        
+    </div> 
+    <div class="title tip" id="switch_public " title="Makes this Tape visible for Everyone">
       <div class="headline">
         Public
       </div>
 
-      <div class="switch" >
+      <div id="switch_public_<%=@settingId%>" class="switch"> 
         <input type="checkbox" name="tape_public_<%=@settingId%>" id="tape_public_<%=@settingId%>" <%=("checked=\"#{@model.get("public")}\"") if @model.get("public")%>>
       </div>
     </div>
     
 
-    <div class="title" id="switch_remix">
+
+    <div id="switch_comments" class="title tip" title="Allow User comments">
+
       <div class="headline">
-        Remix
+        Comments
       </div>
 
-    <div class="switch" >
-      <input type="checkbox" name="tape_remixable_<%=@settingId%>" id="tape_remixable_<%=@settingId%>" <%=("checked=\"#{@model.get("remixable")}\"") if @model.get("remixable")%>>
-    </div>
-  </div>
-    <div class="title" id="switch_comments">
-      <div class="headline">
-        Comment
-      </div>
-
-    <div class="switch" >
+    <div class="switch" id="switch_comment_<%=@settingId%>" >
       <input type="checkbox" name="tape_commentable_<%=@settingId%>" id="tape_commentable_<%=@settingId%>" <%=("checked=\"#{@model.get("commentable")}\"") if @model.get("commentable")%>>
     </div>
   
@@ -98,7 +95,17 @@
 
   </div>
    <div class="license_box">
-      License
+      <div class="setting_title">
+      
+        License
+      </div> 
+      <a href="http://creativecommons.org/licenses/" target="_blank">
+      <div class="license cc active tip" title="Click to read more about Creative Commons."></div>
+      </a>
+      <div id="license_by_<%=@model.get("id")%>" class="license by checkable <%= "active" if @model.get("cc_by") %> tip" title="Shows your name on every remix."></div>
+      <div id="license_sa_<%=@model.get("id")%>" class="license sa checkable <%= "active" if @model.get("cc_sa") %> tip" title="Every remix will be licensed under identical terms."></div>
+      <div id="license_nd_<%=@model.get("id")%>" class="license nd checkable <%= "active" if @model.get("cc_nd") %> tip" title="No remix, only listen."></div>
+      <div id="license_nc_<%=@model.get("id")%>" class="license nc checkable <%= "active" if @model.get("cc_nc") %> tip" title="This tape and remixes are NOT for Commercial use"></div>
     </div>
    <div class="button_box">
       
