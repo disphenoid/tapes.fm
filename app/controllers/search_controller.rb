@@ -5,7 +5,7 @@ class SearchController < ApplicationController
       
       query = params[:q].split(" ")
 
-      @tapedecks =  Tapedeck.tagged_with(query)
+      @tapedecks =  Tapedeck.tagged_with(query).limit(5)
       
       if query.count == 1
         
