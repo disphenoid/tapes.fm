@@ -1,11 +1,4 @@
 Tapesfm::Application.routes.draw do
-  get "register/index"
-
-  get "register/create"
-
-  get "home/index"
-
-  get "track_comments/show"
 
   #get "users", :to => "users#index"
   mount Resque::Server, :at => "/resque"
@@ -40,6 +33,7 @@ Tapesfm::Application.routes.draw do
     resources :users
     resources :feedbacks
     resources :tags, :defaults => {:format => :json}
+    resources :search, :defaults => {:format => :json}
   end
   match 'signup', to: "webapp#signup"
 

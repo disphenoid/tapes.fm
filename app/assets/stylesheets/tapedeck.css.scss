@@ -1528,7 +1528,7 @@
         padding: 0px;
         @include fh_b(18px);
         @include c_g_4;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
         @include ts_in(#FFF);
       }
 
@@ -1537,7 +1537,7 @@
       h2 {
         margin: 0px;
         padding: 0px;
-        @include fh(16px);
+        @include fh(14px);
         @include c_g_2;
         margin-bottom: 0px;
       }

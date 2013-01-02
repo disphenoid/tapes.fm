@@ -1,0 +1,116 @@
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
+
+#search_results {
+    width: 280px;
+    // height: 300px;
+    padding: 0px;
+    margin: 0px;
+    @include c_g_0_b;
+    position: absolute;
+    margin-top: 0px;
+    background: rgba(44,44,44,0.99);
+    @include round_bottom(3px);
+    .search_tape.one:hover, .search_tape.two:hover, .search_tape.three:hover, .search_tape.four:hover, .search_tape.five:hover, .search_tape.six:hover, .search_tape.seven:hover {
+      background: rgba(255,255,255,.1);
+    
+    }
+
+    .search_tape.one {
+      background: rgba(255,255,255,0.01);
+    }
+    .search_tape.two {
+      background: rgba(255,255,255,0.02);
+    }
+    .search_tape.three {
+      background: rgba(255,255,255,0.03);
+    }
+    .search_tape.four {
+      background: rgba(255,255,255,0.04);
+    }
+    .search_tape.five {
+      background: rgba(255,255,255,0.05);
+    }
+    .search_tape.six {
+      background: rgba(255,255,255,0.06);
+    }
+    .search_tape.seven {
+      background: rgba(255,255,255,0.07);
+    }
+    .search_tape {
+      height: 60px;
+      cursor: pointer;
+      padding: 10px;
+      list-style-type: none;
+      background: rgba(255,255,255,0.07);
+      .mini_cover {
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        transition: all .5s ease;
+        .case {
+          width: 60px;
+          height: 73px;
+          background: url("/assets/search/tape_cover_off.png") no-repeat top left;
+          position: absolute;
+        
+        }    
+        .case:hover {
+          background: url("/assets/search/tape_cover_off.png") no-repeat top left;
+          position: absolute;
+        
+        }       
+      }
+
+      .info_box {
+        display: inline-block;
+        width: 190px;
+        height: 20px;
+        float: left;
+        margin-top: 7px;
+        padding: 0px 10px;
+        @include fh_b(12px);
+        @include c_g_4;
+        margin-left: 65px;
+        .mini_tag:hover {
+          background: rgba(255,255,255,0.2);
+        }
+        .mini_tag {
+          padding: 2px 5px;
+          background: rgba(255,255,255,0.1);
+          color: $c_g_5;
+          @include round(3px);
+          display: inline-block;
+          // cursor: pointer;
+          
+        }
+        
+        .headline {
+            overflow: hidden;
+            white-space: nowrap;
+            height: 13px;
+            color: $c_g_5;
+            @include fh_b(12px);
+            margin-bottom: 2px;
+
+          
+         }
+            .author {
+            color: $c_g_2;
+            @include fh(11px);
+            
+            }
+          .subline {
+            height: 13px;
+            margin-top: 5px;
+            @include fh(11px); 
+            color: $c_g_2;
+
+         }
+
+    
+    }
+
+  }
+
+}

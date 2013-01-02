@@ -1,0 +1,32 @@
+    <a href="/tapedeck/<%= @model.get("id")%>">
+    <div class="mini_cover">
+
+    <% if @model.get("cover_s"):%>
+      <img src="http://<%= @model.get("cover_s")%>">
+    <% end %>
+    <div class="wheels"> </div> 
+    <div class="case"> </div> 
+
+
+  </div>
+  <div class="info_box">
+    <div class="headline">
+      <%= @model.get("name") %> 
+
+    </div> 
+    <div class="author">
+      by <%= @model.get("author") %> 
+
+    </div> 
+      <div class="subline">
+      <span class="date" >
+      <% for tag, i in @model.get("tags"): %>
+        <div class="mini_tag" data-tag="<%= tag %>">
+          <%= tag %>
+        </div>
+      <% end %>
+      </span>
+      
+    </div> 
+  </div>  
+    </a>

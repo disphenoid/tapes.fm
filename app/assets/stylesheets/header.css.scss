@@ -153,7 +153,9 @@ header {
       background-image: url("/assets/header/icon_search_on.png");
       background-position: center center;
     }
-
+    .quick_button#search_button.searching {
+      background: #2d2d2d url("/assets/header/search_wait.gif") no-repeat center center;
+    }
 
     
 
@@ -189,7 +191,7 @@ header {
         }
         input{
           width: 240px;
-          height: 46px;
+          height: 48px;
           background: none;
           border: none;
           outline: none;
@@ -197,7 +199,7 @@ header {
           font-size: 14px;
           background: url("/assets/header/inner.png") no-repeat right;
           @include fh_b(13px);
-          @include c_g_3;
+          @include c_g_5;
           -webkit-transition: all .6s ease;
           -moz-transition: all .6s ease;
           transition: all .6s ease;
@@ -353,7 +355,7 @@ header {
         }
 
         .badge {
-          background: #00FF00;
+          background: #00ff00;
           padding: 5px 8px;
           float: right;
           margin-top: 8px;
@@ -374,7 +376,7 @@ header {
         .user_logout {
           width: 20px;
           height: 20px;
-          background: #00FF00;
+          background: #00ff00;
           float: left;
           margin-top: 10px;
           margin-left: 5px;

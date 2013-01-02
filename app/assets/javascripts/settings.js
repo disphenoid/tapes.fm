@@ -5,4 +5,5 @@
 //= require_tree .//views
 //= require .//routers/settings
 //= require_tree .//lib
-
+//= require .//search_app
+//= require .//routers/search

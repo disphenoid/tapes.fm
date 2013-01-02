@@ -37,7 +37,6 @@
     </div>
   
 
-  </div>
 
   <div class="fields">
 
@@ -51,6 +50,7 @@
         </div>
       </p>
 
+  </div>
 
   </div>
   <div class="tag_box">
@@ -94,13 +94,21 @@
 
   
   </div>
+
+
   </div>
+   <div class="license_box">
+      License
+    </div>
+   <div class="button_box">
+      
   <% if @model.isNew(): %>
     <div class="new_tape_btn">New Tape</div>
   <% else: %>
     <div class="delete_tape_btn"></div>
     <div class="update_tape_btn">Update Tape</div>
   <% end %>  
+    </div>
 
   </div>
 </div>
