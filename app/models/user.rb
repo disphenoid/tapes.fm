@@ -90,6 +90,11 @@ class User
     end
   end
 
+  after_create do |document|
+    date = DateTime.now
+    UserStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "create").inc(:count, 1)
+  end
+
   def add_time(mil)
     self.total_uploadtime += mil.to_i
     self.current_uploadtime += mil.to_i
