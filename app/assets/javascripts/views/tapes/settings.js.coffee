@@ -3,7 +3,7 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
   events:
     "click .new_tape_btn" : "new_tapedeck"
     "click .update_tape_btn" : "new_tapedeck"
-    "click .delete_tape_btn" : "delete_tapedeck" 
+    "click .delete_tape_btn" : "delete_tapedeck"
     "change .setting_cover_input" : "submitTape"
 
     "click .checkable" : "checkLicense"

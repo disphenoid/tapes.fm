@@ -1,3 +1,44 @@
+<div class="remix_box">
+  <div class="remix_icon"></div>
+  <h2>Remix</h2>
+    <div class="remix_info"> 
+      Copy the current Tape Version to your own Tape Collection and start making it your own! 
+    </div>    
+  <div class="licenses">
+    <div class="headline">Licenses:</div>
+
+    <div class="license_icons">
+      <a href="http://creativecommons.org/licenses/" target="_blank">
+        <div class="license cc tip active" title="This Tape is Licensed under Creative Commons. click for more info"> </div>
+      </a>
+      <a href="http://creativecommons.org/licenses/" target="_blank">
+        <div class="license by tip <%= "active "if @model.get("cc_by") %>" title="Attribution. click for more info"> </div>
+      </a>
+      <a href="http://creativecommons.org/licenses/" target="_blank">
+        <div class="license sa tip <%= "active "if @model.get("cc_sa") %>" title="ShareAlike. click for more info"> </div>
+      </a>
+      <a href="http://creativecommons.org/licenses/" target="_blank">
+        <div class="license nd tip <%= "active "if @model.get("cc_nd") %>" title="NoDerivs. click for more info"> </div>
+      </a>
+      <a href="http://creativecommons.org/licenses/" target="_blank">
+        <div class="license nc tip <%= "active "if @model.get("cc_nc") %>" title="NonCommercial. click for more info"> </div>
+      </a>
+
+
+    </div>
+    <div class="license_info">
+       Please hover over the License Icons to see there meaning. 
+       Read about <a href="http://creativecommons.org/licenses/" target="_blank"> Creative Commons licenses</a> .
+    </div>
+    <div class="remix_buttons">
+      <div id="deccline" class="remix_button deccline"> Nope! </div> 
+      <div id="remix" class="remix_button agree"> I Agree, Remix! </div> 
+    </div>
+
+  </div>
+</div>
+
+
 <div id="tapedeck_header"> </div>
 
 <div id="tape_upload">
@@ -31,13 +72,11 @@
       </div> 
 
         <div id="tape_edit_box"> 
-          <form>
 
             <p>
               <label id="tape_edit_label" for="tape_edit_field">What did you change?</label>
               <input type="text" name="tape_edit_field" id="tape_edit_field" value=""></input>
             </p>
-          </form> 
       </div>
     </div>
   </div>
@@ -46,13 +85,11 @@
     <%# @tapedeck.get("tape")%>
     <div id="tape_select_button"></div>  
       <div id="tape_search"> 
-          <form>
             <div id="tape_search_button"></div>
             <p>
               <label for="tape_search_field">Search for artist, bands and tracks</label>
               <input type="text" name="tape_search" id="tape_search_field" value=""></input>
             </p>
-          </form>
 
       </div>
     <div id="version_list">
@@ -85,8 +122,10 @@
       <div class="m_button" id="from_lib">From Library </div> 
     </div>
     <% else: %>
-    <div class="" id="remix"> 
-      <div class="m_button" id="add_btn"> Remix</div>
+    <div class="" id="openRemix"> 
+      <div class="m_button"> Remix</div>
+      <div class="icon"></div>
+
     </div>
 
     <% end %>

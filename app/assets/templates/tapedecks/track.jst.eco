@@ -29,20 +29,20 @@
 <% if @track.get("processed"): %>
 
 
-<div id="track_<%=@track.get("_id")%>_box" class="track_clip_box c<%=@color%>" data-id="<%=@track.get("_id")%>" data-duration="<%=@track.get("duration")%>"> 
+<div id="track_<%=@track.get("audio_id")%>_box" class="track_clip_box c<%=@color%>" data-id="<%=@track.get("_id")%>" data-duration="<%=@track.get("duration")%>"> 
 
 
   
-  <div id="track_<%=@track.get("_id")%>_dotted" class="track_dotted"> </div>
-  <div id="track_<%=@track.get("_id")%>_base" class="track_base"> </div>
+  <div id="track_<%=@track.get("audio_id")%>_dotted" class="track_dotted"> </div>
+  <div id="track_<%=@track.get("audio_id")%>_base" class="track_base"> </div>
   
 
-  <div id="track_<%=@track.get("_id")%>_loaded" class="track_loaded"> </div>
-  <div id="track_<%=@track.get("_id")%>_progress" class="track_progress"> </div>
-  <div id="track_<%=@track.get("_id")%>_clip" class="track_clip"> </div> 
-  <div id="track_<%=@track.get("_id")%>_position" class="track_position"> </div>
-  <div id="track_<%=@track.get("_id")%>_hotspot" class="track_hotspot"> </div>
-  <div id="track_<%=@track.get("_id")%>_comments" class="track_comments"> 
+  <div id="track_<%=@track.get("audio_id")%>_loaded" class="track_loaded"> </div>
+  <div id="track_<%=@track.get("audio_id")%>_progress" class="track_progress"> </div>
+  <div id="track_<%=@track.get("audio_id")%>_clip" class="track_clip" data-duration="<%=@track.get("duration")%>"> </div> 
+  <div id="track_<%=@track.get("audio_id")%>_position" class="track_position"> </div>
+  <div id="track_<%=@track.get("audio_id")%>_hotspot" class="track_hotspot"> </div>
+  <div id="track_<%=@track.get("audio_id")%>_comments" class="track_comments"> 
     
     <ul class="strip"> 
 
@@ -95,12 +95,12 @@
 
 <% else: %>
 
-  <div id="track_<%=@track.get("_id")%>_box" class="track_clip_box c<%=@color%>" data-id="<%=@track.get("_id")%>" data-duration="<%=@track.get("duration")%>"> 
+  <div id="track_<%=@track.get("audio_id")%>_box" class="track_clip_box c<%=@color%>" data-id="<%=@track.get("audio_id")%>" data-duration="<%=@track.get("duration")%>"> 
   
-    <div id="track_<%=@track.get("_id")%>_base" class="track_base"> </div>
-    <div id="track_<%=@track.get("_id")%>_loaded" class="track_processing"> </div>
-    <div id="track_<%=@track.get("_id")%>_clip" class="track_clip"> </div>
-    <div id="track_<%=@track.get("_id")%>_processing" class="track_processing_info">  
+    <div id="track_<%=@track.get("audio_id")%>_base" class="track_base"> </div>
+    <div id="track_<%=@track.get("audio_id")%>_loaded" class="track_processing"> </div>
+    <div id="track_<%=@track.get("audio_id")%>_clip" class="track_clip"> </div>
+    <div id="track_<%=@track.get("audio_id")%>_processing" class="track_processing_info">  
     <div class="name_box">
       <div class="icon"></div> 
       Processing

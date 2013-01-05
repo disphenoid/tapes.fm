@@ -24,12 +24,14 @@ class Tape
   field :description, :type => String
   field :genre, :type => String
   field :genre_sub, :type => String
-  field :bpm, :type => Integer, :default => 120
+  field :bpm, :type => Float, :default => 120
 
   after_create do |doc|
     date = DateTime.now
     TapeStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "create").inc(:count, 1)
-    doc.tapedeck.inc(:version_count, 1)
+    if doc.tapedeck
+      doc.tapedeck.inc(:version_count, 1)
+    end
   end
 
   after_destroy do |doc|

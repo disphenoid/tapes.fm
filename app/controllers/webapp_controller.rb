@@ -118,23 +118,27 @@ class WebappController < ApplicationController
     @tapedeck = Tapedeck.find(params[:tapedeck_id])
     if current_user && (@tapedeck.collaborator?(current_user))
       newparams = coerce(params)
-      @track = Track.new(newparams[:track])
-      @track.group = @track.id
-      @track.user_id = current_user.id
-      @track.color = (params[:track_length].to_i + 1)
-      #puts "paraaaams #{newparams[:track][:asset].class}"
-      #@track.process_asset_upload = true
-      respond_to do |format|
-        if @track.save
-          current_user.add_time @track.duration
-          # format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
-          # format.js { @picture.id }
-          return  true
-        else
-          #format.html { redirect_to "/" }
-          format.json { render json: @track.errors, status: :unprocessable_entity }
+        @track = Track.new()
+        @track.audio = Audio.new(newparams[:track])
+        @track.name = @track.audio.name
+        @track.duration = @track.audio.duration
+        # @track.audio = Audio.new
+        @track.group = @track.id
+        @track.user_id = current_user.id
+        @track.color = (params[:track_length].to_i + 1)
+        #puts "paraaaams #{newparams[:track][:asset].class}"
+        #@track.process_asset_upload = true
+        respond_to do |format|
+          if @track.audio.save && @track.save 
+            current_user.add_time @track.duration
+            # format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+            # format.js { @picture.id }
+            return  true
+          else
+            #format.html { redirect_to "/" }
+            format.json { render json: @track.errors, status: :unprocessable_entity }
+          end
         end
-      end
     end
   end
 

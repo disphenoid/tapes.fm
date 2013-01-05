@@ -1,5 +1,7 @@
 Tapesfm::Application.routes.draw do
 
+  get "remix/create"
+
   #get "users", :to => "users#index"
   mount Resque::Server, :at => "/resque"
 
@@ -32,6 +34,7 @@ Tapesfm::Application.routes.draw do
     resources :register
     resources :users
     resources :feedbacks
+    resources :remix, :defaults => {:format => :json}
     resources :tags, :defaults => {:format => :json}
     resources :search, :defaults => {:format => :json}
   end

@@ -11,9 +11,7 @@
     <li class="star_tape_button edit_button tip" title="Mark" data-id="<%=@model.get("tape").get("_id")%>"></li>
     <li class="bpm_tape_button edit_button tip" title="BPM" data-id="<%=@model.get("tape").get("_id")%>">
 
-    <form> 
       <input type="text" name="bpm_value" id="bpm_value" value="<%=@model.get("tape").get("bpm")%>"></input>
-    </form> 
 
 
       <div id="bpm_ctrl">
@@ -29,9 +27,7 @@
   <li class="star_tape_button edit_button tip" title="Mark" data-id="<%=@model.get("tape").get("_id")%>"></li>
     <li class="bpm_tape_button edit_button tip" title="BPM" data-id="<%=@model.get("tape").get("_id")%>">
 
-    <form> 
       <input type="text" name="bpm_value" id="bpm_value" value="<%=@model.get("tape").get("bpm")%>"></input>
-    </form> 
 
 
       <div id="bpm_ctrl">

@@ -15,6 +15,8 @@ class Tapedeck
   has_many :invites
   belongs_to :tape, :foreign_key => :active_tape_id
   has_and_belongs_to_many :collaborators, class_name: "User"
+  belongs_to :original, class_name: "Tapedeck"
+  has_many :remixes, class_name: "Tapedeck", :foreign_key => :original_id
 
   #validates_attachment_content_type :cover, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif','image/pjpeg','image/x-png',"image/bmp","image/x-bmp"]
 
@@ -26,6 +28,7 @@ class Tapedeck
   field :commentable, :type => Boolean
   field :public, :type => Boolean
   field :version_count, :type => Integer
+  field :remix, :type => Boolean, :default => false
 
   #Creative common
   field :cc, :type => Boolean, :default => true
@@ -34,6 +37,12 @@ class Tapedeck
   field :cc_nc, :type => Boolean, :default => false
   field :cc_nd, :type => Boolean, :default => false
 
+  field :cc_lock, :type => Boolean, :default => false
+  
+  #original cache
+  field :original_name, :type => String
+  field :original_author, :type => String
+    
   #has_friendly_id :name, :use_slug => true
 
   mount_uploader :cover, CoverUploader

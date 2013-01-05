@@ -2,7 +2,7 @@
   <div class="icon license_icon">
   </div>
   <div class="headline"> 
-    License
+    Licenses
   </div>
 </div> 
 
@@ -12,6 +12,8 @@
   <div class="license nd <%= "active "if @model.get("cc_nd") %>"> </div>
   <div class="license nc <%= "active "if @model.get("cc_nc") %>"> </div>
 </div>
+
+
 <div class="license_info">
-  Read more about <a href="http://creativecommons.org/licenses/" target="_blank"> Creative Commons licenses</a> .
+  Read more about <a href="http://creativecommons.org/licenses/" target="_blank"> Creative Commons licenses</a>.
 </div>

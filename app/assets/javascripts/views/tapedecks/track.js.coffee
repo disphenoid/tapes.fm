@@ -510,9 +510,9 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
 
 
-      Tapesfm.trackm.addTrack {toptions: trackOptions,name:"track_"+@model.get("_id"),url:"http://#{Tapesfm.settings.bucket}.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.mp3", duration:@model.get("duration")}
+      Tapesfm.trackm.addTrack {toptions: trackOptions,name:"track_"+@model.get("audio_id"),url:"http://#{Tapesfm.settings.bucket}.s3.amazonaws.com/audio/#{@model.get("audio_id")}/#{@model.get("audio_id")}.mp3", duration:@model.get("duration")}
     else
-      track_channel = Tapesfm.pusher.subscribe(String(@model.get("id")))
+      track_channel = Tapesfm.pusher.subscribe(String(@model.get("audio_id")))
       track_channel.bind "track", (data) =>
         @model.set({"processed": true})
         Tapesfm.tapedeck.tapedeck.get("tape").trigger("myevent")
@@ -522,12 +522,12 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
         if (window.console && window.console.log)
           window.console.log(message)
     
-    window.trackColors[@model.get("id")] = @model.get("color")
+    window.trackColors[@model.get("audio_id")] = @model.get("color")
     rendertContent = @template(track: @model,index: @getIndex(), color: @model.get("color") )
     $(@el).html(rendertContent)
     #$(@el).fadeIn(500)
     #setTimeout(this.addWavefrom, 30)
-    url = "http://#{Tapesfm.settings.bucket}.s3.amazonaws.com/tracks/#{@model.get("_id")}/#{@model.get("_id")}.json"
+    url = "http://#{Tapesfm.settings.bucket}.s3.amazonaws.com/audio/#{@model.get("audio_id")}/#{@model.get("audio_id")}.json"
     
     jQuery.getJSON url+"?callback=?"
     

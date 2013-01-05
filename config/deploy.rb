@@ -84,6 +84,7 @@ after "deploy:migrations", "cleanup"
 task :set_rights do
   
   run "#{sudo} chmod 777 #{current_path}/tmp/tracks/"
+  run "#{sudo} chmod 777 #{current_path}/tmp/audio/"
   run "#{sudo} chmod 777 #{current_path}/public/uploads/"
   run "#{sudo} chmod 777 #{current_path}/public/uploads/tmp/"
 

@@ -1,0 +1,2 @@
+module RemixHelper
+end

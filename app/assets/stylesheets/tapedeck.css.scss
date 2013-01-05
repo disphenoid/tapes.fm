@@ -245,7 +245,7 @@
           height: 54px;
           background: red;
           float: left;
-          opacity: 0.3;
+          opacity: 0.1;
         
         }
         .license.cc {
@@ -1382,33 +1382,25 @@
 
     }    
 
-    #remix:hover {
-      display: inline-block;
-      position: absolute;
-      //float: right;
+    #openRemix:hover {
 
-      //position: relative;
-      height: 40px;
-      width: 135px;
-      //@include c_g_4_b;
-      z-index: 6000;
-      @include fh_b(12px);
-      @include c_g_5;
-      @include round(3px);
-      line-height: 40px;
-
-      margin-left: 162px;
-
+      // background: url("/assets/tapedeck/remix_icon_on.png") no-repeat top right;
+      @include c_g_5_b;
+      background: url("/assets/tapedeck/remix_top_bg.gif");
       .m_button {
-        @include c_1_b;
-        color: white;
-      
+        color: $c1;
       
       }
+      .icon {
+
+        background: url("/assets/tapedeck/remix_icon_on.png") no-repeat center center;
 
 
+        
+      
+      }
     }
-    #remix {
+    #openRemix {
       display: inline-block;
       position: absolute;
       cursor: pointer;
@@ -1416,21 +1408,32 @@
 
       //position: relative;
       height: 40px;
-      width: 135px;
+      width: 150px;
       //@include c_g_4_b;
       z-index: 6000;
+      // background: url("/assets/tapedeck/remix_icon.png") no-repeat top right;
+      background: url("/assets/home/button_bg.gif");
       @include fh_b(12px);
+      @include c_1_b;
       @include c_g_5;
-      @include round(3px);
+      @include round(5px);
       line-height: 40px;
 
       margin-left: 162px;
 
+      .icon {
+        width: 40px;
+        height: 40px;
+        background: url("/assets/tapedeck/remix_icon.png") no-repeat center center;
+        float: right;
+
+        
+      
+      }
       .m_button {
-        @include c_g_5_b;
-        @include c_1;
-      
-      
+        color: white; 
+        //background: url("/assets/home/button_bg.gif");
+        width: 50px; 
       }
 
 
@@ -1715,7 +1718,215 @@
 
 
 }
+.remix_box.active {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  
+  
 
+}
+
+.remix_box {
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1);
+	-webkit-transition: 0.2s all ease-out;
+	-moz-transition: 0.2s all ease-out;
+	-ms-transition: 0.2s all ease-out;
+	-o-transition: 0.2s all ease-out;
+	transition: 0.2s all ease-out;  
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  width: 290px;
+  // min-height: 220px; 
+  background: $c_g_5 url("/assets/tapedeck/remix_top_bg.gif") repeat-x top;
+  z-index: 20000;
+  left: 50%;
+  top: 50%;
+  margin-left: -145px;
+  margin-top: -150px;
+  @include round(5px);
+  @include bs_out_big(rgba(0,0,0,0.5));
+  padding-top: 5px;
+  padding-bottom: 15px;
+
+
+  .remix_buttons {
+    
+    margin-top: 10px;
+    width: 285px;
+
+    .remix_button {
+      display: inline-block;
+      background: rgba(0,0,0,0.1);
+      width: 130px;
+      height: 35px;
+      @include round(5px);
+      @include fh_b(13px);
+      text-align: center;
+      line-height: 35px;
+      cursor: pointer;
+    }
+    .remix_button.agree:hover {
+      
+      color: $c1b;
+    
+    }
+    .remix_button.deccline:hover {
+      
+      color: $c_g_4;
+    
+    }
+    .remix_button.agree {
+      background: url("/assets/home/button_bg.gif");
+      color: white;
+    }
+    .remix_button.deccline {
+      color: $c_g_3;
+    }  
+  }
+  .headline {
+    
+    @include fh_b(12px);
+    color: $c_g_4;
+    margin-bottom: 10px;
+  
+  }
+
+  .remix_icon {
+    width: 50px;
+    height: 50px;
+    background: url("/assets/tapedeck/remix_box_icon.png");
+    float: left;
+  }
+  
+
+  h2 {
+    
+    margin: 0px;
+    padding: 0px;
+    // margin-top: 10px;
+    // margin-bottom: 20px;
+    @include fh_b(18px);
+    color: $c1;
+    line-height: 50px;
+    height: 50px;
+    float: left;
+  
+  }
+   .remix_info {
+
+      @include fh_b(12px);
+      color: $c1;
+      clear: both;
+      // height: 30px;
+      padding-top: 0px;
+      padding-bottom: 10px;
+      padding-left: 15px;
+      width: 260px;
+      line-height: 14px;
+      a {
+        
+        color: $c_g_4;
+        @include fh_b(11px);
+        
+      
+      }
+      a:hover {
+        
+        color: $c1;
+        
+      
+      }
+    }
+  
+  .licenses {
+    clear: both;
+    padding-left: 15px;
+
+
+
+    .license_info {
+
+        @include fh(11px);
+        color: $c_g_3;
+        clear: both;
+        // height: 30px;
+        padding-top: 10px;
+        width: 260px;
+        line-height: 14px;
+        padding-bottom: 5px;
+        a {
+          
+          color: $c_g_4;
+          @include fh_b(11px);
+          
+        
+        }
+        a:hover {
+          
+          color: $c1;
+          
+        
+        }
+      }
+      .license_icons {
+        margin-left: -8px;
+        .license.active {
+          opacity: 0.7;
+
+        }
+        .license {
+          width: 54px;
+          height: 54px;
+          background: red;
+          float: left;
+          opacity: 0.1;
+        
+        }
+        .license.cc {
+          
+          background: url("/assets/tapes/cc_cc.png") no-repeat center center;
+        
+        }
+
+        .license.by {
+          
+          background: url("/assets/tapes/cc_by.png") no-repeat center center;
+        
+        }
+        .license.sa {
+          
+          background: url("/assets/tapes/cc_sa.png") no-repeat center center;
+        
+        }
+        .license.nc {
+          
+          background: url("/assets/tapes/cc_nc.png") no-repeat center center;
+        
+        }
+
+        .license.nd {
+          
+          background: url("/assets/tapes/cc_nd.png") no-repeat center center;
+        
+        }
+
+
+
+    }
+  }
+
+
+}
 
 
 

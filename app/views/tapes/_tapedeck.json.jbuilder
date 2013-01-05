@@ -1,4 +1,4 @@
-json.(tapedeck, :id, :_id, :name, :remixable, :commentable, :public, :genre, :project_id, :updated_at)
+json.(tapedeck, :id, :_id, :name, :remixable, :commentable, :public, :genre, :project_id,:remix, :updated_at)
 json.version_count = tapedeck.tapes.count
 
 unless tapedeck.project

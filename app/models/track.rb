@@ -5,6 +5,7 @@ class Track
   #embedded_in :track
 
   belongs_to :user
+  belongs_to :audio
   has_many :comments
   has_and_belongs_to_many :track_settings, inverse_of: nil
   #belongs_to :tape
@@ -30,6 +31,7 @@ class Track
   field :org_sufix, :type => String
 
   mount_uploader :asset, SoundUploader
+  skip_callback :destroy, :after, :remove_asset!
   #store_in_background :asset, ConvertTracks
   #process_in_background :asset
 

@@ -17,7 +17,40 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
     "click #resume": "resume"
     "click #stop": "stop"
     "click #add_track": "addTrack"
+    "click #openRemix": "openRemixTape"
+    "click #deccline": "decclineRemix"
+    "click #remix": "remixTape"
     #'change #change_tape' : 'changeTape'
+
+  remixTape: (e) ->
+    remix = new Tapesfm.Models.Remix
+    remix.set({tapedeck_id: @model.get("id"), tape_id: @model.get("active_tape_id")})
+    remix.save(
+      {}
+      {success: (model, response) ->
+        alert "you got a remix"
+        $(".popin-overlay").removeClass("active")
+        $(".remix_box").removeClass("active") 
+
+
+      })
+  decclineRemix: (e) ->
+    $(".popin-overlay").removeClass("active")
+    $(".remix_box").removeClass("active")
+
+
+  openRemixTape: (e) ->
+    #settingView = new Tapesfm.Views.TapeSetting(model: @model)
+    $(".popin-overlay").addClass("active")
+    $(".remix_box").addClass("active")
+
+    $(".popin-overlay").live "click", (e) ->
+      if $(e.target).is('.popin-overlay')
+        
+        $(".popin-overlay").removeClass("active")
+        $(".remix_box").removeClass("active")
+        $(".popin-overlay").die "click"
+
   saveTape: (e) ->
 
     unless $(e.currentTarget).hasClass("wait")
@@ -32,7 +65,7 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
       @model.get("tape").fetch()
 
   changeTape2: (event) ->
-    #console.log $(event.currentTarget).data("id")
+    #console.log $(event.currentTarget).data("id" => fals)
     @model.set({"active_tape_id" : $(event.currentTarget).data("id")})
 
   changeTape: (event) ->

@@ -21,10 +21,18 @@ class Invite
   end
 
   after_save do |document|
-    date = DateTime.now
-    if document.invited_user.changed?
-      InviteStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "accepted").inc(:count, 1)
-    end
+    
+    # FIX Breakes Invite function: 
+    #
+    # NoMethodError (undefined method `changed?' for nil:NilClass):
+    # app/models/invite.rb:25:in `block in <class:Invite>'
+    # app/controllers/invites_controller.rb:28:in `create'
+    # 
+
+    # date = DateTime.now
+    # if document.invited_user.changed?
+    #   InviteStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "accepted").inc(:count, 1)
+    # end
   end
 
   def invited

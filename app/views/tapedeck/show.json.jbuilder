@@ -1,4 +1,4 @@
-json.(@tapedeck, :_id, :id, :user_id, :name, :description, :active_tape_id, :genre, :genre_sub, :collaborator_ids, :project_id, :public, :commentable, :remixable)
+json.(@tapedeck, :_id, :id, :user_id, :name, :description, :active_tape_id, :genre, :genre_sub, :remix, :collaborator_ids, :project_id, :public, :commentable, :remixable)
 unless tapedeck.project
   json.author tapedeck.user.name
 else
