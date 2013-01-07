@@ -60,88 +60,24 @@ class AudioUploader < CarrierWave::Uploader::Base
 
     jsonp(model.id)
     
-    #gets duration from wav an saves to track
-    # if file.extension == "wav"
-    #   #saves meta data
-    #   wave = WaveInfo.new("#{file.path}") 
-    #   model.duration = (wave.duration * 1000).round
-    #   model.sample_rate = wave.sample_rate
-    #   model.channels = wave.channels
-    # else
-      duration = `soxi -D #{file.path}`
-      model.duration = (duration.gsub("\n","").to_f * 1000).round
 
-      sample_rate = `soxi -r #{file.path}`
-      model.sample_rate = sample_rate.gsub("\n","").to_i
+    duration = `soxi -D #{file.path}`
+    model.duration = (duration.gsub("\n","").to_f * 1000).round
 
-      channels = `soxi -c #{file.path}`
-      model.channels = channels.gsub("\n","").to_i    
-    # end
-    
+    sample_rate = `soxi -r #{file.path}`
+    model.sample_rate = sample_rate.gsub("\n","").to_i
 
+    channels = `soxi -c #{file.path}`
+    model.channels = channels.gsub("\n","").to_i    
 
 
     model.name = File.basename(file.filename, '.*')
     model.file_name = File.basename(file.filename, '.*')
-    #puts "########## duration = #{(wave.duration)}"
 
-    
-    #Resque.enqueue(ConvertTracksS3,model.id)
+    FileUtils.rm_rf("#{Rails.root}/tmp/audio/#{model.id}")
 
-    #Resque.enqueue(UploadWav,"#{Rails.root}/tmp/audio/#{model.id}/#{model.id}.wav", "audio/#{model.id}/#{model.id}.wav",model.id)
-
-    
-
-
-    #generate & uploads .mp3 
-    #to_mp3_and_upload(file.path,"#{Rails.root}/tmp/uploads/#{model.id}.mp3", "audio/#{model.id}/#{model.id}.mp3",model.id)
-    #uploads .wav 
-    #wav_upload(file.path,"audio/#{model.id}/#{model.id}.wav")
 
   end
-
-  # def to_mp3_and_upload(wav_path,mp3_path,s3_path,id)
-  #   connection = Fog::Storage.new(
-  #     :provider                 => 'AWS',
-  #     :aws_secret_access_key    => "aB+GcuPu9pUmjH1/Ab5BXKt8Bb11vqqkMGAfPYgp",
-  #     :aws_access_key_id        => "AKIAJ4BM5OPRZICTBNLQ"
-  #   )
-
-  #   directory = connection.directories.create(
-  #     :key    => "tapesfm", # globally unique name
-  #     :public => true
-  #   )
-  #  
-  #   #convert and upload mp3
-  #   lameOut = `lame #{wav_path} #{mp3_path}` 
-  #   puts "######### convert mp3 #{lameOut}"
-
-  #   mp3_file = directory.files.create(
-  #     :key    => s3_path,
-  #     :body   => File.open(mp3_path),
-  #     :public => true
-  #   ) 
-  # end
-
-  # def wav_upload(wav_path,s3_path) 
-  #   connection = Fog::Storage.new(
-  #     :provider                 => 'AWS',
-  #     :aws_secret_access_key    => "aB+GcuPu9pUmjH1/Ab5BXKt8Bb11vqqkMGAfPYgp",
-  #     :aws_access_key_id        => "AKIAJ4BM5OPRZICTBNLQ"
-  #   )
-
-  #   directory = connection.directories.create(
-  #     :key    => "tapesfm", # globally unique name
-  #     :public => true
-  #   )
-  #   wav_file = directory.files.create(
-  #     :key    => s3_path,
-  #     :body   => File.open(wav_path),
-  #     :public => true
-  #   )  
-
-
-  # end
 
   
   def jsonp fileid
@@ -187,7 +123,8 @@ class AudioUploader < CarrierWave::Uploader::Base
       :body   => File.open("#{Rails.root}/tmp/audio/#{model.id}/#{model.id}.json"),
       :public => true
     )
-
+    
+    
     #directory.destroy
 
   end
