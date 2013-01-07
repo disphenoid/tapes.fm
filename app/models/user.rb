@@ -80,13 +80,17 @@ class User
   before_save do |document|
     date = DateTime.now
     if document.sign_in_count_changed?
-      UserStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "sign_in").inc(:count, 1)
+      unless document.sign_in_count_change.include?(nil)
+        UserStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "sign_in").inc(:count, 1)
+      end
     end
     if document.current_uploadtime_changed?
+      unless document.current_uploadtime_change.include?(nil)
       # the first field of the change array is the old value and the second the new one, according to the documentation
       # the delta is always positive?
-      delta = document.current_uploadtime_change[1] - document.current_uploadtime_change[0]
-      UserStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "uploadtime").inc(:count, delta)
+        delta = document.current_uploadtime_change[1] - document.current_uploadtime_change[0]
+        UserStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "uploadtime").inc(:count, delta)
+      end
     end
   end
 
