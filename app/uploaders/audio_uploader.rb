@@ -58,6 +58,16 @@ class AudioUploader < CarrierWave::Uploader::Base
       model.org_sufix = file.extension
     end
 
+    case file.extension
+      when /^#{"wav"}$/i
+        model.wav = true
+      when /^#{"aif"}$/i
+        model.aif = true
+      when /^#{"aiff"}$/i 
+        model.aif = true
+    end
+
+
     jsonp(model.id)
     
 
@@ -74,7 +84,7 @@ class AudioUploader < CarrierWave::Uploader::Base
     model.name = File.basename(file.filename, '.*')
     model.file_name = File.basename(file.filename, '.*')
 
-    FileUtils.rm_rf("#{Rails.root}/tmp/audio/#{model.id}")
+    # FileUtils.rm_rf("#{Rails.root}/tmp/audio/#{model.id}/")
 
 
   end
