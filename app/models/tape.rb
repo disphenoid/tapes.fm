@@ -34,11 +34,11 @@ class Tape
     end
   end
 
-  after_destroy do |doc|
-    date = DateTime.now
-    TapeStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "destroy").inc(:count, 1)
-    doc.tapedeck.inc(:version_count, -1)
-  end
+  # after_destroy do |doc|
+  #   date = DateTime.now
+  #   TapeStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "destroy").inc(:count, 1)
+  #   doc.tapedeck.inc(:version_count, -1)
+  # end
 
   def track_setting_volume(track_id, value)
     setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})

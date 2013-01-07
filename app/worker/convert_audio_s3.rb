@@ -63,6 +63,7 @@ class ConvertAudioS3
     
     model = Audio.find(id)
     model.processed = true
+    model.mp3 = true
     
     if model.save() 
       Pusher[id.to_s].trigger("track", true.to_json)

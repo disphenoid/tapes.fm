@@ -1,3 +1,13 @@
+<%= content_for(:title) do %>
+  <title> <%= @tapedeck.name%> – tapes.fm</title> 
+<%end%>
+<% if @tapedeck.cover %>
+  <%= content_for(:facebook) do %>
+    <meta property="og:site_name" content="<%= @tapedeck.name%> – tapes.fm"/>
+    <meta property="og:image" content="http://<%= @tapedeck.cover.image.url%>"/> 
+  <%end%>
+<%end%>
+
 <%= javascript_include_tag "tapedeck" %>
 
 <div id="container" class="container_12"></div>

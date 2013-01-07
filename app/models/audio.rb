@@ -8,9 +8,9 @@ class Audio
   field :name, :type => String
   field :asset, :type => String
   field :duration, :type => Float 
-  field :wav, :type => String 
-  field :aif, :type => String 
-  field :mp3, :type => String 
+  field :wav, :type => Boolean, :default => false 
+  field :aif, :type => Boolean, :default => false 
+  field :mp3, :type => Boolean, :default => false 
   field :wavedata, :type => String
   field :processed, :type => Boolean, :default => false
   field :asset_tmp, :type => String

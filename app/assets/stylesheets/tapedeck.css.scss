@@ -1104,7 +1104,7 @@
       }
 
       .download_dropdown {
-        width: 220px;
+        width: 280px;
         position: absolute;
         margin-left: 27px;
         z-index: 90001;
@@ -1124,6 +1124,7 @@
           
         }
         .download_body {
+          // clear: both;
           list-style-type: none;
           padding: 0px;
           margin: 0px;
@@ -1131,6 +1132,8 @@
           @include round(5px);
           padding: 5px 0px;
           margin-top: -1px;
+       
+
           .download_el.c1:hover {
             .title {
               @include c_1b;
@@ -1153,7 +1156,7 @@
 
           .download_el.c1 {
             .title {
-              @include c_1b_b;
+              // @include c_1b_b;
               @include c_1;
               
             }
@@ -1161,6 +1164,7 @@
               @include c_1c_b;
               @include c_1b;              
             }
+      
           
           }
           .download_el.c2:hover {
@@ -1185,7 +1189,7 @@
 
           .download_el.c2 {
             .title {
-              @include c_2b_b;
+              // @include c_2b_b;
               @include c_2;
               
             }
@@ -1217,7 +1221,7 @@
 
           .download_el.c3 {
             .title {
-              @include c_3b_b;
+              // @include c_3b_b;
               @include c_3;
               
             }
@@ -1250,7 +1254,7 @@
 
           .download_el.c4 {
             .title {
-              @include c_4b_b;
+              // @include c_4b_b;
               @include c_4;
               
             }
@@ -1284,7 +1288,7 @@
 
           .download_el.c5 {
             .title {
-              @include c_5b_b;
+              // @include c_5b_b;
               @include c_5;
               
             }
@@ -1318,7 +1322,7 @@
 
           .download_el.c6 {
             .title {
-              @include c_6b_b;
+              // @include c_6b_b;
               @include c_6;
               
             }
@@ -1350,7 +1354,7 @@
 
           .download_el.c7 {
             .title {
-              @include c_7b_b;
+              // @include c_7b_b;
               @include c_7;
               
             }
@@ -1384,7 +1388,7 @@
 
           .download_el.c8 {
             .title {
-              @include c_8b_b;
+              // @include c_8b_b;
               @include c_8;
               
             }
@@ -1399,7 +1403,7 @@
             .title {
               @include round_top_left_soft(5px);
             }
-            .wav {
+            .end {
               @include round_top_right_soft(5px);
             }
           }
@@ -1407,37 +1411,51 @@
             .title {
               @include round_bottom_left_soft(5px);
             }
-            .wav {
+            .end {
               @include round_bottom_right_soft(5px);
             }
           }
           .download_el {
             
+            clear: both;
             margin: 0px 5px;
-            width: 210px;
+            width: 290px;
             height: 30px;
             cursor: pointer;
             
             line-height: 30px;
             .title {
               padding-left: 10px;
-              display: inline-block;
-              width: 150px;
+              // display: inline-block;
+              width: 120px;
               float: left;
-              @include c_1b_b;
+              // @include c_1b_b;
               @include c_1;
               
             }
 
             .wav {
               display: inline-block;
-              padding-left: 10px;
-              width: 40px;
+              // padding-left: 10px;
+              width: 46px;
+              text-align: center;
+              margin: 0px;
               float: left;
               @include c_1c_b;
               @include c_1b;            
             }
-          
+
+            .inactive {
+              display: inline-block;
+              // padding-left: 10px;
+              width: 46px;
+              text-align: center;
+              margin: 0px;
+              float: left;
+              background: rgba(255,255,255,0.1);
+              @include c_g_1;            
+              cursor: auto;
+            }        
           }
           
         }

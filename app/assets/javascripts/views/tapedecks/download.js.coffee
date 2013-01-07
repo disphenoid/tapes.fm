@@ -1,6 +1,7 @@
 class Tapesfm.Views.TapedeckDownload extends Backbone.View
   template: JST['tapedecks/download']
   tagName: "li"
+  className: "download_el"
   events: ->
   initialize: ->
 

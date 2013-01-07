@@ -12,12 +12,10 @@
 
     </div>
     <div class="controller">
-      <div class="element mute" id="mute"><%=@index%></div>
-      <div class="element solo" id="solo" data-index="<%=@index%>">S</div>
-      <canvas class="pan" id="pan" width=150 > </canvas>
-      <canvas class="volume" id="volume" width=150 > </canvas>
-
-
+      <div class="element mute tip" title="Mute Track" id="mute"><%=@index%></div>
+      <div class="element solo tip" title="Solo Track" id="solo" data-index="<%=@index%>">S</div>
+      <canvas class="pan tip" title="Panning click & drag " id="pan" width=150 > </canvas>
+      <canvas class="volume tip" title= "Volume click & drag" id="volume" width=150 > </canvas>
 
     </div>
   </div>
@@ -82,10 +80,10 @@
 
 <% if Tapesfm.user: %>
 <div class="add_track_to_track">
-  <div class="track_btn add_track" id="add_track"></div>
-  <div class="track_btn remove_track from_remove" id="from_remove" data-id="<%=@track.get("_id")%>"></div>
-  <div class="track_btn from_file" id="from_file_<%=@track.get("_id")%>" data-id="<%=@track.get("_id")%>"></div>
-  <div class="track_btn from_library" id="from_library"></div>
+  <div class="track_btn add_track tip_right" title="Replace with new File" id="add_track"></div>
+  <div class="track_btn remove_track from_remove tip_right" title="Remove from this Tape" id="from_remove" data-id="<%=@track.get("_id")%>"></div>
+  <div class="track_btn from_file tip_right" title="Replace with new File" id="from_file_<%=@track.get("_id")%>" data-id="<%=@track.get("_id")%>"></div>
+  <div class="track_btn from_library tip_right" title="Replace with existing Track (soon)" id="from_library"></div>
 
 </div>
 <% end %>

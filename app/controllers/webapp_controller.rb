@@ -29,8 +29,8 @@ class WebappController < ApplicationController
 
   def download
     expires = Time.now + 5.minutes
-    track = Track.find(params[:id])
-    redirect_to s3_signed_url(ENV['s3_bucket_name'], "tracks/#{params[:id]}/#{params[:id]}.#{params[:type]}",'GET',nil,nil, {'response-content-disposition' => "attachment; filename=#{track.name}.#{params[:type]}"})
+    track = Audio.find(params[:id])
+    redirect_to s3_signed_url(ENV['s3_bucket_name'], "audio/#{params[:id]}/#{params[:id]}.#{params[:type]}",'GET',nil,nil, {'response-content-disposition' => "attachment; filename=#{track.name}.#{params[:type]}"})
     #url += "AWSAccessKeyId=#{"AKIAJLUDMFIAAGNUJOIQ"}&Expires=#{expires.to_i}&Signature=#{CGI.escape(signature)}";
     #return url
   end

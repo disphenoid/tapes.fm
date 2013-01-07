@@ -1,7 +1,26 @@
-<a href="/download/<%= @model.get("id") %>?type=mp3" target="_self"> 
-<div class="title" data-full_text="<%= @model.get("name")%>"> <%= @model.get("name")%>.mp3 </div> 
-</a>
+<div class="title" data-full_text="<%= @model.get("name")%>"> <%= @model.get("name")%></div> 
 
-<a href="/download/<%= @model.get("id") %>?type=wav" target="_self"> 
-<div class="wav"> .wav </div>
-</a>
+<% if @model.get("wav"): %>
+  <a href="/download/<%= @model.get("audio_id") %>?type=wav" target="_self"> 
+    <div class="wav">.wav</div>
+  </a>
+<%else:%>
+ <div class="inactive">.wav</div>
+<%end%>
+
+<%if  @model.get("aif"): %>
+  <a href="/download/<%= @model.get("audio_id") %>?type=aif" target="_self"> 
+    <div class="wav">.aif</div>
+  </a>
+<%else:%>
+ <div class="inactive">.aif</div>
+<%end%>
+
+<% if @model.get("mp3"): %>
+  <a href="/download/<%= @model.get("audio_id") %>?type=mp3" target="_self"> 
+    <div class="wav end">.mp3</div>
+  </a>
+<%else:%>
+ <div class="inactive end">.mp3</div>
+ 
+<%end%>
