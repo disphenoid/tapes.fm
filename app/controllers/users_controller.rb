@@ -19,8 +19,10 @@ class UsersController < ApplicationController
       invite.invited_user = @user
       
       if invite.save() 
-        invite.invited_user.follow! invite.user
-        invite.user.follow! invite.invited_user 
+        if invite.user
+          invite.invited_user.follow! invite.user
+          invite.user.follow! invite.invited_user 
+        end
       end
     end
   end
