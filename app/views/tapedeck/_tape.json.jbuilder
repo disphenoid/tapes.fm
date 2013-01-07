@@ -27,6 +27,8 @@ if tape
   end
 
 json.user_name tape.user.name
+
+
 json.user_id tape.user.id
 json.favorite false
 

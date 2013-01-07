@@ -1,8 +1,10 @@
 json.(@tapedeck, :_id, :id, :user_id, :name, :description, :active_tape_id, :genre, :genre_sub, :collaborator_ids)
 
-json.cover @tapedeck.cover.url
-json.cover_m @tapedeck.cover.m.url
-json.cover_s @tapedeck.cover.s.url
+if @tapedeck.cover
+  json.cover @tapedeck.cover.image.url
+  json.cover_m @tapedeck.cover.image.m.url
+  json.cover_s @tapedeck.cover.image.s.url
+end
 
 json.versions @tapedeck.tapes do |json, version|
   json.partial! "tapedeck/versions.json.jbuilder", version: version

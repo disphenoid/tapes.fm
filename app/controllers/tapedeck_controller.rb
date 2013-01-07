@@ -42,7 +42,7 @@ class TapedeckController < ApplicationController
 
     end
 
-    #render :json => @tapedeck
+    render :json => @tapedeck
 
   end
 
@@ -50,14 +50,15 @@ class TapedeckController < ApplicationController
   def update_cover
 
     @tapedeck = Tapedeck.find_or_initialize_by({:id => params[:id]})
-    @tapedeck.cover = params[:tapedeck][:cover]
+    @tapedeck.cover = Cover.new
+    @tapedeck.cover.image = params[:tapedeck][:cover]
     @tapedeck.collaborator_ids.push current_user.id
     @tapedeck.user_id = current_user.id
 
 
-    if @tapedeck.save
+    if @tapedeck.cover.save && @tapedeck.save
 
-      render :json => @tapedeck
+      # render :json => @tapedeck
     end
     
   end

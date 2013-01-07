@@ -14,13 +14,13 @@ if activity.type == "tape" && activity.tapedeck
   
   json.tapedeck_name activity.tapedeck.name if activity.tapedeck
   json.tapedeck_id activity.tapedeck_id
-  json.cover_s activity.tapedeck.cover.s.url if activity.tapedeck
+  json.cover_s activity.tapedeck.cover.image.s.url if activity.tapedeck
   json.version_name activity.tapedeck.tapes.last.name if activity.tapedeck
 
-  unless  activity.tapedeck.project
-    json.author  activity.tapedeck.user.name 
+  unless activity.tapedeck.project
+    json.author activity.tapedeck.user.name 
   else
-    json.author  activity.tapedeck.project.name 
+    json.author activity.tapedeck.project.name 
   end
 
 end
@@ -31,7 +31,7 @@ if activity.type == "version" && activity.tapedeck
   json.tapedeck_name activity.tapedeck.name if activity.tapedeck
 
   json.tapedeck_id activity.tapedeck_id
-  json.cover_s activity.tapedeck.cover.s.url if activity.tapedeck
+  json.cover_s activity.tapedeck.cover.image.s.url if activity.tapedeck
 
   json.version_name activity.tape.name if activity.tape
 
@@ -42,6 +42,22 @@ if activity.type == "version" && activity.tapedeck
   else
     json.author activity.tapedeck.project.name if activity.tapedeck
 
+  end
+
+end
+
+
+if activity.type == "remix" && activity.tapedeck
+  
+  json.tapedeck_name activity.tapedeck.name if activity.tapedeck
+  json.tapedeck_id activity.tapedeck_id
+  json.cover_s activity.tapedeck.cover.image.s.url if activity.tapedeck
+  json.version_name activity.tapedeck.tapes.last.name if activity.tapedeck
+
+  unless activity.tapedeck.project
+    json.author activity.tapedeck.user.name 
+  else
+    json.author activity.tapedeck.project.name 
   end
 
 end

@@ -1,4 +1,12 @@
 class RemixController < ApplicationController
+  def index
+    tapedeck = Tapedeck.find(params[:tapedeck_id])
+    if tapedeck
+      @remixes = tapedeck.remixes.asc(:created_at)
+    end
+      
+  end
+
   def create
     if current_user
       original_td = Tapedeck.find(params[:tapedeck_id])
@@ -19,7 +27,7 @@ class RemixController < ApplicationController
 
         #set cover
         
-        # @remix_td.cover = original_td.cover.file
+        @remix_td.cover_id = original_td.cover_id
 
 
 
@@ -28,6 +36,9 @@ class RemixController < ApplicationController
         
         @remix_td.remix = true 
         @remix_td.name = original_td.name
+        @remix_td.original_name = original_td.name
+        @remix_td.original_author = original_td.user.name
+        @remix_td.original_user_id = original_td.user_id
         @remix_td.tags = original_td.tags
         
         #set permissions
@@ -57,6 +68,8 @@ class RemixController < ApplicationController
         @remix_td.active_tape_id = copy_tape(original_tape)
         
         if @remix_td.save
+
+          current_user.push_activity "remix", @remix_td
         
         end
 

@@ -7,6 +7,11 @@ else
   json.author tapedeck.project.name 
 end
 
+if tapedeck.remix
+  json.original_author tapedeck.original_author
+  json.original_name tapedeck.original_author
+  json.original_id tapedeck.original_id
+end
 
 unless tapedeck.project
   #json.project_name tapedeck.user.name
@@ -17,10 +22,11 @@ end
 
 json.tags tapedeck.tags
 
-
-json.cover tapedeck.cover.url
-json.cover_m tapedeck.cover.m.url
-json.cover_s tapedeck.cover.s.url
+if tapedeck.cover
+  json.cover tapedeck.cover.image.url
+  json.cover_m tapedeck.cover.image.m.url
+  json.cover_s tapedeck.cover.image.s.url
+end
 
 
 #creative common

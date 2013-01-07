@@ -145,15 +145,19 @@ class WebappController < ApplicationController
   def upload_track
     @tapedeck = Tapedeck.find(params[:tapedeck_id])
     if current_user && (@tapedeck.collaborator?(current_user))
-      newparams = coerce(params)
-      @track = Track.new(newparams[:track])
+      newparams = coerce(params) 
+      @track = Track.new()
+      @track.audio = Audio.new(newparams[:track])
+      @track.name = @track.audio.name
+      @track.duration = @track.audio.duration
+      
       @old_track = Track.find(params[:old_track])
       @track.user_id = current_user.id
       @track.group = @old_track.group
       @track.color = @old_track.color
       @replace_id = params[:old_track]
       respond_to do |format|
-        if @track.save
+        if @track.audio.save &&  @track.save
           current_user.add_time @track.duration
           # format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
           # format.js { @picture.id }

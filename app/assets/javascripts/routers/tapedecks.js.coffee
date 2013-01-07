@@ -68,6 +68,10 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
     @tapedeck.attributes.comments = new Tapesfm.Collections.Comments(Tapesfm.bootstrap.comments)
     @tapedeck.get("comments").url = "/api/comments/"+ @tapedeck.get("id")
 
+    # Remixes
+    @tapedeck.attributes.remixes = new Tapesfm.Collections.Tapedecks()
+    @tapedeck.get("remixes").url = "/api/remix?tapedeck_id="+ @tapedeck.get("id")
+
     # List of all Collaborators
     @tapedeck.attributes.collaborators = new Tapesfm.Collections.Collaborators(Tapesfm.bootstrap.collaborators)
     @tapedeck.get("collaborators").url = "/api/collaborators/"+ @tapedeck.get("id")
@@ -97,6 +101,9 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
 
     licenseView = new Tapesfm.Views.TapedeckLicense(model: @tapedeck)
     $('#tapedeck_license').html(licenseView.render().el)
+
+    remixView = new Tapesfm.Views.TapedeckRemixes(collection: @tapedeck.get("remixes"))
+    $('.tapedeck_remixes').html(remixView.render().el)
 
 
     # invitesView = new Tapesfm.Views.TapedeckInvites(collection: @tapedeck.get("collaborators"))

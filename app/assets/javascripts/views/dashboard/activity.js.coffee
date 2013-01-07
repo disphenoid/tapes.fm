@@ -13,6 +13,7 @@ class Tapesfm.Views.DashboardActivity extends Backbone.View
       when "follow" then JST['dashboard/follow']
       when "tape" then JST['dashboard/newtape']
       when "version" then JST['dashboard/version']
+      when "remix" then JST['dashboard/newremix']
 
       #else go work
 

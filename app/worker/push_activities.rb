@@ -8,7 +8,7 @@ class PushActivities
 
     tapedeck = Tapedeck.find(tapedeck_id) unless (tapedeck_id == 0)
 # 
-    if tapedeck.public
+    if tapedeck && tapedeck.public
       to_followers(activity_user_id, activity_id, user_id) 
     end
 # 

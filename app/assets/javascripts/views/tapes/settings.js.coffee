@@ -30,16 +30,16 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
         #   tapedeck.set({id: response._id})
           
 
-        @model.set({cover_s: e.cover.s.url, cover_m: e.cover.m.url, cover: e.cover.m.url, id: e._id})
+        @model.set({cover_s: e.cover_s, cover_m: e.cover_m, cover: e.cover_m, id: e._id})
 
 
         #$(@el).find(".cover_pic").replace("ddsad")#attr("src", ("http://"+e.cover.url))
-        $(@el).find(".cover_pic").attr('src', ("http://"+e.cover.url))
+        $(@el).find(".cover_pic").attr('src', ("http://"+e.cover))
         $(@el).find(".cover_pic").show(500)
         $(@el).find(".cover_label").addClass("active")
         $(@el).find(".cover_pic").removeClass("inactive")
 
-        console.log "http://"+e.cover.m.url
+        # console.log "http://"+e.ccover_m
         #$(@el).find(".cover_pic").hide()
         
         #@render()

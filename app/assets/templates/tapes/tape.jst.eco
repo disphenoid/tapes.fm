@@ -5,6 +5,11 @@
 <div class="wheels"> </div> 
 <a href="/tapedeck/<%=@model.get("id")%>">
 <div class="case"> </div> 
+<% if @model.get("remix"):%>
+  <a href="/tapedeck/<%=@model.get("original_id")%>">
+  <div class="remix tip" title="Original by <%= @model.get("original_author")%>" ></div> 
+  </a>
+<% end %>
 </a>
 <div class="settings_btn tip" title="Settings" id="test_add_<%=@model.get("_id")%>"></div> 
 

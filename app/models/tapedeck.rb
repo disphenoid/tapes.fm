@@ -10,7 +10,10 @@ class Tapedeck
 
   belongs_to :user
   belongs_to :project
+  belongs_to :cover 
+  
   has_many :tapes
+
   has_many :comments
   has_many :invites
   belongs_to :tape, :foreign_key => :active_tape_id
@@ -42,21 +45,24 @@ class Tapedeck
   #original cache
   field :original_name, :type => String
   field :original_author, :type => String
+  field :original_user_id, :type => String
     
   #has_friendly_id :name, :use_slug => true
 
-  mount_uploader :cover, CoverUploader
+  # mount_uploader :cover, CoverUploader
+
+
 
   after_create do |doc|
     date = DateTime.now
     TapedeckStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "create").inc(:count, 1)
   end
 
-  after_destroy do |doc|
-    date = DateTime.now
-    TapedeckStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "destroy").inc(:count, 1)
-    doc.tapedeck.inc(:version_count, -1)
-  end
+  # after_destroy do |doc|
+  #   date = DateTime.now
+  #   TapedeckStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "destroy").inc(:count, 1)
+  #   doc.tapedeck.inc(:version_count, -1)
+  # end
 
   def all_collaborators
     pending = self.pending_collaborators.map {|d| d.invited.pending = true; d;  }

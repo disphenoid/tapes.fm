@@ -1,33 +1,33 @@
 <div id="tapedeck_info">
     <div id="tapedeck_image">
     <div id="tapedeck_image_cover"> </div>
+    <% if @tapedeck.get("remix"): %>
+    <a href="/tapedeck/<%= @tapedeck.get("original_id")%>">
+      <div id="tapedeck_remix" class="tip" title="Original by <%= @tapedeck.get("original_author")%>"> </div>
+    </a>
+    <% end%>
       <img src="http://<%=@tapedeck.get("cover")%>" alt="" />
     </div>
-    <div id="tapedeck_meta">
-
-
+    <div id="tapedeck_meta"> 
       <h1>
       <%= @tapedeck.get("name") %>
       </h2>
      
       <h2>
         <% unless @tapedeck.get("remix"):%> 
-          created by 
+          Created by 
         <%else:%>
-          remixed by 
-        <%end%>
-        
+          Remixed by 
+        <%end%> 
         <%= @tapedeck.get("author") %>
       </h2>
       <div id="tags">
-        <ul class="tags_field" id="tags_<%=@tapedeck.get("id")%>">
-
+        <ul class="tags_field" id="tags_<%=@tapedeck.get("id")%>"> 
         </ul>
       </div>
     </div>
 
-  </div>
-
+  </div> 
   <div id="tapedeck_tapes"> 
 
   </div>

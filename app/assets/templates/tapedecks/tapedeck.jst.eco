@@ -1,7 +1,9 @@
 <div class="remix_box">
   <div class="remix_icon"></div>
   <h2>Remix</h2>
+    <% if Tapesfm.user: %>
     <div class="remix_info"> 
+      
       Copy the current Tape Version to your own Tape Collection and start making it your own! 
     </div>    
   <div class="licenses">
@@ -34,6 +36,25 @@
       <div id="deccline" class="remix_button deccline"> Nope! </div> 
       <div id="remix" class="remix_button agree"> I Agree, Remix! </div> 
     </div>
+    <% else:%>
+
+    <div class="remix_info"> 
+      
+      Please Join or Login to remix this tape!  
+      <br />
+      <div class="remix_buttons">
+        <a href="/login">
+          <div id="login" class="remix_button deccline"> Login </div> 
+        </a>
+        <a href="/">
+          <div id="signup" class="remix_button agree"> Join </div> 
+        </a>
+      </div>      
+    </div>  
+
+
+
+    <%end%>
 
   </div>
 </div>
@@ -144,7 +165,8 @@
   </ul> 
   </div>
   <div id="tapedeck_sidebar"> 
-    <div>
+
+    <div> 
     <div id="tapedeck_collaborators">
 
     </div> 
@@ -152,6 +174,7 @@
       </ul>  
 
      </div>
+    <div class="tapedeck_remixes"> </div>
 
      <div id="tapedeck_license"> 
 

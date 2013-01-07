@@ -1,4 +1,4 @@
-json.(@tapedeck, :_id, :id, :user_id, :name, :description, :active_tape_id, :genre, :genre_sub, :remix, :collaborator_ids, :project_id, :public, :commentable, :remixable)
+json.(@tapedeck, :_id, :id, :user_id, :name, :description, :active_tape_id, :genre, :genre_sub, :remix, :collaborator_ids, :project_id, :public, :commentable, :remixable, :remix)
 unless tapedeck.project
   json.author tapedeck.user.name
 else
@@ -8,8 +8,18 @@ if @tapedeck.project
   json.project_name @tapedeck.project.name 
 end
 
-json.cover @tapedeck.cover.url
-json.cover_m @tapedeck.cover.m.url
+if @tapedeck.remix
+  json.original_author @tapedeck.original_author
+  json.original_name @tapedeck.original_name
+  json.original_id @tapedeck.original_id
+end
+
+json.remixes @tapedeck.remixes
+
+if @tapedeck.cover
+  json.cover @tapedeck.cover.image.url
+  json.cover_m @tapedeck.cover.image.m.url
+end
 
 json.versions @tapedeck.tapes do |json, version|
   json.partial! "tapedeck/versions.json.jbuilder", version: version

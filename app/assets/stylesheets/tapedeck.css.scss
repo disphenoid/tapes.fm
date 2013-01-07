@@ -15,7 +15,7 @@
   width: 45px;
   height: 45px;
   position: absolute;
-  margin-left: -10px;
+  margin-left: 10px;
   margin-top: 7px;
   cursor: pointer;
   border-style: solid;
@@ -25,13 +25,12 @@
   background: url("/assets/tapedeck/invite_plus_off.png") no-repeat center center;
 
 
-}
-
-
+} 
     #tapedeck_invite_add {
       opacity: 0;
       margin-top: -10px;
       position: absolute;
+      margin-left: 20px;
       #invite_send_button:hover {
 
           @include c_4_b;
@@ -102,7 +101,7 @@
     list-style-type: none;
     padding: 0px;
     margin: 7px;
-    margin-left: 45px;
+    margin-left: 65px;
 
 
   
@@ -163,6 +162,7 @@
     background: #00FF00; 
     width: 295px;
     padding: 25px;
+    padding-left: 0px;
     padding-top: 0px;
     padding-right: 0px;
     display: inline-block;
@@ -170,17 +170,29 @@
     background: url("/assets/tapedeck/sidebar_bg.png") no-repeat;
     min-height: 100px;
 
-    .side_widged, #tapedeck_collaborators_header {
+    .side_widged, #tapedeck_collaborators_header, #tapedeck_remix_header {
       clear: both;
       padding: 0px;
       margin: 0px;
+      padding-left: 10px;
       @include c_g_4;
       @include fh_b(12px);
       min-height: 55px;
 
       @include ts_out(#FFF);
-      width: 295px;
-      margin-left: -8px;
+      width: 315px;
+      // margin-left: -8px;
+
+      
+
+
+
+
+
+
+
+
+
       .icon.collaborators_icon {
         background: url("/assets/tapedeck/collaborator_icon.png");
       }
@@ -235,7 +247,7 @@
         }
       }
       .license_icons {
-        margin-left: -8px;
+        margin-left: 0px;
         .license.active {
           opacity: 0.7;
 
@@ -243,7 +255,6 @@
         .license {
           width: 54px;
           height: 54px;
-          background: red;
           float: left;
           opacity: 0.1;
         
@@ -298,6 +309,62 @@
     }
 
 
+  }
+
+    #remixes {
+      padding: 0px;
+      margin: 0px;
+
+    .remix {
+      clear: both;
+      height: 60px;
+      cursor: pointer;
+      padding: 10px;
+      list-style-type: none;
+      padding: 10px;
+      margin: 0px;
+      margin-top: -5px;
+      // background: green;
+      width: 295px;
+      .mini_cover {
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        transition: all .5s ease;
+      
+      }
+
+      .info_box {
+        display: inline-block;
+        width: 200px;
+        height: 20px;
+        float: left;
+        margin-top: 10px;
+        padding: 0px 10px;
+        // @include fh_b(12px);
+        @include c_g_4;
+        margin-left: 65px;
+        .remix_headline {
+          overflow: hidden;
+          height: 13px; 
+          @include fh_b(13px); 
+          margin-bottom: 2px;
+         }
+        .remix_author {
+          color: $c_g_2;
+          @include fh(12px); 
+        }
+          
+          .subline {
+            height: 13px;
+            margin-top: 5px;
+            @include fh(11px); 
+            color: $c_g_2;
+         }
+
+
+
+      }
+    }
   }
 
 
@@ -1586,6 +1653,14 @@
   #tapedeck_info {
     width: 500px;
     display: inline-block;
+    #tapedeck_remix {
+      margin-top: 8px;
+      margin-left: 5px;
+      width: 30px;
+      height: 30px;
+      background: url("/assets/tapes/remix_off.png") no-repeat top left;
+      position: absolute;
+    }
     #tapedeck_image_cover {
       width: 90px;
       height: 100px;
@@ -1611,6 +1686,8 @@
       
       }
     } 
+    #tapedeck_cover {
+    }
     #tapedeck_meta {
       //margin-top: 10px;
       padding-top: 10px;
@@ -1759,6 +1836,13 @@
   padding-bottom: 15px;
 
 
+  .remix_loading {
+  
+    padding-top: 25px;
+    width: 100%;
+    height: 160px; 
+    background: url("/assets/tapedeck/copy_tape.gif") no-repeat center center;
+  }
   .remix_buttons {
     
     margin-top: 10px;
@@ -1798,6 +1882,7 @@
     @include fh_b(12px);
     color: $c_g_4;
     margin-bottom: 10px;
+    padding-top: 10px;
   
   }
 
@@ -1829,7 +1914,7 @@
       clear: both;
       // height: 30px;
       padding-top: 0px;
-      padding-bottom: 10px;
+      padding-bottom: 0px;
       padding-left: 15px;
       width: 260px;
       line-height: 14px;

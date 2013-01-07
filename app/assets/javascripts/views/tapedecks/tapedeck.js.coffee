@@ -25,15 +25,22 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
   remixTape: (e) ->
     remix = new Tapesfm.Models.Remix
     remix.set({tapedeck_id: @model.get("id"), tape_id: @model.get("active_tape_id")})
+    $(".remix_box").html("<div class='remix_loading'> </div>")
+
+
     remix.save(
       {}
       {success: (model, response) ->
-        alert "you got a remix"
+        # alert "you got a remix"
         $(".popin-overlay").removeClass("active")
-        $(".remix_box").removeClass("active") 
+        $(".remix_box").removeClass("active")
 
+        #console.log response
+        window.location = "/tapedeck/#{response.tapedeck_id}"
 
       })
+    
+
   decclineRemix: (e) ->
     $(".popin-overlay").removeClass("active")
     $(".remix_box").removeClass("active")
@@ -145,12 +152,7 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
     $(@el).find("#tapedeck_lower").fadeTo(50,1)
     $(@el).find("#tapedeck_tape").show()
     $(@el).find("#download_tracks").show()
-    $(@el).find("#tapedeck_notape").hide()
-
-  
-
-      
-
+    $(@el).find("#tapedeck_notape").hide() 
 
   render: ->
     rendertContent = @template(model: @model)

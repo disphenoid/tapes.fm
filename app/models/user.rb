@@ -144,6 +144,11 @@ class User
       when "version"
           activity = Activity.find_or_create_by({:type => "version", :user_id => self.id,:tape_id => object.id, :tapedeck_id => object.tapedeck_id} )
           Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
+
+      when "remix"
+          activity = Activity.find_or_create_by({:type => "remix", :user_id => self.id, :tapedeck_id => object.id} )
+          Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.id) if activity          
+
     end
   end
 

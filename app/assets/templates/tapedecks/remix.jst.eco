@@ -9,20 +9,19 @@
 
   </div>
   <div class="info_box">
-    <div class="headline4">
+    <div class="remix_headline">
       <%= @tape.get("name") %> 
-      <br />
-      <span class="author">
-      
-        <%= @tape.get("author") %> 
-      </span>
     </div> 
+    <div class="remix_author"> 
+      Remixed by <%= @tape.get("author") %> 
+    </div>
     <div class="subline">
-      <span class="date" title="<%= @tape.get("updated_at")%>">
-      <%= @tape.get("updated_at") %>
+      <span class="date" title="<%= @tape.get("created_at")%>">
+      <%= @tape.get("created_at") %>
       </span
       
     </div> 
   </div> 
+
 
 
