@@ -9,6 +9,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
     "click .ctrl_buttons#plus" : "plusBPM"
     "click .ctrl_buttons#minus" : "minusBPM"
     "submit form" : "changeBPM"
+    "keyup #bpm_value" : "keyupBPM"
 
   initialize: ->
     #@model.get("tape").on('change:_id', @render, this)
@@ -17,6 +18,12 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
       @model.get("tape").on('edit', @render_undo, this)
       @model.get("tape").on('new', @render_undo, this)
       @model.get("tape").on('edit_done', @render_normal, this)
+  keyupBPM: (e) ->
+
+    val = $("#bpm_value").val()
+    @model.get("tape").set({bpm:val})
+    # $("#bpm_value").focus()
+    
   changeBPM: (e) ->
 
     e.preventDefault()
@@ -121,6 +128,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
     rendertContent = @template(model:@model, edit_mode: false)
     $(@el).html(rendertContent)
     $(".tipsy").remove()
+    $(@el).find('.bpm_value').numeric()
     
 
     this
@@ -128,9 +136,11 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
   render_undo: ->
     #$(@el).html("no")
     window.existing_tape = true
+
     rendertContent = @template(model:@model, edit_mode: true)
     $(@el).html(rendertContent)
     $(".tipsy").remove()
+    $(@el).find('.bpm_value').numeric()
     this
     
   render: ->
@@ -139,7 +149,15 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
     else
       @render_normal()
 
-    
+    $(@el).find('.bpm_value').numeric()
+    $(@el).find('.bpm_value').typing
+      start:(e, $elem) =>
+
+      stop: (e, $elem) =>
+        # @changeBPM e, this 
+      delay: 500
+    this
+
 
 
 

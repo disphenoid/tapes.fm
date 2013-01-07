@@ -11,7 +11,12 @@ class Tapesfm.Views.TapedeckEdit extends Backbone.View
   
   saveTape: ->
     if Tapesfm.user
+      # val = $(".bpm_value").val()
+      # @model.get("tape").set({bpm:val})
+
       @model.get("tape").trigger("edit_done")
+
+     
       @model.get("tape").save()
       $("#tape_save_hint_box").removeClass("edit")
       $("#tape_save_button").removeClass("edit")
@@ -26,10 +31,9 @@ class Tapesfm.Views.TapedeckEdit extends Backbone.View
     @render()
   render: ->
     if @model.get("tape").isNew()
-      #$('#tape_select').hide()
-      #$('#tape_edit').show()
       rendertContent = @template()
       $(@el).append(rendertContent)
+      $(@el).find('.bpm_value').numeric()
     
     this
 

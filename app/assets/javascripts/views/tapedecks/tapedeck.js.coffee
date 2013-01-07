@@ -22,6 +22,7 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
     "click #remix": "remixTape"
     #'change #change_tape' : 'changeTape'
 
+ 
   remixTape: (e) ->
     remix = new Tapesfm.Models.Remix
     remix.set({tapedeck_id: @model.get("id"), tape_id: @model.get("active_tape_id")})

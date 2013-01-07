@@ -17,7 +17,12 @@ class TapesController < ApplicationController
       @tape.name = params[:name]
       @tape.tapedeck_id = params[:tapedeck_id]
       @tape.track_ids = params[:track_ids]
-      @tape.bpm = params[:bpm]
+      unless params[:bpm].blank?
+        @tape.bpm = params[:bpm].to_f
+      else
+        @tape.bpm = 120
+      end
+
       @tape.tapedeck.active_tape_id = @tape.id
 
       #@tape.track_setting_ids = params[:track_setting_ids]
