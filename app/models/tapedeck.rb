@@ -58,11 +58,10 @@ class Tapedeck
     TapedeckStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "create").inc(:count, 1)
   end
 
-  # after_destroy do |doc|
-  #   date = DateTime.now
-  #   TapedeckStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "destroy").inc(:count, 1)
-  #   doc.tapedeck.inc(:version_count, -1)
-  # end
+  after_destroy do |doc|
+    date = DateTime.now
+    TapedeckStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "destroy").inc(:count, 1)
+  end
 
   def all_collaborators
     pending = self.pending_collaborators.map {|d| d.invited.pending = true; d;  }
