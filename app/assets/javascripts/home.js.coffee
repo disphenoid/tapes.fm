@@ -58,15 +58,15 @@ jQuery () ->
     $("#nav_back").animate({left: 230}, 0)
 
   $("#col3").mouseenter (e) ->
-    # $("#screen1").fadeOut(aniTime)
-    # $("#screen2").fadeOut(aniTime)
-    # $("#screen3").fadeIn(aniTime)
-    # $("#screen4").fadeOut(aniTime)
-    # $("#col1").removeClass("active")
-    # $("#col2").removeClass("active")
-    # $("#col3").addClass("active")
-    # $("#col4").removeClass("active")
-    # $("#nav_back").animate({left: 460}, 0)
+    $("#screen1").fadeOut(aniTime)
+    $("#screen2").fadeOut(aniTime)
+    $("#screen3").fadeIn(aniTime)
+    $("#screen4").fadeOut(aniTime)
+    $("#col1").removeClass("active")
+    $("#col2").removeClass("active")
+    $("#col3").addClass("active")
+    $("#col4").removeClass("active")
+    $("#nav_back").animate({left: 460}, 0)
 
   $("#col4").mouseenter (e) ->
     # $("#screen1").fadeOut(aniTime)
