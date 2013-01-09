@@ -36,7 +36,10 @@ class AudioUploader < CarrierWave::Uploader::Base
   def waveform
     puts "##### Start Process" 
 
-    #generating json
+
+
+
+    #make tmp folder 
 
     unless (File.directory? "#{Rails.root}/tmp/audio/")
       Dir.mkdir("#{Rails.root}/tmp/audio/", 0777)
@@ -44,6 +47,27 @@ class AudioUploader < CarrierWave::Uploader::Base
     unless (File.directory? "#{Rails.root}/tmp/audio/#{model.id}") 
       Dir.mkdir("#{Rails.root}/tmp/audio/#{model.id}", 0777)
     end
+    
+    #cut silence
+    tmp_path =  "#{Rails.root}/tmp/audio/#{model.id}/"
+
+
+    `sox #{file.path} #{tmp_path+model.id.to_s+"-r"}.#{file.extension} reverse;` 
+    `sox #{tmp_path+model.id.to_s+"-r"}.#{file.extension} #{tmp_path+model.id.to_s+"-rc"}.#{file.extension} silence 1 00:00:00 -96d;` 
+    `sox #{tmp_path+model.id.to_s+"-rc"}.#{file.extension} #{file.path} reverse;`
+
+    #remove files
+    `rm #{tmp_path+model.id.to_s+"-r"}.#{file.extension}`
+    `rm #{tmp_path+model.id.to_s+"-rc"}.#{file.extension}`
+    `rm #{tmp_path+model.id.to_s+"-r"}.#{file.extension}`
+
+
+
+    `#{Rails.root}/bin/wav2json_linux #{file.path} -o #{Rails.root}/tmp/audio/#{model.id}/#{model.id}.json`
+
+
+    #generating json
+
 
     if Rails.env.production?
       out = `#{Rails.root}/bin/wav2json_linux #{file.path} -o #{Rails.root}/tmp/audio/#{model.id}/#{model.id}.json` 
@@ -54,6 +78,8 @@ class AudioUploader < CarrierWave::Uploader::Base
     puts "######### chaka #{out}"
     puts "############### waveform1 #{file.path}" 
     
+
+
     if file.extension
       model.org_sufix = file.extension
     end
@@ -68,6 +94,7 @@ class AudioUploader < CarrierWave::Uploader::Base
     end
 
 
+    #remove_silence(model.id)
     jsonp(model.id)
     
 
@@ -86,6 +113,17 @@ class AudioUploader < CarrierWave::Uploader::Base
 
     # FileUtils.rm_rf("#{Rails.root}/tmp/audio/#{model.id}/")
 
+
+  end
+
+
+
+  def remove_silence fileid
+    
+    #tempfile=File.open("#{Rails.root}/tmp/audio/#{model.id}/#{model.id}.tmp", 'w')
+    
+
+      
 
   end
 
