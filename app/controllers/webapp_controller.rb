@@ -36,9 +36,13 @@ class WebappController < ApplicationController
   end
 
   def settings
-    @json = render_to_string( template: 'settings/index.json.jbuilder', locals: { settings: current_user})
-    respond_to do |format|
-        format.html
+    if current_user
+      @json = render_to_string( template: 'settings/index.json.jbuilder', locals: { settings: current_user})
+      respond_to do |format|
+          format.html
+      end
+    else
+      redirect_to "/"
     end
   end
 
@@ -65,9 +69,10 @@ class WebappController < ApplicationController
       @invites = Invite.where({accepted: false,invited_user_id: current_user.id}).excludes(:tapedeck_id => nil) #Tapedeck.where({user_id: current_user.id})
       @activities = current_user.stream
     else
-      @tapedecks = []
-      @invites = []
-      @activities = []
+      redirect_to "/"
+      #@tapedecks = []
+      #@invites = []
+      #@activities = []
     end
     @json = render_to_string( template: 'dashboard/index.json.jbuilder', locals: { tape: @tapedecks, invite: @invites, activities: @activities })
     respond_to do |format|
@@ -76,6 +81,7 @@ class WebappController < ApplicationController
   end
 
   def explore
+    if current_user
     @active = Tapedeck.where({public: true}).where(:version_count.ne => 1).sort({updated_at:-1})
     @top = Tapedeck.all
     @new = Tapedeck.where({public: true}).where(:version_count.in => [0,1]).desc(:created_at)
@@ -83,12 +89,16 @@ class WebappController < ApplicationController
     respond_to do |format|
       format.html
     end
+    else
+      redirect_to "/"
+    end
   end
 
   def tapes
     if current_user
       @tapedecks = Tapedeck.where({collaborator_ids: current_user.id}).desc(:created_at) #Tapedeck.where({user_id: current_user.id})
     else
+      redirect_to "/"
       @tapedecks = []
     end
     @json = render_to_string( template: 'tapes/index.json.jbuilder', locals: { tape: @tapedecks})

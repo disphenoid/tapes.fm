@@ -4,8 +4,12 @@ class SearchController < ApplicationController
     if params[:q]
       
       query = params[:q].split(" ")
+      a = Autocomplete.new "tape_tags_complete"
+      @complete = a.complete params[:q]
 
-      @tapedecks =  Tapedeck.tagged_with(query).limit(5)
+      @tags = query + @complete
+
+      @tapedecks =  Tapedeck.tagged_with(@tags).limit(5)
       
       if query.count == 1
         
