@@ -819,6 +819,10 @@
       }
     }   
   }
+  #tape_edit_modul.err {
+    background: url("/assets/home/button_bg.gif");
+  
+  }
   #tape_edit_modul {
     @include round_left(3px);
     //margin-top: 20px;
@@ -949,11 +953,18 @@
         }
       }
     }
-
+    #tape_edit_field.err {
+      @include c_1;
+      background: red;
+    }
     #tape_edit_field {
       @include c_1;
+      width: 280px;
     }
   
+    #tape_edit_label.err  {
+      color: white;
+    }
     #tape_edit_label  {
     
       @include c_g_4;

@@ -96,7 +96,7 @@
 
             <p>
               <label id="tape_edit_label" for="tape_edit_field">What did you change?</label>
-              <input type="text" name="tape_edit_field" id="tape_edit_field" value=""></input>
+              <input class="" type="text" name="tape_edit_field" id="tape_edit_field" value=""></input>
             </p>
       </div>
     </div>

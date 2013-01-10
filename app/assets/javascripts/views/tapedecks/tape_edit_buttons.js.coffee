@@ -100,6 +100,8 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
     
     @model.get("tape").trigger("edit_done")
 
+    $("#tape_edit_modul").removeClass("err")
+    $("#tape_edit_label").removeClass("err")
     unless @model.get("tape").get("id") == undefined
       @model.get("tape").set({undo: true},{silent: true})
       @model.get("tape").fetch()
