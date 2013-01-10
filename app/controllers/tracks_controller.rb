@@ -21,6 +21,7 @@ class TracksController < ApplicationController
   def update
     tape = Track.find(params[:id])
     tape.color = params[:color]
+    tape.name = params[:name]
     tape.update_attributes!(params[:track])
     render :json => tape
   end

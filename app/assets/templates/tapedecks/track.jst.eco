@@ -2,8 +2,13 @@
   <div class="control_set"> 
     <div class="title_set">
       
-      <div class="title" data-full_text="<%=@track.get("name")%>">
-        <%=@track.get("name")%> 
+      <div class="title ">
+        <div class="name tip" title="Click to change name" data-full_text="<%=@track.get("name")%>">
+          <%=@track.get("name")%> 
+        </div>
+        <input type="text" class="name_edit_field" value="<%=@track.get("name")%>"></input>
+         
+         <div class="name_save_button" > </div>
         <%#@track.get("id")%> 
       </div>
       <div class="sub" title="<%= @track.get("created_at")%>">

@@ -79,9 +79,40 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     "click #send_track_button_new" : "createComment"
     "click .send_track_button_replay" : "createComment_replay"
     "click .color_field" : "changeColor"
+    "click .name" : "editTitle"
+    "click .name_save_button" : "saveTitle"
     #"blur .comment_field" : "blurField"
 
 
+  editTitle: (e) ->
+    $(@el).find(".name").hide()
+    $(@el).find(".name_edit_field").show().focus()
+    $(@el).find(".name_save_button").show()
+
+
+  saveTitle: (e) ->
+    unless $(@el).find(".name_edit_field").val() == ""
+      
+      $(@el).find(".name").show()
+      $(@el).find(".name_edit_field").hide()
+      $(@el).find(".name_save_button").hide()
+      
+
+      $(@el).find(".name").data("full_text",$(@el).find(".name_edit_field").val())
+      $(@el).find(".name").text($(@el).find(".name").data("full_text"))
+      $(@el).find(".name").trunacat()
+
+
+      @model.set({name: $(@el).find(".name").data("full_text")})
+      @model.save(
+        {}
+        {success: (model, response) ->
+
+          # alert model.get("color")
+
+        })
+     else
+      alert "Please enter a Track Name!"
   changeColor: (e) ->
     color = $(e.currentTarget).data("color")
 
@@ -588,7 +619,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
       @model.get("comments").each(@addTapeComment)
 
 
-    $(@el).find(".title").trunacat()
+    $(@el).find(".name").trunacat()
 
     this
   reRenderComments: (e) =>

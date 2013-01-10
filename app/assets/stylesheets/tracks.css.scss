@@ -469,6 +469,40 @@
               position: absolute;
               z-index: 9200;
               @include round(5px);
+              .name {
+                display: inline;
+              
+              
+              }
+              .name_edit_field {
+                display: none;
+                background: none;
+                position: absolute;
+                width: 105px;
+                @include fh_b(12px);
+                @include ts_in(rgba(0,0,0,0.2));
+                padding: 0px;
+                border: none;
+                outline: none;
+                color: white;
+              }
+              .name_save_button:hover {
+                background-color: rgba(0,0,0,0.2);
+
+              }
+              .name_save_button {
+                display: none;
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background: rgba(0,0,0,0.1);
+                margin-left: 111px;
+                margin-top: -5px;
+                @include round(3px);
+                background: rgba(0,0,0,0.08) url("/assets/tapedeck/edit_text_done.png") no-repeat center center;
+
+              }
+
             }
             .sub {
               margin-top: 26px;
