@@ -10,15 +10,10 @@ class AudioUploader < CarrierWave::Uploader::Base
   permissions 0777
   storage :fog
   process :waveform
+  before :store, :remember_cache_id
   after :store, :add_to_process_queu
 
-  def move_to_cache
-    true
-  end
 
-  def move_to_store
-    true
-  end
 
   def store_dir
 
@@ -29,8 +24,23 @@ class AudioUploader < CarrierWave::Uploader::Base
     %w(aiff aif wav)
   end
 
+  def remember_cache_id(new_file)
+    @cache_id_was = cache_id
+  end
+
   def add_to_process_queu(argue)
     Resque.enqueue(ConvertAudioS3,model.id, model.org_sufix)
+
+    tmp_path =  "#{Rails.root}/tmp/audio/#{model.id}/"
+
+    # `rm -rf #{tmp_path}`
+    FileUtils.rm_rf tmp_path
+
+    if @cache_id_was.present? && @cache_id_was =~ /\A[\d]{8}\-[\d]{4}\-[\d]+\-[\d]{4}\z/
+      FileUtils.rm_rf(File.join(cache_dir, @cache_id_was))
+    end
+
+
   end
 
   def waveform
@@ -57,9 +67,9 @@ class AudioUploader < CarrierWave::Uploader::Base
     `sox #{tmp_path+model.id.to_s+"-rc"}.#{file.extension} #{file.path} reverse;`
 
     #remove files
-    `rm #{tmp_path+model.id.to_s+"-r"}.#{file.extension}`
-    `rm #{tmp_path+model.id.to_s+"-rc"}.#{file.extension}`
-    `rm #{tmp_path+model.id.to_s+"-r"}.#{file.extension}`
+    # `rm #{tmp_path+model.id.to_s+"-r"}.#{file.extension}`
+    # `rm #{tmp_path+model.id.to_s+"-rc"}.#{file.extension}`
+    # `rm #{tmp_path+model.id.to_s+"-r"}.#{file.extension}`
 
 
 

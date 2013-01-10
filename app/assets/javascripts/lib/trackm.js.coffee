@@ -5,7 +5,7 @@ class window.Trackm
     @sm = soundManager
 
   duration: 0
-  trackWidth: 775
+  trackWidth: 765
   leadTrack: null
   tracks: []
   
@@ -151,7 +151,7 @@ class window.Trackm
 
 
   seek: (pixel_pos) ->
-    baseWidth = 775
+    baseWidth = 765
 
     loaded = true
     position = window.tools.map(pixel_pos, 0, Number(baseWidth), 0,  @leadTrack.duration)
@@ -198,7 +198,7 @@ class window.Trackm
       return false
   position: ->
 
-    baseWidth = 775
+    baseWidth = 765
     #console.log "position = "+ String(this.position) + " / " + String(this.durationEstimate)
     
     val = window.tools.map(this.position, 0, this.durationEstimate, 0, Tapesfm.trackm.trackWidth)
@@ -211,7 +211,7 @@ class window.Trackm
       unless Number(val) > Number($(("#"+t.id+"_clip")).width())
         $(("#"+t.id+"_progress")).css({width: val})
       else
-        $(("#"+t.id+"_progress")).css({width: $(("#"+t.id+"_clip")).width()})
+        $(("#"+t.id+"_progress")).css({width: $(("#track_"+t.id+"_clip")).width()})
 
 
   loading: ->

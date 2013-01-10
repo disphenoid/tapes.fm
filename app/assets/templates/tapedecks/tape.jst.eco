@@ -55,24 +55,42 @@
 
     </div>
   <div id="commentbox<%=@model.get("_id")%>" class="commentbox_tape"> 
-    <div class="body"> 
+      <% if Tapesfm.user: %>
+        <div class="body"> 
 
-      <div id="comment_box_tape"> 
-        <div class="send_track_button" id="send_track_button_tape">
-          Post
+          <div id="comment_box_tape"> 
+            <div class="send_track_button" id="send_track_button_tape">
+              Post
+            </div>
+
+            <label class="comment_label_tape" id="comment_tape_label_<%= @model.get("id")%>" for="comment_tape_field_<%= @model.get("id")%>">Post a Comment</label>
+            <textarea class="comment_field_tape comment_field_tape_new" type="text" name="comment_tape_field_<%= @model.get("id")%>" id="comment_tape_field_<%= @model.get("id")%>" value=""></textarea>
+
+             </div> 
+
+        
+        
         </div>
+        <div class="snip"> </div>
+      
+        </div>
+        <% else: %>
+        <div class="body"> 
+          <div class="comment_login_or"> 
+            <div class="login_buttons"> 
+              <a href="/login">
+                <div class="login_button deccline"> Login </div>
+              </a>
+              <a href="/signup">
+                <div class="login_button agree"> Join </div>
+              </a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="snip"> </div>
+        <% end %>
 
-        <label class="comment_label_tape" id="comment_tape_label_<%= @model.get("id")%>" for="comment_tape_field_<%= @model.get("id")%>">Post a Comment</label>
-        <textarea class="comment_field_tape comment_field_tape_new" type="text" name="comment_tape_field_<%= @model.get("id")%>" id="comment_tape_field_<%= @model.get("id")%>" value=""></textarea>
-
-         </div> 
-
-    
-    
-    </div>
-    <div class="snip"> </div>
-  
-  </div>
   </div>
 
 

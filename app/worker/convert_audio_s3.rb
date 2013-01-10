@@ -69,6 +69,9 @@ class ConvertAudioS3
       Pusher[id.to_s].trigger("track", true.to_json)
     end
 
+    # `rm -rf #{Rails.root}/tmp/audio/#{id}/`    
+    FileUtils.rm_rf "#{Rails.root}/tmp/audio/#{id}/"
+
   end
   
 end

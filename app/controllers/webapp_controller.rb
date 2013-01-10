@@ -125,7 +125,7 @@ class WebappController < ApplicationController
         # @track.audio = Audio.new
         @track.group = @track.id
         @track.user_id = current_user.id
-        @track.color = (params[:track_length].to_i + 1)
+        @track.color = rand(1..8) #(params[:track_length].to_i + 1)
         #puts "paraaaams #{newparams[:track][:asset].class}"
         #@track.process_asset_upload = true
         respond_to do |format|

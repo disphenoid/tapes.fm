@@ -1,4 +1,5 @@
 window.trackComments = {}
+window.trackWaveforms = {}
 window.colors = (color) ->
   switch color
     when 1
@@ -35,7 +36,7 @@ window.waveform = (data) =>
   #width = 735
 
   $("#track_"+data.id+"_clip").html("")
-  waveform = new Waveform({ width: width, interpolate: true,container: document.getElementById("track_"+data.id+"_clip"), data_r: data.wavedata.right ,data_l: data.wavedata.left ,data: data.wavedata.left, innerColor: "transparent", outerColor: color })
+  window.trackWaveforms[data.id] = new Waveform({ width: width, interpolate: true,container: document.getElementById("track_"+data.id+"_clip"), data_r: data.wavedata.right ,data_l: data.wavedata.left ,data: data.wavedata.left, innerColor: "transparent", outerColor: color })
 
   # $("#track_"+data.id+"_base").hide()
   # $("#track_"+data.id+"_loaded").hide()
@@ -77,9 +78,38 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     "blur .answer_field" : "blurField_replay"
     "click #send_track_button_new" : "createComment"
     "click .send_track_button_replay" : "createComment_replay"
+    "click .color_field" : "changeColor"
     #"blur .comment_field" : "blurField"
 
 
+  changeColor: (e) ->
+    color = $(e.currentTarget).data("color")
+
+    $(@el).find(".track_info").removeClass("c1 c2 c3 c4 c5 c6 c7 c8")
+    $(@el).find(".track_info").addClass("c#{color}")
+    
+    $(@el).find(".track_clip_box").removeClass("c1 c2 c3 c4 c5 c6 c7 c8")
+    $(@el).find(".track_clip_box").addClass("c#{color}")
+
+    trackWaveforms[@model.get("audio_id")].color window.colors(color)
+    
+
+    if @getIndex() == 1
+      $("#tape_edge").removeClass("edge_1 edge_2 edge_3 edge_4 edge_5 edge_6 edge_7 edge_8") 
+      $("#tape_edge").addClass("edge_#{color}")
+
+    @model.set({color: color })
+    @model.save(
+      {}
+      {success: (model, response) ->
+
+        # alert model.get("color")
+
+      })
+
+      
+
+    
 
   createComment_replay: (e) ->
     

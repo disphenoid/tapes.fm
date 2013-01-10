@@ -17,6 +17,23 @@
       <canvas class="pan tip" title="Panning click & drag " id="pan" width=150 > </canvas>
       <canvas class="volume tip" title= "Volume click & drag" id="volume" width=150 > </canvas>
 
+      <div class="element color" id="color" data-index="<%=@index%>">
+        
+        <div class="color_ring"> 
+
+          <div class="color_field field_1" data-color="1"> </div>
+          <div class="color_field field_2" data-color="2"> </div>
+          <div class="color_field field_3" data-color="3"> </div>
+          <div class="color_field field_4" data-color="4"> </div>
+          <div class="color_field field_5" data-color="5"> </div>
+          <div class="color_field field_6" data-color="6"> </div>
+          <div class="color_field field_7" data-color="7"> </div>
+          <div class="color_field field_8" data-color="8"> </div>
+        
+        </div>
+
+        
+      </div>
     </div>
   </div>
 
@@ -55,6 +72,7 @@
 
     </div>
   <div id="commentbox<%=@track.get("_id")%>" class="commentbox"> 
+    <% if Tapesfm.user: %>
     <div class="body"> 
 
       <div id="comment_box"> 
@@ -71,6 +89,22 @@
     
     </div>
     <div class="snip"> </div>
+    <% else: %>
+    <div class="body"> 
+      <div class="comment_login_or"> 
+        <div class="login_buttons"> 
+          <a href="/login">
+            <div class="login_button deccline"> Login </div>
+          </a>
+          <a href="/signup">
+            <div class="login_button agree"> Join </div>
+          </a>
+          
+        </div>
+      </div>
+    </div>
+    <div class="snip"> </div>
+    <% end %>
   
   </div>
     

@@ -69,6 +69,12 @@
     };
 
 
+    Waveform.prototype.color = function(color) {
+        
+      this.outerColor = color;
+      return this.redraw();
+
+    }
     Waveform.prototype.update = function(options) {
       if (options.interpolate != null) {
         this.interpolate = options.interpolate;

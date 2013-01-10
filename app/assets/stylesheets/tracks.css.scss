@@ -5,6 +5,45 @@
 @import "tools/colors";
 @import "tools/effects";
         
+.comment_login_or {
+  text-align: center;
+  @include fh_b(14px);
+  padding: 10px;
+  .login_buttons {
+    
+    // width: 100px;
+
+    .login_button {
+      display: inline-block;
+      background: rgba(0,0,0,0.1);
+      width: 95px;
+      height: 30px;
+      @include round(5px);
+      @include fh_b(11px);
+      text-align: center;
+      line-height: 30px;
+      cursor: pointer;
+    }
+    .login_button.agree:hover {
+      
+      color: $c1b;
+    
+    }
+    .login_button.deccline:hover {
+      
+      color: $c_g_4;
+    
+    }
+    .login_button.agree {
+      background: url("/assets/home/button_bg.gif");
+      color: white;
+    }
+    .login_button.deccline {
+      color: $c_g_3;
+    }  
+  }  
+
+}
 
   .from_file {
     text-align: left;
@@ -397,7 +436,7 @@
       .track_info {
         z-index: 6000; 
         height: 85px;
-        width: 150px;
+        width: 160px;
         display: inline-block;
         //background: #FF00FF;
         float: left; 
@@ -410,7 +449,7 @@
         
         }
         .control_set {
-          width: 130px;
+          width: 140px;
           height: 85px;
           padding-left: 5px;
           //background: rgba(255,255,255,0.1);
@@ -501,6 +540,9 @@
               margin-right: 4px;
               color: rgba(255,255,255,0.3);
             }
+
+
+
             .element.mute {
               @include round_left(24px);
               padding-left: 4px;
@@ -513,6 +555,163 @@
               color: rgba(255,255,255,0.3);
 
             }
+            .element.color:hover {
+              background: url("/assets/tapedeck/color_icon_on.png") no-repeat center center;
+              .color_ring {
+                visibility: visible;
+                -webkit-transform: scale(1);
+                -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                -o-transform: scale(1);
+                transform: scale(1);              
+                transform:rotate(0deg);
+                -ms-transform:rotate(0deg); /* IE 9 */
+                -moz-transform:rotate(0deg); /* Firefox */
+                -webkit-transform:rotate(0deg); /* Safari and Chrome */
+                -o-transform:rotate(0deg); /* Opera */   
+                opacity: 1;
+              }
+            }
+            .element.color {
+              position: absolute;
+              @include round(24px);
+              color: rgba(255,255,255,0.3);
+              width: 29px;
+              height: 29px;
+              background: white;
+              margin-top: 1px;
+              margin-left: 72px;
+              background: url("/assets/tapedeck/color_icon_off.png") no-repeat center center;
+
+              .color_ring {
+                position: absolute;
+                visibility: hidden;
+                width: 68px;
+                height: 68px;
+                margin-left: -20px;
+                margin-top: -20px;
+                // background: $c_g_0;
+                @include c_g_0_b; 
+                @include round(68px);
+                background: url("/assets/tapedeck/color_ring_bg.png");
+                -webkit-transition: 0.2s all ease-out;
+                -moz-transition: 0.2s all ease-out;
+                -ms-transition: 0.2s all ease-out;
+                -o-transition: 0.2s all ease-out;
+                transition: 0.2s all ease-out;
+                
+                -webkit-transform: scale(0.1);
+                -moz-transform: scale(0.1);
+                -ms-transform: scale(0.1);
+                -o-transform: scale(0.1);
+                transform: scale(0.1);
+
+                transform:rotate(-40deg);
+                -ms-transform:rotate(-40deg); /* IE 9 */
+                -moz-transform:rotate(-40deg); /* Firefox */
+                -webkit-transform:rotate(-40deg); /* Safari and Chrome */
+                -o-transform:rotate(-40deg); /* Opera */    
+                opacity: 0;
+
+                .color_field:hover {
+
+                  opacity: 0.6;
+
+                }
+                .field_1 {
+                  width: 13px;
+                  height: 13px;
+                  position: absolute;
+                  background: $c1;
+                  @include round(13px);
+
+                  margin-top: 4px;
+                  margin-left: 28px;
+                
+                }
+                .field_2 {
+                  width: 13px;
+                  height: 13px;
+                  position: absolute;
+                  background: $c2;
+                  @include round(13px);
+
+                  margin-left: 44px;
+                  margin-top: 11px;
+                
+                }
+                .field_3 {
+                  width: 13px;
+                  height: 13px;
+                  position: absolute;
+                  background: $c3;
+                  @include round(13px);
+
+                  margin-left: 51px;
+                  margin-top: 28px;                
+                }
+                .field_4 {
+                  width: 13px;
+                  height: 13px;
+                  position: absolute;
+                  background: $c4;
+                  @include round(13px);
+
+                  margin-left: 44px;
+                  margin-top: 44px;
+                
+                }
+                .field_5 {
+                  width: 13px;
+                  height: 13px;
+                  position: absolute;
+                  background: $c5;
+                  @include round(13px);
+
+                  margin-left: 28px;
+                  margin-top: 51px;
+                
+                }
+                .field_6 {
+                  width: 13px;
+                  height: 13px;
+                  position: absolute;
+                  background: $c6;
+                  @include round(13px);
+
+                  margin-left: 12px;
+                  margin-top: 44px;
+                
+                }
+                .field_7 {
+                  width: 13px;
+                  height: 13px;
+                  position: absolute;
+                  background: $c7;
+                  @include round(13px);
+
+                  margin-left: 4px;
+                  margin-top: 28px;
+                
+                }
+
+                 .field_8 {
+                  width: 13px;
+                  height: 13px;
+                  position: absolute;
+                  background: $c8;
+                  @include round(13px);
+
+                  margin-left: 11px;
+                  margin-top: 11px;
+                
+                }
+ 
+              }
+            }
+
+
+
             .element {
               float: left;
               width: 11px;
@@ -697,7 +896,7 @@
        .track_dotted {
         position: absolute;
         height: 85px;
-        width: 775px;
+        width: 765px;
         //display: inline-block;
 
         background: none;
@@ -728,7 +927,7 @@
       .track_hotspot {
         position: absolute;
         height: 85px;
-        width: 775px;
+        width: 765px;
         //display: inline-block;
         //float: left; 
       
@@ -750,7 +949,7 @@
         position: absolute;
         margin-top: 60px;
         height: 25px;
-        width: 775px;
+        width: 765px;
         background: #000;
         opacity: 1;
         list-style-type: none;
@@ -860,14 +1059,14 @@
         list-style-type: none; 
         padding: 0px;
         margin: 0px;
-        width: 775px;
+        width: 765px;
         height: 25px;
       }
       .strip {
         list-style-type: none; 
         padding: 0px;
         margin: 0px;
-        width: 775px;
+        width: 765px;
         height: 25px;
         position: absolute;
 
@@ -1091,7 +1290,7 @@
       }
       .track_clip_box {
         height: 85px;
-        width: 810px;
+        width: 800px;
         //display: inline-block;
         float: left; 
       
@@ -1110,7 +1309,7 @@
         position: absolute;
         //background: #FF00FF;
         height: 20px;
-        width: 775px;
+        width: 765px;
 
         margin-top: 30px;
         text-align: center;
