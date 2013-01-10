@@ -4,6 +4,7 @@ class Tapesfm.Views.TapedeckDownload extends Backbone.View
   className: "download_el"
   events: ->
   initialize: ->
+    @model.on('change:name', @render, this)
 
   render: ->
     rendertContent = @template(model: @model)
