@@ -18,10 +18,7 @@ class Tapesfm.Views.TapedeckCollaborators extends Backbone.View
     @collection.on("add", @updateCollaborators,this)
     @collection.on("reset", @updateCollaborators,this)
     @collection.on("remove", @removeCollaborator,this)
-    # @bind('rendered', @afterRender, this)
-
-
-
+    # @bind('rendered', @afterRender, this) 
 
   openField: (e) ->
 
@@ -53,8 +50,7 @@ class Tapesfm.Views.TapedeckCollaborators extends Backbone.View
 
         # Tapesfm.tapes.unshift(tapedeck)
         if response._id
-          @collection.add(invite)
-
+          @collection.add(invite) 
 
       })
 
@@ -73,9 +69,7 @@ class Tapesfm.Views.TapedeckCollaborators extends Backbone.View
       $('#collaborators').append(inviteView.render().el)
     else
       collaboratorView = new Tapesfm.Views.TapedeckCollaborator(model: collaborator)
-      $('#collaborators').append(collaboratorView.render().el)
-
-
+      $('#collaborators').append(collaboratorView.render().el) 
 
   removeCollaborator: (user) ->
 

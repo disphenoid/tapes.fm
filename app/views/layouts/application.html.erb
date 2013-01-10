@@ -38,21 +38,24 @@
 
   <p class="alert"><%= alert %></p>
   <%= render :partial => "layouts/header" %>  
-  <div class="feedback_btn" id="feedback_button"></div>
-  <div class="feedback_bg"></div>
-  <div class="popin-overlay"> </div>
-  
-  <div class="feedback">
+    <div class="popin-overlay"> </div>
+  <% if current_user %>  
+    <div class="feedback_bg"></div>
 
-    <div class="feedback_icon"></div>
-    <h2>Feedback!</h2>
-    <div class="feedback_field_box">
-    <label id="feedback_label" for="feedback_field">Tell me how you feel about tapes.fm...</label>
-    <textarea id="feedback_field" name="feedback_field"></textarea>
-    <div class="hint"> or send an email to <a href="mailto:feedback@tapes.fm">feedback@tapes.fm </a></div>
-    <div id="send_feedback" >Send</div>
+    <div class="feedback_btn" id="feedback_button"></div>
+    
+    <div class="feedback">
+
+      <div class="feedback_icon"></div>
+      <h2>Feedback!</h2>
+      <div class="feedback_field_box">
+      <label id="feedback_label" for="feedback_field">Tell me how you feel about tapes.fm...</label>
+      <textarea id="feedback_field" name="feedback_field"></textarea>
+      <div class="hint"> or send an email to <a href="mailto:feedback@tapes.fm">feedback@tapes.fm </a></div>
+      <div id="send_feedback" >Send</div>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <% if notice %>
     

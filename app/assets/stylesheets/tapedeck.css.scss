@@ -93,7 +93,10 @@
       }    
     }
 
-
+  .collaborators.logedout {
+    margin-left: 15px;
+    
+  }
   .collaborators {
     position: relative;
     width: 290px;
@@ -161,7 +164,7 @@
   #tapedeck_sidebar {
     background: #00FF00; 
     width: 295px;
-    padding: 25px;
+    padding: 20px;
     padding-left: 0px;
     padding-top: 0px;
     padding-right: 0px;
@@ -171,6 +174,7 @@
     min-height: 100px;
 
     .side_widged, #tapedeck_collaborators_header, #tapedeck_remix_header {
+      
       clear: both;
       padding: 0px;
       margin: 0px;
@@ -183,15 +187,9 @@
       width: 315px;
       // margin-left: -8px;
 
-      
-
-
-
-
-
-
-
-
+      .icon.remix_icon {
+        background: url("/assets/tapedeck/remix_icon_h.png");
+      }      
 
       .icon.collaborators_icon {
         background: url("/assets/tapedeck/collaborator_icon.png");
@@ -1106,7 +1104,7 @@
       .download_dropdown {
         width: 280px;
         position: absolute;
-        margin-left: 27px;
+        margin-left: -4px;
         z-index: 90001;
         margin-top: 10px;
         //visibility: visible;

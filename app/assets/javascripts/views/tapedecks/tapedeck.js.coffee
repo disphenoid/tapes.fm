@@ -53,8 +53,7 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
     $(".remix_box").addClass("active")
 
     $(".popin-overlay").live "click", (e) ->
-      if $(e.target).is('.popin-overlay')
-        
+      if $(e.target).is('.popin-overlay') 
         $(".popin-overlay").removeClass("active")
         $(".remix_box").removeClass("active")
         $(".popin-overlay").die "click"

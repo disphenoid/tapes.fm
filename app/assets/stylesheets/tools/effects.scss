@@ -26,7 +26,7 @@
   -webkit-border-bottom-left-radius:     $size;
   -moz-border-radius-topleft:            $size;
   -moz-border-radius-bottomleft:         $size;
-  -border-top-left-radius:                $size;
+  border-top-left-radius:                $size;
   border-bottom-left-radius:              $size;
 }
 @mixin round_right($size) {
@@ -43,13 +43,13 @@
   -webkit-border-bottom-left-radius:     0px;
   -moz-border-radius-topleft:            $size;
   -moz-border-radius-bottomleft:         0px;
-  -border-top-left-radius:                $size;
+  border-top-left-radius:                $size;
   border-bottom-left-radius:              0px;
 }
 @mixin round_top_left_soft($size) {
   -webkit-border-top-left-radius:         $size;
   -moz-border-radius-topleft:            $size;
-  -border-top-left-radius:                $size;
+  border-top-left-radius:                $size;
 }
 
 @mixin round_bottom_left_soft($size) {
@@ -86,7 +86,7 @@
   -webkit-border-bottom-left-radius:     $size;
   -moz-border-radius-topleft:            0px;
   -moz-border-radius-bottomleft:         $size;
-  -border-top-left-radius:                0px;
+  border-top-left-radius:                0px;
   border-bottom-left-radius:              $size;
 }
 @mixin round_top_right($size) {

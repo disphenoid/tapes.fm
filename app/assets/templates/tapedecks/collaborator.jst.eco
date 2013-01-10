@@ -5,5 +5,7 @@
     <% end %>
 
   </div>
-  <div class="remove_collaborator" data-id="<%= @model.get('id')%>"></div>
+  <% if Tapesfm.user && Tapesfm.user.collaborator && @model.get('id') != Tapesfm.tapedeck.tapedeck.get("user_id"):%> 
+    <div class="remove_collaborator" data-id="<%= @model.get('id')%>"></div>
+  <% end %>
 </li>

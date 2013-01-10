@@ -1,21 +1,23 @@
-      <div id="tapedeck_collaborators_header">
-        <div class="icon collaborators_icon">
-        </div>
-        <div class="headline"> 
-          Collaborators
-        </div>
-      </div> 
+<div id="tapedeck_collaborators_header">
+  <div class="icon collaborators_icon">
+  </div>
+  <div class="headline"> 
+    Collaborators
+  </div>
+</div> 
 
-        <div id="tapedeck_invite_add">
-          <p>
-            <div id="invite_send_button">
-              Invite
-            </div>
-            <div class="pic">
-            </div>
-            <label id="invite_label" for="invite_field">Invite someone by Name or email...</label>
-            <input type="text" name="invite_field" id="invite_field" value=""></textarea>
-          </p>        
-      </div> 
-      <div id="open_button"> </div> 
+  <% if Tapesfm.user && Tapesfm.user.collaborator: %>
+    <div id="tapedeck_invite_add">
+      <p>
+        <div id="invite_send_button">
+          Invite
+        </div>
+        <div class="pic">
+        </div>
+        <label id="invite_label" for="invite_field">Invite someone by Name or email...</label>
+        <input type="text" name="invite_field" id="invite_field" value=""></textarea>
+      </p>        
+    </div> 
+  <div id="open_button"> </div> 
+  <% end %>
 

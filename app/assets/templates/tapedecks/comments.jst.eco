@@ -5,14 +5,14 @@
       <%# @model.get("collaborators").last().get("name") %> 
     </div>
   </div> 
-  <% if Tapesfm.user && Tapesfm.user.collaborator || Tapesfm.tapedeck.tapedeck.get("commentable"): %>
+  <% if Tapesfm.user && Tapesfm.tapedeck.tapedeck.get("commentable") || (Tapesfm.user && Tapesfm.user.collaborator): %>
   <div id="tapedeck_comments_add">
     <p>
       <div id="send_button">
         Post
       </div>
       <div class="pic">
-        <% if @picture:%>
+        <% if Tapesfm.user && @picture:%>
           <img class="image" src="<%= "http://" + @picture%>">
         <% end %>
 
@@ -21,6 +21,15 @@
       <textarea type="text" name="comment_field" id="comment_field" value=""></textarea>
     </p>        
   </div> 
+  <% end %>
+  <% unless Tapesfm.user: %>
+    <div class="no_user">
+    Please 
+    <a href="/login">Login </a> 
+    or 
+    <a href="/signup">Join </a>
+    to add Comments
+    </div>
   <% end %>
 
 

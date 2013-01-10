@@ -33,9 +33,18 @@ class Tapesfm.Views.TapedeckHeader extends Backbone.View
     $(@el).html(rendertContent)
     #$(@el).fadeIn(2000)
     #
-    #
+    
+    if Tapesfm.user && Tapesfm.user.collaborator
+      readOnly = false
+      placeholderText = "Click to add a tag"
+    else
+      readOnly = true
+      placeholderText = ""
+
+
     $(@el).find("#tags_#{@model.get("id")}").tagit
-      placeholderText: "Click to add a tag"
+      placeholderText: placeholderText
+      readOnly: readOnly
       autocomplete: {source: "/api/tags",delay: 0, minLength: 1}
 
         

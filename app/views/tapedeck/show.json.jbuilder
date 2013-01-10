@@ -37,9 +37,14 @@ json.comments @tapedeck.comments.asc(:created_at) do |json,comment|
   json.partial! "tapedeck/comment.json.jbuilder", comment: comment
 end
 
-json.collaborators @tapedeck.all_collaborators do |json,collaborator|
-  json.partial! "tapedeck/collaborator.json.jbuilder", collaborator: collaborator 
-
+if current_user && @tapedeck.collaborator?(current_user)
+  json.collaborators @tapedeck.all_collaborators do |json,collaborator|
+    json.partial! "tapedeck/collaborator.json.jbuilder", collaborator: collaborator 
+  end
+else
+  json.collaborators @tapedeck.collaborators do |json,collaborator|
+    json.partial! "tapedeck/collaborator.json.jbuilder", collaborator: collaborator 
+  end
 end
 
 json.tags @tapedeck.tags

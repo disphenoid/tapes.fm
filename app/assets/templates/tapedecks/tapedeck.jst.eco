@@ -170,7 +170,11 @@
     <div id="tapedeck_collaborators">
 
     </div> 
+      <% if Tapesfm.user && Tapesfm.user.collaborator: %>
       <ul class="collaborators" id="collaborators">
+      <% else: %>
+        <ul class="collaborators logedout" id="collaborators">
+      <% end %>
       </ul>  
 
      </div>

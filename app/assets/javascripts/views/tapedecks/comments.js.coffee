@@ -7,9 +7,7 @@ class Tapesfm.Views.TapedeckComments extends Backbone.View
   initialize: ->
     @collection.on("add", @appendComment,this)
     @collection.on("reset", @render,this)
-    @collection.on("remove", @removeComment,this)
-
-
+    @collection.on("remove", @removeComment,this) 
     
 
   focusField: (e) =>
@@ -59,7 +57,11 @@ class Tapesfm.Views.TapedeckComments extends Backbone.View
 
     #$(@el).fadeIn(2000)
     #$('.comments').html("")
-    rendertContent = @template(picture: Tapesfm.user.picture.m.url)
+    if Tapesfm.user
+      rendertContent = @template(picture: Tapesfm.user.picture.m.url)
+    else
+      rendertContent = @template(picture: null)
+
     $(@el).html(rendertContent)
     $(@el).find("#send_button").hide()
     @collection.each @appendComment
