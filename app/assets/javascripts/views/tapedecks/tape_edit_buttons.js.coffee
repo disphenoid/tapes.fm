@@ -80,7 +80,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
   removeTape: (tape) ->
     #removeID = $(tape.currentTarget).data("id")
     #alert("dd") 
-    agree = confirm("if you delete this Tape it is gone!?")
+    agree = confirm("Delete the current Version?")
     if agree
       tape_id = @model.get("tape").get("id")
       @model.get("tape").destroy()
@@ -112,6 +112,8 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
       @model.get("tape").fetch()
       #@model.set({active_tape_id: undoID})
 
+    $("#tape_edit_field").val("").trigger(jQuery.Event('keypress', {which: 8})).focus().blur()
+    $("#tape_edit_label").show()
 
     console.log "fetch"
     #@model.set({tape: window.lastTape_obj})
@@ -148,7 +150,9 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
       @render_undo()
     else
       @render_normal()
-
+    
+        # $("#tape_edit_label").inFieldLabels()
+ 
     $(@el).find('.bpm_value').numeric()
     $(@el).find('.bpm_value').typing
       start:(e, $elem) =>

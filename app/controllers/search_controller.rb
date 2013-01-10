@@ -5,6 +5,7 @@ class SearchController < ApplicationController
       
       query = params[:q].split(" ")
       a = Autocomplete.new "tape_tags_complete"
+
       @complete = a.complete params[:q]
 
       @tags = query + @complete
