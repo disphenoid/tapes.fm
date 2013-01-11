@@ -16,6 +16,7 @@ config/database.yml
 *.swo
 *.swm
 *.swn
+*.swk
 *.swl
 *.swj
 *.swi
