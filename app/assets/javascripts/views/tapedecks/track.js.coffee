@@ -85,9 +85,11 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
 
   editTitle: (e) ->
-    $(@el).find(".name").hide()
-    $(@el).find(".name_edit_field").show().focus()
-    $(@el).find(".name_save_button").show()
+    if Tapesfm.user && Tapesfm.user.collaborator
+      $(@el).find(".name").hide()
+      $(@el).find(".name_edit_field").show().focus()
+      $(@el).find(".name_save_button").show()
+    
 
 
   saveTitle: (e) ->
