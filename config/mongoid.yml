@@ -1,7 +1,7 @@
 production:
   sessions:
     default:
-      uri: <%= "mongodb://heroku:ff43cb5aa91cc3e6320eefa262be853f@alex.mongohq.com:10097/app6477887" %>
+      uri: <%= "mongodb://tapesfm_app:thesims@linus.mongohq.com:10083/tapesfm" %>
       options:
         skip_version_check: true
         safe: true

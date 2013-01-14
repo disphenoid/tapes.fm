@@ -53,9 +53,17 @@ header {
     .dropdown {
       width: 160px;
       background: $c1;
-      margin-top: 50px; 
+      // margin-top: 50px; 
       visibility: hidden;
+      .home_btn {
+        height: 50px;
+        background: url("/assets/header/tapesfm_logo_over.png");
 
+
+      
+      }
+
+      
       @include round_bottom(2px);
       a {
         @include fh_b(12px);
@@ -352,8 +360,7 @@ header {
         
         }
 
-        .badge {
-          background: #00ff00;
+        #badge {
           padding: 5px 8px;
           float: right;
           margin-top: 8px;
@@ -368,7 +375,8 @@ header {
           margin-right: 8px;
           @include c_1_b;
           color: white;
-        
+          background: $c_g_1; 
+          color: $c1; 
         }
 
         .user_logout {

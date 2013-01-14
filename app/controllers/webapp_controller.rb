@@ -7,6 +7,11 @@ class WebappController < ApplicationController
   #skip_before_filter :verify_authenticity_token
   protect_from_forgery :except => [:upload, :upload_track]
 
+
+  def information
+    
+  end
+
   def index
   end
 
@@ -70,6 +75,7 @@ class WebappController < ApplicationController
       @activities = current_user.stream
     else
       redirect_to "/"
+      return
       #@tapedecks = []
       #@invites = []
       #@activities = []

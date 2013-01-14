@@ -2,6 +2,19 @@
 @import "tools/fonts";
 @import "tools/effects";
 
+
+.start_box {
+
+  width: 610px;
+  height: 200px;
+  background: #FF00FF;
+  margin-top: 5px;
+  background: rgba(0,0,0,0.03);
+  @include round(5px);
+  margin-bottom: 15px;
+
+}
+
 h1 {
   @include fh_b(60px);
   color: $c_g_5;
