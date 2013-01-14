@@ -1,0 +1,76 @@
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
+
+
+#nav {
+
+  padding: 0px;
+  margin: 0px;
+  margin-top: 40px;
+  width: 160px;
+  // background: green;
+  float: left;
+  @include fh_b(14px);
+  @include c_g_5;
+  
+  .nav_el.active {
+    @include c_g_3;
+
+  }
+  a {
+    @include c_g_5;
+   
+  }
+
+  a:hover {
+    color: $c1;
+  }
+  .nav_el {
+
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+  padding: 10px;
+  cursor: pointer;
+  
+
+  }
+
+}
+
+#information {
+
+  float: left;
+  margin-top: 50px;
+  padding-left: 15px;
+  width: 750px;
+  h1 {
+    @include fh_b(24px);
+    @include c_g_4;
+    padding: 0px;
+    margin: 0px;
+    color: $c1; 
+    width: 800px;
+  
+  }
+  h2 {
+    @include fh_b(20px);
+    @include c_g_4;
+    padding: 0px;
+    margin: 0px;
+    color: $c4; 
+    width: 800px;
+  
+  }
+  p {
+    @include fh(13px);
+    width: 100%;
+    line-height: 20px;
+    @include c_g_4;
+    margin-bottom: 20px;
+  
+  }
+  
+
+}
