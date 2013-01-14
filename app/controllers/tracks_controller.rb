@@ -9,25 +9,31 @@ class TracksController < ApplicationController
 
   def create
 
-    if(entry = (Track.create! params))
-      
-      current_user.add_time entry.duration
+    if current_user
+      if(entry = (Track.create! params))
+        
+        current_user.add_time entry.duration
 
+      end
+
+      render :json => entry
     end
-
-    render :json => entry
   end
   
   def update
-    tape = Track.find(params[:id])
-    tape.color = params[:color]
-    tape.name = params[:name]
-    tape.update_attributes!(params[:track])
-    render :json => tape
+    if current_user
+      tape = Track.find(params[:id])
+      tape.color = params[:color]
+      tape.name = params[:name]
+      tape.update_attributes!(params[:track])
+      render :json => tape
+    end
   end
 
   def destroy
     #respond_with Tapedeck.destroy(params[:id])
-    render :json => Track.destroy(params[:id])
+    if current_user
+      render :json => Track.destroy(params[:id])
+    end
   end
 end

@@ -128,17 +128,22 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     
 
     if @getIndex() == 1
-      $("#tape_edge").removeClass("edge_1 edge_2 edge_3 edge_4 edge_5 edge_6 edge_7 edge_8") 
+      $("#tape_edge").removeClass("edge_1 edge_2 edge_3 edge_4 edge_5 edge_6 edge_7 edge_8")
       $("#tape_edge").addClass("edge_#{color}")
 
     @model.set({color: color })
-    @model.save(
-      {}
-      {success: (model, response) ->
+    if Tapesfm.user
+      @model.save(
+        {}
+        {success: (model, response) ->
 
-        # alert model.get("color")
+          # alert model.get("color")
 
-      })
+        })
+
+
+
+
 
       
 
