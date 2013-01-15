@@ -155,7 +155,10 @@
 
 <div id="tapedeck_tape"></div>
 <div id="tapedeck_notape"> 
-  Add a Track
+  We support .aif and .wav files. 
+  <span class="light">
+Please only upload tracks with permission from the rights holders. 
+  </span>
 </div>
 <div id="tapedeck_lower"> 
   <div id="tapedeck_comments"> 

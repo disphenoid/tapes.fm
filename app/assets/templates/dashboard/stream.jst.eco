@@ -11,8 +11,32 @@
 
 </div>
 </div>
-<div class="start_box container_12" >ddsa</div>
-
+<% if Tapesfm.noob: %>
+<div class="start_box container_12" >
+  
+  <div class="welcome_teaser"> 
+    <div class="header"> 
+      <div class="icon dash"> </div>
+      <div class="headline green"> 
+        <span class="light">Your</span> Dashboard
+      </div>
+    </div>
+    <div class="subline green">This is your dashboard where you will see whats new in your feed and what else is happening</div>
+  </div>
+  <a href="/explore">
+  <div class="welcome_teaser last"> 
+    <div class="header"> 
+      <div class="icon explore"> </div>
+      <div class="headline blue"> 
+        Explore <span class="light">and</span> Remix
+      </div>
+    </div>
+    <div class="subline blue">Explore whats up on tapes.fm. Remix other Tapes and find Musicians </div>
+  
+  </div>
+  </a>
+</div>
+<% end %>
 <ul id="stream_list"> 
 
 </ul>

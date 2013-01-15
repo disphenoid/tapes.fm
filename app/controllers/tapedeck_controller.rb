@@ -38,7 +38,9 @@ class TapedeckController < ApplicationController
     
     @tapedeck = Tapedeck.find(params[:id])
     if @tapedeck.update_attributes!(params[:tapedeck])
-      addTagsToAutocomplete params[:tags]
+      if params[:tags]
+        addTagsToAutocomplete params[:tags]
+      end
 
     end
 

@@ -19,6 +19,9 @@
   <div class="add_tape"> 
     <div class="outline"> </div>
     <div class="cover"> </div>
+    <% if @noob:%>
+    <div class="hint"> </div>
+    <% end %>
   </div>
 
   </div>

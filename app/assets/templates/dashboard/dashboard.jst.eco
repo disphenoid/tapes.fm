@@ -15,9 +15,11 @@
 
 <div id="dashboard_tapes" class="dashboard_widget"> </div>
 <a href="/tapes">
+  <% unless Tapesfm.noob: %>
   <div class="more_tapes"> 
     All Tapes
   </div>
+  <% end %>
 </a>
 </div>
 

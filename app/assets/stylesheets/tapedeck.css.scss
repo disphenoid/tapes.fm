@@ -384,8 +384,15 @@
   text-align: center;
   @include fh_b(14px);
   line-height: 85px;
-  @include c_g_2;
+  @include c_g_4;
   display: none;
+  background: rgba(0,0,0,0.02);
+
+  .light {
+    @include fh(14px);
+    @include c_g_2;
+  
+  }
 
 }
 
@@ -1563,7 +1570,7 @@
         visibility: visible;
       }
       #from_lib {
-        visibility: visible;
+        visibility: hidden;
       }
       #add_btn {
         display: none;

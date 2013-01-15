@@ -73,6 +73,13 @@ class WebappController < ApplicationController
       @tapedecks = Tapedeck.where({collaborator_ids: current_user.id}).sort({updated_at:-1}).limit(5) #Tapedeck.where({user_id: current_user.id})
       @invites = Invite.where({accepted: false,invited_user_id: current_user.id}).excludes(:tapedeck_id => nil) #Tapedeck.where({user_id: current_user.id})
       @activities = current_user.stream
+
+      if @tapedecks.count == 0
+        @noob = true
+      else
+        @noob = false
+      end
+
     else
       redirect_to "/"
       return
@@ -88,9 +95,11 @@ class WebappController < ApplicationController
 
   def explore
     if current_user
-    @active = Tapedeck.where({public: true}).where(:version_count.ne => 1).sort({updated_at:-1})
-    @top = Tapedeck.all
-    @new = Tapedeck.where({public: true}).where(:version_count.in => [0,1]).desc(:created_at)
+    @active = Tapedeck.where({public: true}).excludes(:active_tape_id => nil).sort({updated_at:-1})
+    
+    @top = Tapedeck.where({public: true}).excludes(:active_tape_id => nil).desc(:created_at)
+    @new = Tapedeck.where({public: true}).excludes(:active_tape_id => nil).desc(:created_at)
+
     @json = render_to_string( template: 'explore/index.json.jbuilder', locals: { top: @top, active: @active, new: @new })
     respond_to do |format|
       format.html

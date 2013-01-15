@@ -9,14 +9,15 @@
 
   </div>
   <div class="info_box">
-    <div class="headline4">
+    <div class="headline">
       <%= @tape.get("name") %> 
       <br />
-      <span class="author">
-      
-        <%= @tape.get("author") %> 
-      </span>
+
     </div> 
+    <div class="author">
+      
+        by <%= @tape.get("author") %> 
+    </div>
     <div class="subline">
       <span class="date" title="<%= @tape.get("updated_at")%>">
       <%= @tape.get("updated_at") %>

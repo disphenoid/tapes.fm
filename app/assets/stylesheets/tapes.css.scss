@@ -679,6 +679,7 @@
   margin-left: -20px;
   .add_tape:hover {
 
+
     .cover {
        opacity: 1;
 
@@ -692,7 +693,14 @@
     float: left;
     margin-left: 20px;
     margin-top: 0px;
-
+    .hint {
+      width: 185px;
+      height: 60px;
+      background: url("/assets/tapes/start_hint.png");
+      position: absolute;
+      margin-left: 130px;
+      margin-top: 50px;
+    }
     .cover {
       width: 130px;
       height: 130px;

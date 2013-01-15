@@ -33,6 +33,7 @@ class Tapesfm.Views.Tapes extends Backbone.View
         tapedeck.set({id: response._id})
 
         Tapesfm.tapes.unshift(tapedeck)
+        $(".hint").fadeOut("slow")
 
 
       })
@@ -98,11 +99,14 @@ class Tapesfm.Views.Tapes extends Backbone.View
     $("body").find("#setting-popin_#{key} label").inFieldLabels()
 
   render: ->
+    if @collection.length == 0
+      @noob = true 
+    else
+      @noob = false
     
-    
-    rendertContent = @template()
+    rendertContent = @template(noob: @noob)
 
-    
+
     $(@el).html(rendertContent)
 
     @animationTime = []

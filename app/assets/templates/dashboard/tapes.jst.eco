@@ -10,6 +10,21 @@
     </div>
 
   </div>
+  <% if Tapesfm.noob: %>
+  <a href="/tapes">
+  <div class="welcome_teaser tapes"> 
+    <div class="header"> 
+      <div class="icon tape"> </div>
+      <div class="headline red"> 
+        <span class="light">First </span> Tape!
+      </div>
+    </div>
+    <div class="subline red">Start now create your first Tape, upload your Tracks, Invite your friends and start Collaborating!</div>
+    </a>
+    <% end %>
+  
+  </div>
+</div>
   <div class="dashboard_content">
 
   

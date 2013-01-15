@@ -261,7 +261,7 @@ class User
     when 2
       plan = { :name => "PLUS" ,:version => 1 ,:minutes => 300 ,:multi_upload => false ,:priority_upload => true ,:private_tapes => false ,:max_samplerate => 192000 ,:price_us => 7.90 ,:price_eu => 9.90 }
     else
-      plan = { :name => "BASIC" ,:version => 1 ,:minutes => 100 ,:multi_upload => false ,:priority_upload => false ,:private_tapes => false ,:max_samplerate => 96000 ,:price_us => 0 ,:price_eu => 0 }
+      plan = { :name => "BASIC" ,:version => 1 ,:minutes => 25 ,:multi_upload => false ,:priority_upload => false ,:private_tapes => false ,:max_samplerate => 96000 ,:price_us => 0 ,:price_eu => 0 }
     end
   end
 end
