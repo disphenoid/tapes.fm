@@ -11,25 +11,33 @@ class CommentsController < ApplicationController
   end
 
   def create
-    entry = Comment.new params[:comment]
-    entry.user_id = current_user.id
-    if entry.save
-      
-      current_user.push_activity "comment", entry 
+    if current_user 
+      entry = Comment.new params[:comment]
+      entry.user_id = current_user.id
+      if entry.save
+        
+        current_user.push_activity "comment", entry 
 
+      end
+      render :json => entry
     end
-    render :json => entry
   end
   
   def update
-    comment = Comment.find(params[:id])
-    comment.update_attributes!(params[:comment])
-    render :json => comment
+    if current_user
+      comment = Comment.find(params[:id])
+      comment.update_attributes!(params[:comment])
+      render :json => comment
+    end
   end
 
   def destroy
     #respond_with Tapedeck.destroy(params[:id])
-    render :json => Comment.find(params[:id]).destroy()
+    @comment = Comment.find(params[:id])
+    if current_user
+      render :json => @comment.destroy()
+    end
+
   end
 
 end

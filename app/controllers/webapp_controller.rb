@@ -199,16 +199,22 @@ class WebappController < ApplicationController
 
   def admin_users
     # prepend_view_path "app/views/admin/users"
-    @users = User.all.limit(50)
-    @user_count = User.count
-    @invites = Invite.all.excludes(:email => nil).limit(50)
-    @invite_count = Invite.count
-    @requests = Request.all.limit(50)
-    @request_count = Request.count
-    @json = render_to_string( template: 'admin/users/index.json.jbuilder', locals: { users: @users, invites: @invites, requests: @requests})
-    respond_to do |format|
-      format.html
-      # render :partial => 'admin/users/index.html.erb', :formats => [:html]
+    if current_user.admin
+
+      @users = User.all.limit(50)
+      @user_count = User.count
+      @invites = Invite.all.excludes(:email => nil).limit(50)
+      @invite_count = Invite.count
+      @requests = Request.all.limit(50)
+      @request_count = Request.count
+      @json = render_to_string( template: 'admin/users/index.json.jbuilder', locals: { users: @users, invites: @invites, requests: @requests})
+      respond_to do |format|
+        format.html
+        # render :partial => 'admin/users/index.html.erb', :formats => [:html]
+      end
+
+    else
+      redirect_to "/"
     end
   end
 

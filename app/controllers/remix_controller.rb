@@ -22,15 +22,11 @@ class RemixController < ApplicationController
           @remix_td.original = original_td.original
         else
           @remix_td.original = original_td
-        end
-        
+        end 
 
         #set cover
         
-        @remix_td.cover_id = original_td.cover_id
-
-
-
+        @remix_td.cover_id = original_td.cover_id 
 
         #set meta
         

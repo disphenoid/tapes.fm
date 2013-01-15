@@ -55,9 +55,12 @@ class InvitesController < ApplicationController
     @invite.tapedeck.collaborator_ids.push @invite.invited_user_id
     @invite.tapedeck.save
     render :json => @invite
+
   end
 
   def destroy
-    render :json => Invite.find(params[:id]).destroy()
+    if current_user
+      render :json => Invite.find(params[:id]).destroy()
+    end
   end
 end

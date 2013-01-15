@@ -9,18 +9,24 @@ class CollaboratorsController < ApplicationController
   
   def destroy
 
-    @tapedeck = Tapedeck.find(params[:id])
-    
+    if current_user
+      @tapedeck = Tapedeck.find(params[:id])
+      
+      if  @tapedeck.collaborator?(current_user)
 
-    @tapedeck.collaborator_ids.delete(Moped::BSON::ObjectId.from_string(params[:collaborator].to_s))
-    @tapedeck.save
+        @tapedeck.collaborator_ids.delete(Moped::BSON::ObjectId.from_string(params[:collaborator].to_s))
+        @tapedeck.save
 
-    @collaborator = Invite.find_by({invited_user_id: params[:collaborator], tapedeck_id: params[:id]}) 
-    @collaborator.destroy
+        @collaborator = Invite.find_by({invited_user_id: params[:collaborator], tapedeck_id: params[:id]}) 
+        @collaborator.destroy
+
+      end
 
     # @collaborator = Tapedeck.find(params[:collaborator_id])
     
     render :json =>  @collaborator
+
+    end
 
 
   end
