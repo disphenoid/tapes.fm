@@ -1,5 +1,4 @@
 ---
-
 - !ruby/object:Rubber::Configuration::InstanceItem
   name: app01
   domain: foo.com

@@ -80,6 +80,21 @@ namespace :rubber do
 
         # move the wav2json_linux binary into place
         if [ -f #{current_path}/bin/wav2json_linux ]; then cp #{current_path}/bin/wav2json_linux /usr/local/bin; fi
+        
+        # Install wav2json depancencies
+        apt-get install make g++ libsndfile1-dev libboost-program-options-dev -qq;
+        
+        # Install Sox for soxi
+        apt-get install sox -qq;
+
+        # Install ffmpeg
+        apt-get install libmp3lame0 -qq;
+        sudo apt-get install ffmpeg libavcodec-extra* -qq;
+
+        # Add to papertrail
+        echo "*.* @logs.papertrailapp.com:31838" >> /etc/rsyslog.conf;
+        sudo /etc/init.d/rsyslog restart;
+
       ENDSCRIPT
     end
 
