@@ -79,7 +79,35 @@ end
 # capistrano's deploy:cleanup doesn't play well with FILTER
 after "deploy", "cleanup"
 after 'deploy', 'set_rights'
+after 'deploy', 'reset_papertrail'
+after 'deploy:cold', 'set_papertrail'
+
 after "deploy:migrations", "cleanup"
+
+task :set_papertrail do 
+  
+
+  run "echo '*.* @logs.papertrailapp.com:31838' >> /etc/rsyslog.conf;"
+  run "sudo /etc/init.d/rsyslog restart;"
+
+
+  run "cp /mnt/tapesfm-production/current/log_files.yml /etc/log_files.yml;"
+
+  run "gem install tins;"
+  run "gem install remote_syslog;"
+  run "remote_syslog;"
+  
+
+end
+
+task :reset_papertrail do
+
+  run "sudo cp /mnt/tapesfm-production/current/log_files.yml /etc/log_files.yml;"
+  run "echo '*.* @logs.papertrailapp.com:31838' >> /etc/rsyslog.conf;"
+  run "sudo /etc/init.d/rsyslog restart;"
+  run "remote_syslog;"
+
+end
 
 task :set_rights do
   
