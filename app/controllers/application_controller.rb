@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
   layout :resolve_layout
 
 
+  def ping
+    #returns ping for load balancer
+    # render_to_string "dd", :layout => false
+    render :json => 'pong', :layout => false
+
+  end
+
 
   def user_json_v
 
@@ -54,6 +61,8 @@ class ApplicationController < ActionController::Base
         "splash"
       when "/"
         "splash"
+      when "/ping"
+        nil
       else
         "application"
     end

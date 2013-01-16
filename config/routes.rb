@@ -5,6 +5,8 @@ Tapesfm::Application.routes.draw do
   #devise_for :users
   devise_for :users, :skip => [:sessions]
   
+  get 'ping' => "application#ping"
+
   as :user do
   get 'login' => 'devise/sessions#new', :as => :new_user_session
   post 'login' => 'devise/sessions#create', :as => :user_session
