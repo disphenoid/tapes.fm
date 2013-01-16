@@ -9,5 +9,5 @@ else
 end
 
 if invite.tapedeck.cover
-  json.cover invite.tapedeck.cover.url
+  json.cover invite.tapedeck.cover.image.url
 end
