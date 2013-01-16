@@ -8,5 +8,6 @@ else
   json.project_name invite.tapedeck.project.name 
 end
 
-json.cover invite.tapedeck.cover.url
-
+if invite.tapedeck.cover
+  json.cover invite.tapedeck.cover.url
+end
