@@ -3,6 +3,7 @@ files:
   - /mnt/tapesfm-production/shared/log/unicorn.stdout.log
   - /mnt/tapesfm-production/shared/log/unicorn.stderr.log
   - /mnt/tapesfm-production/shared/log/unicorn_upstart.log 
+  - /mnt/tapesfm-production/shared/log/resque-pool.log 
 destination:
   host: logs.papertrailapp.com
   port: 31838   # optional, defaults to 514

@@ -59,12 +59,12 @@ class AudioUploader < CarrierWave::Uploader::Base
     end
     
     #cut silence
-    # tmp_path =  "#{Rails.root}/tmp/audio/#{model.id}/"
+    tmp_path =  "#{Rails.root}/tmp/audio/#{model.id}/"
 
 
-    # `sox #{file.path} #{tmp_path+model.id.to_s+"-r"}.#{file.extension} reverse;` 
-    # `sox #{tmp_path+model.id.to_s+"-r"}.#{file.extension} #{tmp_path+model.id.to_s+"-rc"}.#{file.extension} silence 1 00:00:00 -96d;` 
-    # `sox #{tmp_path+model.id.to_s+"-rc"}.#{file.extension} #{file.path} reverse;`
+    `sox #{file.path} #{tmp_path+model.id.to_s+"-r"}.#{file.extension} reverse;` 
+    `sox #{tmp_path+model.id.to_s+"-r"}.#{file.extension} #{tmp_path+model.id.to_s+"-rc"}.#{file.extension} silence 1 00:00:00 -96d;` 
+    `sox #{tmp_path+model.id.to_s+"-rc"}.#{file.extension} #{file.path} reverse;`
 
     #remove files
     # `rm #{tmp_path+model.id.to_s+"-r"}.#{file.extension}`
