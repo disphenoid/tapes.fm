@@ -3,12 +3,66 @@ class ApplicationController < ActionController::Base
   before_filter :only_if_logged 
   before_filter :user_json_v 
   layout :resolve_layout
+  before_filter :check_week_limit
+  before_filter :check_plan_expire
 
 
   def ping
     #returns ping for load balancer
     # render_to_string "dd", :layout => false
     render :json => 'pong', :layout => false
+
+  end
+
+  def check_plan_expire
+    if current_user
+
+      unless current_user.plan_id == 1 || current_user.plan_id.blank?
+
+        if current_user.plan_expire && current_user.plan_expire <= Date.today
+          
+          current_user.plan_id = 1
+          current_user.plan_expire = nil
+          current_user.save 
+          
+        end 
+
+      else
+        
+        # current_user.plan_expire = nil
+        # current_user.plan_id = 1
+        # current_user.save
+
+      end
+
+
+    end
+
+  end
+
+  def check_week_limit
+
+    if current_user
+
+      unless current_user.minute_reset.blank?
+        
+        if current_user.minute_reset <= Date.today
+          current_user.current_uploadtime = 0
+          current_user.minute_reset = (Date.today)+ 7
+          current_user.save
+        end
+
+      else
+
+        current_user.minute_reset = (Date.today + 7)
+        current_user.current_uploadtime = 0
+        current_user.save
+
+      end
+
+    end
+
+    
 
   end
 

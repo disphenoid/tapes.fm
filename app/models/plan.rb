@@ -13,8 +13,10 @@ class Plan
   field :private_tapes, :type => Boolean
   field :max_samplerate, :type => Integer
 
-  field :price_us, :type => Float
-  field :price_eu, :type => Float
-  
+  field :price_us_month, :type => Float
+  field :price_eu_month, :type => Float
+
+  field :price_us_anual, :type => Float
+  field :price_eu_anual, :type => Float  
 
 end

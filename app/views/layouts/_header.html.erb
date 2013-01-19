@@ -77,8 +77,8 @@
             </a>
           </div>
  
-          <% if false%>
-            <div id="badge" class="upgrade"> <%= "UPGRADE" %> </div>
+          <% if true%>
+            <div id="badge" class="upgrade min_tip" title="<%= current_user.plan_expire.to_s %>"> <%= current_user.plan[:name] %> </div>
           <% end %>
         <div class="user_bar ">
           <div class="min_bar" data-used_time="<%= current_user.upload_min%>" data-total_time="<%= current_user.plan[:minutes]%>">

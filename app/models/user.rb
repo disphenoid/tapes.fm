@@ -67,12 +67,15 @@ class User
   has_and_belongs_to_many :projects
 
   field :name, :type => String
-  field :plan_id, :type => Integer
   field :about, :type => String
 
   field :twitter_name, :type => String
   field :soundcloud_name, :type => String
   field :facebook_name, :type => String
+  field :minute_reset, :type => Date
+
+  field :plan_id, :type => Integer
+  field :plan_expire, :type => Date
 
 
   mount_uploader :picture, ProfileUploader
@@ -258,10 +261,16 @@ class User
 
   def plan
     case self.plan_id
+    when 4
+      plan = { :name => "PRO" ,:version => 1 ,:minutes => 600 ,:multi_upload => true ,:priority_upload => true ,:private_tapes => true ,:max_samplerate => 192000 ,:price_us_month => 19.99 ,:price_eu_month => 19.99, :price_us_anual => 249.99, :price_eu_anual => 249.99 }
+
+    when 3
+      plan = { :name => "SUPREME" ,:version => 1 ,:minutes => 300 ,:multi_upload => true ,:priority_upload => true ,:private_tapes => true ,:max_samplerate => 192000 ,:price_us_month => 9.99 ,:price_eu_month => 9.99, :price_us_anual => 99.99, :price_eu_anual => 99.99 }
+      
     when 2
-      plan = { :name => "PLUS" ,:version => 1 ,:minutes => 300 ,:multi_upload => false ,:priority_upload => true ,:private_tapes => false ,:max_samplerate => 192000 ,:price_us => 7.90 ,:price_eu => 9.90 }
+      plan = { :name => "PLUS" ,:version => 1 ,:minutes => 100 ,:multi_upload => true ,:priority_upload => true , :private_tapes => true ,:max_samplerate => 192000 ,:price_us_month => 4.99 ,:price_eu_month => 4.99, :price_us_anual => 49.99, :price_eu_anual => 49.99 }
     else
-      plan = { :name => "BASIC" ,:version => 1 ,:minutes => 25 ,:multi_upload => false ,:priority_upload => false ,:private_tapes => false ,:max_samplerate => 96000 ,:price_us => 0 ,:price_eu => 0 }
+      plan = { :name => "FREE" ,:version => 1 ,:minutes => 20 ,:multi_upload => false ,:priority_upload => false ,:private_tapes => false ,:max_samplerate => 96000 ,:price_us_month => 0 ,:price_eu_month => 0, :price_us_anual => 0, :price_eu_anual => 0 }
     end
   end
 end
