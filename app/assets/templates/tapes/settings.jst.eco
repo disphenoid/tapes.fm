@@ -73,7 +73,7 @@
 
       <div class="headline">
         Private
-        <% unless(Tapesfm.user.plan_id == 1):%>
+        <% unless(Tapesfm.user.plan_id == 1 || Tapesfm.user.plan_id == null):%>
         <span class="hint">
           Only Collaborators and you. 
         </span>

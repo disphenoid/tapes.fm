@@ -1,0 +1,275 @@
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
+.beta_hint {
+  @include round(5px);
+  height: 80px;
+  width: 960px;
+  background: rgba(0,0,0,0.05);
+  margin-top: 15px;
+  .icon {
+    width: 80px; 
+    height: 80px; 
+    background: rgba(0,0,0,0.05) url("/assets/upgrade/beta_hint_icon.png");
+    @include round_left(5px);
+    display: inline-block;
+    float: left;
+  
+  }
+  .text {
+    display: inline-block;
+    @include fh(13px);
+    color: $c_g_3;
+    float: left;
+    padding-top: 25px;
+    padding-left: 15px;
+    line-height: 18px;
+  
+  }
+
+}
+.upgrade_box {
+
+  z-index: 9000;
+  margin-top: 30px;
+  .home_header {
+    height: 105px;
+    
+
+    width: 904px;
+    background: url("/assets/home/logo.png") no-repeat left center;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    
+
+  
+  }
+
+  .hightlight {
+  
+    @include fh_b(18px);
+    text-decoration: underline;
+    color: $c1;
+  
+  }
+  h1 {
+    @include fh_b(53px);
+    padding: 0px;
+    margin: 0px;
+    letter-spacing: -4px;
+    color: #4c4c4c;
+    margin-left: 15px;
+    @include ts_out(white);
+
+  
+  }
+  h2 {
+    @include fh(18px);
+    padding: 0px;
+    color: #4c4c4c;
+    margin: 0px;
+    padding: 15px 0px;
+    margin-left: 15px;
+  
+  }
+  .upgrades {
+  
+    margin-top: 10px;
+    clear: both;
+    width: 960px;
+    height: 340px;
+
+    
+    
+
+    .header {
+      
+      height: 20px;
+      @include fh_b(22px);
+      letter-spacing: -1px;
+      @include c_g_0;
+      padding-left: 15px;
+      padding-top: 20px;
+      .min {
+        @include fh(16px);
+        opacity: 0.5;
+        
+      }
+
+    
+    }
+    .feature_list {
+      margin: 0px;
+      padding: 0px; 
+      list-style-type: none;
+      margin-top: 25px;
+      height: 220px;
+      // background: green;
+      .feature.inactive {
+        opacity: 0.4;
+      }
+
+      .feature {
+        height: 24px;
+        margin-bottom: 5px;
+        .icon {
+          width: 24px;
+          height: 24px;
+          background: green;
+          margin-left: 15px;
+          float: left;
+        }
+           .icon.minutes {
+          background: url("/assets/upgrade/icon_minutes.png"); 
+        }
+        .icon.private {
+          background: url("/assets/upgrade/icon_private.png"); 
+        }
+        .icon.multiupload {
+          background: url("/assets/upgrade/icon_multiupload.png"); 
+        }
+        .icon.download {
+          background: url("/assets/upgrade/icon_download.png"); 
+        }
+        .icon.prio {
+          background: url("/assets/upgrade/icon_prio.png"); 
+        }
+        .icon.hq {
+          background: url("/assets/upgrade/icon_hq.png"); 
+        }
+        .icon.hires {
+          background: url("/assets/upgrade/icon_hires.png"); 
+        }
+
+        .title {
+          padding-left: 5px;
+          float: left;
+          @include fh_b(11px);
+
+          @include c_g_0;
+          line-height: 25px;
+          opacity: 0.7;
+        }
+      }
+  
+    }
+      .paypal:hover {
+        background: rgba(0,0,0,0.5);
+        .price {
+          color: white;
+        }
+        .rate {
+          color: white;
+        }          
+       .sign.us {
+          background: url("/assets/upgrade/sign_us_on.png");
+        }
+        .sign.eu {
+          background: url("/assets/upgrade/sign_eu_on.png");
+        }   
+       .paypal_logo {
+            background: url("/assets/upgrade/paypal_logo_on.png") no-repeat center left;
+           
+            margin-left: 120px;
+          
+          }
+
+
+      }
+      .paypal {
+          width: 210px;
+          height: 24px;
+          background: rgba(0,0,0,0.05) url("/assets/upgrade/button_bg.png") no-repeat top center;
+          padding: 15px;
+          @include fh_b(18px); 
+          @include c_g_0;
+          line-height: 22px;
+          cursor: pointer;
+          
+          .sign {
+            height: 24px;
+            width: 8px;
+            display: inline-block;
+            float: left;
+            margin-top: 2px;
+
+          
+          }
+
+          .price {
+            @include fh_b(18px); 
+            @include c_g_0;
+            display: inline-block;
+            float: left;
+          
+          }
+          .rate {
+            @include fh(12px); 
+            @include c_g_0;
+            display: inline-block;
+            float: left;
+            opacity: 0.5;
+            margin-top: 5px;
+            margin-left: 5px;
+          }
+          .sign.us {
+            background: url("/assets/upgrade/sign_us.png");
+          }
+          .sign.eu {
+            background: url("/assets/upgrade/sign_eu.png");
+          }          
+          .paypal_logo {
+            background: url("/assets/upgrade/paypal_logo.png") no-repeat center left;
+            height: 24px;
+            width: 105px;
+            position: absolute;
+            margin-left: 120px;
+          
+          }
+      }
+
+
+    
+
+    .upgrade_el.first {
+      @include round_left(5px);
+    }
+    .upgrade_el.last {
+      @include round_right(5px);
+    }
+    .upgrade_el:hover {
+    
+      .paypal {
+      background: rgba(0,0,0,0.1) url("/assets/upgrade/button_bg.png") no-repeat top center;
+      }
+      .paypal:hover {
+      background: rgba(0,0,0,0.3) url("/assets/upgrade/button_bg.png") no-repeat top center;
+      }
+
+
+    }
+    .upgrade_el {
+      width: 240px;
+      height: 340px;
+      background: green;
+      float: left; 
+    }
+    
+    .upgrade_el.free {
+      background: #dddddd url("/assets/upgrade/upgrade_top_bg_gray.gif") repeat-x top; 
+
+    }
+    .upgrade_el.plus {
+      background: $c3 url("/assets/upgrade/upgrade_top_bg_green.gif") repeat-x top; 
+    }
+    .upgrade_el.supreme {
+      background: $c1 url("/assets/upgrade/upgrade_top_bg_red.gif") repeat-x top; 
+    }
+    .upgrade_el.pro {
+      background: $c4 url("/assets/upgrade/upgrade_top_bg_blue.gif") repeat-x top; 
+    }
+  }
+
+
+
+}

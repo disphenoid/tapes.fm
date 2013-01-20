@@ -15,6 +15,17 @@ class WebappController < ApplicationController
   def index
   end
 
+  def upgrade
+
+
+    
+
+    respond_to do |format|
+          format.html
+    end
+
+  end
+
   def signup
     unless current_user || params[:invite].blank?
       @invites = Invite.where({invite_hash: params[:invite]})
@@ -33,9 +44,11 @@ class WebappController < ApplicationController
   end
 
   def download
-    expires = Time.now + 5.minutes
-    track = Audio.find(params[:id])
-    redirect_to s3_signed_url(ENV['s3_bucket_name'], "audio/#{params[:id]}/#{params[:id]}.#{params[:type]}",'GET',nil,nil, {'response-content-disposition' => "attachment; filename=#{track.name}.#{params[:type]}"})
+    if current_user
+      expires = Time.now + 5.minutes
+      track = Audio.find(params[:id])
+      redirect_to s3_signed_url(ENV['s3_bucket_name'], "audio/#{params[:id]}/#{params[:id]}.#{params[:type]}",'GET',nil,nil, {'response-content-disposition' => "attachment; filename=#{track.name}.#{params[:type]}"})
+    end
     #url += "AWSAccessKeyId=#{"AKIAJLUDMFIAAGNUJOIQ"}&Expires=#{expires.to_i}&Signature=#{CGI.escape(signature)}";
     #return url
   end

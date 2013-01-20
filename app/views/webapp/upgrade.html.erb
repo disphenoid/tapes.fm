@@ -1,0 +1,49 @@
+<%= content_for(:title) do %>
+  <title> Upgrade – tapes.fm</title> 
+<%end%>
+
+
+<%= javascript_include_tag "upgrade" %>
+
+<div id="container" class="container_12"> 
+  dfds
+
+</div>
+
+
+
+<script>
+  window.Tapesfm.bootstrap = <%= raw @json %>;
+  
+
+  <% if current_user %>
+  window.Tapesfm.user = <%= raw @user_j %>;
+  //Tapesfm.user.collaborator = <%# raw (@tapedeck.collaborator?(current_user)).to_json %>;
+  <% else %>
+  <% end %>
+
+
+  <% key = Rails.application.config.session_options[:key] %>
+
+  Tapesfm.crsf = {};
+  Tapesfm.crsf.uploadify_script_data = {};
+  Tapesfm.crsf.param = $('meta[name=csrf-param]').attr('content');
+  Tapesfm.crsf.token = $('meta[name=csrf-token]').attr('content');
+  Tapesfm.crsf.uploadify_script_data[Tapesfm.crsf.param] = encodeURI(encodeURIComponent(Tapesfm.crsf.token ));
+  Tapesfm.crsf.uploadify_script_data['<%= key %>'] = '<%= cookies[key] %>';
+  
+
+
+  //var uploadify_script_data = {};
+  //var csrf_param = $('meta[name=csrf-param]').attr('content');
+  //var csrf_token = $('meta[name=csrf-token]').attr('content');
+  //uploadify_script_data[csrf_param] = encodeURI(encodeURIComponent(csrf_token));
+  //uploadify_script_data['<%= key %>'] = '<%= cookies[key] %>';
+  
+  $(document).ready(function() {
+  //var uploadify_script_data = {};
+});
+</script>
+
+
+

@@ -48,6 +48,7 @@ Tapesfm::Application.routes.draw do
   get 'tapedeck/*path', to: "webapp#tapedeck"
   get 'download/:id', to: "webapp#download"
   get 'settings', to: "webapp#settings"
+  get 'upgrade', to: "webapp#upgrade"
   
   get 'about', to: "webapp#information"
   get 'faq', to: "webapp#information"
