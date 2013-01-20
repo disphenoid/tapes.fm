@@ -79,7 +79,7 @@ class ApplicationController < ActionController::Base
     if current_user
       @user_j = Jbuilder.encode do |json|
 
-        json.(current_user, :id,:_id, :name, :current_uploadtime, :total_uploadtime, :created_at)
+        json.(current_user, :id,:_id, :name, :plan_id, :current_uploadtime, :total_uploadtime, :created_at)
 
 
         json.projects(current_user.projects) do |json, project|

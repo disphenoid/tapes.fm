@@ -16,7 +16,7 @@
 
 <div class="info"> 
 
-<% unless @model.get("public"): %>
+<% if @model.get("private"): %>
   <div class="private_icon tip" title="Private Tape"> </div> 
 <% end %>
 

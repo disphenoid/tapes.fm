@@ -5,4 +5,6 @@ json.picture_s user.picture.s.url
 
 if user.plan[:name] != "FREE"
   json.badge user.plan[:name]
+else
+  json.badge "free"
 end

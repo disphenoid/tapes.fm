@@ -464,7 +464,12 @@
       margin-left: 5px;
       @include c_g_2;
       }
+      .hint_upgrade {
       
+      @include fh(12px);
+      margin-left: 5px;
+      @include c_1;
+      }      
     
     
     }
