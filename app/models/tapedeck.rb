@@ -78,6 +78,10 @@ class Tapedeck
     self.collaborator_ids.include? user.id
   end
 
+  def invited?(user)
+    self.invites.where(invited_user_id: user.id).exists?
+  end
+
   def to_s
     File.basename file.to_s
   end

@@ -95,10 +95,10 @@ class WebappController < ApplicationController
 
   def explore
     if current_user
-    @active = Tapedeck.where({public: true}).excludes(:active_tape_id => nil).sort({updated_at:-1})
+    @active = Tapedeck.where({private: false}).where({private: nil}).excludes(:active_tape_id => nil).sort({updated_at:-1})
     
-    @top = Tapedeck.where({public: true}).excludes(:active_tape_id => nil).desc(:created_at)
-    @new = Tapedeck.where({public: true}).excludes(:active_tape_id => nil).desc(:created_at)
+    @top = Tapedeck.where({private: false}).where({private: nil}).excludes(:active_tape_id => nil).desc(:created_at)
+    @new = Tapedeck.where({private: false}).where({private: nil}).excludes(:active_tape_id => nil).desc(:created_at)
 
     @json = render_to_string( template: 'explore/index.json.jbuilder', locals: { top: @top, active: @active, new: @new })
     respond_to do |format|
@@ -126,9 +126,26 @@ class WebappController < ApplicationController
   def tapedeck
     if params[:id]
       @tapedeck = Tapedeck.find(params[:id])
-      @json = render_to_string( template: 'tapedeck/show.json.jbuilder', locals: { tapedeck: @tapedeck})
-      respond_to do |format|
-        format.html
+      if @tapedeck.private        
+        
+        if current_user && @tapedeck.user == current_user || current_user && @tapedeck.collaborator?(current_user) || current_user && @tapedeck.invited?(current_user)
+          
+          @json = render_to_string( template: 'tapedeck/show.json.jbuilder', locals: { tapedeck: @tapedeck})
+          respond_to do |format|
+            format.html
+          end
+        
+        else
+          redirect_to "/"
+        
+        end
+
+      else
+
+        @json = render_to_string( template: 'tapedeck/show.json.jbuilder', locals: { tapedeck: @tapedeck})
+        respond_to do |format|
+          format.html
+        end
       end
     end
   end

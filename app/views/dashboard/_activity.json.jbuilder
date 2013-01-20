@@ -2,7 +2,7 @@ json.(activity, :id, :_id,:type, :user_id, :tapedeck_id, :track_id, :comment_id,
 json.user_name activity.user.name
 json.user_picture activity.user.picture.m.url
 
-if activity.type == "comment" && activity.comment.tapedeck
+if activity.type == "comment" && activity.comment && activity.comment.tapedeck
   
   json.tapedeck_name activity.comment.tapedeck.name if activity.comment.tapedeck
   json.tapedeck_id activity.comment.tapedeck_id
