@@ -235,8 +235,16 @@ header {
           visibility: visible;
         }
       
-      }
 
+      #badge.upgrade {
+        background: url("/assets/header/upgrade_bg_on.gif"); 
+        .name {
+          // color: white;
+          background-color: #323232;
+        }
+      
+      }
+      }
     }
     #user_info {
       float: left;
@@ -325,6 +333,29 @@ header {
             padding-left: 20px;
           
           }
+          .minutes.plus {
+            .minutes_used {
+              color: $c3;
+              background: url("/assets/header/arrow_left_green.png") no-repeat left center;
+            }
+
+          }
+          .minutes.supreme {
+            .minutes_used {
+              color: $c1;
+              background: url("/assets/header/arrow_left_red.png") no-repeat left center;
+            }
+
+          }
+          .minutes.pro {
+            .minutes_used {
+              color: $c4;
+              background: url("/assets/header/arrow_left_blue.png") no-repeat left center;
+            }
+
+          }
+
+
           .minutes {
             height: 14px;
             padding: 10px;
@@ -334,7 +365,7 @@ header {
               float: left; 
               margin-left: 0px;
               padding-left: 10px;
-              color: $c1;
+              color: $c_g_5;
               background: url("/assets/header/arrow_left.png") no-repeat left center;
             }
             .minutes_total {
@@ -359,16 +390,23 @@ header {
           display: inline-block;
         
         }
+        #badge.upgrade:hover {
+          background:  url("/assets/header/upgrade_bg_on.gif"); 
+          .name {
+            color: #323232;
+            background: none;
+          }
+        
+        }
 
-        #badge {
-          padding: 5px 8px;
+        #badge.upgrade {
+          padding: 3px 3px;
           float: right;
           margin-top: 8px;
           margin-left: 5px;
           display: inline-block;
-          background: rgba(0,0,0,0.1);
-          @include round(2px);
-          @include fh_b(11px);
+          @include round(3px);
+          @include fh_b(10px);
           background-position: center center;
           background-repeat: no-repeat;
           cursor: pointer;
@@ -377,7 +415,73 @@ header {
           color: white;
           background: $c_g_1; 
           color: $c1; 
+          height: 18px;
+          line-height: 18px;
+          background:  url("/assets/header/upgrade_bg_off.gif");
+          .name {
+            
+            padding: 0px 6px;
+            @include c_g_4_b;
+            @include round(3px);
+            height: 18px;
+            line-height: 19px;
+            background: rgba(75,75,75,0.95);
+
+
+          
+          }
         }
+
+
+        #badge.badge.plus {
+          .name {
+            background-color: $c3;
+          }
+        }
+        #badge.badge.supreme {
+          .name {
+          background-color: $c1;
+          }
+        }
+
+        #badge.badge.pro {
+         .name {
+          background-color: $c4;
+          }        
+        }
+        #badge.badge {
+          padding: 3px 3px;
+          float: right;
+          margin-top: 8px;
+          margin-left: 5px;
+          display: inline-block;
+          @include round(3px);
+          @include fh_b(10px);
+          background-position: center center;
+          background-repeat: no-repeat;
+          cursor: pointer;
+          margin-right: 8px;
+          @include c_1_b;
+          height: 18px;
+          line-height: 18px;
+          background: none;
+          // background:  url("/assets/header/upgrade_bg_off.gif");
+          .name {
+            
+            padding: 0px 6px;
+            @include round(3px);
+            height: 18px;
+            line-height: 19px;
+            color: #323232;
+
+
+          
+          }
+        }
+
+
+
+
 
         .user_logout {
           width: 20px;
@@ -404,6 +508,26 @@ header {
 
 
       }
+        .user_bar.plus {
+          .min_bar {
+            background-color: $c3;
+          }
+        
+        }
+        .user_bar.supreme {
+          .min_bar {
+            background-color: $c1;
+          }
+        
+        }
+        .user_bar.pro {
+          .min_bar {
+            background-color: $c4;
+          }
+        
+        }
+
+
         .user_bar {
         
           width: 225px;
@@ -420,7 +544,7 @@ header {
             
             height: 5px;
             width: 0px;
-            background: $c1;
+            background: $c_g_5;
             
           }
         

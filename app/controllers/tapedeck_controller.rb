@@ -26,7 +26,7 @@ class TapedeckController < ApplicationController
     end
     @tapedeck.commentable = params[:commentable]
     
-    @tapedeck.public = params[:public]
+    @tapedeck.private = params[:private]
     @tapedeck.name =  params[:name]
     @tapedeck.save
 

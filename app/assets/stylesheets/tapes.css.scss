@@ -41,6 +41,24 @@
 	-ms-transition: 0.2s all ease-out;
 	-o-transition: 0.2s all ease-out;
 	transition: 0.2s all ease-out;
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background: green;
+    margin-top: 13px;
+    margin-right: 5px;
+    position: absolute;
+    background: url("/assets/tapes/settings_icon_cc.png") no-repeat center center;
+
+  }
+    a {
+      
+      color: $c_g_1;
+
+    }
+
   .setting_title {
   
     height: 54px;
@@ -48,6 +66,7 @@
     display: inline-block;
     line-height: 54px;
     float: left;
+    margin-left: 29px;
 
   }
 
@@ -67,7 +86,7 @@
     width: 54px;
     background: rgba(0,0,0,0.02);
     float: left;
-    margin-right: 7px;
+    margin-right: 12px;
     cursor: pointer;
     opacity: 0.1;
         -webkit-transition: all .5s ease;
@@ -112,6 +131,13 @@
 
 
 .checkbox_set {
+
+  height: 50px;
+  background: rgba(0,0,0,0.03);
+
+}
+
+.checkbox_set_two {
 
   height: 50px;
   background: rgba(0,0,0,0.05);
@@ -388,7 +414,7 @@
   }
   #switch_comments {
   
-    margin-left: 120px;
+    margin-left: 0px;
   }
 
   .title {
@@ -401,6 +427,24 @@
     height: 70px;
     display: inline-block;
     position: absolute;
+    .icon {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      background: green;
+      margin-top: 3px;
+      margin-right: 5px;
+
+    }
+    .icon.comment {
+      background: url("/assets/tapes/settings_icon_comment.png") no-repeat center center;
+    
+    }
+    .icon.private {
+      background: url("/assets/tapes/settings_icon_private.png") no-repeat center center;
+    
+    }
+
 
     .headline {
       @include fh_b(12px);
@@ -411,6 +455,15 @@
       margin-top: 5px;
       margin-right: 5px;
       display: inline-block;
+      width: 250px;
+      position: absolute;
+
+      .hint {
+      
+      @include fh(11px);
+      margin-left: 5px;
+      @include c_g_2;
+      }
       
     
     
@@ -427,6 +480,7 @@
       position: absolute;
       display: inline-block;
       width: 40px; 
+      margin-left: 260px;
       -webkit-transform: scale(0.6);
       -moz-transform: scale(0.6);
       -ms-transform: scale(0.6);
@@ -476,23 +530,41 @@
   }
   .tag_box:hover {
   
-    background: rgba(255,255,255,0.3);
+    // background: rgba(255,255,255,0.3);
+  }
+  .tag_box_wrap{
+    padding-top: 1px;
   }
   .tag_box {
   
+    margin: 0px;
     width: 390px;
-    background: rgba(0,0,0,0.03);
+    // background: rgba(0,0,0,0.03);
     padding: 10px 0px;
-    padding-top: 1px;
+    padding-top: 0px;
     padding-bottom: 15px;
     padding-left: 10px;
     min-height: 30px;
+    // margin-top: 10px;
+
   	-webkit-transition: 0.2s all ease-out;
 	-moz-transition: 0.2s all ease-out;
 	-ms-transition: 0.2s all ease-out;
 	-o-transition: 0.2s all ease-out;
 	transition: 0.2s all ease-out;
     @include fh_b(14px);   
+    .icon {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      background: green;
+      margin-top: 3px;
+      margin-right: 5px;
+      position: absolute;
+      margin-left: 5px;
+      background: url("/assets/tapes/settings_icon_tags.png") no-repeat center center;
+
+    }
     li {
       
       @include fh_b(12px);   
@@ -507,6 +579,7 @@
       @include c_g_5;
       @include fh_b(14px);   
       margin-bottom: 0px;
+      margin-left: 29px;
     }
 
   }

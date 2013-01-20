@@ -77,16 +77,42 @@
             </a>
           </div>
  
-          <% if true%>
-            <div id="badge" class="upgrade min_tip" title="<%= current_user.plan_expire.to_s %>"> <%= current_user.plan[:name] %> </div>
+          <% if current_user.plan_id == 1%>
+            <a href="/upgrade">
+              <div id="badge" class="header_badge upgrade">  
+            <div class="name">  
+              UPGRADE 
+            </div>
+              
+            </div>
+            </a>
+
+          <% else %>
+            <a href="/upgrade">
+
+            <div id="badge" class="header_badge badge <%= current_user.plan[:name].downcase %> min_tip" title="Expires in <%= (current_user.plan_expire - Date.today).to_i %> days"> 
+            <div class="name">  
+              <%= current_user.plan[:name] %> 
+            </div>
+  
+            </div>
+            </a>
+
+
+
           <% end %>
-        <div class="user_bar ">
+
+
+        <a href="/upgrade">
+
+        <div class="user_bar <%= current_user.plan[:name].downcase %>">
           <div class="min_bar" data-used_time="<%= current_user.upload_min%>" data-total_time="<%= current_user.plan[:minutes]%>">
           </div>
         
         </div>
+        </a>
         <div class="dropdown"> 
-          <div class="minutes"> 
+          <div class="minutes <%= current_user.plan[:name].downcase %>"> 
             <div class="minutes_used"> <%= current_user.upload_min%> min </div>
             <div class="minutes_total"> <%= current_user.plan[:minutes] %> min</div>
 

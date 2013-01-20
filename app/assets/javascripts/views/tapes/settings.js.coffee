@@ -65,7 +65,7 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
     name = $("#tape_name_field_#{settingId}").val()
     remixable =   ($("#tape_remixable_#{settingId}").attr('checked') == "checked")
     commentable = ($("#tape_commentable_#{settingId}").attr('checked') == "checked")
-    public_tape = ($("#tape_public_#{settingId}").attr('checked') == "checked")
+    private_tape = ($("#tape_private_#{settingId}").attr('checked') == "checked")
     tags = ($("#tags_#{@model.get("id")}").tagit("assignedTags"))
 
     #creative common
@@ -75,7 +75,7 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
     cc_nc = $("#license_nc_#{@model.get("id")}").hasClass("active")
 
 
-    @model.set({name: name, remixable: remixable, commentable: commentable, public: public_tape, tags: tags, cc_by: cc_by, cc_sa: cc_sa, cc_nd: cc_nd, cc_nc: cc_nc })
+    @model.set({name: name, remixable: remixable, commentable: commentable, private: private_tape, tags: tags, cc_by: cc_by, cc_sa: cc_sa, cc_nd: cc_nd, cc_nc: cc_nc })
     @model.save(
       {}
       {success: (model, response) ->
@@ -106,7 +106,7 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
     alert "ddd"
   checkPublicSwitch: (e) ->
     # alert @model.id
-    if ($("#tape_public_#{@model.id}").attr('checked') == "checked")
+    if ($("#tape_private_#{@model.id}").attr('checked') == "checked")
       $(@el).find(".license_box").removeClass("inactive")
     else
       $(@el).find(".license_box").addClass("inactive")
@@ -126,10 +126,10 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
       
     $(@el).find("#setting-popin_#{@model.id} label").inFieldLabels()
 
-    $(@el).find("#switch_public_#{@model.id}").click (e) =>
-      console.log "change public"
+    $(@el).find("#switch_private_#{@model.id}").click (e) =>
+      console.log "change private"
 
-    $(@el).find("#switch_public_#{@model.id}").click (e) =>
+    $(@el).find("#switch_private_#{@model.id}").click (e) =>
       console.log "change remix"
       @checkPublicSwitch e
 

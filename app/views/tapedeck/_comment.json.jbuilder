@@ -6,4 +6,5 @@ end
 json.user_id comment.user.id
 json.user_picture comment.user.picture.m.url
 json.user_picture_s comment.user.picture.s.url
+json.user_badge comment.user.plan[:name]
 

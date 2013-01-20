@@ -30,6 +30,7 @@ class Tapedeck
   field :remixable, :type => Boolean
   field :commentable, :type => Boolean
   field :public, :type => Boolean
+  field :private, :type => Boolean, :default => false
   field :version_count, :type => Integer
   field :remix, :type => Boolean, :default => false
 

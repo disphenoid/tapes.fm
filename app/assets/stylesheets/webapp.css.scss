@@ -2,8 +2,43 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com
 @import "tools/colors";
+@import "tools/effects";
+@import "tools/fonts";
 
 body { 
   //@include c_bg;
   background: #f6f6f6;
 }
+
+
+.user_badge {
+  display: inline-block;
+  padding: 0px 5px;
+  @include round(3px);
+  height: 15px;
+  @include fh_b(9px);
+  line-height: 16px;
+  color: #323232;
+
+}
+
+.user_badge.PLUS {
+  background: $c3;
+
+
+}
+.user_badge.SUPREME {
+  background: $c1;
+
+
+}
+
+.user_badge.PRO {
+  background: $c4;
+
+
+}
+
+
+
+

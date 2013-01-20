@@ -12,6 +12,14 @@
             <%= @model.get("user_name")%>
           </span>
         </a>
+        <% if @model.get("user_badge"): %>
+          <a href="/upgrade">
+            <div class="user_badge <%= @model.get("user_badge")%>">
+              <%= @model.get("user_badge")%>
+            </div>
+          </a>
+        <% end %>
+
         <% if @model.get("tape_name"): %>
           <span class="normal">
           on
