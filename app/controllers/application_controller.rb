@@ -24,7 +24,9 @@ class ApplicationController < ActionController::Base
           current_user.plan_id = 1
           current_user.plan_expire = nil
           current_user.save 
-          
+        
+
+
         end 
 
       else
