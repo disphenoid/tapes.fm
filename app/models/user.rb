@@ -82,10 +82,10 @@ class User
   mount_uploader :picture, ProfileUploader
 
   before_save do |document|
-    date = DateTime.now
+    moment = DateTime.now
     if document.sign_in_count_changed?
       unless document.sign_in_count_change.include?(nil)
-        UserStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "sign_in").inc(:count, 1)
+        UserStat.create(:moment => moment, :type => "sign_in", :user => document._id)
       end
     end
     if document.current_uploadtime_changed?
@@ -93,14 +93,14 @@ class User
       # the first field of the change array is the old value and the second the new one, according to the documentation
       # the delta is always positive?
         delta = document.current_uploadtime_change[1] - document.current_uploadtime_change[0]
-        UserStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "uploadtime").inc(:count, delta)
+        UserStat.create(:moment => moment, :type => "uploadtime", :user => document._id, :delta => delta)
       end
     end
   end
 
   after_create do |document|
-    date = DateTime.now
-    UserStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "create").inc(:count, 1)
+    moment = DateTime.now
+    UserStat.create(:moment => moment, :type => "create", :user => document._id)
   end
 
   def add_time(mil)
@@ -152,16 +152,14 @@ class User
         REDIS.zadd "activities:user:#{object.id}", Time.now.to_i, activity.id
         #activity = Activity.create_f!({:type => "comment", :user_id => self.id, :comment_id => object.id} )
       when "tape"
-          activity = Activity.find_or_create_by({:type => "tape", :user_id => self.id, :tapedeck_id => object.tapedeck_id} )
-          Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
+        activity = Activity.find_or_create_by({:type => "tape", :user_id => self.id, :tapedeck_id => object.tapedeck_id} )
+        Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
       when "version"
-          activity = Activity.find_or_create_by({:type => "version", :user_id => self.id,:tape_id => object.id, :tapedeck_id => object.tapedeck_id} )
-          Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
-
+        activity = Activity.find_or_create_by({:type => "version", :user_id => self.id,:tape_id => object.id, :tapedeck_id => object.tapedeck_id} )
+        Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.tapedeck_id) if activity
       when "remix"
-          activity = Activity.find_or_create_by({:type => "remix", :user_id => self.id, :tapedeck_id => object.id} )
-          Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.id) if activity          
-
+        activity = Activity.find_or_create_by({:type => "remix", :user_id => self.id, :tapedeck_id => object.id} )
+        Resque.enqueue(PushActivities,self.id, activity.id, self.id, object.id) if activity          
     end
   end
 

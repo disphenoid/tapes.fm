@@ -54,14 +54,14 @@ class Tapedeck
 
 
 
-  after_create do |doc|
-    date = DateTime.now
-    TapedeckStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "create").inc(:count, 1)
+  after_create do |document|
+    moment = DateTime.now
+    TapedeckStat.create(:moment => moment, :type => "create", :user => document.user_id)
   end
 
-  after_destroy do |doc|
-    date = DateTime.now
-    TapedeckStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "destroy").inc(:count, 1)
+  after_destroy do |document|
+    moment = DateTime.now
+    TapedeckStat.create(:moment => moment, :type => "destroy", :user => document.user_id)
   end
 
   def all_collaborators

@@ -27,16 +27,16 @@ class Tape
   field :bpm, :type => Float, :default => 120
 
   after_create do |doc|
-    date = DateTime.now
-    TapeStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "create").inc(:count, 1)
+    moment = DateTime.now
+    TapeStat.create(:moment => moment, :type => "create", :user => doc.user_id)
     if doc.tapedeck
       doc.tapedeck.inc(:version_count, 1)
     end
   end
 
   after_destroy do |doc|
-    date = DateTime.now
-    TapeStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "destroy").inc(:count, 1)
+    moment = DateTime.now
+    TapeStat.create(:moment => moment, :type => "destroy", :user => doc.user_id)
     doc.tapedeck.inc(:version_count, -1) unless doc.tapedeck.blank?
   end
 

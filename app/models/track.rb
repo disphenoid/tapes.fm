@@ -39,14 +39,17 @@ class Track
   #validates :asset, presence: true
   attr_accessible :asset
 
-  after_create do |doc|
-    date = DateTime.now
-    TrackStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "create").inc(:count, 1)
+  after_create do |document|
+    moment = DateTime.now
+    TrackStat.create(:moment => moment, :type => "create", :user => document.user_id)
+  end
+
+  after_destroy do |document|
+    moment = DateTime.now
+    TrackStat.create(:moment => moment, :type => "destroy", :user => document.user_id)
   end
 
   def to_s
     File.basename file.to_s
   end
 end
-
-

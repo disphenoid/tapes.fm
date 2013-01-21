@@ -1,8 +1,9 @@
-class TrackStat
+class DownloadStat
   include Mongoid::Document
 
   field :type, :type => String
   field :user
+  field :file
   field :moment, type: DateTime
 
   index({ moment: 1, type: 1 })

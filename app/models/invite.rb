@@ -12,19 +12,18 @@ class Invite
   field :email, :type => String
 
   after_create do |document|
-    date = DateTime.now
+    moment = DateTime.now
     if document.invited_user
-      InviteStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "internal").inc(:count, 1)
+      InviteStat.create(:moment => moment, :type => "internal", :user => document.user_id, :target => document.invited_user_id)
     else
-      InviteStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "external").inc(:count, 1)
+      InviteStat.create(:moment => moment, :type => "external", :user => document.user_id)
     end
   end
 
   after_save do |document|
-    date = DateTime.now
-    p document
+    moment = DateTime.now
     if document.invited_user_id_changed?
-       InviteStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => "accepted").inc(:count, 1)
+      InviteStat.create(:moment => moment, :type => "accepted", :user => document.invited_user_id, :initiator => document.user_id)
     end
   end
 

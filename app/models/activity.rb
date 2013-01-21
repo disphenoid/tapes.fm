@@ -11,8 +11,8 @@ class Activity
   # field :body, :type => String
   field :type, :type => String
 
-  after_create do |document|
-    date = DateTime.now
-    ActivityStat.find_or_create_by(:date => date.to_date, :hour => date.hour, :type => document.type).inc(:count, 1)
-  end
+  #after_create do |document|
+    #moment = DateTime.now
+    #ActivityStat.create(:moment => moment, :type => document.type, :user => document.user_id)
+  #end
 end
