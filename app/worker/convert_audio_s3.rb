@@ -11,9 +11,22 @@ Pusher.secret = PUSHER_SECRET.to_s
 
 class ConvertAudioS3
   #extend Resque::Heroku
-  @queue = :convert_audio_s3
-   
-  def self.perform(id, sufix)
+  # @queue = :convert_audio_s3
+  def self.enqueue(resource, user_id)
+    Resque::Job.create(select_queue(resource, user_id), self, resource.id)
+  end    
+ 
+  def self.select_queue(resource, user_id)
+    user = User.find(user_id)
+    user.premium? ? :convert_audio_s3_premium : :convert_audio_s3
+  end   
+
+  def self.perform(id)
+    
+    model = Audio.find(id)
+    
+    sufix = model.org_sufix
+    id = model.id
 
     puts "UPLOAD THE FILE NOW" 
 
@@ -61,7 +74,6 @@ class ConvertAudioS3
       :public => true
     ) 
     
-    model = Audio.find(id)
     model.processed = true
     model.mp3 = true
     

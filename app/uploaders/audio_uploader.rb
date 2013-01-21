@@ -29,7 +29,8 @@ class AudioUploader < CarrierWave::Uploader::Base
   end
 
   def add_to_process_queu(argue)
-    Resque.enqueue(ConvertAudioS3,model.id, model.org_sufix)
+    #Resque.enqueue(ConvertAudioS3,model.id, model.org_sufix)
+    ConvertAudioS3.enqueue(model, model.user_id)
 
     tmp_path =  "#{Rails.root}/tmp/audio/#{model.id}/"
 

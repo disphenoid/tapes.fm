@@ -103,6 +103,12 @@ class User
     UserStat.create(:moment => moment, :type => "create", :user => document._id)
   end
 
+  def premium?
+      
+    (!self.plan_id.blank? && self.plan_id > 1)
+
+  end
+
   def add_time(mil)
     self.total_uploadtime += mil.to_i
     self.current_uploadtime += mil.to_i

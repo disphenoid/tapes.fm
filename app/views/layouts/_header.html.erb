@@ -90,7 +90,7 @@
           <% else %>
             <a href="/upgrade">
 
-            <div id="badge" class="header_badge badge <%= current_user.plan[:name].downcase %> min_tip" title="<%= current_user.plan_expire ? ("Expires in" + (current_user.plan_expire - Date.today).to_i.to_s) + " days": "" %> "> 
+            <div id="badge" class="header_badge badge <%= current_user.plan[:name].downcase %> min_tip" title="<%= current_user.plan_expire ? ("Expires in " + (current_user.plan_expire - Date.today).to_i.to_s) + " days": "" %> "> 
             <div class="name">  
               <%= current_user.plan[:name] %> 
             </div>

@@ -3,6 +3,7 @@ class Audio
   include Mongoid::Timestamps
 
   has_many :tracks
+  belongs_to :user
   
   field :file_name, :type => String
   field :name, :type => String

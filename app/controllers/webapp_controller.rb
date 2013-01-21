@@ -164,6 +164,7 @@ class WebappController < ApplicationController
         @track = Track.new()
         @track.audio = Audio.new(newparams[:track])
         @track.name = @track.audio.name
+        @track.audio.user = current_user
         @track.duration = @track.audio.duration
         # @track.audio = Audio.new
         @track.group = @track.id
