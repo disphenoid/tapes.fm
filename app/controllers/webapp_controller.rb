@@ -108,10 +108,13 @@ class WebappController < ApplicationController
 
   def explore
     if current_user
-    @active = Tapedeck.where({private: false}).where({private: nil}).excludes(:active_tape_id => nil).sort({updated_at:-1})
-    @top = Tapedeck.where({private: false}).where({private: nil}).excludes(:active_tape_id => nil).desc(:created_at)
-    @new = Tapedeck.where({private: false}).where({private: nil}).excludes(:active_tape_id => nil).desc(:created_at)
+    @active = Tapedeck.desc(:updated_at).excludes(:private => true)
+
+    @top = Tapedeck.desc(:created_at).excludes(:private => true)
+    @new = Tapedeck.desc(:created_at).excludes(:private => true)    
+
     @json = render_to_string( template: 'explore/index.json.jbuilder', locals: { top: @top, active: @active, new: @new })
+
     respond_to do |format|
       format.html
     end
@@ -193,6 +196,7 @@ class WebappController < ApplicationController
       @track = Track.new()
       @track.audio = Audio.new(newparams[:track])
       @track.name = @track.audio.name
+      @track.audio.user = current_user
       @track.duration = @track.audio.duration
       
       @old_track = Track.find(params[:old_track])
