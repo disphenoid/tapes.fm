@@ -439,7 +439,7 @@
   
   #time_stamp {
     background: none;
-    width: 150px;
+    width: 160px;
     height: 50px;
     position: absolute;
     @include c_g_2;
@@ -456,7 +456,7 @@
     height: 50px;
     clear: both;
     background: none;
-    margin-left: 150px;
+    margin-left: 160px;
     position: absolute;
     list-style-type: none;
     padding: 0px;
@@ -1777,7 +1777,7 @@
     #tape_scrabber {
       height: 0px;
       width: 775px;
-      margin-left: 150px;
+      margin-left: 160px;
       position: absolute;
       z-index: 1000;
       background: #FF00FF;

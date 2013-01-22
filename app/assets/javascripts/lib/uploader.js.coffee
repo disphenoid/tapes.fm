@@ -19,23 +19,50 @@ class window.Uploader
     $(id).uploadifive
 
       uploadScript      : '/upload'
-      buttonText        : 'Upload File'
+      buttonText        : 'Upload Files'
       auto              : true
       multi             : true
-      removeCompleted   : true
+      removeCompleted   : false
       queueSizeLimit    : 8
       removeTimeout     : 0
-      onUploadComplete  : window.onUploadComplete
       formData          : data
       buttonClass       : "from_file_zzz"
       height            : 40
       width             : 150
       queueID           : "tape_upload"
-      onQueueComplete   : ->
-        $("#tape_upload").hide()
-      onUpload          : ->
+      simUploadLimit    : 8
+      onCancel: ->
+
+        if $(".uploadifive-queue-item").length <= 1
+          $("#tape_save_button").removeClass("wait")
+          $("#tape_save_hint_sub").show()
+          $("#tape_upload").hide()
+
+
+      onError: ->
+
+        if $(".uploadifive-queue-item").length <= 1
+          $("#tape_save_button").removeClass("wait")
+          $("#tape_save_hint_sub").show()
+          $("#tape_upload").hide()
+
+      onUploadComplete : (file, data) =>
+         window.onUploadComplete(file, data)
+         if $(".uploadifive-queue-item").length <= 1
+          $("#tape_upload").hide()
+          #$("#tape_save_button").show()
+          $("#tape_save_button").removeClass("wait")
+          $("#tape_save_hint_sub").show()
+      onUpload   : ->
         $("#tape_upload").show("slow")
-        #Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+        if Tapesfm.user
+          unless window.existing_tape
+            Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+            Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
+          else
+            Tapesfm.tapedeck.tapedeck.get("tape").trigger("new") 
+        $("#tape_save_button").addClass("wait")
+        $("#tape_save_hint_sub").hide()
 
   onUploadComplete: (file, data, response) ->
     #alert "complete"
@@ -78,34 +105,45 @@ class window.Uploader
     $("#upload_field").uploadifive
 
       uploadScript          : '/upload'
-      buttonText        : 'Upload File'
+      buttonText        : 'Upload File(s)'
+      buttonCursor      : 'hand'
       auto              : true
       multi             : true
       removeCompleted   : true
       queueSizeLimit    : 8
       removeTimeout     : 0
-      onUploadComplete   : window.onUploadComplete
       formData          : data
       buttonClass       : "from_file_zzz"
       height            : 40
       width             : 150
       queueID           : "tape_upload"
+
+
+      simUploadLimit    : 8
       onCancel: ->
 
-        $("#tape_save_button").removeClass("wait")
-        $("#tape_save_hint_sub").show()
+        if $(".uploadifive-queue-item").length <= 1
+          $("#tape_save_button").removeClass("wait")
+          $("#tape_save_hint_sub").show()
+          $("#tape_upload").hide()
 
 
       onError: ->
 
-        $("#tape_save_button").removeClass("wait")
-        $("#tape_save_hint_sub").show()
+        if $(".uploadifive-queue-item").length <= 1
+          $("#tape_save_button").removeClass("wait")
+          $("#tape_save_hint_sub").show()
+          $("#tape_upload").hide()
 
-      onQueueComplete   : ->
-        $("#tape_upload").hide()
-        #$("#tape_save_button").show()
-        $("#tape_save_button").removeClass("wait")
-        $("#tape_save_hint_sub").show()
+      onUploadComplete : (file, data) =>
+        window.onUploadComplete(file, data)
+        if $(".uploadifive-queue-item").length <= 1
+          $("#tape_upload").hide()
+          #$("#tape_save_button").show()
+          $("#tape_save_button").removeClass("wait")
+          $("#tape_save_hint_sub").show()
+
+
       onUpload   : ->
         $("#tape_upload").show("slow")
         if Tapesfm.user

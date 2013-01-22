@@ -139,7 +139,7 @@
     </div>
     <div class="" id="add_track"> 
       <div class="m_button" id="add_btn"> Add Tracks</div>
-      <div class="m_button tape_uploader_button" id="from_file">From File </div>
+      <div class="m_button tape_uploader_button" id="from_file">From Files </div>
       <div class="m_button" id="from_lib">From Library </div> 
     </div>
     <% else: %>

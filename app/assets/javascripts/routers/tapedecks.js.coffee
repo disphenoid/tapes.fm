@@ -2,6 +2,13 @@ window.existing_tape = false
 window.lastTape = "0"
 window.lastTape_obj = null
 
+window.clearQ = (queue) =>
+  if $(".uploadifive-queue-item").length <= 1
+    $("#tape_upload").hide()
+    #$("#tape_save_button").show()
+    $("#tape_save_button").removeClass("wait")
+    $("#tape_save_hint_sub").show()
+
 
 window.onUploadComplete = (file, data) =>
   track_json = jQuery.parseJSON(data)
@@ -13,6 +20,14 @@ window.onUploadComplete = (file, data) =>
     Tapesfm.tapedeck.newTapeWithTrack(track_json.track,track_json.replace_track_id)
   else
     Tapesfm.tapedeck.newTape track_json.track
+
+  if $(".uploadifive-queue-item").length == $(".uploadifive-queue-item.complete").length
+    $("#tape_upload").hide()
+    #$("#tape_save_button").show()
+    $("#tape_save_button").removeClass("wait")
+    $("#tape_save_hint_sub").show()
+  # alert $(".uploadifive-queue-item").length
+  # alert $(".uploadifive-queue-item").length
 
 # window.onUploadError = (file, errorCode, errorMsg, errorString) ->
 #   alert('The file ' + file.name + ' could not be uploaded: ' + errorString)
@@ -138,15 +153,44 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
         auto              : true
         multi             : false
         removeCompleted   : true
-        removeTimeout     : 1
+        removeTimeout     : 0
         buttonClass       : "track_btn from_file"
         height            : 28
         width             : 35
         queueID           : "tape_upload"
-        onQueueComplete   : ->
-          $("#tape_upload").hide("slow")
-        onUpload          : ->
+
+        onCancel: ->
+
+          if $(".uploadifive-queue-item").length <= 1
+            $("#tape_save_button").removeClass("wait")
+            $("#tape_save_hint_sub").show()
+            $("#tape_upload").hide()
+
+
+        onError: ->
+
+          if $(".uploadifive-queue-item").length <= 1
+            $("#tape_save_button").removeClass("wait")
+            $("#tape_save_hint_sub").show()
+            $("#tape_upload").hide()
+        onUploadComplete : (file, data) =>
+           window.onUploadComplete(file, data)
+           if $(".uploadifive-queue-item").length <= 1
+            $("#tape_upload").hide()
+            #$("#tape_save_button").show()
+            $("#tape_save_button").removeClass("wait")
+            $("#tape_save_hint_sub").show()
+        onUpload   : ->
           $("#tape_upload").show("slow")
+          if Tapesfm.user
+            unless window.existing_tape
+              Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
+              Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
+            else
+              Tapesfm.tapedeck.tapedeck.get("tape").trigger("new") 
+          $("#tape_save_button").addClass("wait")
+          $("#tape_save_hint_sub").hide()
+
         onAddQueueItem: ->
           data = {}
           data = Tapesfm.crsf.uploadify_script_data
@@ -176,11 +220,9 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
     new_track.attributes.comments = new Tapesfm.Collections.Comments()
     new_track.get("comments").url = "/api/track_comments/"+new_track.get("id")+"?tapedeck=#{Tapesfm.bootstrap.id}"
    
-    unless Tapesfm.tapedeck.tapedeck.get("tape").get("_id") == "0"
-      tape = Tapesfm.tapedeck.tapedeck.get("tape")
-    else
-      tape = Tapesfm.tapedeck.tapedeck.get("tape")
-      tape.set({id: undefined, _id: undefined})
+
+    tape = Tapesfm.tapedeck.tapedeck.get("tape")
+    tape.set({id: undefined, _id: undefined})
     
     tape.get("tracks").unshift new_track
 

@@ -3,5 +3,4 @@
   worker_count = rubber_env.resque_worker_count.to_i
 %>
 
-'convert_audio_s3_premium,*': <%= rubber_env.resque_worker_count.to_i -2 %>
-'*': <%= 2 %>
+'convert_audio_s3_premium,*': <%= (rubber_env.resque_worker_count.to_i) %>
