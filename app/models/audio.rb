@@ -18,6 +18,7 @@ class Audio
   field :sample_rate, :type => String
   field :channels, :type => String
   field :org_sufix, :type => String
+  field :checksum, :type => String
 
   mount_uploader :asset, AudioUploader
   # skip_callback :destroy, :after, :remove_asset!
