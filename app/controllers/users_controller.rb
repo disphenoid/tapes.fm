@@ -17,6 +17,9 @@ class UsersController < ApplicationController
     if @user.save()
       sign_in(:user, @user)
       invite.invited_user = @user
+      a = Autocomplete.new "user_names_complete"
+      a.add @user.name
+      
       
       if invite.save() 
         if invite.user
