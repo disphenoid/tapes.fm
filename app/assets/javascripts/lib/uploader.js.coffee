@@ -48,7 +48,7 @@ class window.Uploader
 
       onUploadComplete : (file, data) =>
          window.onUploadComplete(file, data)
-         if $(".uploadifive-queue-item").length <= 1
+         if $(".uploadifive-queue-item").length == $(".uploadifive-queue-item.complete").length
           $("#tape_upload").hide()
           #$("#tape_save_button").show()
           $("#tape_save_button").removeClass("wait")
@@ -137,7 +137,7 @@ class window.Uploader
 
       onUploadComplete : (file, data) =>
         window.onUploadComplete(file, data)
-        if $(".uploadifive-queue-item").length <= 1
+        if $(".uploadifive-queue-item").length == $(".uploadifive-queue-item.complete").length
           $("#tape_upload").hide()
           #$("#tape_save_button").show()
           $("#tape_save_button").removeClass("wait")

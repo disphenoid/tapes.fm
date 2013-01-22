@@ -21,7 +21,7 @@ if @tapedeck.cover
   json.cover_m @tapedeck.cover.image.m.url
 end
 
-json.versions @tapedeck.tapes do |json, version|
+json.versions @tapedeck.tapes.desc(:created_at) do |json, version|
   json.partial! "tapedeck/versions.json.jbuilder", version: version
 end
 

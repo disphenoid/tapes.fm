@@ -3,7 +3,7 @@ class VersionsController < ApplicationController
 
   def show
 
-    @versions = Tapedeck.find(params[:id]).tapes
+    @versions = Tapedeck.find(params[:id]).tapes.desc(:created_at)
 
   end
 

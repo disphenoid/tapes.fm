@@ -1,13 +1,7 @@
 window.existing_tape = false
+window.edit_mode = false
 window.lastTape = "0"
 window.lastTape_obj = null
-
-window.clearQ = (queue) =>
-  if $(".uploadifive-queue-item").length <= 1
-    $("#tape_upload").hide()
-    #$("#tape_save_button").show()
-    $("#tape_save_button").removeClass("wait")
-    $("#tape_save_hint_sub").show()
 
 
 window.onUploadComplete = (file, data) =>
@@ -19,7 +13,10 @@ window.onUploadComplete = (file, data) =>
   if track_json.replace_track_id
     Tapesfm.tapedeck.newTapeWithTrack(track_json.track,track_json.replace_track_id)
   else
-    Tapesfm.tapedeck.newTape track_json.track
+    if window.edit_mode
+      Tapesfm.tapedeck.oldTape track_json.track
+    else
+      Tapesfm.tapedeck.newTape track_json.track
 
   if $(".uploadifive-queue-item").length == $(".uploadifive-queue-item.complete").length
     $("#tape_upload").hide()
@@ -175,7 +172,7 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
             $("#tape_upload").hide()
         onUploadComplete : (file, data) =>
            window.onUploadComplete(file, data)
-           if $(".uploadifive-queue-item").length <= 1
+           if $(".uploadifive-queue-item").length == $(".uploadifive-queue-item.complete").length
             $("#tape_upload").hide()
             #$("#tape_save_button").show()
             $("#tape_save_button").removeClass("wait")
@@ -210,6 +207,22 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
             this.data('uploadifive').settings.onUploadComplete = window.onUploadComplete
           console.log $(this).data("id")
   
+  oldTape: (track) ->
+    new_track = new Tapesfm.Models.Track(track)
+    new_track.attributes.comments = new Tapesfm.Collections.Comments()
+    new_track.get("comments").url = "/api/track_comments/"+new_track.get("id")+"?tapedeck=#{Tapesfm.bootstrap.id}"
+
+    tape = Tapesfm.tapedeck.tapedeck.get("tape")
+    tape.get("tracks").unshift new_track
+
+    tape.get("track_ids").push(new_track.get("id"))
+  
+
+    tape.trigger("newTrack")
+    tape.trigger("edit")
+    # tape.trigger("new")
+
+
 
   newTape: (track) ->
     #coping Tape 
@@ -232,11 +245,11 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
       tape.set({"track_ids":[]},{silent: true})
       tape.get("track_ids").push(new_track.get("id"))
     
+    tape.set({user_id:Tapesfm.user._id},{silent: true})
     
     unless window.existing_tape
       tape.set({id:undefined})
       tape.set({_id:undefined},{silent: true})
-      tape.set({user_id:Tapesfm.user._id},{silent: true})
 
     #tape.set({name:"#{tape.get("name")} copy"})
     tape.trigger("newTrack")

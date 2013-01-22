@@ -72,6 +72,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
 
   editTape: (tape) ->
     window.existing_tape = true
+    window.edit_mode = true
     window.lastTape_obj = @model.get("tape").attributes
     @model.get("tape").trigger("edit")
     
@@ -94,6 +95,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
     #window.lastTape = undoID
 
     window.existing_tape = false
+    window.edit_mode = false
     $("#tape_save_hint_box").removeClass("edit")
     $("#tape_save_button").removeClass("edit")
     $("#tape_save_hint").html(Tapesfm.language.new_hint)

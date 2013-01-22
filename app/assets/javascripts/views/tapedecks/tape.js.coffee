@@ -224,9 +224,9 @@ class Tapesfm.Views.TapedeckTape extends Backbone.View
     window.trackColors = {}
     @render()
   newTape: ->
-    @model.set({active_tape_id: @model.get("tape").get("id")})
 
     if @model.get("tape").get("id") == undefined
+      @model.set({active_tape_id: @model.get("tape").get("id")})
       @render()
 
     else
@@ -307,7 +307,7 @@ class Tapesfm.Views.TapedeckTape extends Backbone.View
               Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
               Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
             else
-              Tapesfm.tapedeck.tapedeck.get("tape").trigger("new") 
+              Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
           $("#tape_save_button").addClass("wait")
           $("#tape_save_hint_sub").hide()
 

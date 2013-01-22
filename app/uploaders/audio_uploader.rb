@@ -46,10 +46,6 @@ class AudioUploader < CarrierWave::Uploader::Base
 
   def waveform
     puts "##### Start Process" 
-
-
-
-
     #make tmp folder 
 
     unless (File.directory? "#{Rails.root}/tmp/audio/")
@@ -128,17 +124,6 @@ class AudioUploader < CarrierWave::Uploader::Base
   end
 
 
-
-  def remove_silence fileid
-    
-    #tempfile=File.open("#{Rails.root}/tmp/audio/#{model.id}/#{model.id}.tmp", 'w')
-    
-
-      
-
-  end
-
-  
   def jsonp fileid
 
     tempfile=File.open("#{Rails.root}/tmp/audio/#{model.id}/#{model.id}.tmp", 'w')
