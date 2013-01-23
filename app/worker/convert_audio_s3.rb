@@ -50,10 +50,10 @@ class ConvertAudioS3
 
     file = directory.files.get("audio/#{id}/#{id}.#{sufix}")
 
-    wav_path = "#{Rails.root}/tmp/audio/#{id}/#{id}.#{sufix}"
+    audio_path = "#{Rails.root}/tmp/audio/#{id}/#{id}.#{sufix}"
     mp3_path = "#{Rails.root}/tmp/audio/#{id}/#{id}.mp3" 
 
-    #local_file = File.open(wav_path, "wb")
+    #local_file = File.open(audio_path, "wb")
     #local_file.write(file.body)
     #local_file.close
     
@@ -61,11 +61,11 @@ class ConvertAudioS3
 
 
     #convert and upload mp3
-    curl = `curl #{wav_path} #{mp3_path}` 
+    curl = `curl #{audio_path} #{mp3_path}` 
 
-    curl = `curl http://#{ENV['s3_bucket_name']}.s3.amazonaws.com/audio/#{id}/#{id}.#{sufix} -o #{wav_path}`
+    curl = `curl http://#{ENV['s3_bucket_name']}.s3.amazonaws.com/audio/#{id}/#{id}.#{sufix} -o #{audio_path}`
 
-    lameOut = `ffmpeg -b:a 128 -i #{wav_path} #{mp3_path}` 
+    lameOut = `ffmpeg -b:a 128 -i #{audio_path} #{mp3_path}` 
     puts "######### convert mp3 #{lameOut}"
 
     mp3_file = directory.files.create(
@@ -73,6 +73,7 @@ class ConvertAudioS3
       :body   => File.open(mp3_path),
       :public => true
     ) 
+    
     
     model.processed = true
     model.mp3 = true

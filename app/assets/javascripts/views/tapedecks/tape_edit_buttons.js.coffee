@@ -154,7 +154,6 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
       @render_undo()
     else
       @render_normal()
-    
         # $("#tape_edit_label").inFieldLabels()
  
     $(@el).find('.bpm_value').numeric()

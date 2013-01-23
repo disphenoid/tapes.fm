@@ -41,12 +41,14 @@ class WebappController < ApplicationController
   def download
     if current_user
       expires = Time.now + 5.minutes
-      track = Audio.find(params[:id])
+      track = Track.find(params[:id])
+      audio = track.audio 
+
       if track
         # this could potentially generate a lot of load for the db
         moment = DateTime.now
-        DownloadStat.create(:moment => moment, :type => params[:type], :user => current_user)
-        redirect_to s3_signed_url(ENV['s3_bucket_name'], "audio/#{params[:id]}/#{params[:id]}.#{params[:type]}",'GET',nil,nil, {'response-content-disposition' => "attachment; filename=#{track.name}.#{params[:type]}"})
+        DownloadStat.create(:moment => moment, :type => params[:type], :user => current_user.id)
+        redirect_to s3_signed_url(ENV['s3_bucket_name'], "audio/#{audio.id}/#{audio.id}.#{params[:type]}",'GET',nil,nil, {'response-content-disposition' => "attachment; filename=#{track.name}.#{params[:type]}"})
       end
     end
     #url += "AWSAccessKeyId=#{"AKIAJLUDMFIAAGNUJOIQ"}&Expires=#{expires.to_i}&Signature=#{CGI.escape(signature)}";
