@@ -49,6 +49,7 @@ class WebappController < ApplicationController
         moment = DateTime.now
         DownloadStat.create(:moment => moment, :type => params[:type], :user => current_user.id)
         redirect_to s3_signed_url(ENV['s3_bucket_name'], "audio/#{audio.id}/#{audio.id}.#{params[:type]}",'GET',nil,nil, {'response-content-disposition' => "attachment; filename=#{track.name}.#{params[:type]}"})
+
       end
     end
     #url += "AWSAccessKeyId=#{"AKIAJLUDMFIAAGNUJOIQ"}&Expires=#{expires.to_i}&Signature=#{CGI.escape(signature)}";
