@@ -15,6 +15,43 @@ class WebappController < ApplicationController
   end
 
   def upgrade
+    @geoip ||= GeoIP.new("#{Rails.root}/db/GeoIP.dat")   
+    remote_ip = request.remote_ip 
+    if remote_ip != "127.0.0.1" #todo: check for other local addresses or set default value
+      location_location = @geoip.country(remote_ip)
+      if location_location != nil     
+        @c = location_location[3]
+      else
+      end
+    else
+      @c = "LOCAL"
+    end
+
+    # puts "##################" + location_location[3].to_s
+    @eu = ( @c == "LOCAL" || 
+            @c == "AD" || 
+            @c == "AT" || 
+            @c == "BE" || 
+            @c == "CY" || 
+            @c == "EE" || 
+            @c == "FI" || 
+            @c == "FR" || 
+            @c == "DE" || 
+            @c == "GR" || 
+            @c == "IE" || 
+            @c == "IT" || 
+            @c == "LU" || 
+            @c == "MT"  
+          )
+
+    @json = {:eu => @eu, 
+      :price_2 => (@eu ? Plan.info(2)[:price_eu_anual] : Plan.info(2)[:price_us_anual]), 
+      :price_3 => (@eu ? Plan.info(3)[:price_eu_anual] : Plan.info(3)[:price_us_anual]), 
+      :price_4 => (@eu ? Plan.info(4)[:price_eu_anual] : Plan.info(4)[:price_us_anual]) 
+      }
+    
+
+
     respond_to do |format|
           format.html
   end

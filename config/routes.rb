@@ -39,6 +39,12 @@ Tapesfm::Application.routes.draw do
   end
   match 'signup', to: "webapp#signup"
 
+  match 'paypal/pay', to: "payments#payment_url"
+  match 'thanks', to: "payments#thanks"
+
+  match 'paypal/success', to: "payments#paypal_success"
+  match 'paypal/error', to: "payments#paypal_error"
+
   get 'dashboard', to: "webapp#dashboard"
   get 'tapes', to: "webapp#tapes"
   get 'explore', to: "webapp#explore"

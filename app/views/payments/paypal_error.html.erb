@@ -1,19 +1,24 @@
 <%= content_for(:title) do %>
-  <title> Upgrade – tapes.fm</title> 
+  <title> ooopps! – tapes.fm</title> 
 <%end%>
 
-<%= javascript_include_tag "upgrade" %>
 
-<%= @country %>
-<div id="container" class="container_12"> 
-  
+<%= javascript_include_tag "tapes" %>
+
+<div id="container" class="container_12">
+
+  <br />
+  <%= params%> 
+
+
+
 
 </div>
 
 
 
 <script>
-  window.Tapesfm.bootstrap = <%= raw @json.to_json %>;
+  window.Tapesfm.bootstrap = <%= raw @json %>;
   
 
   <% if current_user %>
@@ -44,6 +49,7 @@
   //var uploadify_script_data = {};
 });
 </script>
+
 
 
 

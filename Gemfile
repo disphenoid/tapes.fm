@@ -60,6 +60,7 @@ gem 'mini_magick'
 # Use unicorn as the app server
 gem 'unicorn'
 gem 'newrelic_rpm'
+gem 'geoip'
 
 # Deploy with Capistrano
 # gem 'capistrano'

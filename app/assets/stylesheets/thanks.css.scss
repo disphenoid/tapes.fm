@@ -1,0 +1,43 @@
+@import "tools/colors";
+@import "tools/fonts";
+@import "tools/effects";
+
+#thanks_box {
+
+  margin-top: 80px;
+  @include fh_b(36px);
+  color: $c_g_1;
+  text-align: center;
+  height: 400px;
+
+  a {
+    color: $c1;
+  }
+  
+  .headline {
+    @include fh_b(36px);
+    color: $c_g_1;
+    
+  
+  }
+
+  .subline {
+    @include fh_b(16px);
+    color: $c_g_2;
+    margin-top: 15px;
+  
+  }
+  .icon {
+    @include fh_b(16px);
+    color: $c_g_2;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    left: 50%;
+    margin-left: -100px;
+    // background: #FF00FF;
+    margin-bottom: 20px;
+    background: url("/assets/upgrade/thanks_done.png");
+  
+  }
+}

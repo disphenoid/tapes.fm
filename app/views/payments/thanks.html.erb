@@ -1,19 +1,28 @@
 <%= content_for(:title) do %>
-  <title> Upgrade – tapes.fm</title> 
+  <title> Thank You! – tapes.fm</title> 
 <%end%>
 
-<%= javascript_include_tag "upgrade" %>
 
-<%= @country %>
-<div id="container" class="container_12"> 
-  
+<%= javascript_include_tag "tapes" %>
+
+<div id="container" class="container_12">
+
+  <div id="thanks_box">
+    <div class="icon"> </div>
+    <div class="headline"> Hey <%=current_user.name%>, Thank you!</div>
+    <div class="subline"> Questions, ideas or need help? Pleae feel free to send me an email (<a href="mailto:j@tapes.fm"> j@tapes.fm </a>)!</div>
+  </div>
+
+
+
+
 
 </div>
 
 
 
 <script>
-  window.Tapesfm.bootstrap = <%= raw @json.to_json %>;
+  window.Tapesfm.bootstrap = <%= raw @json %>;
   
 
   <% if current_user %>
@@ -44,6 +53,7 @@
   //var uploadify_script_data = {};
 });
 </script>
+
 
 
 
