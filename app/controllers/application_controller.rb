@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :ensure_domain
+  # before_filter :ensure_domain
   before_filter :only_if_logged 
   before_filter :user_json_v 
   before_filter :check_week_limit

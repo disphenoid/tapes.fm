@@ -31,7 +31,7 @@ class TapedeckController < ApplicationController
     @tapedeck.save
 
 
-    render :json => @tapedeck
+    # render :json => @tapedeck
   end
   
   def update

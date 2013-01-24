@@ -5,7 +5,7 @@
       Settings
     </div>
     <ul class="filters">
-     <li class="filter active"> Account</li> <li class="filter"> Profile</li> <li class="filter"> Subcription</li>
+     <%# <li class="filter active"> Account</li> <li class="filter"> Profile</li> <li class="filter"> Subcription</li> %>
     </ul>
 
   </div>

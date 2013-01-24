@@ -19,6 +19,30 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
   submitTape: (e) ->
     e.preventDefault()
     console.log $(@el).find(".tape_cover_form").first()
+    $(@el).find(".cover_img")
+
+    opts =
+      lines: 13
+      length: 4
+      width: 3
+      radius: 5
+      corners: 1
+      rotate: 0
+      color: 'rgba(0,0,0,0.6)'
+      speed: 1
+      trail: 60
+      shadow: false
+      hwaccel: false
+      className: 'spinner'
+      zIndex: 2e9
+      top: "18px"
+      left: '18px'
+
+
+    target = $(@el).find(".cover_img").spin(opts)
+    # spinner = new Spinner(opts).spin(target)
+
+
 
     $(@el).find(".tape_cover_form").ajaxSubmit
       success: (e) =>
@@ -80,7 +104,7 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
       {}
       {success: (model, response) ->
         #console.log "response " + response.id
-        #window.location = "/tapedeck/"+response._id
+        #window.location = "/tapedeck/"+response_id
 
         tapedeck = new Tapesfm.Models.Tapedeck(response)
         tapedeck.set({id: response._id})
@@ -132,6 +156,7 @@ class Tapesfm.Views.TapeSetting extends Backbone.View
     $(@el).find("#switch_private_#{@model.id}").click (e) =>
       console.log "change remix"
       @checkPublicSwitch e
+
 
     this
 
