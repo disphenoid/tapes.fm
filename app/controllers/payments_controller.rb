@@ -63,7 +63,7 @@ class PaymentsController < ApplicationController
         when "test"
 
           upgrade = params[:upgrade]
-          payment.plan_id = 3
+          payment.plan_id = 1
           if payment.country == "eu"
             paypal_id = "GVNTMKLPK8RHS"
           else

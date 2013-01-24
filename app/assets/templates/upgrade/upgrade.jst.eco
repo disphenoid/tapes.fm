@@ -19,13 +19,11 @@
         <li class="feature inactive"> <div class="icon hq"></div> <div class="title">HQ Streaming</div> </li>
         <li class="feature inactive"> <div class="icon hires"></div> <div class="title">Hi-Samplerate (192khz)</div> </li>
       </ul>
-      <a href="/paypal/pay?upgrade=test&country=<%= if window.Tapesfm.bootstrap.eu then "eu" else "us" %>">
       <div class="paypal">
         <div class="price">
           Free
         </div>
       </div>
-      </a>
 
     </div>
 
