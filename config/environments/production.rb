@@ -14,6 +14,8 @@ Tapesfm::Application.configure do
   ENV['SENDGRID_USERNAME'] = "tapesfm"
   ENV['SENDGRID_PASSWORD'] = "thesims9946"
 
+  ENV["APP_DOMAIN_HOST"] = "tapes.fm"
+
   # Code is not reloaded between requests
   config.cache_classes = true
 

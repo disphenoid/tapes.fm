@@ -1,11 +1,23 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :ensure_domain
   before_filter :only_if_logged 
   before_filter :user_json_v 
-  layout :resolve_layout
   before_filter :check_week_limit
   before_filter :check_plan_expire
+  layout :resolve_layout
 
+  def ensure_domain
+    #@debug_value = "include '.de' = " + request.env['HTTP_HOST'].include?(".de").to_s
+  unless( Rails.env.development? || Rails.env.test?)
+    if(request.env['HTTP_HOST'] != ENV["APP_DOMAIN_HOST"]) 
+      redirect_to "http://#{ENV["APP_DOMAIN_HOST"] + request.path}", :status => 301 
+      
+      # HTTP 301 is a "permanent" redirect
+
+    end
+  end
+  end
 
   def ping
     #returns ping for load balancer
