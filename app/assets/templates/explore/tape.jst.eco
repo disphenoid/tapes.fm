@@ -11,20 +11,25 @@
       <div class="case"> </div> 
       </a>
 
+      <% if @model.get("remix"):%>
+        <a href="/tapedeck/<%=@model.get("original_id")%>">
+          <div class="remix tip" title="Original by <%= @model.get("original_author")%>" ></div> 
+        </a>
+      <% end %>
+
 
     </div>
     <div class="info_box">
       <div class="headline">
         <%= @model.get("name") %> 
-        <span class="author">
-        /
-          <%= @model.get("author") %> 
-        </span>
       </div> 
+      <div class="author">
+        <a href="/<%= @model.get("author")%>">
+          by <%= @model.get("author") %> 
+        </a>
+      </div>
       <div class="subline">
-        <span class="date" title="<%= @model.get("updated_at")%>">
-        <%= @model.get("updated_at") %>
-        </span>
+        <%# @model.get("updated_at") %>
         
       </div> 
     </div> 

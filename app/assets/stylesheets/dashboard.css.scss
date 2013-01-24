@@ -329,11 +329,14 @@ a {
             // overflow: hidden;
             // white-space: nowrap;
             height: 13px;
+            a {
+            color: $c_g_4;
+            }
 
           
          }
         .author {
-          color: $c1;
+          color: $c_g_3;
           @include fh(12px);
         
         }
@@ -373,6 +376,20 @@ a {
   margin-top: 0px;
   @include round(3px); 
   position: absolute;
+
+  .remix {
+    
+    width: 30px;
+    height: 30px;
+    background: red;
+    position: absolute;
+    z-index: 1000;
+    background: url("/assets/tapes/remix_off.png") no-repeat top left;
+    margin-left: 5px;
+    margin-top: 5px;
+
+  
+  }
 
   img {
     overflow: hidden;
@@ -455,7 +472,7 @@ a {
     
 
 
-      background-color: white;
+      background-color: rgba(0,0,0,0.05);
       .mini_cover {
         transform:rotate(-2deg);
         -ms-transform:rotate(-2deg); /* IE 9 */
@@ -473,13 +490,18 @@ a {
 
         .headline {
         
+          a {
           color: $c1;
+          }
+        }
           .author {
             color: $c1b;
-          
+           a {
+          color: $c1b;
+
+          }         
           }
 
-        }
       }
     
     }
@@ -524,6 +546,8 @@ a {
         @include c_g_4;
         margin-left: 65px;
         .headline {
+          margin-bottom: 3px;
+          a {
             overflow: hidden;
             white-space: nowrap;
             height: 13px;
@@ -532,11 +556,15 @@ a {
             @include fh(12px);
             
             }
+            color: $c_g_4;
+          }
           
          }
-                .author {
+        .author {
+          a {
           color: $c_g_2;
-          @include fh(12px);
+          @include fh(11px);
+          }
         
         }
           .subline {

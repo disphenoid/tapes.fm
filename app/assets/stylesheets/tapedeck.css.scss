@@ -1740,9 +1740,11 @@
       h2 {
         margin: 0px;
         padding: 0px;
-        @include fh(14px);
+        @include fh(13px);
         @include c_g_2;
         margin-bottom: 0px;
+        position: relative;
+        z-index: 1000;
       }
 
       

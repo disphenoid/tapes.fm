@@ -13,14 +13,16 @@
       <%= @tapedeck.get("name") %>
       </h2>
      
-      <h2>
-        <% unless @tapedeck.get("remix"):%> 
-          by 
-        <%else:%>
-          Remixed by 
-        <%end%> 
-        <%= @tapedeck.get("author") %>
-      </h2>
+      <a href="/<%= @tapedeck.get("author")%>">
+        <h2>
+          <% unless @tapedeck.get("remix"):%> 
+            by 
+          <%else:%>
+            Remixed by 
+          <%end%> 
+          <%= @tapedeck.get("author") %>
+        </h2>
+      </a>
       <div id="tags">
         <ul class="tags_field" id="tags_<%=@tapedeck.get("id")%>"> 
         </ul>

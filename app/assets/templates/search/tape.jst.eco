@@ -6,7 +6,11 @@
     <% end %>
     <div class="wheels"> </div> 
     <div class="case"> </div> 
-
+    <% if @model.get("remix"):%>
+      <a href="/tapedeck/<%=@model.get("original_id")%>">
+        <div class="remix tip" title="Original by <%= @model.get("original_author")%>" ></div> 
+      </a>
+    <% end %>
 
   </div>
   <div class="info_box">

@@ -146,7 +146,15 @@ header {
       background-color: $c3;
       background-position: center center;
     }
-
+    .quick_button#to_tracks {
+      background-image: url("/assets/header/icon_tracks_on.png");
+      background-position: center center;
+    }
+    .quick_button.active#to_tracks {
+      background-image: url("/assets/header/icon_tracks_on.png");
+      background-color: $c2;
+      background-position: center center;
+    }
 
     .quick_button#to_listen {
       background-image: url("/assets/header/icon_listen_on.png");
@@ -171,7 +179,7 @@ header {
       float: left; 
       #search_box {
         float: left;
-        width: 280px;
+        width: 260px;
         height: 48px;
         padding-top: 1px;
         @include c_g_0_b;
@@ -189,14 +197,14 @@ header {
         
         }
         label  { 
-          width: 240px;
+          width: 220px;
           position:absolute; 
           background: none;
           padding: 0px 20px;
           line-height: 50px;
         }
         input{
-          width: 240px;
+          width: 220px;
           height: 48px;
           background: none;
           border: none;
@@ -251,7 +259,7 @@ header {
       display: inline-block;
       background: none;
       height: 50px;
-      width: 295px;
+      width: 290px;
       text-align: left;
       @include fh(14px);
       @include c_g_2;
@@ -294,7 +302,7 @@ header {
         float: left;
         @include fh_b(12px);
         background: url("/assets/shadow_el.png") no-repeat left;
-        width: 245px;
+        width: 240px;
         cursor: pointer;
         a {
         
@@ -304,7 +312,7 @@ header {
         
           visibility: hidden;
           margin-top: 50px;
-          width: 245px;
+          width: 240px;
           background: #323232;
           position: absolute;
           @include round_bottom(2px);

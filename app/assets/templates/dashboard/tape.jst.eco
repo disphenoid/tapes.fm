@@ -3,25 +3,34 @@
     <img src="http://<%= @tape.get("cover_s")%>">
     <div class="wheels"> </div> 
     <a href="/tapedeck/<%=@tape.get("id")%>">
-    <div class="case"> </div> 
+      <div class="case"> </div> 
     </a>
-
+    <% if @tape.get("remix"):%>
+      <a href="/tapedeck/<%=@tape.get("original_id")%>">
+        <div class="remix tip" title="Original by <%= @tape.get("original_author")%>" ></div> 
+      </a>
+    <% end %>
 
   </div>
   <div class="info_box">
+
     <div class="headline">
+    <a href="/tapedeck/<%=@tape.get("id")%>">
       <%= @tape.get("name") %> 
       <br />
+    </a>
 
     </div> 
     <div class="author">
-      
-        by <%= @tape.get("author") %> 
+      <a href="/<%=@tape.get("author")%>">
+        
+          by <%= @tape.get("author") %> 
+      </a>
     </div>
     <div class="subline">
       <span class="date" title="<%= @tape.get("updated_at")%>">
       <%= @tape.get("updated_at") %>
-      </span
+      </span>
       
     </div> 
   </div> 

@@ -16,7 +16,9 @@
           <span class="bold"> <%= @activity.get("user_name")%> </span>
         </a>
         <span class="normal"> added a
-        <span class="red"> Version</span>
+        <a href="/tapedeck/<%=@activity.get("tapedeck_id")%>">
+          <span class="red"> Version</span>
+        </a>
         </span>
       
       </div>
@@ -41,16 +43,22 @@
 
           <div class="info_box">
             <div class="headline">
-              <%= @activity.get("tapedeck_name") %> 
+              <a href="/tapedeck/<%=@activity.get("tapedeck_id")%>">
+                <%= @activity.get("tapedeck_name") %> 
+              </a>
+                 <a href="/user/<%= @activity.get("user_id")%>">
               <span class="author">
               /
-                 <%=  @activity.get("author") %> 
+                  <%=  @activity.get("author") %> 
               </span>
+                 </a>
             </div> 
+            <a href="/tapedeck/<%=@activity.get("tapedeck_id")%>">
             <div class="version">
               <%= @activity.get("version_name") %>
               
             </div> 
+            </a>
           </div>         
 
       </div>
