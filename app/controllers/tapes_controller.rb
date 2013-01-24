@@ -33,12 +33,14 @@ class TapesController < ApplicationController
 
     if current_user && (@tape.tapedeck.collaborator? current_user)
 
+      # puts "################ #{new_settings.count} #{new_settings}"
       new_settings.each do |setting|
-
-        @tape.track_setting_volume(setting[:track_id],setting[:volume])
+        puts "######################## #{setting}"
+        @tape.track_setting_init(setting[:track_id])
         @tape.track_setting_pan(setting[:track_id],setting[:pan])
         @tape.track_setting_mute(setting[:track_id],setting[:mute])
         @tape.track_setting_solo(setting[:track_id],setting[:solo])
+        @tape.track_setting_volume(setting[:track_id],setting[:volume])
 
       end
 

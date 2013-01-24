@@ -39,6 +39,10 @@ class Tape
     TapeStat.create(:moment => moment, :type => "destroy", :user => doc.user_id)
     doc.tapedeck.inc(:version_count, -1) unless doc.tapedeck.blank?
   end
+  def track_setting_init(track_id)
+    TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})
+    self.save 
+  end
 
   def track_setting_volume(track_id, value)
     setting = TrackSetting.find_or_initialize_by({track_id: track_id, tape_id: self.id})

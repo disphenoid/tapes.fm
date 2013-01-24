@@ -343,7 +343,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
       #tape = Tapesfm.tapedeck.tapedeck.get("tape")
       #tape.set(id_name)
       
-      trackSettings = Tapesfm.tapedeck.tapedeck.get("tape").get("track_settings").where({"track_id":@model.get("id")})[0]
+      trackSettings = Tapesfm.tapedeck.tapedeck.get("tape").get("track_settings").where({"track_id":@model.get("id")}).first()
       trackSettings.set({"volume": setValue})
       
 
