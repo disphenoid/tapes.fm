@@ -14,22 +14,23 @@ class TapedeckController < ApplicationController
 
   def create
 
-    @tapedeck = Tapedeck.new 
-    @tapedeck.user_id = current_user.id
-    @tapedeck.genre = params[:genre]
-    @tapedeck.remixable = params[:remixable]
-    @tapedeck.collaborator_ids.push current_user.id
-    @tapedeck.tags = params[:tags]
+    if current_user
+      @tapedeck = Tapedeck.new 
+      @tapedeck.user_id = current_user.id
+      @tapedeck.genre = params[:genre]
+      @tapedeck.remixable = params[:remixable]
+      @tapedeck.collaborator_ids.push current_user.id
+      @tapedeck.tags = params[:tags]
 
-    if params[:project_id]
-      @tapedeck.project_id = params[:project_id] 
+      if params[:project_id]
+        @tapedeck.project_id = params[:project_id] 
+      end
+      @tapedeck.commentable = params[:commentable]
+      
+      @tapedeck.private = params[:private]
+      @tapedeck.name =  params[:name]
+      @tapedeck.save
     end
-    @tapedeck.commentable = params[:commentable]
-    
-    @tapedeck.private = params[:private]
-    @tapedeck.name =  params[:name]
-    @tapedeck.save
-
 
     # render :json => @tapedeck
   end
@@ -37,14 +38,18 @@ class TapedeckController < ApplicationController
   def update
     
     @tapedeck = Tapedeck.find(params[:id])
-    if @tapedeck.update_attributes!(params[:tapedeck])
-      if params[:tags]
-        addTagsToAutocomplete params[:tags]
+    if current_user && @tapedeck.collaborator?(current_user)
+    
+      if @tapedeck.update_attributes!(params[:tapedeck])
+        if params[:tags]
+          addTagsToAutocomplete params[:tags]
+        end
+
       end
+    
 
+      render :json => @tapedeck
     end
-
-    render :json => @tapedeck
 
   end
 

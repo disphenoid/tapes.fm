@@ -132,7 +132,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
       $("#tape_edge").addClass("edge_#{color}")
 
     @model.set({color: color })
-    if Tapesfm.user
+    if Tapesfm.user && Tapesfm.user.collaborator
       @model.save(
         {}
         {success: (model, response) ->
@@ -276,7 +276,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
     Tapesfm.trackm.volumeTrack(@getIndex(),setValue)
 
-    if Tapesfm.user
+    if Tapesfm.user && Tapesfm.user.collaborator
       unless window.existing_tape
         Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
         Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
@@ -292,7 +292,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
     #console.log "START! #{start_value}"
     #console.log "START! obj #{event.currentTarget.offsetTop + event.currentTarget.offsetHeight + document.body.scrollTop}"
-    if Tapesfm.user
+    if Tapesfm.user && Tapesfm.user.collaborator
       unless window.existing_tape
         Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
         Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
@@ -362,7 +362,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
     Tapesfm.trackm.panTrack(@getIndex(),setValue)
 
-    if Tapesfm.user
+    if Tapesfm.user && Tapesfm.user.collaborator
       unless window.existing_tape
         Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
         Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
@@ -424,7 +424,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
       Tapesfm.trackm.volumeTrack(@getIndex(),setValue)
 
-    if Tapesfm.user
+    if Tapesfm.user && Tapesfm.user.collaborator
       unless window.existing_tape
         Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
         Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
@@ -483,7 +483,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
       Tapesfm.trackm.panTrack(@getIndex(),setValue)
 
-    if Tapesfm.user
+    if Tapesfm.user && Tapesfm.user.collaborator
       unless window.existing_tape
         Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
         Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
@@ -507,7 +507,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
       this.$("#mute").addClass("active")
 
-    if Tapesfm.user
+    if Tapesfm.user && Tapesfm.user.collaborator
       unless window.existing_tape
         Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
         Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
@@ -529,7 +529,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
       this.$("#solo").addClass("active")
       Tapesfm.trackm.unsoloTrack(@getIndex())
 
-    if Tapesfm.user
+    if Tapesfm.user && Tapesfm.user.collaborator
       unless window.existing_tape
         Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
         Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})

@@ -302,7 +302,8 @@ class Tapesfm.Views.TapedeckTape extends Backbone.View
             $("#tape_save_hint_sub").show()
         onUpload   : ->
           $("#tape_upload").show("slow")
-          if Tapesfm.user
+          if Tapesfm.user && Tapesfm.user.collaborator
+
             unless window.existing_tape
               Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
               Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})

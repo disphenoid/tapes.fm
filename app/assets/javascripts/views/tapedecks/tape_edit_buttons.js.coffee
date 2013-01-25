@@ -14,7 +14,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
   initialize: ->
     #@model.get("tape").on('change:_id', @render, this)
     #@model.get("tape").on('edit', @render, this)
-    if Tapesfm.user
+    if Tapesfm.user && Tapesfm.user.collaborator
       @model.get("tape").on('edit', @render_undo, this)
       @model.get("tape").on('new', @render_undo, this)
       @model.get("tape").on('edit_done', @render_normal, this)
@@ -31,7 +31,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
     val = $("#bpm_value").val()
     @model.get("tape").set({bpm:val})
     $("#bpm_value").val(val)
-    if Tapesfm.user
+    if Tapesfm.user && Tapesfm.user.collaborator 
       unless window.existing_tape
         Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
         Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
@@ -45,7 +45,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
     val = Number(val) + 1
     @model.get("tape").set({bpm:val})
     $("#bpm_value").val(val)
-    if Tapesfm.user
+    if Tapesfm.user && Tapesfm.user.collaborator
       unless window.existing_tape
         Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
         Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})
@@ -58,7 +58,7 @@ class Tapesfm.Views.TapedeckEditButtons extends Backbone.View
     val = Number(val) - 1
     @model.get("tape").set({bpm:val})
     $("#bpm_value").val(val)
-    if Tapesfm.user
+    if Tapesfm.user && Tapesfm.user.collaborator
       unless window.existing_tape
         Tapesfm.tapedeck.tapedeck.get("tape").trigger("new")
         Tapesfm.tapedeck.tapedeck.get("tape").set({id:undefined},{silent:true})

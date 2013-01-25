@@ -16,10 +16,12 @@
       </form>
 
 
-      <div id="bpm_ctrl">
-        <div id="plus" class="ctrl_buttons"></div>
-        <div id="minus" class="ctrl_buttons"> </div>
-      </div>
+        <% if Tapesfm.user && Tapesfm.user.collaborator:%>
+          <div id="bpm_ctrl">
+              <div id="plus" class="ctrl_buttons"></div>
+              <div id="minus" class="ctrl_buttons"> </div>
+          </div>
+        <% end %>
     </li>
 
 
@@ -33,9 +35,11 @@
       <input type="text" class="bpm_value" name="bpm_value" id="bpm_value" value="<%=@model.get("tape").get("bpm")%>"></input>
       </form>
 
-      <div id="bpm_ctrl">
-        <div id="plus" class="ctrl_buttons"></div>
-        <div id="minus" class="ctrl_buttons"> </div>
-      </div>
+        <% if Tapesfm.user && Tapesfm.user.collaborator:%>
+          <div id="bpm_ctrl">
+              <div id="plus" class="ctrl_buttons"></div>
+              <div id="minus" class="ctrl_buttons"> </div>
+          </div>
+        <% end %>
     </li>
 <% end %>
