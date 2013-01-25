@@ -266,7 +266,7 @@ class WebappController < ApplicationController
     # prepend_view_path "app/views/admin/users"
     if current_user.admin
 
-      @users = User.all.limit(50)
+      @users = User.all.desc(:created_at).limit(50)
       @user_count = User.count
       @invites = Invite.all.excludes(:email => nil).limit(50)
       @invite_count = Invite.count
