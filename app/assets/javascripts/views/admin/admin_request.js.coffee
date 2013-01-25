@@ -23,7 +23,8 @@ class Tapesfm.Views.AdminRequest extends Backbone.View
         # Tapesfm.tapes.unshift(tapedeck)
         if response._id
           # @collection.add(invite)
-          alert "invited " + @model.get("email")
+          #alert "invited " + @model.get("email")
+          $(@el).fadeOut("slow")
 
 
       })

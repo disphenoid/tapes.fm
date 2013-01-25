@@ -1,3 +1,58 @@
+<div class="home_tops signup">
+  <h1>8 Tracks + You</h1>
+  <h2>Be part of tapes.fm. <span class="hightlight">Make</span>, <span class="hightlight">remix</span> and <span class="hightlight">explore</span> music <span class="hightlight">together</span>.</h2>
+
+
+  <div class="social_buttons btn">
+    <div class="twitter_button btn" >
+      <a href="http://twitter.com/share" class="twitter-share-button" data-text= "tapes.fm is a simple way to collect, share & collaborate on your musical ideas." data-url="http://tapes.fm" data-count="horizontal" data-via="tapesfm">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>  
+    </div>
+    <div class="facebook_button">
+      <div class="fb-like" data-href="https://www.facebook.com/Tapesfm" data-send="false" data-layout="button_count" data-width="120" data-show-faces="true" data-font="arial"></div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+
+
+<div class="forms signup">
+  <div id="signup_form"> 
+    <div id="signup_box" class="container_12"> 
+      <div class="fields_box" >
+        <div class="field_box">
+          <div class="email fixed"> <%= @model.get("email") %></div> 
+        </div>
+        <div class="field_box">
+          <div class="check_icon" id="check_icon_name"></div>
+          <label for="name">Name</label>
+          <input type="text" id="name"> </input> 
+        </div>
+        <div class="field_box">
+          <div class="check_icon" id="check_icon_password"></div>
+          <label for="password">Password</label>
+          <input type="password" id="password"> </input> 
+        </div>      
+        <div class="field_box">
+          <input type="submit" id="submit" value="Join"> </input> 
+        </div>        
+        <br />
+        <div class="field_box terms">
+          <label for="terms">I accept </label>
+          <input type="checkbox" id="terms" value="Join"> </input> 
+          <a href="/terms" target="_blank" class="terms_link">tapes.fm Terms of Service </a>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
   <div class="home_bottom signup">
     <div class="col tapes " id="col1"> 
       <div class="col_content"> 
@@ -29,61 +84,139 @@
       </div> 
     </div> 
     </div> 
+<div class=" upgrade_box">
+  <h1>Upgrades*</h1>
+  <h2>Additional Upgrades to your <span class="hightlight">completely free</span> basic pack</h2>
 
-    <div class="home_mid signup">
-    <div id="signup_form"> 
-  
-  <div id="signup_box" class="container_12"> 
-    <div class="fields_box" >
-      <div class="field_box">
-        <div class="email fixed"> <%= @model.get("email") %></div> 
+  <div class="upgrades">
+
+    <div class="upgrade_el free first">
+      
+      <div class="header">
+      Basic
+      <span class="min">/ 20 min</span> 
       </div>
-      <div class="field_box">
-        <div class="check_icon" id="check_icon_name"></div>
-        <label for="name">Name</label>
-        <input type="text" id="name"> </input> 
+      <ul class="feature_list">
+        <li class="feature"> <div class="icon minutes"></div> <div class="title">20 min per week</div> </li>
+        <li class="feature inactive"> <div class="icon private"></div> <div class="title">Private Tapes</div> </li>
+        <li class="feature inactive"> <div class="icon multiupload"></div> <div class="title">Multiuploads</div> </li>
+        <li class="feature inactive"> <div class="icon download "></div> <div class="title">Backup original files </div> </li>
+        <li class="feature inactive"> <div class="icon prio"></div> <div class="title">Priority Conversion</div> </li>
+        <li class="feature inactive"> <div class="icon hq"></div> <div class="title">HQ Streaming</div> </li>
+        <li class="feature inactive"> <div class="icon hires"></div> <div class="title">Hi-Samplerate (192khz)</div> </li>
+      </ul>
+      <div class="paypal">
+        <div class="price">
+          Free
+        </div>
       </div>
-      <div class="field_box">
-        <div class="check_icon" id="check_icon_password"></div>
-        <label for="password">Password</label>
-        <input type="password" id="password"> </input> 
-      </div>      
-       <div class="field_box">
-        <input type="submit" id="submit" value="Join"> </input> 
-      </div>        
-       <br />
-       <div class="field_box terms">
-        <label for="terms">I accept </label>
-        <input type="checkbox" id="terms" value="Join"> </input> 
-        <a href="/terms" target="_blank" class="terms_link">tapes.fm Terms of Service </a>
-      </div>        
+
     </div>
 
+
+
+    <div class="upgrade_el plus">
+      
+      <div class="header">
+      Plus
+      <span class="min">/ 100 min</span> 
+      </div>
+      <ul class="feature_list">
+        <li class="feature"> <div class="icon minutes"></div> <div class="title">100 min per week</div> </li>
+        <li class="feature "> <div class="icon private"></div> <div class="title">Private Tapes</div> </li>
+        <li class="feature"> <div class="icon multiupload"></div> <div class="title">Multiuploads</div> </li>
+        <li class="feature inactive"> <div class="icon prio"></div> <div class="title">Priority Conversion</div> </li>
+        <li class="feature inactive"> <div class="icon download "></div> <div class="title">Backup original files </div> </li>
+        <li class="feature inactive"> <div class="icon hq"></div> <div class="title">HQ Streaming</div> </li>
+        <li class="feature inactive"> <div class="icon hires"></div> <div class="title">Hi-Samplerate (192khz)</div> </li>
+      </ul>
+      <div class="paypal">
+        <div class="sign <%= if window.Tapesfm.bootstrap.price.eu then "eu" else "us" %>"> </div>
+        <div class="price">
+          <%= window.Tapesfm.bootstrap.price.price_2%>
+        </div>
+        <div class="rate">
+          / Year
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="upgrade_el supreme">
+      
+      <div class="header">
+      Supreme
+      <span class="min"> / 250 min</span> 
+      </div>
+      <ul class="feature_list">
+        <li class="feature"> <div class="icon minutes"></div> <div class="title">250 min per week</div> </li>
+        <li class="feature"> <div class="icon private"></div> <div class="title">Private Tapes</div> </li>
+        <li class="feature"> <div class="icon multiupload"></div> <div class="title">Multiuploads</div> </li>
+        <li class="feature"> <div class="icon prio"></div> <div class="title">Priority Conversion</div> </li>
+        <li class="feature"> <div class="icon download "></div> <div class="title">Backup original files </div> </li>
+        <li class="feature"> <div class="icon hq"></div> <div class="title">HQ Streaming</div> </li>
+        <li class="feature inactive"> <div class="icon hires"></div> <div class="title">Hi-Samplerate (192khz)</div> </li>
+      </ul>
+      <div class="paypal">
+        <div class="sign <%= if window.Tapesfm.bootstrap.price.eu then "eu" else "us" %>"> </div>
+        <div class="price">
+          <%= window.Tapesfm.bootstrap.price.price_3%>
+        </div>
+        <div class="rate">
+          / Year
+        </div>
+      </div>
+
+    </div>
+
+     <div class="upgrade_el pro last">
+      
+      <div class="header">
+      Pro
+      <span class="min">/ 500 min</span> 
+      </div>
+      <ul class="feature_list">
+        <li class="feature"> <div class="icon minutes"></div> <div class="title">500 min per week</div> </li>
+        <li class="feature"> <div class="icon private"></div> <div class="title">Private Tapes</div> </li>
+        <li class="feature"> <div class="icon multiupload"></div> <div class="title">Multiuploads</div> </li>
+        <li class="feature"> <div class="icon prio"></div> <div class="title">Priority Conversion</div> </li>
+        <li class="feature"> <div class="icon download "></div> <div class="title">Backup original files </div> </li>
+        <li class="feature"> <div class="icon hq"></div> <div class="title">HQ Streaming</div> </li>
+        <li class="feature"> <div class="icon hires"></div> <div class="title">Hi-Samplerate (192khz)</div> </li>
+      </ul>
+      <div class="paypal">
+        <div class="sign <%= if window.Tapesfm.bootstrap.price.eu then "eu" else "us" %>"> </div>
+        <div class="price">
+          <%= window.Tapesfm.bootstrap.price.price_4%>
+        </div>
+        <div class="rate">
+          / Year
+        </div>
+      </div>
+
+    </div>
+ 
+
+</div>
+<div class="beta_hint">
+  <div class="icon"> </div>
+  <div class="text"> 
+    *We are still in Beta but we're hoping to reach a stable state in the near future. Please keep this in mind! <br />
+    Anyway, tapes.fm can only work with your support! Thank you!
   </div>
 
 </div>
 
+
+
     
     
     
-    </div>
 
-   <div class="home_top signup">
-    
 
-    <h1>8 Tracks + You</h1>
-    <h2>Be part of tapes.fm. <span class="hightlight">Make</span>, <span class="hightlight">remix</span> and <span class="hightlight">explore</span> music <span class="hightlight">together</span>.</h2>
-    <div>
 
-  </div> 
 
-    <div class="social_buttons btn">
-      <div class="twitter_button btn" >
-                <a href="http://twitter.com/share" class="twitter-share-button" data-text= "tapes.fm is a simple way to collect, share & collaborate on your musical ideas." data-url="http://tapes.fm" data-count="horizontal" data-via="tapesfm">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>  
-      </div>
-      <div class="facebook_button">
-        <div class="fb-like" data-href="https://www.facebook.com/Tapesfm" data-send="false" data-layout="button_count" data-width="120" data-show-faces="true" data-font="arial"></div>
-      </div>
-
-    </div>
-    </div>
+  

@@ -30,8 +30,10 @@
 }
 .upgrade_box {
 
+  clear: both;
   z-index: 9000;
   margin-top: 30px;
+  height: 600px;
   .home_header {
     height: 105px;
     
@@ -58,7 +60,7 @@
     margin: 0px;
     letter-spacing: -4px;
     color: #4c4c4c;
-    margin-left: 15px;
+    margin-left: 0px;
     @include ts_out(white);
 
   
@@ -69,7 +71,7 @@
     color: #4c4c4c;
     margin: 0px;
     padding: 15px 0px;
-    margin-left: 15px;
+    margin-left: 0px;
   
   }
   .upgrades {

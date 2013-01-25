@@ -27,9 +27,11 @@
 
 #signup_form {
 
-  height: 0px;
+  height: 100px;
   width: 100%;
   z-index: 15000;
+  background: $c1;
+  @include round(5px);
    // background-color: rgba(0,0,0,0.1);
   overflow: hidden;
   #signup_box {
@@ -159,30 +161,72 @@
 .home_mid.signup {
 
   background: #FF00FF;
-  height: 100px;
+  height: 200px;
   width: 940px;
-  position: absolute;
-  top: 210px;
-  @include round(20px);
+  // position: absolute;
+  // top: 210px;
+  @include round(5px);
   background-color: $c1;
   z-index: 15000;
 
 
 }
 
-.home_top.signup {
+.home_tops.signup {
 
-  top: 90px;
+  // top: 90px;
+  margin: 0px;
+  padding: 0px;
+  // padding-top: 200px;
+  margin-top: 60px;
+  margin-bottom: 10px;
+  h1 {
+    @include fh_b(53px);
+    padding: 0px;
+    margin: 0px;
+    letter-spacing: -4px;
+    color: #4c4c4c;
+    margin-left: 0px;
+    @include ts_out(white);
+
+  
+  }
+  h2 {
+    @include fh(18px);
+    padding: 0px;
+    color: #4c4c4c;
+    margin: 0px;
+    padding: 15px 0px;
+    margin-left: 0px;
+  
+  }
+
+  .hightlight {
+  
+    @include fh_b(18px);
+    text-decoration: underline;
+    color: $c1;
+  
+  }
 
 
 }
 
 
 .home_bottom.signup {
-  height: 90px;
-  margin-top: 100px;
+  margin-top: 0px;
   position: relative;
-  padding-top: 90px;
+  padding-top: 0px;
+  // background: yellow;
+  margin-bottom: 0px;
+  top: 0px;
+  
+  .col_content {
+    margin-top: 15px;
+    padding-top: 15px; 
+    margin-bottom: 70px;
+
+  }
 
 }
 
