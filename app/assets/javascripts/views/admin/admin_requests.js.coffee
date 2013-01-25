@@ -6,7 +6,7 @@ class Tapesfm.Views.AdminRequests extends Backbone.View
   
   appendRequest: (request) ->
    requestView = new Tapesfm.Views.AdminRequest(model: request)
-   @$('#requests').prepend(requestView.render().el)
+   @$('#requests').append(requestView.render().el)
   
   render: ->
     rendertContent = @template(count: @options.count)
