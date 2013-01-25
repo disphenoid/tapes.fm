@@ -5,26 +5,30 @@ window.lastTape_obj = null
 
 
 window.onUploadComplete = (file, data) =>
-  track_json = jQuery.parseJSON(data)
-  
-  old_uploader = $("#from_file_505a40e532b710a005000038")
 
-  #if old_uploader && old_uploader.data('uploadifive') != undefined  && old_uploader.data('uploadifive').settings != undefined
-  if track_json.replace_track_id
-    Tapesfm.tapedeck.newTapeWithTrack(track_json.track,track_json.replace_track_id)
-  else
-    if window.edit_mode
-      Tapesfm.tapedeck.oldTape track_json.track
+  if Tapesfm.tapedeck.tapedeck.get("tape").get("tracks").length < 8
+    track_json = jQuery.parseJSON(data)
+    
+    old_uploader = $("#from_file_505a40e532b710a005000038")
+
+    #if old_uploader && old_uploader.data('uploadifive') != undefined  && old_uploader.data('uploadifive').settings != undefined
+    if track_json.replace_track_id
+      Tapesfm.tapedeck.newTapeWithTrack(track_json.track,track_json.replace_track_id)
     else
-      Tapesfm.tapedeck.newTape track_json.track
+      if window.edit_mode
+        Tapesfm.tapedeck.oldTape track_json.track
+      else
+        Tapesfm.tapedeck.newTape track_json.track
 
-  if $(".uploadifive-queue-item").length == $(".uploadifive-queue-item.complete").length
-    $("#tape_upload").hide()
-    #$("#tape_save_button").show()
-    $("#tape_save_button").removeClass("wait")
-    $("#tape_save_hint_sub").show()
-  # alert $(".uploadifive-queue-item").length
-  # alert $(".uploadifive-queue-item").length
+    if $(".uploadifive-queue-item").length == $(".uploadifive-queue-item.complete").length
+      $("#tape_upload").hide()
+      #$("#tape_save_button").show()
+      $("#tape_save_button").removeClass("wait")
+      $("#tape_save_hint_sub").show()
+    # alert $(".uploadifive-queue-item").length
+    # alert $(".uploadifive-queue-item").length
+  else
+    alert "Too many Tracks..."
 
 # window.onUploadError = (file, errorCode, errorMsg, errorString) ->
 #   alert('The file ' + file.name + ' could not be uploaded: ' + errorString)

@@ -57,7 +57,7 @@
 
     <div class="field_box">
       <div class="headline">
-        New Confirm Password 
+        Confirm Password 
       </div>
       <div class="field"> 
         <form>
@@ -79,11 +79,12 @@
       <div class="headline">
         Username 
       </div>
-      <div class="preline"> tapes.fm/ </div>
+      <div class="preline">tapes.fm/ </div>
       <div class="field"> 
-        <form>
-            <input type="text" name="username" id="username" value="<%=@model.get("name")%>">
-        </form>
+        <div id="username">
+          <%=@model.get("name")%>
+        </div>
+            <%#<input type="text" name="username" id="username" value="<%=@model.get("name")%>
       </div>
       <div class="info">
         This is the name everybody will see
@@ -104,7 +105,7 @@
 
         <form accept-charset="UTF-8" enctype=multipart/form-data action="/api/update_picture/" data-remote="true" class="profile_picture_form" id="profile_picture_field" method="post">
           <div class="profile_picture">
-            <img src="<%="http://" + @model.get("picture")%>">
+            <img id="profile_picture_img" src="<%="http://" + @model.get("picture")%>">
           </div>
         
           <input name="utf8" type="hidden" value="&#x2713;" />
@@ -117,7 +118,7 @@
 
       </div>
       <div class="info">
-        a picture of you
+        Your profile picture
       </div>
 
 
@@ -156,7 +157,7 @@
         </form>
       </div>
       <div class="info">
-        This is the name everybody will see
+        Your Twitter Account
       </div>
 
 
@@ -175,7 +176,7 @@
         </form>
       </div>
       <div class="info">
-        This is the name everybody will see
+        Your Soundcloud Account
       </div>
 
 
@@ -196,7 +197,7 @@
         </form>
       </div>
       <div class="info">
-        This is the name everybody will see
+        Your Facebook page
       </div>
 
 

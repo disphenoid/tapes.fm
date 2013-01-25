@@ -24,16 +24,34 @@ class Tapesfm.Views.Settings extends Backbone.View
     if password && password != undefined
       @model.set({password: password})
 
-    @model.save()
+    @model.save(
+      {}
+      {success: (model, response) =>
+        location.reload()
+
+
+      })
+      
 
 
   submitPicture: (e) ->
     e.preventDefault()
     console.log $(@el).find(".profile_picture_form").first()
+    opts = 
+      color: 'rgba(75,75,75,0.8)'
+      top: "18px"
+      left: '18px'
+
+
+    target = $(@el).find(".profile_picture").spin(opts)
+
 
     $(@el).find(".profile_picture_form").ajaxSubmit
       success: (e) =>
         console.log e
+        
+        $(@el).find(".profile_picture").html("<img id='profile_picture_img' src='http://#{@model.get("picture")}'>")
+        # $(@el).find("#profile_picture_img").attr('src', ("http://"+e.picture.url))
 
   render: ->
     rendertContent = @template(model: @model)

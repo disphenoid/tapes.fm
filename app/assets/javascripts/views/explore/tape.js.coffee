@@ -1,10 +1,20 @@
 class Tapesfm.Views.ExploreTape extends Backbone.View
   template: JST['explore/tape']
   events: ->
+    "click .mini_tag" : "searchTag"
     
   initialize: ->
   tagName: "li"
   className: "explore_tape"
+  
+  searchTag: (e) ->
+    tag = $(e.currentTarget).data("tag")
+    $("#search_field").val("#{$("#search_field").val()} #{tag} ").keydown().keyup()
+    e = $.Event('keypress')
+    e.which = 65
+    $('#search_field').trigger(e).blur().focus()
+
+
   getIndex: ->
     index = @model.collection.indexOf(@model)
     index + 1

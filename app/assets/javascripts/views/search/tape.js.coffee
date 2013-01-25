@@ -1,9 +1,18 @@
 class Tapesfm.Views.SearchTape extends Backbone.View
   template: JST['search/tape']
   tag: "li"
+  events: ->
+    "click .mini_tag" : "searchTag"
   
   className: "search_tape"
   initialize: ->
+
+  searchTag: (e) ->
+    tag = $(e.currentTarget).data("tag")
+    $("#search_field").val("#{$("#search_field").val()} #{tag} ").keydown().keyup()
+    e = $.Event('keypress')
+    e.which = 65
+    $('#search_field').trigger(e).blur().focus()
 
   addTag: (e) ->
    console.log e

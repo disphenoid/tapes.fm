@@ -1,6 +1,24 @@
 @import "tools/colors";
 @import "tools/fonts";
 @import "tools/effects";
+
+
+#followers_list {
+  width: 150px;
+  background: green;
+  .follower {
+    float: left; 
+    margin-right: 4px;
+    img {
+      @include round(2px);
+
+    
+    }
+  
+  }
+
+}
+
 .info_box {
 
   margin-top: 10px;
@@ -25,10 +43,18 @@
     margin-top: -5px;
     @include fh(11px);    
     @include c_g_2;  
-    a {
-      @include fh_b(12px);
-      @include c_1;
-    
+    .title {
+      margin-top: 10px;
+      @include fh(11px);
+      margin-bottom: 3px;
+      @include c_g_3;
+    }
+    .link {
+      a {
+        @include fh_b(11px);
+        @include c_1;
+      
+      }
     }
   }
 

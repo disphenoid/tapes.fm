@@ -193,7 +193,7 @@ class User
 
   def followers
     user_ids = REDIS.smembers(self.follow_key(:followers))
-    User.where(:id => user_ids)
+    User.where(:_id.in => user_ids)
   end
 
   # users that follow self
@@ -203,13 +203,13 @@ class User
 
   def following
     user_ids = REDIS.smembers(self.follow_key(:following))
-    User.where(:id => user_ids)
+    User.where(:_id.in => user_ids)
   end
 
   # users who follow and are being followed by self
   def friends
     user_ids = REDIS.sinter(self.follow_key(:following), self.follow_key(:followers))
-    User.where(:id => user_ids)
+    User.where(:_id.in => user_ids)
   end
 
   # does the user follow self

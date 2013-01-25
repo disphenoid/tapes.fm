@@ -103,7 +103,7 @@
       padding-top: 10px;
       @include fh_b(14px);
       @include c_g_3;
-      width: 200px;
+      width: 160px;
       display: inline-block;
       float: left;
     }
@@ -120,6 +120,19 @@
         padding-top: 12px;
       
       }
+      #username {
+        @include fh_b(14px);
+        @include c_g_3;     
+        outline: none;
+        border: none;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.1);
+        padding: 10px;
+        @include round(3px);
+      
+      
+      }
+
       input {
         @include fh_b(14px);
         @include c_g_3;     

@@ -6,6 +6,7 @@ unless tapedeck.project
 else
   json.author tapedeck.project.name 
 end
+json.user_id tapedeck.user.id if tapedeck.user
 
 if tapedeck.remix
   json.original_author tapedeck.original_author

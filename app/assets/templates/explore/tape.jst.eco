@@ -30,6 +30,12 @@
       </div>
       <div class="subline">
         <%# @model.get("updated_at") %>
+        <% for tag, i in @model.get("tags"): %>
+          <div class="mini_tag" data-tag="<%= tag %>">
+            <%= tag %>
+          </div>
+        <% end %>
+
         
       </div> 
     </div> 

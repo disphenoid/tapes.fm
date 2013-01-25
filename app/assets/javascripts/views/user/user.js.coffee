@@ -2,7 +2,6 @@ class Tapesfm.Views.User extends Backbone.View
   animationTime: []
   template: JST['user/user']
   events:
-    "click .add_tape" : "addTape"
     "click .follow_btn" : "follow"
 
   follow: (e) ->
@@ -43,18 +42,7 @@ class Tapesfm.Views.User extends Backbone.View
       $("#setting-popin_#{"new"}").removeClass("active")
 
 
-  addTape: (e) ->
-    
-    $("#setting-popin_#{"new"}").addClass("active")
-    $(".popin-overlay").addClass("active")
-    $(".popin-overlay").live "click", (e) ->
-      if $(e.target).is('.popin-overlay')
-        
-        $(".popin-overlay").removeClass("active")
 
-        $(".setting-popin").removeClass("active")
-
-        $(".popin-overlay").die "click"
 
   appendTapedeck: (tapedeck) =>
     console.log tapedeck.get("name")
@@ -63,16 +51,10 @@ class Tapesfm.Views.User extends Backbone.View
     $(@el).find("#tapes_list").append(tapedeckView.render().el)
     #$(@el).find(tapedeckView.render().el).fadeIn( @animationTime.pop)
 
-  prependTapedeck: (tapedeck) =>
-    console.log tapedeck.get("name")
-    tapedeckView = new Tapesfm.Views.Tape(model: tapedeck)
-    #$(@el).append("ddd")
-    $(@el).find("#tapes_list").prepend(tapedeckView.render().el)
-    $(@el).find(tapedeckView.render().el).hide().fadeIn("slow")
+
     
 
-  initPopIn: (key) ->
-  
+  initPopIn: (key) -> 
 
     new_tapdeck = new Tapesfm.Models.Tapedeck({remixable: true, commentable: true, public: true})
     settingView = new Tapesfm.Views.TapeSetting(model: new_tapdeck)
@@ -83,14 +65,11 @@ class Tapesfm.Views.User extends Backbone.View
 
     $("body").find("#setting-popin_#{key} input:checkbox").iphoneStyle()
 
-    $("body").find("#setting-popin_#{key} label").inFieldLabels()
+    $("body").find("#setting-popin_#{key} label").inFieldLabels() 
 
-
-  
-
-
+  appendFollower: (follower) ->
+   $(@el).find("#followers_list").append("<a href='/#{follower.get("name")}'><div class='follower tip' title='#{follower.get("name")}'> <img src='http://#{follower.get("picture")}'></img> </div></a>")
   render: ->
-    
     
     user = new Tapesfm.Models.User(Tapesfm.bootstrap.user)
     rendertContent = @template(is_following: Tapesfm.bootstrap.is_following, user: user)
@@ -103,6 +82,11 @@ class Tapesfm.Views.User extends Backbone.View
     #   @animationTime.push 1000
 
     @collection.each @appendTapedeck
+
+    @follower_collection = new Tapesfm.Collections.Users(Tapesfm.bootstrap.user.followers)
+
+    @follower_collection.each @appendFollower, this
+
     
     
     @initPopIn("new")

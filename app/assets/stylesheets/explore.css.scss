@@ -112,7 +112,19 @@
 
     height: 60px;
   
-
+        .mini_tag:hover {
+          background: rgba(0,0,0,0.2);
+        }
+        .mini_tag {
+          padding: 2px 5px;
+          background: rgba(0,0,0,0.1);
+          color: $c_g_4;
+          @include round(3px);
+          display: inline-block;
+          // cursor: pointer;
+          
+        }
+        
 
 
       .info_box {

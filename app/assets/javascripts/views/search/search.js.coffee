@@ -1,7 +1,5 @@
 class Tapesfm.Views.Search extends Backbone.View
-  template: JST['search/search']
-  
-
+  template: JST['search/search'] 
 
   openResults: (e) ->
     # alert "dd"

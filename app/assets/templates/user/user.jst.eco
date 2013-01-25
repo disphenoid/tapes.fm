@@ -1,7 +1,7 @@
 <%# "<div id="tapes_hint"> Start a New Tape </div>" %>
   <div id="profile_panel"> 
   <div id="profile_headline"> 
-    @<%= @user.get("name")%>
+    <%= @user.get("name")%>
   </div>
 
   
@@ -33,9 +33,59 @@
     <h3>Links</h3>
     <div class="info_spliter"> </div>
     <div class="content"> 
-      <a href="#"> greatseamonsterfind.com </a>
+      <% if @user.get("soundcloud_name"):%>
+
+        <div class="title">
+          Soundcloud
+        </div>
+        <div class="link">
+          <a target="_blank" href="http://soundcloud.com/<%= @user.get("soundcloud_name")%>"> <%= @user.get("soundcloud_name")%> </a>
+        </div> 
+      <% end %>
+
+      <% if @user.get("twitter_name"):%>
+        <div class="title">
+          Twitter
+        </div>
+        <div class="link">
+          <a target="_blank" href="http://twitter.com/<%= @user.get("twitter_name")%>"> <%= @user.get("twitter_name")%> </a>
+        </div>
+      <% end %>
+
+      <% if @user.get("facebook_name"):%>
+        <div class="title">
+          Facebook
+        </div>
+        <div class="link">
+          <a target="_blank" href="http://facebook.com/<%= @user.get("facebook_name")%>"><%= @user.get("facebook_name")%></a>
+        </div>
+      <% end %>
+
+    
+
     </div>
   </div>
+ <div class="info_box">
+
+
+
+
+    <h3>Followers</h3>
+    <div class="info_spliter"> </div>
+
+
+    </div>
+    <div id="followers_list">
+      
+
+    
+    
+    </div
+
+  </div>
+
+
+
 
 </div>
 

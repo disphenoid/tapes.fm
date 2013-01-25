@@ -14,27 +14,28 @@ class Tapesfm.Views.Tape extends Backbone.View
 
   openSettings: (e) ->
     #settingView = new Tapesfm.Views.TapeSetting(model: @model)
-    $("#setting-popin_#{@model.get("id")}").addClass("active")
-    $(".popin-overlay").addClass("active")
+    #console.log @model
+    if @model.get("user_id") == Tapesfm.user.id
+      $("#setting-popin_#{@model.get("id")}").addClass("active")
+      $(".popin-overlay").addClass("active")
 
 
 
-    console.log "VALUE  " + $("#tags_#{@model.get("id")}").val()
-    $(".popin-overlay").live "click", (e) ->
-      if $(e.target).is('.popin-overlay')
-        
-        $(".popin-overlay").removeClass("active")
+      console.log "VALUE  " + $("#tags_#{@model.get("id")}").val()
+      $(".popin-overlay").live "click", (e) ->
+        if $(e.target).is('.popin-overlay')
+          
+          $(".popin-overlay").removeClass("active")
 
-        $(".setting-popin").removeClass("active")
+          $(".setting-popin").removeClass("active")
 
-        $(".popin-overlay").die "click"
+          $(".popin-overlay").die "click"
 
   addTags: (tags) ->
     if tags
       for tag in tags
         do (tag) =>
-           @addTag tag
-      
+           @addTag tag 
 
   addTag: (tag) ->
     $("#tags_#{@model.get("id")}").tagit("createTag", String(tag))

@@ -11,7 +11,7 @@ class AudioUploader < CarrierWave::Uploader::Base
   storage :fog
   process :waveform
   before :store, :remember_cache_id
-  before :store, :checksum
+  # before :store, :checksum
   after :store, :add_to_process_queu
 
 
