@@ -1,7 +1,7 @@
 <li class="collaborator tip <%= "pending" if @model.get("pending") %>" id="<%= @model.get("id")%>" title="<%= @model.get("name")%> <%= "(waiting for accepting)" if @model.get("pending") %>" >
   <div class="pic">
     <% if @model.get("user_picture"):%>
-      <a href="/user/<%= @model.get("user_id")%>">
+      <a href="/<%= @model.get("name")%>">
         <img class="image" src="<%= "http://" + @model.get("user_picture")%>">
       </a>
     <% end %>
