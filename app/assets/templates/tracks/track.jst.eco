@@ -16,3 +16,4 @@
   <div class="addButton"> </div> 
   <%end%>
 
+  <div id="hotspot"></div>

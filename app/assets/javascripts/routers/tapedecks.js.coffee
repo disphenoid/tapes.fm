@@ -16,6 +16,8 @@ window.addExistingTrack = (track) =>
 
 window.onUploadComplete = (file, data) =>
 
+  Tapesfm.tracks.collection.fetch()
+
   if Tapesfm.tapedeck.tapedeck.get("tape").get("tracks").length < 8
     track_json = jQuery.parseJSON(data)
     

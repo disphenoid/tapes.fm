@@ -112,18 +112,19 @@
 
     height: 60px;
   
-        .mini_tag:hover {
-          background: rgba(0,0,0,0.2);
-        }
-        .mini_tag {
-          padding: 2px 5px;
-          background: rgba(0,0,0,0.1);
-          color: $c_g_4;
-          @include round(3px);
-          display: inline-block;
-          // cursor: pointer;
-          
-        }
+    .mini_tag:hover {
+      background: rgba(0,0,0,0.2);
+    }
+    .mini_tag {
+      padding: 2px 5px;
+      background: rgba(0,0,0,0.1);
+      color: $c_g_4;
+      @include round(3px);
+      display: inline-block;
+      margin-bottom: 3px;
+      // cursor: pointer;
+      
+    }
         
 
 
@@ -165,10 +166,16 @@
             background: rgba(255,255,255,0.5);
          }
           .subline {
-            height: 13px;
             margin-top: 5px;
             @include fh(11px); 
             color: $c_g_2;
+            height: 16px;
+            width: 210px;
+            overflow: hidden;
+         }
+          .subline:hover {
+ 
+            height: 35px;
          }
        }
   

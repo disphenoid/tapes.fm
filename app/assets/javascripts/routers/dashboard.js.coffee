@@ -3,6 +3,14 @@ class Tapesfm.Routers.Dashboard extends Backbone.Router
     'dashboard' : 'dashboard'
   initialize: ->
     #console.log "init routes"
+    #
+    #
+    $(".close").click (e) ->
+      #$("#howto").fadeTo(1000,0)
+      # $("#howto").slideUp("slow","easeInOutCirc")
+      $("#howto").animate({ height: 'toggle', opacity: 'toggle' }, 'slow', "easeInOutCirc")
+      jQuery.getJSON("/hide_hint")
+
   dashboard: (id) ->
     #id = "testid"
 

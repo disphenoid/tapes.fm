@@ -341,15 +341,17 @@
         // @include fh_b(12px);
         @include c_g_4;
         margin-left: 65px;
-        .remix_headline {
+        .remix_headline, a {
           overflow: hidden;
           height: 13px; 
           @include fh_b(13px); 
-          margin-bottom: 2px;
+          margin-bottom: 3px;
+            @include c_g_4;
+ 
          }
         .remix_author {
           color: $c_g_2;
-          @include fh(12px); 
+          @include fh(11px); 
         }
           
           .subline {
@@ -1701,7 +1703,19 @@
       background: url("/assets/tapedeck/tape_cover_mini.png");
       position: absolute;
     }
-
+    #tapedeck_image_wheels.play {
+      background: url("/assets/tapedeck/wheels_on.gif") no-repeat center center;
+    }
+    #tapedeck_image_wheels {
+      width: 53px;
+      height: 16px;
+      background: url("/assets/tapedeck/wheels_off.gif") no-repeat center center;
+      position: absolute;
+      margin-top: 37px;
+      margin-left: 19px;
+      @include round(10px);
+      overflow: hidden;
+    }
 
     #tapedeck_image {
       width: 82px;

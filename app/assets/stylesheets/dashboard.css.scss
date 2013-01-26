@@ -2,6 +2,177 @@
 @import "tools/fonts";
 @import "tools/effects";
 
+#howto {
+  
+  background: rgba(0,0,0,0.03);
+  margin-top: 70px;
+  width: 950px;
+  color: $c_g_4;
+  @include fh(15px);
+  @include round(5px);
+  line-height: 19px;
+  height: 200px;
+  margin-bottom: -40px;
+  background:  rgba(0,0,0,0.03) url("/assets/dashboard/welcome_bg.gif") repeat-x top;
+
+  .getting_started {
+    
+    padding: 10px 20px;
+    background: rgba(0,0,0,0.05);
+    display: inline-block;
+    margin-left: 30px; 
+    @include fh_b(12px);
+    @include round(5px);
+    color: $c_g_4;
+ 
+  }
+
+  .close:hover {
+    background: rgba(0,0,0,0.03) url("/assets/dashboard/close.png") no-repeat left;
+    @include round(5px);
+    padding-left: 30px;
+  }
+  .close {
+    
+    padding: 10px 20px;
+    padding-left: 30px;
+    display: inline-block;
+    margin-right: 30px; 
+    @include fh_b(12px);
+    cursor: pointer;
+
+    color: $c_g_4;
+    float: right;
+    background: url("/assets/dashboard/close.png") no-repeat left;
+ 
+  }
+
+
+
+  .getting_started:hover {
+    
+    background: $c1;
+    color: white;
+
+  
+  }
+  .how_box:hover {
+    .subline {
+      color: $c_g_4;
+      
+    }
+
+    .pipe {
+    
+      visibility: visible;
+    }
+  }
+  .how_box {
+    width: 235px;
+    float: left;
+    height: 150px;
+    cursor: pointer;
+
+    .pipe {
+     visibility: hidden;
+    }
+
+    .headline {
+      
+      @include fh_b(20px);
+      margin-top: 40px;
+      margin-left: 30px;
+
+    }
+    .subline {
+      @include fh_b(12px);
+      color: $c_g_2;
+      margin-top: 15px;
+      margin-left: 30px;
+      padding-right: 20px;
+      line-height: 15px;
+    
+    
+    }
+  
+  }
+
+  .how_box.green {
+    .pipe {
+      
+      background: url("/assets/dashboard/pipe_1.png") no-repeat left;
+      width: 160px;
+      height: 50px;
+      position: absolute;
+      margin-left: 30px;
+      margin-top: -20px;
+
+    
+    }
+
+    .headline {
+      color: $c3;
+    }
+  }
+  .how_box.blue {
+    .pipe {
+      
+      background: url("/assets/dashboard/pipe_2.png") no-repeat right;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      margin-left: -12px;
+      margin-top: -20px;
+    
+    }
+
+
+    .headline {
+      color: $c4;
+    }
+  }
+  .how_box.red {
+
+    .pipe {
+      
+      background: url("/assets/dashboard/pipe_3.png") no-repeat right;
+      width: 232px;
+      height: 50px;
+      position: absolute;
+      margin-left: -195px;
+      margin-top: -20px;
+    
+    }
+
+
+
+    .headline {
+      color: $c1;
+    }
+  }
+  .how_box.yellow {
+
+    .pipe {
+      
+      background: url("/assets/dashboard/pipe_4.png") no-repeat right;
+      width: 412px;
+      height: 50px;
+      position: absolute;
+      margin-left: -377px;
+      margin-top: -20px;
+    
+    }
+
+
+    .headline {
+      color: $c2;
+    }
+  }
+
+
+}
+
+
 #my_message {
   
   background: rgba(0,0,0,0.03);
@@ -158,7 +329,7 @@ a {
 }
 
 #stream_list {
-  width: 600px;
+  width: 630px;
   padding: 0px;
   margin: 0px;
   margin-top: -6px;
@@ -205,7 +376,7 @@ a {
       -moz-transition: all .2s ease;
       transition: all .2s ease;
 
-    width: 620px;
+    width: 630px;
     min-height: 40px;
     padding-bottom: 30px; 
     padding-top: 10px; 
@@ -478,7 +649,7 @@ a {
 }
 .dashboard_widget {
   width: 305px;
-  margin-right: 30px;
+  // margin-right: 30px;
 
 
 
@@ -660,7 +831,7 @@ a {
 
  .dashboard_widget_header { 
 
- width: 305px; 
+ width: 205px; 
  height: 60px;
  display: inline-block;
  
@@ -733,7 +904,7 @@ a {
 
   background: url("/assets/dashboard/stream_bg.png") no-repeat bottom center;
   height: 70px;
-  width: 600px;
+  width: 630px;
 
 
   #dashboard_filter {

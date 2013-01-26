@@ -7,6 +7,15 @@ class WebappController < ApplicationController
   #skip_before_filter :verify_authenticity_token
   protect_from_forgery :except => [:upload, :upload_track]
 
+  def hide_hint
+
+    current_user.howto = false
+    current_user.save
+
+    render :json => "true"
+
+
+  end
 
   def information
   end
@@ -115,9 +124,9 @@ class WebappController < ApplicationController
     if current_user
     @active = Tapedeck.desc(:updated_at).excludes(:private => true).excludes(:active_tape_id => nil)
 
-    @top = Tapedeck.desc(:created_at).excludes(:private => true).excludes(:private => true).excludes(:active_tape_id => nil)
+    @top = Tapedeck.desc(:created_at).excludes(:private => true).excludes(:private => nil).excludes(:active_tape_id => nil)
 
-    @new = Tapedeck.desc(:created_at).excludes(:private => true).excludes(:private => true).excludes(:active_tape_id => nil)
+    @new = Tapedeck.desc(:created_at).excludes(:private => true).excludes(:private => nil).excludes(:active_tape_id => nil)
     
 
     @json = render_to_string( template: 'explore/index.json.jbuilder', locals: { top: @top, active: @active, new: @new })

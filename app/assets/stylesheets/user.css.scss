@@ -9,6 +9,9 @@
   .follower {
     float: left; 
     margin-right: 4px;
+    background: $c_g_5 url("/assets/user/follower_fallback.png") no-repeat center center;
+    width: 25px;
+    height: 25px;
     img {
       @include round(2px);
 

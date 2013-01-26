@@ -55,6 +55,7 @@ Tapesfm::Application.routes.draw do
   get 'download/:id', to: "webapp#download"
   get 'settings', to: "webapp#settings"
   get 'upgrade', to: "webapp#upgrade"
+  get 'hide_hint', to: "webapp#hide_hint"
   
   get 'about', to: "webapp#information"
   get 'faq', to: "webapp#information"

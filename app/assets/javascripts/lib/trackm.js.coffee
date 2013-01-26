@@ -117,6 +117,7 @@ class window.Trackm
   play: ->
 
     # Start Play on all Tracks 
+    $("#tapedeck_image_wheels").addClass("play")
     _.each @tracks, (t) =>
       console.log("Play – "+t.id)
       @sm.play(t.id)
@@ -124,16 +125,19 @@ class window.Trackm
     #console.log("play")
     #
   pause: ->
+    $("#tapedeck_image_wheels").removeClass("play")
     _.each @tracks, (t) =>
       console.log("Stop – "+t.id)
       @sm.pause(t.id)
 
   resume: ->
+    $("#tapedeck_image_wheels").addClass("play")
     _.each @tracks, (t) =>
       console.log("Resume – "+t.id)
       @sm.resume(t.id)
 
   stop: ->
+    $("#tapedeck_image_wheels").removeClass("play")
     _.each @tracks, (t) =>
       console.log("Stop – "+t.id)
       @sm.stop(t.id)
