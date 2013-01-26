@@ -1,11 +1,13 @@
-<li class="collaborator tip <%= "pending" if @model.get("pending") %>" id="<%= @model.get("id")%>" title="<%= @model.get("name")%> <%= "(waiting for accepting)" if @model.get("pending") %>" > 
+<li class="collaborator tip <%= "pending" if @model.get("pending") %>" id="<%= @model.get("id")%>" title="<%= @model.get("name")%> <%= "(waiting for accepting)" if @model.get("pending") %>" >
   <div class="pic">
     <% if @model.get("user_picture"):%>
-      <img class="image" src="<%= "http://" + @model.get("user_picture")%>"> 
+      <a href="/user/<%= @model.get("user_id")%>">
+        <img class="image" src="<%= "http://" + @model.get("user_picture")%>">
+      </a>
     <% end %>
 
   </div>
-  <% if Tapesfm.user && Tapesfm.user.collaborator && @model.get('id') != Tapesfm.tapedeck.tapedeck.get("user_id"):%> 
+  <% if Tapesfm.user && Tapesfm.user.collaborator && @model.get('id') != Tapesfm.tapedeck.tapedeck.get("user_id"):%>
     <div class="remove_collaborator" data-id="<%= @model.get('id')%>"></div>
   <% end %>
 </li>
