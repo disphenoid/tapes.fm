@@ -4,20 +4,57 @@
 
 <%= javascript_include_tag "dashboard" %>
 
-<% if @noob %>
+<% if current_user.howto %>
 
-<div id="my_message" class="container_12">
-  Hey, 
-this is the first BETA(!) version of tapes.fm – where we can make music together. <br />
+<div id="howto" class="container_12">
 
-In the next weeks and month, your feedback will be crucial to make tapes.fm better! <br />
-Please share with me bugs and your ideas and let me now what you like and don't like.
-<br />
-You will define what tapes.fm will become. <br /><br />
-Thank you. 
-<% end %>
+  <div class="how_box green"> 
+    <div class="pipe"> </div>
+    <div class="headline"> 
+      Dashboard
+    </div>
+    <div class="subline"> 
+      This is your Dashboard. Follow other Musicians and see there new Tapes.
+    </div>  
+  </div>
+  <a href="/explore">
+  <div class="how_box blue"> 
+    <div class="pipe"> </div>
+    <div class="headline"> 
+      Explore & Remix
+    </div>
+    <div class="subline"> 
+      Get Inspired by other Musicians and find new Tapes to Remix.
+    </div>  
+  </div>
+  </a>
+  <a href="/tapes">
+  <div class="how_box red"> 
+    <div class="pipe"> </div>
+    <div class="headline"> 
+      Your Tapes
+    </div>
+    <div class="subline"> 
+      All your ideas on Tape. Upload your Tracks. and Invite friends to work on your ideas.
+    </div>  
+  </div>
+  </a>
+  <div class="how_box yellow"> 
+    <div class="pipe"> </div>
+    <div class="headline"> 
+      Your Tracks
+    </div>
+    <div class="subline"> 
+      Shows your newest uploads.
+    </div>
 
+  </div>
+  <a href="/start">
+    <div class="getting_started">More Help</div>
+  </a>
+    <div class="close">Close</div>
 </div>
+<% end %>
 <div id="container" class="container_12">dashboard</div>
 
 <div class="popin-overlay"> </div>

@@ -11,33 +11,59 @@
 
 </div>
 </div>
-<% if Tapesfm.noob: %>
-<div class="start_box container_12" >
-  
-  <div class="welcome_teaser"> 
-    <div class="header"> 
-      <div class="icon dash"> </div>
-      <div class="headline green"> 
-        <span class="light">Your</span> Dashboard
-      </div>
-    </div>
-    <div class="subline green">This is your dashboard where you will see whats new in your feed and what else is happening</div>
-  </div>
-  <a href="/explore">
-  <div class="welcome_teaser last"> 
-    <div class="header"> 
-      <div class="icon explore"> </div>
-      <div class="headline blue"> 
-        Explore <span class="light">and</span> Remix
-      </div>
-    </div>
-    <div class="subline blue">Explore whats up on tapes.fm. Remix other Tapes and find Musicians </div>
-  
-  </div>
-  </a>
-</div>
-<% end %>
+
 <ul id="stream_list"> 
+
+
+
+    <% if Tapesfm.noob: %>
+    <li class="stream_item">
+    <a href="/Jay">
+      <div class="image"> 
+         <img src="http://assets.tapes.fm.s3.amazonaws.com/users/5081426f2e23f65b16000001/m_9d1260629a.jpg"> 
+      </div>
+    </a>
+    <div class="content">
+    <div class="top_box">
+
+      <div class="headline">
+        <a href="/Jay">
+          <span class="bold"> Jay </span>
+        </a>
+        <span class="normal">
+        <span class="red"> Hello Beta!</span>
+
+        </a>
+      
+      </div>
+
+    </div>
+    <div class="comment_box">
+      <div class="lip">
+      </div>
+
+      <div class="text">
+        Hey,<br /> <br />
+welcome to the tapes.fm BETA!<br />
+
+In the next weeks and month, your feedback will be crucial to help me make tapes.fm a better place! <br />
+Please, feel free to share bugs and your ideas and let me also know what you like, and don't like <br />(Please use the "Feedback Button" on the left).
+<br />
+<br />
+This is just the beginning. Have fun and Thank you!<br /> 
+J
+      </div>
+    </div>
+    </div>
+
+  </li>
+<% end %> 
+
+
+
+
+
+
 
 </ul>
 

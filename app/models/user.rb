@@ -41,6 +41,7 @@ class User
   field :admin, :type => Boolean, :default => false
   field :super, :type => Boolean, :default => false
   field :beta, :type => Boolean, :default => true
+  field :howto, :type => Boolean, :default => true
 
   ## Confirmable
   # field :confirmation_token,   :type => String

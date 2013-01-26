@@ -7,6 +7,15 @@ class WebappController < ApplicationController
   #skip_before_filter :verify_authenticity_token
   protect_from_forgery :except => [:upload, :upload_track]
 
+  def hide_hint
+
+    current_user.howto = false
+    current_user.save
+
+    render :json => "true"
+
+
+  end
 
   def information
   end
