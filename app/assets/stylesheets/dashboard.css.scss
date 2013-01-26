@@ -1,6 +1,24 @@
 @import "tools/colors";
 @import "tools/fonts";
 @import "tools/effects";
+
+#my_message {
+  
+  background: rgba(0,0,0,0.03);
+  margin-top: 80px;
+  padding: 15px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  width: 920px;
+  text-align: center;
+  color: $c_g_4;
+  @include fh(15px);
+  @include round(5px);
+  line-height: 19px;
+
+
+}
+
   .welcome_teaser:hover {
     background: url("/assets/dashboard/teaser_bg.png") no-repeat center bottom;
     .subline.red { 

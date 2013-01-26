@@ -1,52 +1,33 @@
 window.trackComments = {}
 window.trackWaveforms = {}
-window.colors = (color) ->
-  switch color
-    when 1
-      "#ff7357"
-    when 2
-      "#e6e15f"
-    when 3
-      "#59d8ad"
-    when 4
-      "#36bddd"
-    when 5
-      "#e96d8e"
-    when 6
-      "#ffc257"
-    when 7
-      "#d5c4ab"
-    when 8
-      "#539994"
-    else
-      "#000"
 
-window.waveform = (data) =>
-  #adds Waveforms
-  #
 
-  color = window.colors(window.trackColors[data.id])
-
-  duration = Number($(("#track_"+data.id+"_box")).data("duration"))
-  width = window.tools.map(duration, 0, Tapesfm.trackm.duration, 0, Tapesfm.trackm.trackWidth)
-
-  $(("#track_"+data.id+"_clip")).css("width",width)
-  $(("#track_"+data.id+"_base")).css("width",width)
-  $(("#track_"+data.id+"_loaded")).css("width",width)
-  #width = 735
-
-  $("#track_"+data.id+"_clip").html("")
-  window.trackWaveforms[data.id] = new Waveform({ width: width, interpolate: true,container: document.getElementById("track_"+data.id+"_clip"), data_r: data.wavedata.right ,data_l: data.wavedata.left ,data: data.wavedata.left, innerColor: "transparent", outerColor: color })
-
-  # $("#track_"+data.id+"_base").hide()
-  # $("#track_"+data.id+"_loaded").hide()
-  # $("#track_"+data.id+"_base").fadeIn(900)
-  # $("#track_"+data.id+"_loaded").fadeIn(300)
-
-  # alert(window.trackColors.length)
-  track_count = (Object.keys(window.trackColors).length)
-  #$("#tape_scrabber").height(85 * track_count)
-
+# window.waveform = (data) =>
+#   #adds Waveforms
+#   #
+# 
+#   color = window.colors(window.trackColors[data.id])
+# 
+#   duration = Number($(("#track_"+data.id+"_box")).data("duration"))
+#   width = window.tools.map(duration, 0, Tapesfm.trackm.duration, 0, Tapesfm.trackm.trackWidth)
+# 
+#   $(("#track_"+data.id+"_clip")).css("width",width)
+#   $(("#track_"+data.id+"_base")).css("width",width)
+#   $(("#track_"+data.id+"_loaded")).css("width",width)
+#   #width = 735
+# 
+#   $("#track_"+data.id+"_clip").html("")
+#   window.trackWaveforms[data.id] = new Waveform({ width: width, interpolate: true,container: document.getElementById("track_"+data.id+"_clip"), data_r: data.wavedata.right ,data_l: data.wavedata.left ,data: data.wavedata.left, innerColor: "transparent", outerColor: color })
+# 
+#   # $("#track_"+data.id+"_base").hide()
+#   # $("#track_"+data.id+"_loaded").hide()
+#   # $("#track_"+data.id+"_base").fadeIn(900)
+#   # $("#track_"+data.id+"_loaded").fadeIn(300)
+# 
+#   # alert(window.trackColors.length)
+#   track_count = (Object.keys(window.trackColors).length)
+#   #$("#tape_scrabber").height(85 * track_count)
+# 
 
 class Tapesfm.Views.TapedeckTrack extends Backbone.View
   template: JST['tapedecks/track']
@@ -124,7 +105,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     $(@el).find(".track_clip_box").removeClass("c1 c2 c3 c4 c5 c6 c7 c8")
     $(@el).find(".track_clip_box").addClass("c#{color}")
 
-    trackWaveforms[@model.get("audio_id")].color window.colors(color)
+    trackWaveforms[@model.get("audio_id")].color @colors(color)
     
 
     if @getIndex() == 1
@@ -141,13 +122,6 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
         })
 
-
-
-
-
-      
-
-    
 
   createComment_replay: (e) ->
     
@@ -540,8 +514,52 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     index = @model.collection.indexOf(@model)
     index + 1
 
+  colors: (color) ->
+    switch color
+      when 1
+        "#ff7357"
+      when 2
+        "#e6e15f"
+      when 3
+        "#59d8ad"
+      when 4
+        "#36bddd"
+      when 5
+        "#e96d8e"
+      when 6
+        "#ffc257"
+      when 7
+        "#d5c4ab"
+      when 8
+        "#539994"
+      else
+        "#000"
+  addWaveform: (data) ->
 
-    
+
+    color = @colors(@model.get("color"))
+
+    duration = Number($(("#track_"+data.id+"_box")).data("duration"))
+    width = window.tools.map(duration, 0, Tapesfm.trackm.duration, 0, Tapesfm.trackm.trackWidth)
+
+    $(("#track_"+data.id+"_clip")).css("width",width)
+    $(("#track_"+data.id+"_base")).css("width",width)
+    $(("#track_"+data.id+"_loaded")).css("width",width)
+    #width = 735
+
+    $("#track_"+data.id+"_clip").html("")
+    window.trackWaveforms[data.id] = new Waveform({ width: width, interpolate: true,container: document.getElementById("track_"+data.id+"_clip"), data_r: data.wavedata.right ,data_l: data.wavedata.left ,data: data.wavedata.left, innerColor: "transparent", outerColor: color })
+
+    # $("#track_"+data.id+"_base").hide()
+    # $("#track_"+data.id+"_loaded").hide()
+    # $("#track_"+data.id+"_base").fadeIn(900)
+    # $("#track_"+data.id+"_loaded").fadeIn(300)
+
+    # alert(window.trackColors.length)
+    track_count = (Object.keys(window.trackColors).length)
+    #$("#tape_scrabber").height(85 * track_count)
+
+
   render: =>
     trackOptions = {}
     
@@ -578,7 +596,7 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
 
 
 
-      Tapesfm.trackm.addTrack {toptions: trackOptions,name:"track_"+@model.get("audio_id"),url:"http://#{Tapesfm.settings.bucket}.s3.amazonaws.com/audio/#{@model.get("audio_id")}/#{@model.get("audio_id")}.mp3", duration:@model.get("duration")}
+      Tapesfm.trackm.addTrack {toptions: trackOptions,name:"track_"+@model.get("audio_id"),url:"http://#{Tapesfm.settings.bucket}/audio/#{@model.get("audio_id")}/#{@model.get("audio_id")}.mp3", duration:@model.get("duration")}
     else
       track_channel = Tapesfm.pusher.subscribe(String(@model.get("audio_id")))
       track_channel.bind "track", (data) =>
@@ -595,9 +613,10 @@ class Tapesfm.Views.TapedeckTrack extends Backbone.View
     $(@el).html(rendertContent)
     #$(@el).fadeIn(500)
     #setTimeout(this.addWavefrom, 30)
-    url = "http://#{Tapesfm.settings.bucket}.s3.amazonaws.com/audio/#{@model.get("audio_id")}/#{@model.get("audio_id")}.json"
+    url = "http://#{Tapesfm.settings.bucket}/audio/#{@model.get("audio_id")}/#{@model.get("audio_id")}.json"
     
-    jQuery.getJSON url+"?callback=?"
+    jQuery.getJSON url, (data) =>
+      @addWaveform data, this
     
 
     @pan_el = new window.Pan(this.$("#pan")[0],trackOptions.pan)

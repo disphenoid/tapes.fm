@@ -139,17 +139,17 @@ class AudioUploader < CarrierWave::Uploader::Base
     
     f.each_with_index do |line, i|
       if i == 0
-        tempfile << "waveform({\"id\":\"#{model.id}\", \"wavedata\":"
+        tempfile << "{\"id\":\"#{model.id}\", \"wavedata\":"
       end
       tempfile<<line
       if Rails.env.production?
 
         if i == 4 
-          tempfile << "});" 
+          tempfile << "}" 
         end
       else
         if i == 3 
-          tempfile << "});" 
+          tempfile << "}" 
         end
       end
     end

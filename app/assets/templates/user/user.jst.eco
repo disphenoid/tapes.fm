@@ -14,7 +14,7 @@
   </div>
   <div class="spliter"> </div>
 
-  <% unless @user.get("id") == Tapesfm.user.id: %>
+  <% unless Tapesfm.user && @user.get("id") == Tapesfm.user.id: %>
     <% if @is_following: %>
     <div class="follow_btn inactive" data-id="<%= @user.get("id")%>" data-following="<%=true %>"> Unfollow </div>
     <% else: %>

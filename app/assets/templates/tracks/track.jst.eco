@@ -1,0 +1,18 @@
+  <div class="top_lip"></div>
+
+  <div id="waveform"></div>
+  
+  
+  <div class="header"> 
+    <div class="title" data-full_text="<%= @model.get("name")%>"> 
+      <%= @model.get("name")%>
+    </div> 
+    <div class="subline" title="<%= @model.get("created_at")%>"> 
+      <%= @model.get("created_at")%>
+    </div> 
+  </div> 
+
+  <% if Tapesfm.user && Tapesfm.tapedeck &&  Tapesfm.user.collaborator: %>
+  <div class="addButton"> </div> 
+  <%end%>
+

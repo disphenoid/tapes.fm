@@ -6,4 +6,6 @@
 //= require .//routers/tapedecks
 //= require_tree .//lib
 //= require .//search_app
+//= require .//tracks_app
 //= require .//routers/search
+//= require .//routers/tracks

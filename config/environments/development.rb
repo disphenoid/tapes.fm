@@ -5,8 +5,8 @@ Tapesfm::Application.configure do
   #
   ENV['s3_access_key_id'] = "AKIAJ4BM5OPRZICTBNLQ"
   ENV['s3_secret_access_key'] = "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"
-  ENV['s3_bucket'] = "tapesfm.com.s3.amazonaws.com"
-  ENV['s3_bucket_name'] = "dev.tapes.fm"
+  ENV['s3_bucket'] = "dev.assets.tapes.fm"
+  ENV['s3_bucket_name'] = "dev.assets.tapes.fm"
 
   ENV["REDISTOGO_URL"] = "redis://127.0.0.1:6379/"
 

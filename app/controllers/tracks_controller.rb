@@ -1,6 +1,9 @@
 class TracksController < ApplicationController
-    def index
-    render :json => Track.all
+  def index
+    if current_user
+      @tracks = current_user.tracks.limit(10)
+    end
+
   end
 
   def show

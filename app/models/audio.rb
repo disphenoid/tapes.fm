@@ -19,6 +19,7 @@ class Audio
   field :channels, :type => String
   field :org_sufix, :type => String
   field :checksum, :type => String
+  field :pjson, :type => Boolean, :default => true
 
   mount_uploader :asset, AudioUploader
   # skip_callback :destroy, :after, :remove_asset!

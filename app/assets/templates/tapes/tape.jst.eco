@@ -11,7 +11,7 @@
   </a>
 <% end %>
 </a>
-<% if @model.get("user_id") == Tapesfm.user.id:%>
+<% if Tapesfm.user && @model.get("user_id") == Tapesfm.user.id:%>
 <div class="settings_btn tip" title="Settings" id="test_add_<%=@model.get("_id")%>"></div> 
 <%end%>
 

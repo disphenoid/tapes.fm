@@ -5,6 +5,8 @@
 //= require_tree .//views
 //= require .//routers/user
 //= require_tree .//lib
+//= require .//tracks_app
 //= require .//search_app
+//= require .//routers/tracks
 //= require .//routers/search
 

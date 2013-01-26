@@ -3,6 +3,16 @@ window.edit_mode = false
 window.lastTape = "0"
 window.lastTape_obj = null
 
+window.addExistingTrack = (track) => 
+    
+  if Tapesfm.tapedeck.tapedeck.get("tape").get("tracks").length < 8 
+    if window.edit_mode
+      Tapesfm.tapedeck.oldTape track #track_json.track
+    else
+      Tapesfm.tapedeck.newTape track #track_json.track
+  else
+    alert "Too many Tracks..."
+
 
 window.onUploadComplete = (file, data) =>
 
@@ -12,13 +22,16 @@ window.onUploadComplete = (file, data) =>
     old_uploader = $("#from_file_505a40e532b710a005000038")
 
     #if old_uploader && old_uploader.data('uploadifive') != undefined  && old_uploader.data('uploadifive').settings != undefined
+    #
+    track = new Tapesfm.Models.Track(track_json.track)
+
     if track_json.replace_track_id
-      Tapesfm.tapedeck.newTapeWithTrack(track_json.track,track_json.replace_track_id)
+      Tapesfm.tapedeck.newTapeWithTrack(track,track_json.replace_track_id)
     else
       if window.edit_mode
-        Tapesfm.tapedeck.oldTape track_json.track
+        Tapesfm.tapedeck.oldTape track #track_json.track
       else
-        Tapesfm.tapedeck.newTape track_json.track
+        Tapesfm.tapedeck.newTape track #track_json.track
 
     if $(".uploadifive-queue-item").length == $(".uploadifive-queue-item.complete").length
       $("#tape_upload").hide()
@@ -212,7 +225,7 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
           console.log $(this).data("id")
   
   oldTape: (track) ->
-    new_track = new Tapesfm.Models.Track(track)
+    new_track = track #new Tapesfm.Models.Track(track)
     new_track.attributes.comments = new Tapesfm.Collections.Comments()
     new_track.get("comments").url = "/api/track_comments/"+new_track.get("id")+"?tapedeck=#{Tapesfm.bootstrap.id}"
 
@@ -232,8 +245,7 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
     #coping Tape 
 
     
-
-    new_track = new Tapesfm.Models.Track(track)
+    new_track = track 
     new_track.attributes.comments = new Tapesfm.Collections.Comments()
     new_track.get("comments").url = "/api/track_comments/"+new_track.get("id")+"?tapedeck=#{Tapesfm.bootstrap.id}"
    
@@ -267,11 +279,11 @@ class Tapesfm.Routers.Tapedecks extends Backbone.Router
       $("#tapedeck_notape").hide()
     
     #modefiy values
-    
+  addTrackFromLib: (new_track) ->
 
   newTapeWithTrack: (track,replace_track_id) ->
     #coping Tape 
-    new_track = new Tapesfm.Models.Track(track)
+    new_track = track # new Tapesfm.Models.Track(track)
     new_track.attributes.comments = new Tapesfm.Collections.Comments()
     new_track.get("comments").url = "/api/track_comments/"+new_track.get("id")+"?tapedeck=#{Tapesfm.bootstrap.id}"
 

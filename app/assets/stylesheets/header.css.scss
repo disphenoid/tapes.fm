@@ -149,11 +149,19 @@ header {
     .quick_button#to_tracks {
       background-image: url("/assets/header/icon_tracks_on.png");
       background-position: center center;
+
+    }
+    .quick_button#to_tracks:hover {
+      #user_tracks {
+        visibility: visible;
+      }
+    
     }
     .quick_button.active#to_tracks {
       background-image: url("/assets/header/icon_tracks_on.png");
       background-color: $c2;
       background-position: center center;
+
     }
 
     .quick_button#to_listen {

@@ -32,19 +32,35 @@
             <div class="shadow_el"> </div>
           </div>
         </a>
-        <a href="/tapes">
-          <div id="to_tapes" class="quick_button tip_header <%=  "active "if request.path == "/tapes"%>" title="Tapes">
-            <div class="shadow_el"> </div>
-          </div>
-        </a>
-          <div id="to_tracks" class="quick_button tip_header" title="Tracks">
-            <div class="shadow_el"> </div>
-          </div>
         <a href="/explore">
           <div id="to_listen" class="quick_button tip_header <%=  "active "if request.path == "/explore"%>" title="Explore">
             <div class="shadow_el"> </div>
           </div>
         </a>
+        <a href="/tapes">
+          <div id="to_tapes" class="quick_button tip_header <%=  "active "if request.path == "/tapes"%>" title="Tapes">
+            <div class="shadow_el"> </div>
+          </div>
+        </a>
+
+          <div id="to_tracks" class="quick_button tip_header" title="">
+            <div class="shadow_el"> </div>
+            <div id="user_tracks"> 
+                    
+          
+              <div class="headline"> 
+              <div class="icon"> </div> 
+              <div class="title"> Your Tracks </div> 
+              </div>
+              
+              <ul id="user_track_list" class="track_list"> 
+                <a href="/tapes">
+                  <li class="empty"> Start Uploading Tracks to your Tapes </li>
+                </a>
+              </ul>
+            
+            </div> 
+          </div>
 
         <div id="search">
           

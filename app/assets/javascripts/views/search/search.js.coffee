@@ -27,6 +27,9 @@ class Tapesfm.Views.Search extends Backbone.View
     $("#search_field").blur (e) =>
       @closeResults()
 
+    $("#search_button").click (e) ->
+      $("#search_field").focus()
+
     $('#search_field').typing
       start: (event, $elem) =>
       stop: (event, $elem) =>

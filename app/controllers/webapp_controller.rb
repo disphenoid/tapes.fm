@@ -79,11 +79,7 @@ class WebappController < ApplicationController
     else
       @user = User.find_by({name: /^#{params[:name]}$/i})
     end
-    if current_user
-      @tapedecks = Tapedeck.where({collaborator_ids: @user.id}).desc(:created_at) #Tapedeck.where({user_id: current_user.id})
-    else
-      @tapedecks = []
-    end
+      @tapedecks = Tapedeck.where({collaborator_ids: @user.id}).excludes(:private => true).excludes(:private => true).desc(:created_at) #Tapedeck.where({user_id: current_user.id})
     @json = render_to_string( template: 'user/index.json.jbuilder', locals: { tape: @tapedecks})
     respond_to do |format|
         format.html

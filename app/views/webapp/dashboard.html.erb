@@ -4,7 +4,20 @@
 
 <%= javascript_include_tag "dashboard" %>
 
+<% if @noob %>
 
+<div id="my_message" class="container_12">
+  Hey, 
+this is the first BETA(!) version of tapes.fm – where we can make music together. <br />
+
+In the next weeks and month, your feedback will be crucial to make tapes.fm better! <br />
+Please share with me bugs and your ideas and let me now what you like and don't like.
+<br />
+You will define what tapes.fm will become. <br /><br />
+Thank you. 
+<% end %>
+
+</div>
 <div id="container" class="container_12">dashboard</div>
 
 <div class="popin-overlay"> </div>
