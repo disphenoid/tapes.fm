@@ -9,12 +9,17 @@
 
   </div>
   <div class="info_box">
+    <a href="/tapedeck/<%=@tape.get("id")%>">
     <div class="remix_headline">
       <%= @tape.get("name") %> 
     </div> 
+    </a>
+    <a href="/user/<%=@tape.get("user_id")%>">
     <div class="remix_author"> 
       Remixed by <%= @tape.get("author") %> 
     </div>
+    </a>
+
     <div class="subline">
       <span class="date" title="<%= @tape.get("created_at")%>">
       <%= @tape.get("created_at") %>

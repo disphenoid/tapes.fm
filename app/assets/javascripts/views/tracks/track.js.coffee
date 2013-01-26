@@ -3,7 +3,7 @@ class Tapesfm.Views.UserTrack extends Backbone.View
   tag: "li"
   className: "mini_track_set"
   events:
-    "click .header" : "addTrack"
+    "click #hotspot" : "addTrack"
 
   initialize: ->
     # console.log @collection
@@ -30,7 +30,7 @@ class Tapesfm.Views.UserTrack extends Backbone.View
         "#000"
   addTrack: (e) ->
     if Tapesfm.user && Tapesfm.tapedeck &&  Tapesfm.user.collaborator
-      if Tapesfm.tapedeck.tapedeck.get("tape").get("track_ids").indexOf(@model.get("id")) == -1
+      if !Tapesfm.tapedeck.tapedeck.get("tape").get("track_ids") || Tapesfm.tapedeck.tapedeck.get("tape").get("track_ids").indexOf(@model.get("id")) == -1
         window.addExistingTrack @model
       else
         alert "Already in this Tape..."

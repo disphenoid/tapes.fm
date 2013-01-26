@@ -13,7 +13,7 @@
 .button_box {
   background: rgba(0,0,0,0.09);
   height: 55px;
-  	-webkit-transition: 0.2s all ease-out;
+  -webkit-transition: 0.2s all ease-out;
 	-moz-transition: 0.2s all ease-out;
 	-ms-transition: 0.2s all ease-out;
 	-o-transition: 0.2s all ease-out;
@@ -168,6 +168,12 @@
       padding: 20px;
       
       .headline {
+        @include fh_b(12px);
+        margin-bottom: 3px;
+        @include c_g_0;
+        
+      }
+      .headline.blank {
         @include fh_b(12px);
         margin-bottom: 3px;
         @include c_g_2;
@@ -930,7 +936,6 @@
       .private_icon {
         display: inline-block;
         position: absolute;
-        background: #FF00FF;
         height: 20px;
         width: 20px;
         left:  50%;
@@ -944,9 +949,20 @@
         display: inline-block;
         position: relative;
         margin-bottom: 3px;
+        color: $c_g_4;
         
       
       }
+      .headline.blank {
+        display: inline-block;
+        position: relative;
+        margin-bottom: 3px;
+        color: $c_g_2;
+        
+      
+      }
+
+
       .subline {
         //position: absolute;
         @include fh(10px);

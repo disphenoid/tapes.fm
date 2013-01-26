@@ -1,5 +1,5 @@
 $(document).ready ->
-  window.tracks = new Tapesfm.Routers.Tracks()
+  Tapesfm.tracks = new Tapesfm.Routers.Tracks()
 
 
 

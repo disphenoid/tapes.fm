@@ -9,7 +9,8 @@ class Tapesfm.Views.UserTracks extends Backbone.View
     
     # console.log @collection  
   
-  
+  reload: () ->  
+    @collection.fetch()
   addTrack: (track) ->
     
     # $("#search_results").append(tape.get("name"))

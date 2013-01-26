@@ -23,10 +23,11 @@
 
 <% if @model.get("name"): %>
 <div class="headline"> <%=@model.get("name")%></div> 
+
 <br />
 <div class="subline"> by <%=@model.get("author")%> </div> 
 
 <% else: %>
-  new tape
+  <div class="headline blank"> No name </div> 
 <% end %>
 </div> 

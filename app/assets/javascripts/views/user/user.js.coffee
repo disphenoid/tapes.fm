@@ -68,7 +68,11 @@ class Tapesfm.Views.User extends Backbone.View
     $("body").find("#setting-popin_#{key} label").inFieldLabels() 
 
   appendFollower: (follower) ->
-   $(@el).find("#followers_list").append("<a href='/#{follower.get("name")}'><div class='follower tip' title='#{follower.get("name")}'> <img src='http://#{follower.get("picture")}'></img> </div></a>")
+   if follower.get("picture")
+    $(@el).find("#followers_list").append("<a href='/#{follower.get("name")}'><div class='follower tip' title='#{follower.get("name")}'> <img src='http://#{follower.get("picture")}'></img> </div></a>")
+   else
+    $(@el).find("#followers_list").append("<a href='/#{follower.get("name")}'><div class='follower tip' title='#{follower.get("name")}'> </div></a>")
+
   render: ->
     
     user = new Tapesfm.Models.User(Tapesfm.bootstrap.user)
