@@ -191,6 +191,9 @@ class WebappController < ApplicationController
         @track.color = rand(1..8) #(params[:track_length].to_i + 1)
         #puts "paraaaams #{newparams[:track][:asset].class}"
         #@track.process_asset_upload = true
+        @track.original_user_id = current_user.id
+
+
         respond_to do |format|
           if @track.audio.save && @track.save 
             current_user.add_time @track.duration
@@ -219,6 +222,9 @@ class WebappController < ApplicationController
       @track.user_id = current_user.id
       @track.group = @old_track.group
       @track.color = @old_track.color
+
+      @track.original_user_id = current_user.id
+
       @replace_id = params[:old_track]
       respond_to do |format|
         if @track.audio.save &&  @track.save

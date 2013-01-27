@@ -107,11 +107,15 @@ class RemixController < ApplicationController
         
         track = Track.new
         track.name = original_track.name
-        track.user = original_track.user
+        track.user = current_user #original_track.user
+        track.copy = true #original_track.user
         track.duration = original_track.duration
         track.group = track.id
         track.color = original_track.color
         track.audio_id = original_track.audio_id
+        
+
+
         # track.audio_id = original_track.audio_id
         if track.save()
           new_track_ids.push(track.id)

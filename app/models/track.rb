@@ -29,12 +29,15 @@ class Track
   field :sample_rate, :type => String
   field :channels, :type => String
   field :org_sufix, :type => String
+  field :copy, :type => String, :default => false
 
   mount_uploader :asset, SoundUploader
   skip_callback :destroy, :after, :remove_asset!
   #store_in_background :asset, ConvertTracks
   #process_in_background :asset
-
+  # field :original_name, :type => String
+  # field :original_author, :type => String
+  field :original_user_id, :type => String
 
   #validates :asset, presence: true
   attr_accessible :asset
