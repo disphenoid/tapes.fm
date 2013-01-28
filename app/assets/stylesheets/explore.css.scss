@@ -16,6 +16,7 @@
   height: 60px; 
   background: url("/assets/explore/list_top_bg.png") no-repeat bottom center;
 
+
   .headline {
     position: absolute;
     padding-left: 85px;
@@ -103,7 +104,7 @@
       }
   }
   .explore_tape {
-    cursor: pointer;
+    // cursor: pointer;
     margin: 0px;
     padding: 10px;
     padding-top: 5px;
@@ -111,7 +112,10 @@
     background: url("/assets/explore/list_bg.png") no-repeat bottom center;
 
     height: 60px;
-  
+    a {
+      color: $c_g_4;
+    
+    }
     .mini_tag:hover {
       background: rgba(0,0,0,0.2);
     }

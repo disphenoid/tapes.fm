@@ -41,7 +41,7 @@
 
 
         <span class="text">
-          <%= @model.get("body")%>
+          <%- @model.get("body").replace(new RegExp('\r?\n', 'g'), '<br />') %> 
         </span>
         <div class="date" title="<%= @model.get("created_at")%>">
          <%= @model.get("created_at")%>

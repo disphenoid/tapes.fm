@@ -1,4 +1,5 @@
 json.(comment, :body, :_id, :id,:tape_id, :tapedeck,:timestamp, :created_at)
+json.body comment.body.gsub(/\n/, '<br />')
 json.user_name comment.user.name
 if comment.tape
   json.tape_name comment.tape.name
