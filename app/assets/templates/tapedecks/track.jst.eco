@@ -121,7 +121,7 @@
 
 
 
-<% if Tapesfm.user: %>
+<% if Tapesfm.user && Tapesfm.user.collaborator: %>
 <div class="add_track_to_track">
   <div class="track_btn add_track tip_right" title="Replace with new File" id="add_track"></div>
   <div class="track_btn remove_track from_remove tip_right" title="Remove from this Tape" id="from_remove" data-id="<%=@track.get("_id")%>"></div>
