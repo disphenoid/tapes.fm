@@ -85,7 +85,7 @@
         <span id="tape_save_hint_box">
         <span id="tape_save_hint_sub">
           <span id="tape_save_hint">
-          <span class="hint_bold"> Creates </span> a new Tape Version </span> 
+          <span class="hint_bold"> Saves </span> a new Tape Version </span> 
           <br />
           <span id="tape_save_hint_arrow">&nbsp;<span>
         </span> 

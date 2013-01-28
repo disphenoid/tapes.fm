@@ -21,7 +21,6 @@
 
 
 
-
 $('.min_tip').tipsy( {live: true , gravity: 'n', offset: 3})
 
 $(document).ready(function(){

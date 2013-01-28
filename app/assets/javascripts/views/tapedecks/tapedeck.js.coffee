@@ -1,3 +1,5 @@
+
+
 class Tapesfm.Views.Tapedeck extends Backbone.View
   template: JST['tapedecks/tapedeck']
 
@@ -6,9 +8,9 @@ class Tapesfm.Views.Tapedeck extends Backbone.View
 
     $(document).bind('keydown', this.keyown)
     setTimeout(this.scrabberHotspot, 1)
+
     
 
-    #window.bla = @model.on('change', @start, this)
   events:
     "click #tape_save_button" : "saveTape"
     "click .tape_version_el" : "changeTape2"
