@@ -54,7 +54,9 @@ if activity.type == "remix" && activity.tapedeck
   
   json.tapedeck_name activity.tapedeck.name if activity.tapedeck
   json.tapedeck_id activity.tapedeck_id
-  json.cover_s activity.tapedeck.cover.image.s.url if activity.tapedeck
+  if activity.tapedeck.cover
+    json.cover_s activity.tapedeck.cover.image.s.url if activity.tapedeck
+  end
   json.version_name activity.tapedeck.tapes.last.name if activity.tapedeck
 
   unless activity.tapedeck.project

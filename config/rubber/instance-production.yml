@@ -1,6 +1,6 @@
 ---
 - !ruby/object:Rubber::Configuration::InstanceItem
-  name: app02
+  name: app01
   domain: foo.com
   roles:
   - !ruby/object:Rubber::Configuration::RoleItem
@@ -18,50 +18,55 @@
   - !ruby/object:Rubber::Configuration::RoleItem
     name: monit
     options: {}
-  instance_id: i-d98baea8
-  image_type: m1.large
+  instance_id: i-b607bdc6
+  image_type: m1.small
   image_id: ami-eafa5883
   security_groups:
   - tapesfm_production_default
   - tapesfm_production_app
-  - tapesfm_production_app02
+  - tapesfm_production_app01
   - tapesfm_production_unicorn
   - tapesfm_production_nginx
   - tapesfm_production_collectd
   - tapesfm_production_monit
-  external_host: ec2-23-22-250-45.compute-1.amazonaws.com
-  external_ip: 23.22.250.45
-  internal_host: ip-10-34-22-142.ec2.internal
-  internal_ip: 10.34.22.142
-  zone: us-east-1a
+  external_host: ec2-54-235-183-203.compute-1.amazonaws.com
+  external_ip: 54.235.183.203
+  internal_host: domU-12-31-39-0A-3E-16.compute-1.internal
+  internal_ip: 10.211.61.224
+  zone: us-east-1d
   platform: linux
   root_device_type: instance-store
 - !ruby/object:Rubber::Configuration::InstanceItem
-  name: resque02
+  name: resque01
   domain: foo.com
   roles:
   - !ruby/object:Rubber::Configuration::RoleItem
     name: resque_worker
     options: {}
   - !ruby/object:Rubber::Configuration::RoleItem
+    name: db
+    options:
+      primary: true
+  - !ruby/object:Rubber::Configuration::RoleItem
     name: collectd
     options: {}
   - !ruby/object:Rubber::Configuration::RoleItem
     name: monit
     options: {}
-  instance_id: i-9dba93ec
-  image_type: m1.large
+  instance_id: i-6e189d1e
+  image_type: m1.small
   image_id: ami-eafa5883
   security_groups:
   - tapesfm_production_default
-  - tapesfm_production_resque02
+  - tapesfm_production_resque01
   - tapesfm_production_resque_worker
+  - tapesfm_production_db
   - tapesfm_production_collectd
   - tapesfm_production_monit
-  external_host: ec2-50-16-88-101.compute-1.amazonaws.com
-  external_ip: 50.16.88.101
-  internal_host: ip-10-32-111-68.ec2.internal
-  internal_ip: 10.32.111.68
+  external_host: ec2-184-73-73-8.compute-1.amazonaws.com
+  external_ip: 184.73.73.8
+  internal_host: ip-10-244-142-213.ec2.internal
+  internal_ip: 10.244.142.213
   zone: us-east-1a
   platform: linux
   root_device_type: instance-store
