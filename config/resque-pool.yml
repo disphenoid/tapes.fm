@@ -1,4 +1,4 @@
 # Stub for running in development
 # edit config/rubber/role/resque_worker/resque-pool.yml for production/staging
 
-"convert_audio_s3_premium,*": 2
+"*": 2
