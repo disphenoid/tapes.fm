@@ -298,7 +298,10 @@ class WebappController < ApplicationController
     @json = {:eu => @eu, 
       :price_2 => (@eu ? Plan.info(2)[:price_eu_anual] : Plan.info(2)[:price_us_anual]), 
       :price_3 => (@eu ? Plan.info(3)[:price_eu_anual] : Plan.info(3)[:price_us_anual]), 
-      :price_4 => (@eu ? Plan.info(4)[:price_eu_anual] : Plan.info(4)[:price_us_anual]) 
+      :price_4 => (@eu ? Plan.info(4)[:price_eu_anual] : Plan.info(4)[:price_us_anual]), 
+      :price_5 => (@eu ? Plan.info(2)[:price_eu_month] : Plan.info(2)[:price_us_month]),
+      :price_6 => (@eu ? Plan.info(3)[:price_eu_month] : Plan.info(3)[:price_us_month]),
+      :price_7 => (@eu ? Plan.info(4)[:price_eu_month] : Plan.info(4)[:price_us_month]) 
       }
 
     

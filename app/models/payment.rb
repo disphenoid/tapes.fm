@@ -12,6 +12,7 @@ class Payment
   field :params, :type => String
   field :paypal_tx, :type => String
   field :country, :type => String
+  field :days, :type => Integer
 
 
 end
