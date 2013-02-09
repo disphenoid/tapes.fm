@@ -2,12 +2,14 @@
         <div class="delete"  data-id="<%= @model.get("id")%>"> </div>
       <div class="pic"> 
         <% if @model.get("user_picture"):%>
-        <img src="<%= "http://" + @model.get("user_picture")%>"> 
+          <a href="/<%= @model.get("user_name")%>">
+            <img src="<%= "http://" + @model.get("user_picture")%>"> 
+          </a>
         <% end %>
       </div>
       <div class="body">
           
-        <a href="/user/<%= @model.get("user_id")%>">
+        <a href="/<%= @model.get("user_name")%>">
           <span class="user_name">
             <%= @model.get("user_name")%>
           </span>

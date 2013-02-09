@@ -20,7 +20,7 @@
 
     </div>
     <div class="info_box">
-      <a href="/tapedeck/<%=@model.get("original_id")%>">
+      <a href="/tapedeck/<%=@model.get("id")%>">
 
       <div class="headline">
         <%= @model.get("name") %> 
