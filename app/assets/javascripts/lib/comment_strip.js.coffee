@@ -1,6 +1,6 @@
 class window.CommentStrip
   constructor: ->
-    console.log "init "
+    # console.log "init "
   addComments: (comments) ->
     $("#tape_comments").html("dkfhkjsh")
     console.log "add comments"

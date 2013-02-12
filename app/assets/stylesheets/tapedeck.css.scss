@@ -505,6 +505,13 @@
       height: 34px;
       cursor: pointer;
     }
+    #pause.loading {
+      display: none; 
+      background-image: url("/assets/tapedeck/track_loading_on.gif");
+      background-position: center center ;
+      background-repeat: no-repeat ;
+
+    }
 
     #pause {
       display: none; 
@@ -513,6 +520,12 @@
       background-repeat: no-repeat ;
 
     }
+    #pause.loading:hover {
+      background-image: url("/assets/tapedeck/track_loading_off.gif");
+
+    }
+
+
     #pause:hover {
       background-image: url("/assets/header/icon_pause_off.png");
 

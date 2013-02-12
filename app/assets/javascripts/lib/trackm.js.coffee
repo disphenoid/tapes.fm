@@ -1,3 +1,55 @@
+window.totalLoadingTracks = {}
+window.ready = false
+window.waitingForTracks = false
+window.loadingReady = () ->
+  buffer = 10
+  old_ready = window.ready
+
+  # all_status = []
+  
+  all_stats = {}
+  is_read = true
+
+  _.each window.Tapesfm.trackm.tracks, (track) =>
+    # console.log = "percent value = #{window.totalLoadingTracks[track.id]}"
+    # console.log window.totalLoadingTracks[track.id]
+    if window.totalLoadingTracks[track.id] >= buffer
+      all_stats[track.id] = true
+    else
+      all_stats[track.id] = false
+      # Tapesfm.trackm.play()
+      # ready  = true
+  _.each window.Tapesfm.trackm.tracks, (stat) =>
+    if all_stats[stat.id] == false
+      # console.log "FALSEEEEEEEEEEEEEE"
+      is_read = false
+      window.ready = false
+
+  # console.log all_stats
+  # console.log is_read
+  window.ready = is_read
+
+  if old_ready != window.ready 
+    $("#pause").removeClass("loading")
+    if window.waitingForTracks
+      Tapesfm.trackm.play()
+
+
+
+
+  #   console.log "IS READY ??  = " + window.ready
+  #   if is_read
+  #     window.ready == true
+  #     Tapesfm.trackm.play()
+
+  # console.log "IS READY ??  = " + window.ready
+  # Tapesfm.trackm.play() if old_ready != window.ready && window.waiting
+
+
+  window.ready
+
+
+
 class window.Trackm
   sm: undefined
   tempPosition: 0
@@ -5,9 +57,13 @@ class window.Trackm
     @sm = soundManager
 
   duration: 0
+  completePercent: 0
   trackWidth: 765
   leadTrack: null
   tracks: []
+  totalLoadingTracks: {}
+
+
   
   setMaxTrackLength: (tracks_array) ->
     tracks_array.each (track) =>
@@ -44,7 +100,7 @@ class window.Trackm
       if $(soloElement).hasClass("active")
         isSolo = true
         @sm.unmute(track_id)
-        console.log "#{track_id} is solo inde = #{index}"
+        # console.log "#{track_id} is solo inde = #{index}"
       else
         @sm.mute(track_id)
       
@@ -102,7 +158,7 @@ class window.Trackm
         idx = @tracks.indexOf(t)
         @tracks.splice(idx,1)
         @sm.destroySound(track_id)
-        console.log "Track removed"
+        # console.log "Track removed"
         return true
       else
         return false
@@ -113,33 +169,56 @@ class window.Trackm
     @tracks = []
     @duration = 0
     @leadTrack = null
-        
+  
+  checkLoaded: (percent, callback) ->
+
+    if true
+      callback(this)
+
   play: ->
 
     # Start Play on all Tracks 
-    $("#tapedeck_image_wheels").addClass("play")
-    _.each @tracks, (t) =>
-      console.log("Play – "+t.id)
-      @sm.play(t.id)
+    if window.ready
+      $("#tapedeck_image_wheels").addClass("play")
+      _.each @tracks, (t) =>
+        # console.log("Play – "+t.id)
+        @sm.play(t.id)
+    else
+      $("#pause").addClass("loading")
+      # console.log "NOT LOADED!"
+      window.waitingForTracks = true
+
+  
+
+
+    # @checkLoaded 10, (that) ->
       
     #console.log("play")
     #
   pause: ->
+    window.waitingForTracks = false
     $("#tapedeck_image_wheels").removeClass("play")
-    _.each @tracks, (t) =>
-      console.log("Stop – "+t.id)
-      @sm.pause(t.id)
+    if window.ready
+      _.each @tracks, (t) =>
+
+        # console.log("Stop – "+t.id)
+        @sm.pause(t.id)
+
+
 
   resume: ->
+
+    # window.waitingForTracks = true
     $("#tapedeck_image_wheels").addClass("play")
-    _.each @tracks, (t) =>
-      console.log("Resume – "+t.id)
-      @sm.resume(t.id)
+    if window.ready
+      _.each @tracks, (t) =>
+        # console.log("Resume – "+t.id)
+        @sm.resume(t.id)
 
   stop: ->
     $("#tapedeck_image_wheels").removeClass("play")
     _.each @tracks, (t) =>
-      console.log("Stop – "+t.id)
+      # console.log("Stop – "+t.id)
       @sm.stop(t.id)
       @sm.setPosition(t.id, 0)
 
@@ -174,7 +253,7 @@ class window.Trackm
 
       $(".track_position").css({"margin-left": (Number(val) - 42)})
       _.each @tracks, (t) =>
-        console.log("Seek – "+t.id)
+        # console.log("Seek – "+t.id)
 
         @sm.stop(t.id)
         @sm.setPosition(t.id, position)
@@ -216,22 +295,32 @@ class window.Trackm
         $(("#"+t.id+"_progress")).css({width: val})
       else
         $(("#"+t.id+"_progress")).css({width: $(("#track_"+t.id+"_clip")).width()})
-
-
+    
+      
+   
+  
   loading: ->
     baseWidth = Tapesfm.trackm.trackWidth
-        
-    console.log "VALUE== "+this.id
-
     tWidth = $(("#"+this.id+"_clip")).width()
 
-
     val = window.tools.map(this.bytesLoaded, 0, this.bytesTotal, 0, tWidth)
+    
+    percent = window.tools.map(this.bytesLoaded, 0, this.bytesTotal, 0, 100 )
 
+    # @totalLoadingTracks = {}
+    #@totalLoadingTracks = {} unless @totalLoadingTracks
+
+    window.totalLoadingTracks[this.id] = percent
+  
+    window.loadingReady()
+
+    # console.log "is ready ? = #{@loadingReady()}"
+    # console.log("% loaded from total = " + @totalLoadingTracks[this.id] )
+
+    # console.log "dd"
     $(("#"+this.id+"_loaded")).css({width: val})
     
     #val = window.tools.map(300, 0,400,0,1000)
-    #console.log Math.round(val)
 
   finish: ->
     #alert "end"

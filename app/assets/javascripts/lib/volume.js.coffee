@@ -41,7 +41,7 @@ class window.Volume
      else if @rawValue < -50
        @rawValue = -50
      
-     console.log "rawvalue " + @rawValue
+     # console.log "rawvalue " + @rawValue
 
    render: ->
 
