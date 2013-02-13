@@ -96,7 +96,7 @@
             </a>
           </div>
  
-          <% if current_user.plan_id == 1 || current_user.plan_id.blank? %>
+          <% if false #current_user.plan_id == 1 || current_user.plan_id.blank? %>
             <a href="/upgrade">
               <div id="badge" class="header_badge upgrade">  
             <div class="name">  
@@ -106,7 +106,7 @@
             </div>
             </a>
 
-          <% else %>
+          <% elsif false %>
             <a href="/upgrade">
 
             <div id="badge" class="header_badge badge <%= current_user.plan[:name].downcase %> min_tip" title="<%= current_user.plan_expire ? ("Expires in " + (current_user.plan_expire - Date.today).to_i.to_s) + " days": "" %> "> 

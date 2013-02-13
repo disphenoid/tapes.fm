@@ -25,7 +25,7 @@
         </form>
       </div>
       <div class="info">
-        Enter here your email Adresse, will stay private.
+        Enter your email, this info will not be public
       </div>
 
 
@@ -46,7 +46,7 @@
         </form>
       </div>
       <div class="info">
-        6 character minimum
+        Enter password with 6 characters minimum
       </div>
 
 
@@ -65,7 +65,7 @@
         </form>
       </div>
       <div class="info">
-        Retype it to verify your new password
+        Re-type to verify your password
       </div>
 
 
@@ -87,7 +87,7 @@
             <%#<input type="text" name="username" id="username" value="<%=@model.get("name")%>
       </div>
       <div class="info">
-        This is the name everybody will see
+        Your public username
       </div>
 
 
@@ -118,7 +118,7 @@
 
       </div>
       <div class="info">
-        Your profile picture
+        Your public profile picture
       </div>
 
 

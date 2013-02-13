@@ -2,36 +2,33 @@
       Getting Started
     </h1>
     <p>
-      Create music the way you always do. go to tapes.fm/tapes, Start a new Tape and upload your original raw audio files (as .aif or .wav).
-      Invite your friends by username or email as collaboraters. 
-      Every Collaborator is now able to download any Tracks and work localy on them and upload new Tracks.
+      Create music the way you always do. Start a new Tape on tapes.fm and upload your original raw audio file (as .aif or .wav). Invite your friends to be collaborators via username or email. Every collaborator can now download Tracks and locally work on them and upload new Tracks.
 
 
       (work on progress)
       
     </p>
     <h2 id="information" >
-      What is a Tape?
+      What's a Tape?
     </h2>
     <br />
     <p>
-      A Tape can hold everything from a single Sample to a Multitrack Composition. <br />
-      Tapes are like little "projects" for your Ideas. 
+      Tapes are audio projects of your ideas.<br /> 
+      A Tape can hold everything from a single Sample to a Multitrack ComposiNon.
     </p>
     <h2 id="information" >
-      What is a Track?
+      What's a Track?
     </h2>
     <br />
     <p>
       Tracks are audio files which you can add to your Tapes.  
     </p>
     <h2 id="information" >
-      What is a Tape Version?
+      What's a Tape Version?
     </h2>
     <br />
     <p>
-      Every Tape can hold many different Version of your Tape. Every change(uploading a Track, volume changes etc.) puts your Tape into the "edit mode".
-      When ever you are done tweaking your Tape click on "Create a Tape Version" or just click "undo" to discare your changes. This makes it easy to keep an eye on all changes you or your Collaboratos made.
+      Every Tape can hold many different versions. Every change you do (like adding a Track or changing the volume) puts your Tape into the „edit mode“. Whenever you are done tweaking your Tape click on „Create Tape Version“ or click „Undo“ to delete your changes. Taper Versions make it easy for you and your collaborators to keep an eye on the development of the Track.
     </p>
 
     <h2 id="information" >
@@ -39,7 +36,7 @@
     </h2>
     <br />
     <p>
-      Create a Tape by clicking on the Tapes button in the Header and on the "Tapes overview" Click on Add(+) button.
+      Simply click on the Add (+) button in the header or the „Tapes Overview“ to create your very own Tape.
     </p>
 
     <h2 id="information" >
@@ -47,16 +44,14 @@
     </h2>
     <br />
     <p>
-      Go to your Tape and on right side, click on "Add Tracks". Select your File(s)(only .wav and .aiff) and press ok. 
-      After your Upload finished, will your files appear as Tracks in the Multitrack-Player. Now you can save the Tape Version by pressing the "Create a Tape Version" Button. tapes.fm needs a little to process your files. After processing your Tracks are ready for playback.
+    When being in your Tape click on „Add Tracks“ to the right, select your audio file (only .aiff or .wav) and click ok. The upload process might take some time. After the upload is complete, your files appear as Tracks in the Multitrack Player. Please save the Tape by clicking „Create Tape Version“. Now you can play and work on your Tracks.
     </p>
     <h2 id="information" >
       Invite Friends
     </h2>
     <br />
     <p>
-      Visit any of your Tapes, and click on the Add(+) button located on the right under "Collaborators".
-      Type in an Username or an Email address. If the user not exist he gets an Invite to your Tape.
+      Visit the Tape you want people to invite to. Click the Add (+) button on the right under „Collaborators“ and type in your friends username or email address. Your friend will then receive an Invite to your Track – have fun making music together!
     </p>
 
 
