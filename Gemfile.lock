@@ -1,17 +1,4 @@
 GIT
-  remote: git://github.com/disphenoid/rubber.git
-  revision: 7e72d6315d7ba38fa2360ce0f8de1893b8ee4c19
-  specs:
-    rubber (2.1.2)
-      capistrano (~> 2.12)
-      clamp
-      fog (~> 1.6)
-      json
-      net-ssh (~> 2.4.0)
-      open4
-      thor
-
-GIT
   remote: git://github.com/jnicklas/carrierwave-mongoid.git
   revision: 28a9b718d42b8aba47d2eb951f73bd9d872b6eb0
   branch: mongoid-3.0
@@ -70,7 +57,7 @@ GEM
     bson_ext (1.8.0)
       bson (~> 1.8.0)
     builder (3.0.4)
-    capistrano (2.13.5)
+    capistrano (2.14.2)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -81,7 +68,7 @@ GEM
       activesupport (>= 3.2.0)
     carrierwave_backgrounder (0.0.7)
       carrierwave (~> 0.5)
-    clamp (0.5.0)
+    clamp (0.5.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -101,22 +88,22 @@ GEM
     eco-source (1.1.0.rc.1)
     ejs (1.0.0)
     erubis (2.7.0)
-    excon (0.16.10)
+    excon (0.20.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    fog (1.7.0)
+    fog (1.10.0)
       builder
       excon (~> 0.14)
       formatador (~> 0.2.0)
       mime-types
       multi_json (~> 1.0)
-      net-scp (~> 1.0.4)
+      net-scp (~> 1.1)
       net-ssh (>= 2.1.3)
       nokogiri (~> 1.5.0)
       ruby-hmac
     formatador (0.2.4)
     geoip (1.2.1)
-    highline (1.6.15)
+    highline (1.6.16)
     hike (1.2.1)
     i18n (0.6.1)
     ios-checkboxes (0.2.1)
@@ -128,15 +115,14 @@ GEM
     jquery-rails (2.1.2)
       railties (>= 3.1.0, < 5.0)
       thor (~> 0.14)
-    jruby-pageant (1.1.1)
-    json (1.7.6)
+    json (1.7.7)
     kgio (2.7.4)
     libv8 (3.3.10.4)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.19)
+    mime-types (1.22)
     mini_magick (3.4)
       subexec (~> 0.2.1)
     mongoid (3.0.5)
@@ -151,17 +137,16 @@ GEM
       bson_ext (~> 1.6)
       mongoid (~> 3.0.3)
     moped (1.2.1)
-    multi_json (1.5.0)
-    net-scp (1.0.4)
-      net-ssh (>= 1.99.1)
-    net-sftp (2.0.5)
-      net-ssh (>= 2.0.9)
-    net-ssh (2.4.0)
-      jruby-pageant (>= 1.0.2)
-    net-ssh-gateway (1.1.0)
-      net-ssh (>= 1.99.1)
+    multi_json (1.7.2)
+    net-scp (1.1.0)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.6.6)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
     newrelic_rpm (3.5.5.38)
-    nokogiri (1.5.5)
+    nokogiri (1.5.9)
     open4 (1.3.0)
     origin (1.0.8)
     orm_adapter (0.4.0)
@@ -211,6 +196,14 @@ GEM
       rake
       resque (~> 1.20)
       trollop (~> 1.16)
+    rubber (2.2.4)
+      capistrano (~> 2.12)
+      clamp
+      fog (~> 1.6)
+      json
+      net-ssh (~> 2.6)
+      open4
+      thor
     ruby-hmac (0.4.0)
     sass (3.2.1)
     sass-rails (3.2.5)
@@ -233,7 +226,7 @@ GEM
     subexec (0.2.2)
     therubyracer (0.10.2)
       libv8 (~> 3.3.10)
-    thor (0.16.0)
+    thor (0.18.1)
     tilt (1.3.3)
     treetop (1.4.12)
       polyglot
@@ -258,6 +251,7 @@ PLATFORMS
 
 DEPENDENCIES
   backbone-on-rails
+  capistrano
   carrierwave
   carrierwave-mongoid!
   carrierwave_backgrounder
@@ -279,7 +273,7 @@ DEPENDENCIES
   resque
   resque-pool
   resque_mailer!
-  rubber!
+  rubber
   sass-rails (~> 3.2.3)
   simple_form
   therubyracer
