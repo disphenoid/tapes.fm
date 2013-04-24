@@ -2,7 +2,7 @@ window.totalLoadingTracks = {}
 window.ready = false
 window.waitingForTracks = false
 window.loadingReady = () ->
-  buffer = 10
+  buffer = 3
   old_ready = window.ready
 
   # all_status = []
